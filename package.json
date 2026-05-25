@@ -1,0 +1,25 @@
+{
+  "name": "genai-lbs-g5",
+  "version": "0.1.0",
+  "private": true,
+  "description": "London Business School Generative AI Elective group prototype.",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "lint": "npm --workspaces run lint",
+    "test": "npm --workspaces run test",
+    "typecheck": "npm --workspaces run typecheck",
+    "prisma:generate": "npx prisma generate --schema prisma/schema.prisma",
+    "prisma:migrate": "npx prisma migrate dev --schema prisma/schema.prisma --name init",
+    "prisma:studio": "npx prisma studio --schema prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

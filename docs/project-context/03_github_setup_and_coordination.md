@@ -82,7 +82,52 @@ feature/ws4-event-request-contract
 
 Local note: if creating a slash-style branch fails with a `.git/refs` permission error, it is a filesystem permission issue rather than a Git branch naming issue. Retry the normal branch name after resolving permissions.
 
-## 3. Required GitHub settings
+## 3. Branch completeness and merge safety
+
+Git and GitHub merge the exact commits that are on the pull request head branch at the time of merge. They do not merge the branch name as an idea, a local working tree, or commits that were made locally but not pushed.
+
+Before opening or merging a pull request, run these commands from the feature branch:
+
+```powershell
+git status --short --branch
+git fetch origin main
+git log --oneline origin/main..HEAD
+git diff --stat origin/main..HEAD
+```
+
+Confirm:
+
+- The branch name is the expected feature branch.
+- `git status` has no uncommitted work that should be part of the PR.
+- `git log origin/main..HEAD` lists every commit you expect to merge.
+- `git diff --stat origin/main..HEAD` includes the expected files, routes, schemas, services, tests, and docs.
+- The GitHub PR `Files changed` tab shows the same important files.
+
+If a route or demo is part of the work, the expected route file must appear in the diff. For example, the WS4 demo PR should show `client/src/pages/Ws4DemoPage.tsx`, `client/src/App.tsx`, and the WS4 backend route/service files.
+
+Push the exact current branch before relying on GitHub:
+
+```powershell
+git push origin HEAD
+```
+
+After the PR is merged, verify the real merged `main` before deleting the branch:
+
+```powershell
+git checkout main
+git pull origin main
+git log --oneline -5
+git diff --stat HEAD origin/main
+npm run typecheck
+npm run lint
+npm test
+```
+
+Then run the app and visit any newly added route or demo URL. Only delete the branch after the merged `main` contains the expected files and the local checks pass.
+
+GitHub's "safe to delete branch" message means the commits included in that PR are reachable from the target branch. It does not prove that later local commits, unpushed commits, or separate follow-up PR work were also merged.
+
+## 4. Required GitHub settings
 
 Enable:
 
@@ -94,7 +139,7 @@ Enable:
 
 For a fast student project, avoid overcomplicating permissions.
 
-## 4. Issues and project board
+## 5. Issues and project board
 
 Create GitHub Issues for every build task.
 
@@ -137,7 +182,7 @@ Every issue should include:
 - Definition of done.
 - Dependencies.
 
-## 5. Pull request template
+## 6. Pull request template
 
 Create `.github/pull_request_template.md`:
 
@@ -159,6 +204,10 @@ What shared schemas, API endpoints, or generated outputs are affected?
 Add screenshots or example payloads if relevant.
 
 ## Tests/checks
+- [ ] `git status --short --branch` checked; no required work is uncommitted
+- [ ] `git log --oneline origin/main..HEAD` shows the intended commits
+- [ ] `git diff --stat origin/main..HEAD` shows the intended files
+- [ ] GitHub `Files changed` tab includes the expected routes/services/schemas/docs
 - [ ] App runs locally
 - [ ] TypeScript passes
 - [ ] No unrelated changes
@@ -168,7 +217,7 @@ Add screenshots or example payloads if relevant.
 What could break? What still needs to be done?
 ```
 
-## 6. Shared schema governance
+## 7. Shared schema governance
 
 The shared schema is the most important coordination mechanism.
 
@@ -190,7 +239,7 @@ packages/shared-types/src/feedback.ts
 packages/shared-types/src/integrations.ts
 ```
 
-## 7. API contract governance
+## 8. API contract governance
 
 Recommended API endpoints:
 
@@ -208,13 +257,13 @@ PUT  /api/events/:id
 
 For Saturday, these can be implemented as mock functions or Next.js routes.
 
-## 8. Environment variables
+## 9. Environment variables
 
 Use the real local `.env` file only. Do not commit it, print it, screenshot it, or create sample/template environment files such as `.env.example`.
 
 Server-only secrets such as `OPENAI_API_KEY` must stay backend-only. Browser-safe values use the existing `VITE_` variables described in `README.md` and `project.md`.
 
-## 9. Local development workflow
+## 10. Local development workflow
 
 Recommended commands once the app exists:
 
@@ -238,7 +287,7 @@ pnpm build
 
 Pick npm or pnpm early and standardize.
 
-## 10. Daily coordination rhythm
+## 11. Daily coordination rhythm
 
 Use a short daily standup:
 
@@ -256,7 +305,7 @@ The project owner should maintain:
 - demo script.
 - integration checklist.
 
-## 11. Wednesday freeze
+## 12. Wednesday freeze
 
 By Wednesday, freeze:
 
@@ -268,7 +317,7 @@ By Wednesday, freeze:
 
 After Wednesday, avoid schema churn unless absolutely necessary.
 
-## 12. Saturday demo branch
+## 13. Saturday demo branch
 
 Create a branch:
 
@@ -278,7 +327,7 @@ demo/saturday-prototype
 
 Use it only if `main` becomes unstable. Ideally, keep `main` deployable at all times.
 
-## 13. Definition of done for workstreams
+## 14. Definition of done for workstreams
 
 A workstream task is done when:
 
@@ -289,7 +338,7 @@ A workstream task is done when:
 - It has a fallback if AI/API fails.
 - It is documented enough for another teammate to use.
 
-## 14. Demo-first development rule
+## 15. Demo-first development rule
 
 Every stream should have a visible or inspectable demo artifact:
 

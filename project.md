@@ -116,6 +116,22 @@ Browser login test status: unauthenticated protected routes attempt Auth0 login,
 
 OpenAI SDK configuration exists only in the backend. The frontend never reads `OPENAI_API_KEY`. No paid OpenAI API calls have been added or run.
 
+## Workstream 4 Direction
+
+Workstream 4 now has two dedicated planning docs:
+
+- `docs/project-context/workstream-4-mini-prd.md`
+- `docs/project-context/workstream-4-workplan.md`
+
+The agreed direction is:
+
+- `POST /api/tiering/classify` should use OpenAI for event tiering because tiering depends on contextual event-planning judgment.
+- `POST /api/routing/stakeholder-packets` should use deterministic service logic because it feeds Workstream 3 email and summary generation.
+- `POST /api/integrations/monday/build-payload` should remain a deterministic mock payload builder and must not call the real Monday.com API.
+- The tiering endpoint should return either `classified` with user-visible reasoning or `needs_more_information` with explicit questions. It should not return confidence scores or `needs_human_review`.
+- Tiering output must be labelled as prototype guidance, not official LBS policy.
+- The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4.
+
 ## LBS Branding
 
 The supplied LBS logo file is used directly in the React UI. The UI uses a restrained LBS-style blue and red palette and keeps the original logo asset intact.
@@ -178,6 +194,10 @@ Remaining blockers:
 
 - The current terminal still resolves `node` by name to a stale WindowsApps Codex path unless `C:\Program Files\nodejs` is prepended for the process. A fresh terminal should normally resolve the installed Node.js.
 - Auth0 must authorize the configured SPA client for the configured API audience before protected route login and permission checks can be fully tested. This has been escalated as an integration blocker.
+
+## Teammate Onboarding Note
+
+The external `INITIAL_CODEX_SETUP_INSTRUCTION.md` has been updated with a Group 5 follow-on setup section. Teammates should clone and read this existing baseline repo instead of creating or scaffolding a new repository, preserve the current architecture, configure only their local `.env`/PostgreSQL/dependencies, run the existing verification commands, and document any local blockers here.
 
 ## Next Steps
 

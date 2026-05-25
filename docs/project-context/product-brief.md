@@ -114,7 +114,7 @@ A student organiser arrives with a rough event idea. The assistant asks clarifyi
 7. System includes a post-event feedback/handover placeholder.
 8. Human review is clearly required for sensitive, high-risk, or uncertain outputs.
 
-## Recommended demo event
+## Demo event scenarios
 
 Future of Finance Summit:
 
@@ -128,6 +128,14 @@ Future of Finance Summit:
 - possible sponsor/partner visibility.
 
 This scenario is complex enough to trigger routing, Security, Catering, AV, Space, Editorial Planning, EIS-style logic, and a Monday.com-ready payload, while still being easy to explain.
+
+Keep this as one demo option, but do not treat it as the only/default scenario. The prototype should also show that it can handle varied event contexts:
+
+- Small internal skills workshop: 25 students, internal facilitator, no catering, standard classroom, low complexity.
+- Alumni networking reception: 80 attendees, alumni and students, catering and alcohol, evening timing, moderate coordination.
+- External speaker fireside chat: 60 attendees, named external speaker, AV and guest list required, possible reputational review.
+- Multi-club careers fair: 200 attendees, employer booths, sponsors, catering, multi-room setup, high logistics complexity.
+- VIP central banker / public leader event: high-profile speaker such as the Governor of the Reserve Bank of India, a European central banker, a UK MP, or the Prime Minister; external guests; likely media or reputational sensitivity; Security, Editorial Planning, senior stakeholder oversight, guest-list control, and escalation likely required. This is especially useful for the demo because Jo mentioned a real event involving the Governor of India's central bank.
 
 ## Core product objects
 
@@ -148,8 +156,8 @@ A mock integration payload. It should show how the structured event and routing 
 Workstream 4 owns the contract and integration spine:
 
 - shared event schema coordination,
-- tiering logic,
-- stakeholder routing logic,
+- AI-assisted tiering logic,
+- deterministic stakeholder packet logic,
 - integration payloads,
 - backend API contracts,
 - sample fixtures,
@@ -159,7 +167,7 @@ Minimum Workstream 4 endpoints:
 
 ```txt
 POST /api/tiering/classify
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 POST /api/integrations/monday/build-payload
 ```
 

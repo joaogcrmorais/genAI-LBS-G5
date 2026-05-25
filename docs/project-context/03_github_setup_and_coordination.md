@@ -189,7 +189,7 @@ Recommended API endpoints:
 POST /api/intake/extract
 POST /api/intake/missing-fields
 POST /api/tiering/classify
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 POST /api/outputs/generate
 POST /api/integrations/monday/build-payload
 POST /api/post-event/feedback

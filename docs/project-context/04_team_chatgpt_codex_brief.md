@@ -210,15 +210,24 @@ Output:
 Own:
 
 - stakeholder routing matrix,
-- tiering/escalation engine,
+- AI-assisted tiering/escalation classification,
 - stakeholder-specific packets,
 - Monday.com-ready JSON payload,
 - mock integration endpoint.
 
 Output:
 
+- `TieringClassificationResult` JSON.
 - `StakeholderRoutingResult` JSON.
 - `MondayIntegrationPayload` JSON.
+
+Primary backend routes:
+
+```txt
+POST /api/tiering/classify
+POST /api/routing/stakeholder-packets
+POST /api/integrations/monday/build-payload
+```
 
 Example Monday.com-ready payload:
 

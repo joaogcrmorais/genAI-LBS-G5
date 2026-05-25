@@ -270,10 +270,10 @@ Agentic AI patterns relevant to this prototype:
 
 - Think: interpret the user's event idea and determine what is missing.
 - Act: call tools or services such as extraction, routing, tiering, timeline generation, or payload generation.
-- Observe: inspect outputs, missing fields, confidence, and risk flags.
+- Observe: inspect outputs, missing fields, reasoning, and risk flags.
 - Repeat or escalate: ask follow-up questions or route to a human.
 
-This prototype should not overbuild agentic autonomy. Use deterministic rules where reliability and explainability matter, especially for tiering and escalation.
+This prototype should not overbuild agentic autonomy. Use OpenAI where contextual judgment and explanation matter, especially for tiering, and use deterministic service logic where stable downstream contracts matter, especially stakeholder packets and mock integration payloads.
 
 ## 12. Evaluation and KPI takeaways
 
@@ -325,7 +325,7 @@ Across all source context, the direction is consistent:
 6. Timeline/checklist generation is central.
 7. Post-event learning and handover are valuable, even if only mocked for Saturday.
 8. Future integration matters, but real integration can be deferred.
-9. Human review must remain visible.
+9. User-visible reasoning must remain visible for AI-assisted tiering.
 10. The demo should show one coherent vertical slice.
 
 ## 14. Build-priority guidance for Codex
@@ -336,7 +336,7 @@ When implementing product features:
 2. Keep the first version thin and demo-ready.
 3. Prefer real local service functions over fake hard-coded responses.
 4. Use sample/synthetic data only.
-5. Put deterministic rules in service files, not directly in UI components.
+5. Put deterministic stakeholder packet rules in service files, not directly in UI components.
 6. Use Zod or equivalent validation where practical.
 7. Keep API routes thin: validate request, call service, return JSON.
 8. Keep business logic testable without HTTP.
@@ -350,14 +350,14 @@ For Workstream 4, build:
 - `EventRequest` type/schema,
 - `StakeholderRoutingResult` type/schema,
 - `MondayIntegrationPayload` type/schema,
-- deterministic tiering service,
-- deterministic routing service,
+- OpenAI-backed tiering service with validator pass,
+- deterministic stakeholder packet service,
 - Monday.com-ready mock payload builder,
 - sample event fixtures,
 - endpoints:
   - `POST /api/tiering/classify`,
-  - `POST /api/routing/build`,
+  - `POST /api/routing/stakeholder-packets`,
   - `POST /api/integrations/monday/build-payload`.
 
 Do not build real Monday.com API calls for Saturday.
-Do not rely on OpenAI for core tiering/routing logic in the first implementation.
+Use OpenAI for tiering classification because it benefits from contextual judgment. Do not use OpenAI for stakeholder packet prediction; build stakeholder packets deterministically so Workstream 3 can consume them reliably.

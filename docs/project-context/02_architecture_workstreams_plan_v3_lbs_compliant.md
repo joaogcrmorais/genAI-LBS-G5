@@ -496,7 +496,7 @@ GET  /api/me
 POST /api/intake/extract
 POST /api/intake/missing-fields
 POST /api/tiering/classify
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 POST /api/outputs/generate
 POST /api/integrations/monday/build-payload
 POST /api/post-event/feedback
@@ -508,7 +508,7 @@ For Workstream 4, the priority endpoints are:
 
 ```txt
 POST /api/tiering/classify
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 POST /api/integrations/monday/build-payload
 GET  /api/events/:id
 PUT  /api/events/:id
@@ -524,12 +524,12 @@ PUT  /api/events/:id
 For example:
 
 ```txt
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 ```
 
 means:
 
-> The frontend sends an event object to the backend, and the backend returns which LBS stakeholders should be involved and why.
+> The frontend sends an event object to the backend, and the backend returns deterministic stakeholder packets for downstream email and summary generation.
 
 ---
 
@@ -610,7 +610,7 @@ POST /api/outputs/generate
 Owns:
 
 - stakeholder routing matrix,
-- tiering/escalation engine,
+- OpenAI-backed tiering/escalation classification,
 - backend API contract coordination,
 - shared schema coordination,
 - stakeholder-specific routing packets,
@@ -620,6 +620,7 @@ Owns:
 
 Output:
 
+- `TieringClassificationResult` JSON,
 - `StakeholderRoutingResult` JSON,
 - `MondayIntegrationPayload` JSON,
 - routing/tiering API routes,
@@ -630,7 +631,7 @@ Primary backend routes:
 
 ```txt
 POST /api/tiering/classify
-POST /api/routing/build
+POST /api/routing/stakeholder-packets
 POST /api/integrations/monday/build-payload
 GET  /api/events/:id
 PUT  /api/events/:id
@@ -728,9 +729,9 @@ high-risk-vip-event.json
 
 ## 13. First Routing and Tiering Rules
 
-Use deterministic rules first. Do not rely on AI for core routing decisions until the rule baseline works.
+Use OpenAI for tiering classification because tiering depends on contextual event-planning judgment. Use deterministic rules for stakeholder packets because those packets feed downstream email and summary generation.
 
-### Stakeholder routing rules
+### Stakeholder packet rules
 
 Always consider Space Management when:
 
@@ -781,11 +782,11 @@ Require Duty Managers when:
 - the event is multi-room or multi-day,
 - many Campus Services teams are involved.
 
-### Tiering rules
+### Tiering guidance for the LLM
 
 Label tiering as prototype guidance unless LBS confirms official production rules.
 
-Use the workshop principle that tiering is about risk, exposure, complexity, and proportionate controls — not the quality or importance of an event.
+Use the workshop principle that tiering is about risk, exposure, complexity, and proportionate controls — not the quality or importance of an event. The following baseline should guide the classifier prompt, but it should not be treated as a complete deterministic policy.
 
 Suggested baseline:
 
@@ -1069,8 +1070,8 @@ A TypeScript validation library used to check that incoming request data has the
 6. Confirm Auth0 login path and backend JWT validation.
 7. Add shared event/routing/integration types.
 8. Add sample event fixtures.
-9. Add deterministic tiering service.
-10. Add stakeholder routing service.
+9. Add OpenAI-backed tiering service with validator pass.
+10. Add deterministic stakeholder packet service.
 11. Add Monday.com-ready mock payload service.
 12. Add API routes for Workstream 4.
 13. Connect one frontend demo page to those routes.
@@ -1095,4 +1096,3 @@ This v3 plan changes the v2 architecture in the following ways:
 - Preserves mock Monday.com-ready JSON payloads, but not real Monday.com integration.
 - Adds clearer backend/API learning guidance.
 - Aligns Workstream 4 with database-aware schema and backend API ownership.
-

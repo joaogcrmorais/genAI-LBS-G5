@@ -11,6 +11,7 @@
     "dev": "node scripts/dev.mjs",
     "lint": "npm --workspaces run lint",
     "test": "npm --workspaces run test",
+    "test:live:openai": "npm --workspace @lbs-genai/server run test:live:openai",
     "typecheck": "npm --workspaces run typecheck",
     "prisma:generate": "npx prisma generate --schema prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate dev --schema prisma/schema.prisma --name init",

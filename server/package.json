@@ -9,6 +9,7 @@
     "start": "node dist/index.js",
     "lint": "eslint \"src/**/*.ts\"",
     "test": "vitest run",
+    "test:live:openai": "vitest run src/services/tieringService.live.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

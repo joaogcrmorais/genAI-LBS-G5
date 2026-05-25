@@ -134,6 +134,20 @@ The agreed direction is:
 - The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4.
 - Current active pre-Wednesday work is the `EventRequest` contract. The proposed direction is that `EventRequest` contains shared intake facts, while tiering, stakeholder packets, generated outputs, and mock integration payloads remain separate service outputs that reference the event request.
 
+Implemented backend contract slice:
+
+- `server/src/schemas/ws4.ts` defines the permissive `EventRequest` v0 input schema and derived WS4 output schemas.
+- `server/src/prompts/tieringPrompts.ts` keeps the tiering classifier and validator prompts in a dedicated editable prompt module.
+- `POST /api/tiering/classify` is protected by Auth0 normal-user access and calls the backend-only OpenAI tiering service.
+- The tiering service uses a classifier pass plus a validator pass, tells the model to apply baseline tier rules before adding nuance, requires structured JSON, validates the final response with Zod, and preserves the prototype policy disclaimer.
+- `POST /api/routing/stakeholder-packets` is protected by Auth0 normal-user access and uses deterministic routing logic only.
+- `POST /api/integrations/monday/build-payload` is protected by Auth0 normal-user access and returns a deterministic mock-only Monday.com payload. It does not call Monday.com.
+- Current WS4 tests mock OpenAI and cover prompt contract text, classified tiering, missing-information tiering, validator revision, invalid AI JSON handling, deterministic routing scenarios, mock Monday payloads, and unauthenticated route protection.
+- `npm run test:live:openai` runs the gated live OpenAI classifier test when `RUN_LIVE_OPENAI_TEST=true` is set. It is skipped during normal tests.
+- The live OpenAI classifier test was run successfully on 2026-05-26. It sent the real classifier and validator prompts to OpenAI using the configured backend key and validated the final response against the WS4 schema.
+- `client/src/pages/Ws4DemoPage.tsx` adds a scrappy protected `/ws4-demo` testing harness with five scenarios, a full editable Event Request form, raw JSON preview, and buttons for auth/API checks, AI status, tiering, stakeholder packets, Monday mock payloads, and the full flow.
+- `docs/project-context/wednesday-discussion-notes.md` captures product/requirements discussion points for Wednesday, with Event Request as the main section.
+
 ## Branching And Workstream Coordination
 
 Current active branch:
@@ -197,9 +211,9 @@ http://localhost:3000/
 Latest checks:
 
 - `npm install`: completed.
-- `npm run typecheck`: passed.
+- `npm run typecheck`: passed after WS4 backend implementation.
 - `npm run lint`: passed.
-- `npm run test`: passed; backend health test passes, client has no tests yet.
+- `npm run test`: passed after WS4 backend implementation; backend has 16 passing tests, client has no tests yet.
 - `npm run prisma:generate`: passed.
 - `npm run prisma:migrate`: passed and applied the initial migration.
 - `npm run dev`: passed when launched outside the sandbox; frontend listened on port 3000 and backend listened on port 3001.
@@ -207,6 +221,8 @@ Latest checks:
 - Browser test of `http://localhost:3000/`: passed.
 - Browser test of `/health`: passed and showed backend status.
 - Browser test of `/dashboard`: reached Auth0 flow but returned an Auth0 audience authorization error.
+- Browser test of `/ws4-demo`: protected route reached Auth0 login in the in-app browser. The user reported localhost Auth0 login is working in their own admin session after the Auth0 audience change.
+- `npm run test:live:openai` with `RUN_LIVE_OPENAI_TEST=true`: passed after tightening the prompt contract to include exact approved output shapes.
 
 Remaining blockers:
 

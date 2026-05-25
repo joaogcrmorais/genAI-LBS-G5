@@ -46,7 +46,6 @@ event-readiness-assistant/
     stakeholder-matrix/
     toolkit-snippets/
   README.md
-  .env.example
 ```
 
 ## 2. Branching model
@@ -72,6 +71,16 @@ Rules:
 - Every change goes through a pull request.
 - Pull requests should be small enough to review quickly.
 - Merge at least once per day to avoid integration drift.
+- Pull latest `main` before creating a branch and before opening a pull request.
+- Schema/API contract changes should merge before dependent workstream implementation branches.
+
+Current active contract branch:
+
+```txt
+feature/ws4-event-request-contract
+```
+
+Local note: if creating a slash-style branch fails with a `.git/refs` permission error, it is a filesystem permission issue rather than a Git branch naming issue. Retry the normal branch name after resolving permissions.
 
 ## 3. Required GitHub settings
 
@@ -201,17 +210,9 @@ For Saturday, these can be implemented as mock functions or Next.js routes.
 
 ## 8. Environment variables
 
-Create `.env.example`:
+Use the real local `.env` file only. Do not commit it, print it, screenshot it, or create sample/template environment files such as `.env.example`.
 
-```txt
-OPENAI_API_KEY=
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-Never commit `.env.local`.
+Server-only secrets such as `OPENAI_API_KEY` must stay backend-only. Browser-safe values use the existing `VITE_` variables described in `README.md` and `project.md`.
 
 ## 9. Local development workflow
 

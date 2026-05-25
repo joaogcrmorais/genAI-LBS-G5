@@ -29,6 +29,10 @@ Canonical draft:
 
 - `docs/project-context/event-request-contract.md`
 
+Active branch:
+
+- `feature/ws4-event-request-contract`
+
 For now, `EventRequest` should be treated as the shared intake facts object. Tiering, stakeholder packets, generated outputs, and mock integration payloads should be separate service responses that reference the event request rather than fields that must already exist inside it.
 
 ## Immediate next steps before Wednesday schema lock
@@ -77,6 +81,8 @@ For now, `EventRequest` should be treated as the shared intake facts object. Tie
 
 7. Keep this PRD and workplan current as schema decisions are made.
 
+8. Open a pull request for `feature/ws4-event-request-contract` once the team is ready to review the contract.
+
 ## Post-Wednesday implementation work
 
 1. Implement shared schemas/types after `EventRequest` is locked.
@@ -94,6 +100,7 @@ For now, `EventRequest` should be treated as the shared intake facts object. Tie
 
 - Final `EventRequest` schema blocks final Workstream 4 implementation.
 - `EventRequest` ownership blocks coordination between Workstream 1 and Workstream 4; current proposal is that Workstream 1 owns the intake facts object and Workstream 4 owns derived classification/packet outputs.
+- The `feature/ws4-event-request-contract` branch blocks downstream Workstream 4 implementation branches until its contract decisions are reviewed or merged.
 - Workstream 4 endpoint names block frontend/API client work.
 - `classify` response shape blocks frontend tiering display.
 - `stakeholder-packets` response shape blocks Workstream 3 email and summary generation.

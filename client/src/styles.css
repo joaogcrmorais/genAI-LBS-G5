@@ -167,6 +167,47 @@ h1 {
   min-width: 260px;
 }
 
+.scenario-guide {
+  overflow-x: auto;
+  margin: 12px 0 18px;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.scenario-guide table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.scenario-guide caption {
+  padding: 10px 12px;
+  color: #002776;
+  font-weight: 800;
+  text-align: left;
+}
+
+.scenario-guide th,
+.scenario-guide td {
+  border-top: 1px solid #e4e7ec;
+  padding: 10px 12px;
+  color: #334155;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  text-align: left;
+  vertical-align: top;
+}
+
+.scenario-guide th {
+  color: #002776;
+  font-weight: 800;
+}
+
+.scenario-guide .active-scenario td {
+  background: #eef4ff;
+}
+
 .ws4-actions {
   flex-wrap: wrap;
   margin: 18px 0;

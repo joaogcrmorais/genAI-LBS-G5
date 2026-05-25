@@ -21,6 +21,39 @@ const scenarioOptions = [
   ["vipLeader", "VIP/public leader"]
 ] as const;
 
+const scenarioGuide = [
+  {
+    key: "workshop",
+    name: "Small internal workshop",
+    description: "Low-complexity student session with confirmed classroom space and no external dependencies.",
+    expected: "Mostly space confirmation; no security or catering."
+  },
+  {
+    key: "alumniReception",
+    name: "Alumni reception",
+    description: "Evening networking event with alumni, catering, and alcohol.",
+    expected: "Catering and campus operations coordination."
+  },
+  {
+    key: "externalSpeaker",
+    name: "External speaker",
+    description: "Student event with a named external speaker, guest list, and basic AV.",
+    expected: "AV plus editorial/stakeholder visibility."
+  },
+  {
+    key: "careersFair",
+    name: "Careers fair",
+    description: "Large multi-club event with employer booths, sponsors, catering, and setup needs.",
+    expected: "Space, sponsorship, SA operations, and catering."
+  },
+  {
+    key: "vipLeader",
+    name: "VIP/public leader",
+    description: "High-profile speaker event with public audience, media sensitivity, and guest control.",
+    expected: "High-complexity tiering, security, and editorial planning."
+  }
+] as const;
+
 const eventTypes = ["panel", "conference", "workshop", "networking", "social", "speaker", "careers", "other", "unknown"];
 const attendanceTypes = ["unknown", "rough_estimate", "confirmed_estimate", "capacity_limit"];
 const audienceTypes = ["students", "faculty", "staff", "alumni", "external_guests", "corporate_partners", "public", "vip", "mixed"];
@@ -332,6 +365,28 @@ export function Ws4DemoPage() {
             onChange={(value) => loadScenario(value as keyof typeof ws4Scenarios)}
           />
         </div>
+      </div>
+
+      <div className="scenario-guide">
+        <table>
+          <caption>Scenario guide</caption>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>What it is</th>
+              <th>What to expect</th>
+            </tr>
+          </thead>
+          <tbody>
+            {scenarioGuide.map((item) => (
+              <tr key={item.key} className={scenario === item.key ? "active-scenario" : undefined}>
+                <td>{item.name}</td>
+                <td>{item.description}</td>
+                <td>{item.expected}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <div className="button-row ws4-actions">

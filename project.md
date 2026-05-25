@@ -134,6 +134,22 @@ The agreed direction is:
 - The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4.
 - Current active pre-Wednesday work is the `EventRequest` contract. The proposed direction is that `EventRequest` contains shared intake facts, while tiering, stakeholder packets, generated outputs, and mock integration payloads remain separate service outputs that reference the event request.
 
+## Branching And Workstream Coordination
+
+Current active branch:
+
+- `feature/ws4-event-request-contract`
+
+Use the conventional short-lived feature branch workflow described in `docs/project-context/03_github_setup_and_coordination.md`. The earlier failure to create a slash-style branch was a local filesystem permission issue writing inside `.git`, not a Git naming problem. After running Git with the required permission, `feature/ws4-event-request-contract` was created successfully.
+
+Workstream guidance:
+
+- Keep `main` as the stable shared baseline.
+- Use `feature/ws1-intake`, `feature/ws2-post-event`, `feature/ws3-outputs-knowledge`, `feature/ws4-routing-integrations`, or similarly scoped feature branches for new work.
+- Merge schema/API contract changes early so other workstreams can branch from a stable shared contract.
+- Workstream 1 owns the shared `EventRequest` intake facts object; Workstream 4 owns derived tiering and stakeholder packet outputs; Workstream 3 consumes WS4 packets for generated emails and summaries.
+- Pull latest `main` before starting work and before opening pull requests.
+
 ## LBS Branding
 
 The supplied LBS logo file is used directly in the React UI. The UI uses a restrained LBS-style blue and red palette and keeps the original logo asset intact.
@@ -203,7 +219,7 @@ The external `INITIAL_CODEX_SETUP_INSTRUCTION.md` has been updated with a Group 
 
 ## Next Steps
 
-1. Decide whether the app is private-only or has public-facing pages.
-2. Fix the Auth0 client/API audience authorization in the Auth0 dashboard.
-3. Test Auth0 login and permission claims with real course users.
-4. Define the actual prototype use case and expand the schema/routes accordingly.
+1. Review and lock the proposed `EventRequest` contract for Wednesday.
+2. Open a pull request from `feature/ws4-event-request-contract` once the contract/guidance docs are ready.
+3. Have each workstream branch from latest `main` after schema/API contract decisions merge.
+4. Fix the Auth0 client/API audience authorization in the Auth0 dashboard before full protected-route browser testing.

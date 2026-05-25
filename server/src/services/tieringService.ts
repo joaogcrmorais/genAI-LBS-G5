@@ -58,7 +58,13 @@ async function requestJson(client: OpenAI, prompt: string) {
 function validateTieringResult(value: unknown) {
   const parsed = tieringClassificationResultSchema.safeParse(value);
   if (!parsed.success) {
-    throw new TieringServiceError("OpenAI tiering response did not match the approved contract.", "invalid_ai_response");
+    const issues = parsed.error.issues
+      .map((issue) => `${issue.path.join(".") || "root"}: ${issue.message}`)
+      .join("; ");
+    throw new TieringServiceError(
+      `OpenAI tiering response did not match the approved contract. ${issues}`,
+      "invalid_ai_response"
+    );
   }
   return parsed.data;
 }

@@ -143,6 +143,10 @@ Implemented backend contract slice:
 - `POST /api/routing/stakeholder-packets` is protected by Auth0 normal-user access and uses deterministic routing logic only.
 - `POST /api/integrations/monday/build-payload` is protected by Auth0 normal-user access and returns a deterministic mock-only Monday.com payload. It does not call Monday.com.
 - Current WS4 tests mock OpenAI and cover prompt contract text, classified tiering, missing-information tiering, validator revision, invalid AI JSON handling, deterministic routing scenarios, mock Monday payloads, and unauthenticated route protection.
+- `npm run test:live:openai` runs the gated live OpenAI classifier test when `RUN_LIVE_OPENAI_TEST=true` is set. It is skipped during normal tests.
+- The live OpenAI classifier test was run successfully on 2026-05-26. It sent the real classifier and validator prompts to OpenAI using the configured backend key and validated the final response against the WS4 schema.
+- `client/src/pages/Ws4DemoPage.tsx` adds a scrappy protected `/ws4-demo` testing harness with five scenarios, a full editable Event Request form, raw JSON preview, and buttons for auth/API checks, AI status, tiering, stakeholder packets, Monday mock payloads, and the full flow.
+- `docs/project-context/wednesday-discussion-notes.md` captures product/requirements discussion points for Wednesday, with Event Request as the main section.
 
 ## Branching And Workstream Coordination
 
@@ -217,6 +221,8 @@ Latest checks:
 - Browser test of `http://localhost:3000/`: passed.
 - Browser test of `/health`: passed and showed backend status.
 - Browser test of `/dashboard`: reached Auth0 flow but returned an Auth0 audience authorization error.
+- Browser test of `/ws4-demo`: protected route reached Auth0 login in the in-app browser. The user reported localhost Auth0 login is working in their own admin session after the Auth0 audience change.
+- `npm run test:live:openai` with `RUN_LIVE_OPENAI_TEST=true`: passed after tightening the prompt contract to include exact approved output shapes.
 
 Remaining blockers:
 

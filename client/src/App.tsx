@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { AdminPage } from "./pages/AdminPage";
 import { HealthPage } from "./pages/HealthPage";
+import { Ws4DemoPage } from "./pages/Ws4DemoPage";
 
 export function App() {
   return (
@@ -25,6 +26,14 @@ export function App() {
           element={
             <ProtectedRoute allowedPermissions={["user_admin"]}>
               <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ws4-demo"
+          element={
+            <ProtectedRoute allowedPermissions={["user_normal", "user_admin"]}>
+              <Ws4DemoPage />
             </ProtectedRoute>
           }
         />

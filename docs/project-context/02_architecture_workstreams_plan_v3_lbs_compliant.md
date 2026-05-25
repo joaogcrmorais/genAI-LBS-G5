@@ -348,7 +348,11 @@ The team should decide the final location after seeing the actual Codex-generate
 
 ### v0 EventRequest shape
 
-This is the conceptual schema the team should converge on. It can be implemented in TypeScript, Zod, and eventually Prisma once stabilised.
+This was the original conceptual schema the team considered. The current pre-Wednesday contract draft is now maintained in `docs/project-context/event-request-contract.md`.
+
+Important update: the current proposal treats `EventRequest` as the shared intake facts object. Derived tiering, stakeholder packet, generated-output, and integration payload data should be returned by separate service responses rather than being required inside the base event request.
+
+The historical example below is retained for context, but the standalone contract doc should be treated as the active source for schema-lock discussion.
 
 ```json
 {

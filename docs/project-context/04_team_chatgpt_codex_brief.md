@@ -99,7 +99,13 @@ Export / handover / future API integration
 
 Every workstream must use the same `EventRequest` object. Do not invent separate data structures unless they are explicitly mapped to the shared schema.
 
-Starter example:
+Current pre-Wednesday contract draft:
+
+```txt
+docs/project-context/event-request-contract.md
+```
+
+Starter example retained for orientation:
 
 ```json
 {

@@ -120,6 +120,7 @@ OpenAI SDK configuration exists only in the backend. The frontend never reads `O
 
 Workstream 4 now has two dedicated planning docs:
 
+- `docs/project-context/event-request-contract.md`
 - `docs/project-context/workstream-4-mini-prd.md`
 - `docs/project-context/workstream-4-workplan.md`
 
@@ -131,6 +132,7 @@ The agreed direction is:
 - The tiering endpoint should return either `classified` with user-visible reasoning or `needs_more_information` with explicit questions. It should not return confidence scores or `needs_human_review`.
 - Tiering output must be labelled as prototype guidance, not official LBS policy.
 - The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4.
+- Current active pre-Wednesday work is the `EventRequest` contract. The proposed direction is that `EventRequest` contains shared intake facts, while tiering, stakeholder packets, generated outputs, and mock integration payloads remain separate service outputs that reference the event request.
 
 ## LBS Branding
 

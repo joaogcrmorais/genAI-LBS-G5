@@ -10,6 +10,35 @@ const missingInformationItemSchema = z.object({
   question: z.string().min(1)
 });
 
+export const lifecyclePhaseSchema = z.enum([
+  "ideation",
+  "feasibility",
+  "detailed_planning",
+  "editorial_content_planning",
+  "pre_event_execution",
+  "event_day",
+  "post_event",
+  "unknown"
+]);
+
+export const mondayStatusHintSchema = z.enum([
+  "requested",
+  "proposed",
+  "tbd",
+  "more_info_required",
+  "can_progress",
+  "tentative",
+  "date_to_be_confirmed",
+  "confirmed_subject_to_business_case",
+  "confirmed",
+  "confirmed_space_check",
+  "stuck_issues",
+  "changing_plans",
+  "cancelled_moved",
+  "not_happening",
+  "unknown"
+]);
+
 export const eventRequestSchema = z
   .object({
     event_id: z.string().min(1).optional(),
@@ -28,11 +57,15 @@ export const eventRequestSchema = z
         title: z.string().min(1),
         description: z.string().optional(),
         purpose: z.string().optional(),
+        lifecycle_phase: lifecyclePhaseSchema.optional(),
+        monday_status_hint: mondayStatusHintSchema.optional(),
         event_type: z.string().optional(),
         target_date: z.string().optional(),
         start_time: z.string().optional(),
         end_time: z.string().optional(),
         expected_attendance: z.number().int().nonnegative().nullable().optional(),
+        actual_attendance: z.number().int().nonnegative().nullable().optional(),
+        registration_link: z.string().optional(),
         audience_types: z.array(z.string()).optional(),
         external_audience: z.boolean().optional()
       })
@@ -42,6 +75,7 @@ export const eventRequestSchema = z
     av_and_tech: looseObjectSchema.optional(),
     speakers_and_guests: looseObjectSchema.optional(),
     sponsorship_and_external_parties: looseObjectSchema.optional(),
+    planning_and_governance: looseObjectSchema.optional(),
     intake_state: looseObjectSchema.optional()
   })
   .passthrough();
@@ -81,9 +115,21 @@ export const stakeholderSchema = z.enum([
   "av_technology",
   "security",
   "editorial_planning",
+  "events_oversight_group",
+  "dean_office",
+  "editorial_group",
+  "event_promo_group",
+  "pr_managers_communications",
+  "advancement",
+  "cc_network",
+  "social_media",
+  "photography",
   "duty_managers_campus_services",
   "sa_operations",
-  "finance_sponsorship"
+  "finance_sponsorship",
+  "sponsorship_team",
+  "faculty",
+  "task_owners"
 ]);
 
 export type Stakeholder = z.infer<typeof stakeholderSchema>;
@@ -134,16 +180,20 @@ export const mondayIntegrationPayloadSchema = z.object({
   integration_status: z.literal("mock_payload_ready"),
   mock_notice: z.literal(MONDAY_MOCK_NOTICE),
   event_id: z.string().min(1),
-  board_hint: z.literal("LBS Event Oversight"),
+  board_hint: z.literal("Events and Key Dates 25/26"),
+  board_id_hint: z.literal("2008539622"),
   item_name: z.string().min(1),
   group_name: z.string().min(1),
+  lifecycle_status: z.string().min(1),
   columns: z.record(z.unknown()),
   subitems: z.array(
     z.object({
       name: z.string().min(1),
       owner_hint: z.string().optional(),
       status: z.string().optional(),
-      notes: z.string().optional()
+      due_hint: z.string().optional(),
+      notes: z.string().optional(),
+      related_fields: z.array(z.string()).optional()
     })
   ),
   source_outputs_used: z.array(z.enum(["classification", "stakeholder_packets"]))

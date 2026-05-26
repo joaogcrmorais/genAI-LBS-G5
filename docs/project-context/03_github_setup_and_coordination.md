@@ -4,49 +4,25 @@ This document explains how to set up GitHub for the Event Readiness Assistant pr
 
 ## 1. Repository structure
 
-Use a single repository. A monorepo is preferable because the team needs shared types, prompts, and workflow logic.
+Use a single repository. The active repo now follows the official LBS/Codex structure, not the earlier `apps/` / `packages/` sketch.
 
-Recommended structure:
+Active structure:
 
 ```txt
-event-readiness-assistant/
-  apps/
-    web/
-      app/
-      components/
-      lib/
-      public/
-  packages/
-    shared-types/
-      src/
-        event-request.ts
-        routing.ts
-        outputs.ts
-        feedback.ts
-        integrations.ts
-    prompts/
-      intake-extraction.md
-      tiering.md
-      output-generation.md
-      post-event-feedback.md
-    workflows/
-      src/
-        completeness.ts
-        tiering.ts
-        routing.ts
-        timeline.ts
-        monday-payload.ts
+repo-root/
+  client/
+  server/
+  prisma/
+  assets/
   docs/
-    mini-prds/
-    architecture/
-    decisions/
-    demo-scripts/
-  data/
-    sample-events/
-    stakeholder-matrix/
-    toolkit-snippets/
+  scripts/
   README.md
+  project.md
+  AGENTS.md
+  package.json
 ```
+
+Shared schemas currently live in the backend first, with planning contracts in `docs/project-context/`.
 
 ## 2. Branching model
 
@@ -77,7 +53,7 @@ Rules:
 Current active contract branch:
 
 ```txt
-feature/ws4-event-request-contract
+docs/add-monday-llm-outputs
 ```
 
 Local note: if creating a slash-style branch fails with a `.git/refs` permission error, it is a filesystem permission issue rather than a Git branch naming issue. Retry the normal branch name after resolving permissions.
@@ -223,20 +199,19 @@ The shared schema is the most important coordination mechanism.
 
 Rules:
 
-1. All workstreams import types from `packages/shared-types`.
+1. All workstreams use the shared `EventRequest` contract and backend schemas once locked.
 2. No workstream should invent its own event object.
 3. Schema changes require a PR and team review.
 4. Schema changes should include sample JSON updates.
 5. Backward compatibility matters after Wednesday.
 
-Recommended files:
+Likely active files:
 
 ```txt
-packages/shared-types/src/event-request.ts
-packages/shared-types/src/routing.ts
-packages/shared-types/src/outputs.ts
-packages/shared-types/src/feedback.ts
-packages/shared-types/src/integrations.ts
+server/src/schemas/ws4.ts
+server/src/services/*
+docs/project-context/event-request-contract.md
+docs/project-context/monday-workflow-takeaways.md
 ```
 
 ## 8. API contract governance
@@ -255,7 +230,7 @@ GET  /api/events/:id
 PUT  /api/events/:id
 ```
 
-For Saturday, these can be implemented as mock functions or Next.js routes.
+For Saturday, these should be implemented through the existing Express backend when they are real routes. Keep endpoint changes out of the Monday planning update unless the team explicitly asks for them.
 
 ## 9. Environment variables
 

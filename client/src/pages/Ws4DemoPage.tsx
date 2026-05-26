@@ -55,6 +55,24 @@ const scenarioGuide = [
 ] as const;
 
 const eventTypes = ["panel", "conference", "workshop", "networking", "social", "speaker", "careers", "other", "unknown"];
+const lifecyclePhases = ["ideation", "feasibility", "detailed_planning", "editorial_content_planning", "pre_event_execution", "event_day", "post_event", "unknown"];
+const mondayStatusHints = [
+  "requested",
+  "proposed",
+  "tbd",
+  "more_info_required",
+  "can_progress",
+  "tentative",
+  "date_to_be_confirmed",
+  "confirmed_subject_to_business_case",
+  "confirmed",
+  "confirmed_space_check",
+  "stuck_issues",
+  "changing_plans",
+  "cancelled_moved",
+  "not_happening",
+  "unknown"
+];
 const attendanceTypes = ["unknown", "rough_estimate", "confirmed_estimate", "capacity_limit"];
 const audienceTypes = ["students", "faculty", "staff", "alumni", "external_guests", "corporate_partners", "public", "vip", "mixed"];
 const cateringStyles = ["none", "refreshments", "buffet", "plated", "reception", "bespoke", "unknown"];
@@ -440,11 +458,15 @@ export function Ws4DemoPage() {
             <h2>Event basics</h2>
             <div className="form-grid">
               <TextInput label="title" value={eventRequest.event_basics.title} onChange={(value) => updateSection("event_basics", "title", value)} />
+              <SelectInput label="lifecycle_phase" value={eventRequest.event_basics.lifecycle_phase} options={lifecyclePhases} onChange={(value) => updateSection("event_basics", "lifecycle_phase", value as EventRequest["event_basics"]["lifecycle_phase"])} />
+              <SelectInput label="monday_status_hint" value={eventRequest.event_basics.monday_status_hint} options={mondayStatusHints} onChange={(value) => updateSection("event_basics", "monday_status_hint", value as EventRequest["event_basics"]["monday_status_hint"])} />
               <SelectInput label="event_type" value={eventRequest.event_basics.event_type} options={eventTypes} onChange={(value) => updateSection("event_basics", "event_type", value as EventRequest["event_basics"]["event_type"])} />
               <TextInput label="target_date" value={eventRequest.event_basics.target_date} onChange={(value) => updateSection("event_basics", "target_date", value)} />
               <TextInput label="start_time" value={eventRequest.event_basics.start_time} onChange={(value) => updateSection("event_basics", "start_time", value)} />
               <TextInput label="end_time" value={eventRequest.event_basics.end_time} onChange={(value) => updateSection("event_basics", "end_time", value)} />
               <NumberInput label="expected_attendance" value={eventRequest.event_basics.expected_attendance} onChange={(value) => updateSection("event_basics", "expected_attendance", value)} />
+              <NumberInput label="actual_attendance" value={eventRequest.event_basics.actual_attendance} onChange={(value) => updateSection("event_basics", "actual_attendance", value)} />
+              <TextInput label="registration_link" value={eventRequest.event_basics.registration_link} onChange={(value) => updateSection("event_basics", "registration_link", value)} />
               <SelectInput label="attendance_estimate_type" value={eventRequest.event_basics.attendance_estimate_type} options={attendanceTypes} onChange={(value) => updateSection("event_basics", "attendance_estimate_type", value as EventRequest["event_basics"]["attendance_estimate_type"])} />
               <TextInput label="previous_event_reference" value={eventRequest.event_basics.previous_event_reference} onChange={(value) => updateSection("event_basics", "previous_event_reference", value)} />
             </div>
@@ -518,9 +540,13 @@ export function Ws4DemoPage() {
             <h2>Speakers and guests</h2>
             <div className="form-grid">
               <SelectInput label="sensitive_topic" value={eventRequest.speakers_and_guests.sensitive_topic} options={sensitiveTopicOptions} onChange={(value) => updateSection("speakers_and_guests", "sensitive_topic", value as EventRequest["speakers_and_guests"]["sensitive_topic"])} />
+              <NumberInput label="total_faculty_hours" value={eventRequest.speakers_and_guests.total_faculty_hours} onChange={(value) => updateSection("speakers_and_guests", "total_faculty_hours", value)} />
             </div>
+            <TextArea label="faculty_attending" value={listToLines(eventRequest.speakers_and_guests.faculty_attending)} onChange={(value) => updateSection("speakers_and_guests", "faculty_attending", linesToList(value))} />
             <div className="checkbox-grid">
               <CheckboxInput label="has_external_speakers" checked={eventRequest.speakers_and_guests.has_external_speakers} onChange={(value) => updateSection("speakers_and_guests", "has_external_speakers", value)} />
+              <CheckboxInput label="alumni_speakers" checked={eventRequest.speakers_and_guests.alumni_speakers} onChange={(value) => updateSection("speakers_and_guests", "alumni_speakers", value)} />
+              <CheckboxInput label="dean_attendance_requested" checked={eventRequest.speakers_and_guests.dean_attendance_requested} onChange={(value) => updateSection("speakers_and_guests", "dean_attendance_requested", value)} />
               <CheckboxInput label="vip_or_embassy_presence" checked={eventRequest.speakers_and_guests.vip_or_embassy_presence} onChange={(value) => updateSection("speakers_and_guests", "vip_or_embassy_presence", value)} />
               <CheckboxInput label="media_expected" checked={eventRequest.speakers_and_guests.media_expected} onChange={(value) => updateSection("speakers_and_guests", "media_expected", value)} />
               <CheckboxInput label="guest_list_required" checked={eventRequest.speakers_and_guests.guest_list_required} onChange={(value) => updateSection("speakers_and_guests", "guest_list_required", value)} />
@@ -560,6 +586,32 @@ export function Ws4DemoPage() {
               <CheckboxInput label="has_sponsors" checked={eventRequest.sponsorship_and_external_parties.has_sponsors} onChange={(value) => updateSection("sponsorship_and_external_parties", "has_sponsors", value)} />
               <CheckboxInput label="has_external_vendors" checked={eventRequest.sponsorship_and_external_parties.has_external_vendors} onChange={(value) => updateSection("sponsorship_and_external_parties", "has_external_vendors", value)} />
               <CheckboxInput label="requires_booth_or_branding" checked={eventRequest.sponsorship_and_external_parties.requires_booth_or_branding} onChange={(value) => updateSection("sponsorship_and_external_parties", "requires_booth_or_branding", value)} />
+            </div>
+          </section>
+
+          <section className="form-section">
+            <h2>Planning and governance</h2>
+            <div className="form-grid">
+              <TextInput label="business_case_link" value={eventRequest.planning_and_governance.business_case_link} onChange={(value) => updateSection("planning_and_governance", "business_case_link", value)} />
+              <TextInput label="crib_sheet_link" value={eventRequest.planning_and_governance.crib_sheet_link} onChange={(value) => updateSection("planning_and_governance", "crib_sheet_link", value)} />
+              <TextInput label="dean_attendance_status" value={eventRequest.planning_and_governance.dean_attendance_status} onChange={(value) => updateSection("planning_and_governance", "dean_attendance_status", value)} />
+              <TextInput label="security_review_status" value={eventRequest.planning_and_governance.security_review_status} onChange={(value) => updateSection("planning_and_governance", "security_review_status", value)} />
+              <TextInput label="advancement_review_status" value={eventRequest.planning_and_governance.advancement_review_status} onChange={(value) => updateSection("planning_and_governance", "advancement_review_status", value)} />
+              <TextInput label="editorial_theme" value={eventRequest.planning_and_governance.editorial_theme} onChange={(value) => updateSection("planning_and_governance", "editorial_theme", value)} />
+              <TextInput label="content_priority" value={eventRequest.planning_and_governance.content_priority} onChange={(value) => updateSection("planning_and_governance", "content_priority", value)} />
+              <TextInput label="free_or_paid" value={eventRequest.planning_and_governance.free_or_paid} onChange={(value) => updateSection("planning_and_governance", "free_or_paid", value)} />
+              <TextInput label="events_oversight_review_date" value={eventRequest.planning_and_governance.events_oversight_review_date} onChange={(value) => updateSection("planning_and_governance", "events_oversight_review_date", value)} />
+              <TextInput label="dean_review_date" value={eventRequest.planning_and_governance.dean_review_date} onChange={(value) => updateSection("planning_and_governance", "dean_review_date", value)} />
+              <TextInput label="editorial_review_date" value={eventRequest.planning_and_governance.editorial_review_date} onChange={(value) => updateSection("planning_and_governance", "editorial_review_date", value)} />
+              <TextInput label="event_promo_review_date" value={eventRequest.planning_and_governance.event_promo_review_date} onChange={(value) => updateSection("planning_and_governance", "event_promo_review_date", value)} />
+              <TextInput label="ccn_review_date" value={eventRequest.planning_and_governance.ccn_review_date} onChange={(value) => updateSection("planning_and_governance", "ccn_review_date", value)} />
+              <TextInput label="ep_review_date" value={eventRequest.planning_and_governance.ep_review_date} onChange={(value) => updateSection("planning_and_governance", "ep_review_date", value)} />
+            </div>
+            <TextArea label="editorial_content_tags" value={listToLines(eventRequest.planning_and_governance.editorial_content_tags)} onChange={(value) => updateSection("planning_and_governance", "editorial_content_tags", linesToList(value))} />
+            <TextArea label="event_overview_tags" value={listToLines(eventRequest.planning_and_governance.event_overview_tags)} onChange={(value) => updateSection("planning_and_governance", "event_overview_tags", linesToList(value))} />
+            <div className="checkbox-grid">
+              <CheckboxInput label="business_case_required" checked={eventRequest.planning_and_governance.business_case_required} onChange={(value) => updateSection("planning_and_governance", "business_case_required", value)} />
+              <CheckboxInput label="photography_requested" checked={eventRequest.planning_and_governance.photography_requested} onChange={(value) => updateSection("planning_and_governance", "photography_requested", value)} />
             </div>
           </section>
 

@@ -5,6 +5,8 @@
 - `POST /api/tiering/classify` uses OpenAI because tiering is contextual and sponsor knowledge is partly tacit.
 - `POST /api/routing/stakeholder-packets` uses deterministic logic because it feeds Workstream 3 email and summary generation.
 - `POST /api/integrations/monday/build-payload` is deterministic because it transforms already-structured data.
+- The Monday payload is still mock-only, but it should now map toward Jo's real `Events and Key Dates 25/26` board rather than a generic invented board.
+- The payload should account for lifecycle status, event category/group, Monday-like column categories, stakeholder tags, review dates, links, and subitems.
 - Baseline tiering rules guide the LLM but do not fully determine the answer.
 - Stakeholder packet rules should be implemented as backend service logic.
 - The backend should validate request and response shapes with Zod.
@@ -21,17 +23,25 @@
 - Sample event fixtures.
 - API tests and service unit tests.
 
+Implemented Monday update:
+
+- Existing endpoint paths remain unchanged.
+- `EventRequest` accepts lifecycle/status hints and permissive Monday-derived planning/governance metadata.
+- Deterministic stakeholder packets now include operational stakeholders plus Monday-derived editorial/governance stakeholders.
+- The Monday mock payload now targets `Events and Key Dates 25/26` with board ID hint `2008539622`, lifecycle status, Monday-like columns, review gates, links, stakeholder tags, and subitems.
+
 ## Current active work
 
-The current pre-Wednesday task is the shared `EventRequest` contract.
+The current pre-Wednesday task is updating the shared planning context with the Monday.com LLM exports and revisiting the shared `EventRequest` contract.
 
 Canonical draft:
 
 - `docs/project-context/event-request-contract.md`
+- `docs/project-context/monday-workflow-takeaways.md`
 
 Active branch:
 
-- `feature/ws4-event-request-contract`
+- `docs/add-monday-llm-outputs`
 
 For now, `EventRequest` should be treated as the shared intake facts object. Tiering, stakeholder packets, generated outputs, and mock integration payloads should be separate service responses that reference the event request rather than fields that must already exist inside it.
 
@@ -57,6 +67,11 @@ For now, `EventRequest` should be treated as the shared intake facts object. Tie
    - space status,
    - sponsor / media / public visibility,
    - sensitive topic indicator if known.
+   - Monday-derived lifecycle/status hints where useful,
+   - organising department or club,
+   - business case markers,
+   - review/briefing links where available,
+   - editorial, security, Dean, Advancement, and promotion markers where known.
 
    Draft location: `docs/project-context/event-request-contract.md`.
 
@@ -73,6 +88,16 @@ For now, `EventRequest` should be treated as the shared intake facts object. Tie
    - Editorial Planning,
    - Duty Managers / Campus Services,
    - SA Operations / Finance / Sponsorship where relevant.
+   - Events Oversight Group,
+   - Dean's Office,
+   - Editorial Group,
+   - Event Promo Group,
+   - PR Managers,
+   - Advancement,
+   - CC Network,
+   - Social Media,
+   - Photography,
+   - faculty or faculty-hours tracking where relevant.
 
 6. Confirm Workstream 3 handoff:
    - Workstream 4 provides stakeholder packets.
@@ -81,32 +106,31 @@ For now, `EventRequest` should be treated as the shared intake facts object. Tie
 
 7. Keep this PRD and workplan current as schema decisions are made.
 
-8. Open a pull request for `feature/ws4-event-request-contract` once the team is ready to review the contract.
+8. Wait for the complete Monday lifecycle response before treating field-level mappings as final.
+
+9. Open a pull request once the team is ready to review the updated contract and Monday planning guidance.
 
 ## Post-Wednesday implementation work
 
-1. Implement shared schemas/types after `EventRequest` is locked.
-2. Implement OpenAI-backed `classify` service.
-3. Implement tiering validation pass.
-4. Implement deterministic `stakeholder-packets` service.
-5. Implement deterministic mock Monday payload service.
-6. Add API routes.
-7. Add sample event fixtures.
-8. Add tests.
-9. Update frontend/API client once contracts stabilize.
-10. Update `project.md` after meaningful implementation changes.
+1. Review the Monday lifecycle endpoint update against the full Monday response when it arrives.
+2. Decide whether the permissive `planning_and_governance` object should become a stricter schema.
+3. Decide whether frontend intake should expose lifecycle/status and governance fields directly or keep them as backend/demo JSON.
+4. Add richer sample event fixtures once the complete Monday field export arrives.
+5. Update generated-output planning so WS3 consumes the expanded stakeholder packet set.
+6. Update frontend/API client once contracts stabilize.
+7. Update `project.md` after meaningful implementation changes.
 
 ## Dependency and blocker map
 
 - Final `EventRequest` schema blocks final Workstream 4 implementation.
 - `EventRequest` ownership blocks coordination between Workstream 1 and Workstream 4; current proposal is that Workstream 1 owns the intake facts object and Workstream 4 owns derived classification/packet outputs.
-- The `feature/ws4-event-request-contract` branch blocks downstream Workstream 4 implementation branches until its contract decisions are reviewed or merged.
-- Workstream 4 endpoint names block frontend/API client work.
+- The Monday/source-context planning branch blocks downstream Workstream 4 implementation changes until its contract decisions are reviewed or merged.
+- Workstream 4 endpoint names are locked for now.
 - `classify` response shape blocks frontend tiering display.
 - `stakeholder-packets` response shape blocks Workstream 3 email and summary generation.
-- Stakeholder list blocks deterministic packet rules.
+- Stakeholder list has been expanded for Monday-derived routing, but it should be reviewed once the complete Monday export arrives.
 - Tier labels block final user-facing tier display.
-- Monday payload shape blocks integration demo UI.
+- Monday payload shape now maps toward Jo's real `Events and Key Dates 25/26` board, but field-level mapping remains partly blocked by the incomplete lifecycle export.
 - OpenAI key availability blocks live classification testing, but not schema, route, or deterministic packet implementation.
 - Auth0 blocker does not block service implementation, but may block authenticated browser testing.
 - Persistence decisions do not block Workstream 4 MVP if endpoints remain request/response only.
@@ -128,3 +152,5 @@ Older context docs should not contradict these decisions. In particular, referen
 - OpenAI for tiering classification.
 - Deterministic service logic for stakeholder packets.
 - Deterministic mock generation for Monday.com payloads.
+
+Also update older generic Monday payload examples so they do not imply a fake board called "LBS Event Oversight" when the planning context now knows the target board is `Events and Key Dates 25/26`.

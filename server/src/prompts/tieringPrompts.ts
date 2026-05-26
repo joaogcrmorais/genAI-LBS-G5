@@ -15,6 +15,8 @@ export const CRITICAL_TIERING_FACTS = [
   "AV",
   "space",
   "sponsors/media/public visibility",
+  "business-case, Dean, security, editorial, or promotion markers when provided",
+  "lifecycle phase or Monday status when provided",
   "sensitive-topic signal when relevant"
 ] as const;
 

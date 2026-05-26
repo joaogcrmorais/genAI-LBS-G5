@@ -16,6 +16,8 @@ London Business School runs a large volume of events, including student club eve
 
 The current process creates avoidable back-and-forth, incomplete submissions, uncertainty for students, and extra triage work for staff.
 
+New Monday.com source context: Jo's real `Events and Key Dates 25/26` board is a central Editorial Planning coordination system with about 844 active event items, 47 tracked fields per event, 7 event groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. It manages events across a lifecycle from initial request through business-case review, detailed planning, editorial/content planning, pre-event checks, event-day execution, and post-event follow-up. One of the two source exports is incomplete, so field-level mapping should remain flexible.
+
 ## Core problem
 
 Student organisers often start with an event idea but lack the operational knowledge required to make the event ready for LBS teams to assess and support.
@@ -45,7 +47,8 @@ It should act as an intake and orchestration layer:
 5. route the event to relevant stakeholders,
 6. generate operational outputs,
 7. prepare future integration payloads,
-8. preserve learning for future organisers.
+8. preserve learning for future organisers,
+9. show lifecycle position, review gates, and post-event follow-up needs where useful.
 
 ## Primary users
 
@@ -68,6 +71,8 @@ Needs:
 - earlier visibility of event pipeline,
 - clearer escalation flags,
 - cleaner event summaries,
+- lifecycle/status awareness,
+- business-case, editorial, Dean's Office, security, promotion, and post-event follow-up cues,
 - fewer basic clarification requests,
 - support for high-value advisory work rather than repeating basic process guidance.
 
@@ -141,15 +146,15 @@ Keep this as one demo option, but do not treat it as the only/default scenario. 
 
 ### EventRequest
 
-The shared event object. It should capture organiser details, event basics, space/setup needs, catering, AV, speakers/guests, sponsorship/external parties, risk/tiering, stakeholders, timeline, generated outputs, integration data, and post-event fields.
+The shared event object. It should capture organiser details, event basics, lifecycle/status hints, space/setup needs, catering, AV, speakers/guests, sponsorship/external parties, and intake state. Derived tiering, stakeholder packets, generated outputs, integration data, and post-event feedback should generally stay as separate outputs unless the team explicitly decides to persist them on the event record.
 
 ### StakeholderRoutingResult
 
-The routing output. It should identify required stakeholders, reasons, risk flags, escalation flags, proposed tier, EIS requirement, Key Events-style review requirement if relevant, human review requirement, and reasoning summary.
+The routing output. It should identify required and recommended stakeholders, reasons, risk flags, escalation flags, proposed tier, EIS or briefing requirement if relevant, Events Oversight / editorial / promotion / Dean / security review needs where relevant, and reasoning summary.
 
 ### MondayIntegrationPayload
 
-A mock integration payload. It should show how the structured event and routing output could later become a Monday.com board item with columns, tags, owners, risk flags, missing information, next actions, and subitems.
+A mock integration payload. It should show how the structured event and routing output could later become an item in Jo's `Events and Key Dates 25/26` Monday board with lifecycle status, group/category, columns, tags, owners, review gates, links, missing information, next actions, and subitems.
 
 ## Workstream 4 scope
 
@@ -161,7 +166,8 @@ Workstream 4 owns the contract and integration spine:
 - integration payloads,
 - backend API contracts,
 - sample fixtures,
-- demo coherence.
+- demo coherence,
+- Monday.com lifecycle and mock field-mapping guidance.
 
 Minimum Workstream 4 endpoints:
 
@@ -216,6 +222,7 @@ Do not implement:
 6. Do not pretend mock integrations are real integrations.
 7. Generate operational outputs, not just chat answers.
 8. Design for future integration without overbuilding the integration now.
+9. Treat Monday.com exports as source context for planning, not permission to store or expose real confidential event data.
 
 ## Success measures
 
@@ -233,6 +240,8 @@ Early success measures for the prototype:
 ## Open decisions
 
 - Final v0 `EventRequest` schema.
+- Which Monday lifecycle/status fields belong in v0.
+- Which Monday fields stay as future integration mapping only.
 - Which fields are mandatory for Saturday.
 - Which product routes are public vs protected.
 - Whether event data is persisted in PostgreSQL for the demo or held in request/response only.

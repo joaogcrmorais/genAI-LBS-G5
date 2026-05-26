@@ -8,12 +8,17 @@ These notes are for the team discussion about what the prototype should collect,
 
 This is the main item to align on. The Event Request is the shared description of an event that other workstreams can use.
 
+Monday.com update: Jo's `Events and Key Dates 25/26` board tracks a full event lifecycle, not just first intake. It includes about 844 events, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. One Monday export is incomplete, so the team should decide principles now and avoid overfitting every field until the full response arrives.
+
 - What information must the organiser provide?
 - Which fields are mandatory vs optional?
 - Which information can be unknown at draft stage?
 - What should the assistant ask follow-up questions about?
 - Should the event request be one shared object across workstreams?
 - Are the current categories right: basics, organiser, space, catering, AV, speakers/guests, sponsors/external parties, intake state?
+- Should `EventRequest` include lifecycle phase and Monday status hints?
+- Which fields are only needed for future Monday mapping, not intake?
+- Which fields differ between student-club events and institution-wide Editorial Planning events?
 
 ## Workstream 4 Product Decisions
 
@@ -24,6 +29,7 @@ Current product direction for Workstream 4:
 - A second validator pass checks the first classification before the answer is returned.
 - Stakeholder packets are deterministic because downstream teams need stable, predictable outputs.
 - The Monday.com output is deterministic and mock-only. It demonstrates future integration potential without pretending to be a real integration.
+- The Monday.com output should now be planned against the known `Events and Key Dates 25/26` board shape, while still avoiding real API calls.
 - The tiering output should be explained to users, but it should remain prototype guidance rather than official LBS policy.
 
 Questions for the group:
@@ -33,6 +39,9 @@ Questions for the group:
 - Which risks or escalation concerns must be visible to staff?
 - Which stakeholder packets would actually help teams prepare?
 - What should the Monday.com mock payload prove in the demo?
+- Should WS4 produce separate operational packets and editorial/governance packets?
+- Which Monday statuses should appear in the mock payload?
+- Which review gates should be visible: business case, Events Oversight, Dean's Office, Security, Editorial Group, Event Promo Group, CC Network, PR, Advancement?
 
 ## Proposed Technical Approach
 
@@ -44,6 +53,7 @@ High-level approach for approval:
 - Deterministic logic is used where downstream teams need consistent outputs.
 - OpenAI calls and secrets stay in the backend.
 - The frontend demo page is only a testing tool for now, not the final product experience.
+- Monday lifecycle awareness should influence planning docs now, but endpoint changes should wait until the team explicitly asks for them.
 
 Questions for the group:
 
@@ -81,3 +91,4 @@ Current testing direction:
 - Check whether the assistant asks useful follow-up questions when information is missing.
 - Check whether stakeholder packets are useful enough for downstream communication work.
 - Check whether the Monday.com mock payload helps explain the future workflow.
+- Check whether the demo can explain a lifecycle journey, not only a one-time intake form.

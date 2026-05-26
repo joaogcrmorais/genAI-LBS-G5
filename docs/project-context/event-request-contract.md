@@ -2,9 +2,11 @@
 
 ## Status
 
-Pre-Wednesday proposal for schema-lock discussion.
+Pre-Wednesday proposal for schema-lock discussion, partially implemented in the current WS4 backend schema.
 
-This document defines the shared `EventRequest` object that Workstream 1 should produce and Workstreams 3 and 4 should consume. It is not yet a final TypeScript/Zod schema, but it should be treated as the coordination contract until the team agrees changes.
+This document defines the shared `EventRequest` object that Workstream 1 should produce and Workstreams 3 and 4 should consume. It is not yet a final product schema, but the backend now accepts the lifecycle/status fields below and should be treated as the coordination contract until the team agrees further changes.
+
+Latest context update: the Monday.com LLM exports in `docs/monday-llm-responses/` describe Jo's real `Events and Key Dates 25/26` board. The board is broader than student-club intake: it tracks institution-wide events through ideation, business-case review, detailed planning, editorial/content planning, final readiness, event-day execution, and post-event closure. The lifecycle export is incomplete, so the schema below remains a proposal rather than a final Monday field map.
 
 ## Contract principle
 
@@ -36,6 +38,25 @@ Workstream 4 needs these fields to classify tiering and build stakeholder packet
 
 If these are missing, `POST /api/tiering/classify` may return `needs_more_information`.
 
+The Monday exports add several fields that are not all mandatory for the first prototype, but should now be discussed before schema lock:
+
+- organising department or club,
+- lifecycle status or planning phase,
+- business-case-required marker and business case link,
+- specific location details in addition to location type,
+- registration link,
+- Dean attendance request/status and briefing link,
+- security review marker,
+- Advancement review marker,
+- editorial/content tags,
+- editorial theme and content priority,
+- review dates for Events Oversight, Dean's Office, Editorial Group, Event Promo Group, CC Network, and EP review,
+- actual registered or actual attendance when known,
+- faculty attending and faculty hours where relevant,
+- post-event content or follow-up task state.
+
+Recommended contract principle: keep `EventRequest` as a manageable intake/lifecycle facts object. Do not copy all 47 Monday board columns into the base request unless the product actually asks organisers for them or the backend needs them for routing.
+
 ## Proposed v0 shape
 
 ```json
@@ -56,6 +77,8 @@ If these are missing, `POST /api/tiering/classify` may return `needs_more_inform
     "title": "",
     "description": "",
     "purpose": "",
+    "lifecycle_phase": "ideation",
+    "monday_status_hint": "requested",
     "event_type": "panel",
     "is_recurring": false,
     "previous_event_reference": "",
@@ -101,7 +124,9 @@ If these are missing, `POST /api/tiering/classify` may return `needs_more_inform
   "speakers_and_guests": {
     "has_external_speakers": false,
     "speakers": [],
+    "faculty_attending": [],
     "vip_or_embassy_presence": false,
+    "dean_attendance_requested": false,
     "media_expected": false,
     "guest_list_required": false,
     "sensitive_topic": "unknown"
@@ -140,6 +165,35 @@ If these are missing, `POST /api/tiering/classify` may return `needs_more_inform
 - `speaker`
 - `careers`
 - `other`
+- `unknown`
+
+`lifecycle_phase`:
+
+- `ideation`
+- `feasibility`
+- `detailed_planning`
+- `editorial_content_planning`
+- `pre_event_execution`
+- `event_day`
+- `post_event`
+- `unknown`
+
+`monday_status_hint`:
+
+- `requested`
+- `proposed`
+- `tbd`
+- `more_info_required`
+- `can_progress`
+- `tentative`
+- `date_to_be_confirmed`
+- `confirmed_subject_to_business_case`
+- `confirmed`
+- `confirmed_space_check`
+- `stuck_issues`
+- `changing_plans`
+- `cancelled_moved`
+- `not_happening`
 - `unknown`
 
 `attendance_estimate_type`:
@@ -205,6 +259,10 @@ The team should lock:
 - whether `sensitive_topic` is asked directly or inferred from free text,
 - the final stakeholder enum used by WS4 packets,
 - whether `intake_state.completeness_score` is owned by Workstream 1 or calculated on demand.
+- whether lifecycle phase and Monday status hint belong in `EventRequest` v0 or in a separate derived workflow state,
+- which Monday-derived review fields are needed for Saturday versus future integration planning.
+
+Current implementation note: `event_basics.lifecycle_phase`, `event_basics.monday_status_hint`, `event_basics.registration_link`, optional `event_basics.actual_attendance`, optional `speakers_and_guests.faculty_attending`, optional `speakers_and_guests.dean_attendance_requested`, and a permissive `planning_and_governance` object are accepted by the backend WS4 schema. The exact governance subfields remain intentionally permissive while the full Monday export is pending.
 
 ## Non-goals for this contract
 
@@ -213,5 +271,5 @@ This contract does not define:
 - Prisma persistence,
 - generated email/summarization output,
 - official LBS policy,
-- real Monday.com fields,
+- a complete clone of all Monday.com fields,
 - post-event feedback schema.

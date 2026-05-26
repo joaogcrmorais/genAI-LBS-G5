@@ -34,6 +34,8 @@ The product should help a student organiser move from an uncertain event idea to
 
 The prototype is **not just a chatbot** and **not just a form**. It is an intake and orchestration layer.
 
+Monday.com source update: Jo's real `Events and Key Dates 25/26` board is broader than student-club intake. It is a central Editorial Planning coordination board with about 844 active event items, 47 tracked fields per event, 7 event groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. The prototype can still focus on student organisers for the demo, but planning should recognise the real lifecycle: ideation, feasibility/business-case review, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event closure.
+
 ---
 
 ## 2. Biggest Recommendation for the Team
@@ -234,6 +236,10 @@ The MVP remains a thin but convincing vertical slice.
 ### MVP user story
 
 A student organiser arrives with a rough event idea. The assistant asks clarifying questions, structures the event request, identifies missing information, classifies complexity and risk, recommends next steps, generates useful outputs, and creates a machine-readable integration payload for future stakeholder systems such as Monday.com.
+
+Given the Monday.com exports, the MVP should also show where the event sits in a lifecycle and what review gates may be next.
+
+Implementation update: the existing WS4 endpoint paths remain unchanged, but their schemas/results now accept lifecycle/status hints, expanded Monday-derived stakeholder routing, and mock payload fields for Jo's `Events and Key Dates 25/26` board.
 
 ### MVP input examples
 
@@ -620,6 +626,7 @@ Owns:
 - stakeholder-specific routing packets,
 - Monday.com-ready mock JSON payload,
 - database-aware event model coordination with Prisma,
+- Monday.com lifecycle and mock field-mapping guidance,
 - and end-to-end demo coherence.
 
 Output:
@@ -825,7 +832,7 @@ Tier 3:
 
 Do not call the real Monday.com API in the MVP.
 
-The MVP should generate a JSON payload that shows what could later be sent to Monday.com or a similar orchestration tool.
+The MVP should generate a JSON payload that shows what could later be sent to Monday.com or a similar orchestration tool. After the Monday.com LLM exports, this should be framed as a mock mapping toward Jo's known `Events and Key Dates 25/26` board rather than a generic invented board. The lifecycle export is incomplete, so field-level mapping should stay provisional.
 
 Example fields:
 
@@ -834,16 +841,18 @@ Example fields:
   "integration_target": "monday.com",
   "integration_status": "mock_payload_ready",
   "event_id": "evt_demo_001",
-  "board_hint": "LBS Event Oversight",
+  "board_hint": "Events and Key Dates 25/26",
+  "board_id_hint": "2008539622",
   "item_name": "Future of Finance Summit - 20 Jun 2026",
   "group_name": "Student Club Events",
+  "lifecycle_status": "Requested",
   "columns": {
     "event_name": "Future of Finance Summit",
     "event_date": "2026-06-20",
     "event_owner": "Student Organizer",
     "club": "Finance Club",
     "suggested_tier": "tier_2",
-    "status": "Needs human review",
+    "status": "More info required",
     "risk_flags": ["external_speakers", "attendance_over_100", "alcohol_requested"],
     "required_stakeholders": ["space", "catering", "av", "security"],
     "missing_information": ["speaker names", "budget code", "dietary requirements"],
@@ -863,6 +872,8 @@ Example fields:
   ]
 }
 ```
+
+Useful mock mapping categories now include status, timeline/date, time, organising department, location, audience, expected attendance, actual registered/attendance when known, speakers, faculty attending, business case link, registration link, crib sheet link, content tags, review dates, stakeholder tags, and subitems.
 
 ---
 

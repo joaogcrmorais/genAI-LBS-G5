@@ -118,41 +118,50 @@ OpenAI SDK configuration exists only in the backend. The frontend never reads `O
 
 ## Workstream 4 Direction
 
-Workstream 4 now has two dedicated planning docs:
+Workstream 4 now has dedicated planning docs:
 
 - `docs/project-context/event-request-contract.md`
+- `docs/project-context/monday-workflow-takeaways.md`
 - `docs/project-context/workstream-4-mini-prd.md`
 - `docs/project-context/workstream-4-workplan.md`
+
+The latest planning context comes from two Monday.com LLM assistant exports now stored in `docs/monday-llm-responses/`. The exports describe Jo's real `Events and Key Dates 25/26` Monday board, board ID `2008539622`, with about 844 active event items, 47 tracked fields, 7 event categories, 19 filtered views, 38 organising departments, and 109 faculty members. The lifecycle export is incomplete and ends during Phase 3 data-flow detail at `numeric_mm2w8`, so field-level details may change when the full response arrives.
 
 The agreed direction is:
 
 - `POST /api/tiering/classify` should use OpenAI for event tiering because tiering depends on contextual event-planning judgment.
 - `POST /api/routing/stakeholder-packets` should use deterministic service logic because it feeds Workstream 3 email and summary generation.
 - `POST /api/integrations/monday/build-payload` should remain a deterministic mock payload builder and must not call the real Monday.com API.
+- The Monday mock payload should now be planned as a mapping toward Jo's real board shape rather than a generic invented board. It should reference lifecycle status, event category/group, Monday-like columns, review gates, stakeholder tags, links, and subitem task suggestions.
 - The tiering endpoint should return either `classified` with user-visible reasoning or `needs_more_information` with explicit questions. It should not return confidence scores or `needs_human_review`.
 - Tiering output must be labelled as prototype guidance, not official LBS policy.
-- The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4.
+- The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4, including which Monday-derived fields are intake facts versus downstream integration mapping.
 - Current active pre-Wednesday work is the `EventRequest` contract. The proposed direction is that `EventRequest` contains shared intake facts, while tiering, stakeholder packets, generated outputs, and mock integration payloads remain separate service outputs that reference the event request.
+- Monday changes the product framing from a one-off intake helper to a lifecycle-aware assistant. Planning now needs to account for ideation, feasibility/business case, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event closure.
 
 Implemented backend contract slice:
 
 - `server/src/schemas/ws4.ts` defines the permissive `EventRequest` v0 input schema and derived WS4 output schemas.
+- `EventRequest` now includes Monday-derived lifecycle planning fields such as `event_basics.lifecycle_phase`, `event_basics.monday_status_hint`, `event_basics.registration_link`, optional `actual_attendance`, and a permissive `planning_and_governance` object for business-case, Dean, security, Advancement, editorial, promotion, review-date, and briefing-link metadata.
 - `server/src/prompts/tieringPrompts.ts` keeps the tiering classifier and validator prompts in a dedicated editable prompt module.
 - `POST /api/tiering/classify` is protected by Auth0 normal-user access and calls the backend-only OpenAI tiering service.
 - The tiering service uses a classifier pass plus a validator pass, tells the model to apply baseline tier rules before adding nuance, requires structured JSON, validates the final response with Zod, and preserves the prototype policy disclaimer.
 - `POST /api/routing/stakeholder-packets` is protected by Auth0 normal-user access and uses deterministic routing logic only.
-- `POST /api/integrations/monday/build-payload` is protected by Auth0 normal-user access and returns a deterministic mock-only Monday.com payload. It does not call Monday.com.
-- Current WS4 tests mock OpenAI and cover prompt contract text, classified tiering, missing-information tiering, validator revision, invalid AI JSON handling, deterministic routing scenarios, mock Monday payloads, and unauthenticated route protection.
+- The deterministic stakeholder packet endpoint now covers both the original operational stakeholders and Monday-derived editorial/governance stakeholders: Events Oversight Group, Dean's Office, Editorial Group, Event Promo Group, PR Managers / Communications, Advancement, CC Network, Social Media, Photography, Sponsorship, faculty, and task owners.
+- `POST /api/integrations/monday/build-payload` is protected by Auth0 normal-user access and returns a deterministic mock-only Monday.com payload mapped toward `Events and Key Dates 25/26` with board ID hint `2008539622`. It does not call Monday.com.
+- The Monday mock payload now includes lifecycle status, Monday-like column categories, review gates, stakeholder tags, links, and subitems for stakeholder follow-up, lifecycle review, and post-event follow-up.
+- Current WS4 tests mock OpenAI and cover prompt contract text, classified tiering, missing-information tiering, validator revision, invalid AI JSON handling, deterministic routing scenarios including Monday lifecycle/governance tags, mock Monday payloads, and unauthenticated route protection.
 - `npm run test:live:openai` runs the gated live OpenAI classifier test when `RUN_LIVE_OPENAI_TEST=true` is set. It is skipped during normal tests.
 - The live OpenAI classifier test was run successfully on 2026-05-26. It sent the real classifier and validator prompts to OpenAI using the configured backend key and validated the final response against the WS4 schema.
 - `client/src/pages/Ws4DemoPage.tsx` adds a scrappy protected `/ws4-demo` testing harness with five scenarios, a full editable Event Request form, raw JSON preview, and buttons for auth/API checks, AI status, tiering, stakeholder packets, Monday mock payloads, and the full flow.
+- The WS4 demo scenarios and form now include Monday-derived lifecycle/status, registration, actual attendance, faculty, Dean, business-case, security, Advancement, editorial, promotion, review-date, photography, and overview-tag fields so the updated endpoints can be exercised from the UI.
 - `docs/project-context/wednesday-discussion-notes.md` captures product/requirements discussion points for Wednesday, with Event Request as the main section.
 
 ## Branching And Workstream Coordination
 
 Current active branch:
 
-- `main`
+- `docs/add-monday-llm-outputs`
 
 Use the conventional short-lived feature branch workflow described in `docs/project-context/03_github_setup_and_coordination.md`. The earlier failure to create a slash-style branch was a local filesystem permission issue writing inside `.git`, not a Git naming problem. After running Git with the required permission, `feature/ws4-event-request-contract` was created successfully.
 
@@ -162,6 +171,7 @@ Workstream guidance:
 - Use `feature/ws1-intake`, `feature/ws2-post-event`, `feature/ws3-outputs-knowledge`, `feature/ws4-routing-integrations`, or similarly scoped feature branches for new work.
 - Merge schema/API contract changes early so other workstreams can branch from a stable shared contract.
 - Workstream 1 owns the shared `EventRequest` intake facts object; Workstream 4 owns derived tiering and stakeholder packet outputs; Workstream 3 consumes WS4 packets for generated emails and summaries.
+- Workstream 4 should distinguish operational stakeholder routing from Jo's Monday editorial/governance routing. Monday adds first-class planning stakeholders such as Events Oversight Group, Editorial Group, Event Promo Group, Dean's Office, PR Managers, Advancement, CC Network, Social Media, Photography, Sponsorship, faculty, and task owners.
 - Pull latest `main` before starting work and before opening pull requests.
 - Before opening or merging a PR, verify the feature branch contains the intended work with `git status --short --branch`, `git log --oneline origin/main..HEAD`, and `git diff --stat origin/main..HEAD`.
 - In GitHub, review the PR `Files changed` tab and confirm the expected routes, services, schemas, tests, and docs are present before merging.
@@ -219,6 +229,9 @@ Latest checks:
 - `npm run typecheck`: passed after WS4 backend implementation.
 - `npm run lint`: passed.
 - `npm run test`: passed after WS4 backend implementation; backend has 16 passing tests, client has no tests yet.
+- `npm.cmd run typecheck`: passed on 2026-05-26 after Monday lifecycle endpoint updates.
+- `npm.cmd run test`: passed on 2026-05-26 after Monday lifecycle endpoint updates; backend has 17 passing tests and 1 skipped gated live OpenAI test, client has no tests yet.
+- `npm.cmd run lint`: passed on 2026-05-26 after Monday lifecycle endpoint updates.
 - `npm run prisma:generate`: passed.
 - `npm run prisma:migrate`: passed and applied the initial migration.
 - `npm run dev`: passed when launched outside the sandbox; frontend listened on port 3000 and backend listened on port 3001.
@@ -240,7 +253,8 @@ The external `INITIAL_CODEX_SETUP_INSTRUCTION.md` has been updated with a Group 
 
 ## Next Steps
 
-1. Review and lock the proposed `EventRequest` contract for Wednesday.
-2. Open a pull request from `feature/ws4-event-request-contract` once the contract/guidance docs are ready.
-3. Have each workstream branch from latest `main` after schema/API contract decisions merge.
-4. Fix the Auth0 client/API audience authorization in the Auth0 dashboard before full protected-route browser testing.
+1. Review the Monday-derived planning synthesis in `docs/project-context/monday-workflow-takeaways.md`.
+2. Update the Wednesday schema discussion to decide which Monday lifecycle fields belong in `EventRequest` now and which stay as future Monday mapping.
+3. Keep endpoints unchanged until the team explicitly asks for endpoint/schema implementation changes.
+4. Have each workstream branch from latest `main` after schema/API contract decisions merge.
+5. Fix the Auth0 client/API audience authorization in the Auth0 dashboard before full protected-route browser testing.

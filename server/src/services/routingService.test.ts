@@ -60,6 +60,8 @@ describe("buildStakeholderPackets", () => {
     );
 
     expect(result.stakeholders_required).toContain("catering_lexington");
+    expect(result.stakeholders_required).toContain("security");
+    expect(result.stakeholders_recommended).toContain("advancement");
     expect(result.stakeholders_recommended).toContain("duty_managers_campus_services");
     expect(result.missing_information_by_stakeholder.some((item) => item.stakeholder === "catering_lexington")).toBe(true);
   });
@@ -81,6 +83,7 @@ describe("buildStakeholderPackets", () => {
 
     expect(result.stakeholders_required).toContain("av_technology");
     expect(result.stakeholders_recommended).toContain("editorial_planning");
+    expect(result.stakeholders_recommended).toContain("event_promo_group");
     expect(result.missing_information_by_stakeholder.some((item) => item.stakeholder === "editorial_planning")).toBe(true);
   });
 
@@ -100,6 +103,7 @@ describe("buildStakeholderPackets", () => {
 
     expect(result.stakeholders_recommended).toContain("sa_operations");
     expect(result.stakeholders_required).toContain("finance_sponsorship");
+    expect(result.stakeholders_required).toContain("sponsorship_team");
     expect(result.stakeholders_required).toContain("space_management");
   });
 
@@ -114,6 +118,8 @@ describe("buildStakeholderPackets", () => {
         },
         speakers_and_guests: {
           has_external_speakers: true,
+          dean_attendance_requested: true,
+          faculty_attending: ["Example Faculty"],
           vip_or_embassy_presence: true,
           media_expected: true,
           guest_list_required: true,
@@ -125,6 +131,48 @@ describe("buildStakeholderPackets", () => {
 
     expect(result.stakeholders_required).toContain("security");
     expect(result.stakeholders_required).toContain("editorial_planning");
+    expect(result.stakeholders_required).toContain("dean_office");
+    expect(result.stakeholders_required).toContain("editorial_group");
+    expect(result.stakeholders_required).toContain("pr_managers_communications");
+    expect(result.stakeholders_required).toContain("faculty");
     expect(result.cross_stakeholder_dependencies.length).toBeGreaterThan(0);
+  });
+
+  it("routes Monday lifecycle governance and content tags", () => {
+    const result = buildStakeholderPackets(
+      event({
+        event_basics: {
+          title: "Flagship Content Event",
+          lifecycle_phase: "editorial_content_planning",
+          monday_status_hint: "confirmed_subject_to_business_case",
+          expected_attendance: 100,
+          audience_types: ["students", "public"],
+          registration_link: "https://example.com/register",
+          external_audience: true
+        },
+        speakers_and_guests: {
+          has_external_speakers: true,
+          speakers: [{ name: "Speaker", organization: "Example Org" }],
+          media_expected: true
+        },
+        planning_and_governance: {
+          business_case_required: true,
+          business_case_link: "mock-link",
+          editorial_content_tags: ["Editorial Content", "Event Promo Group", "Social", "CC Network"],
+          editorial_theme: "Leadership",
+          content_priority: "Gold",
+          photography_requested: true
+        }
+      })
+    );
+
+    expect(result.stakeholders_required).toContain("events_oversight_group");
+    expect(result.stakeholders_required).toContain("editorial_group");
+    expect(result.stakeholders_required).toContain("event_promo_group");
+    expect(result.stakeholders_required).toContain("pr_managers_communications");
+    expect(result.stakeholders_required).toContain("social_media");
+    expect(result.stakeholders_required).toContain("photography");
+    expect(result.stakeholders_recommended).toContain("cc_network");
+    expect(result.stakeholders_recommended).toContain("task_owners");
   });
 });

@@ -14,6 +14,8 @@ The prototype should help a student move from an uncertain event idea to a struc
 
 The product is not just a chatbot and not just a form. It should be an intake and orchestration layer.
 
+New Monday.com context: Jo's real `Events and Key Dates 25/26` board tracks about 844 active events and key dates, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. It manages the lifecycle from initial request through business-case review, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event follow-up. One Monday export is incomplete, so do not treat every field as final yet.
+
 ## Core product goal
 
 Reduce back-and-forth and improve event readiness by:
@@ -54,16 +56,18 @@ A basic but connected flow is better than five polished but disconnected demos.
 
 ## Tech stack
 
-Preferred stack:
+Required active stack:
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- shadcn/ui if helpful
-- Vercel deployment
-- Supabase for database/auth if time allows
-- OpenAI API for structured extraction and generation
-- Shared TypeScript types in a monorepo
+- React single-page app with Vite.
+- TypeScript.
+- Tailwind CSS.
+- React Router.
+- Node.js / Express backend.
+- PostgreSQL with Prisma.
+- Auth0 only for authentication.
+- OpenAI API calls from the backend only.
+- Frontend at `http://localhost:3000/`.
+- Backend at `http://localhost:3001`.
 
 ## Shared architecture
 
@@ -218,7 +222,7 @@ Own:
 - stakeholder routing matrix,
 - AI-assisted tiering/escalation classification,
 - stakeholder-specific packets,
-- Monday.com-ready JSON payload,
+- Monday.com-ready mock JSON payload,
 - mock integration endpoint.
 
 Output:
@@ -242,9 +246,11 @@ Example Monday.com-ready payload:
   "integration_target": "monday.com",
   "integration_status": "mock_payload_ready",
   "event_id": "evt_demo_001",
-  "board_hint": "LBS Event Oversight",
+  "board_hint": "Events and Key Dates 25/26",
+  "board_id_hint": "2008539622",
   "item_name": "Future of Finance Summit - 20 Jun 2026",
   "group_name": "Student Club Events",
+  "lifecycle_status": "Requested",
   "columns": {
     "event_name": "Future of Finance Summit",
     "event_date": "2026-06-20",
@@ -280,21 +286,9 @@ Example Monday.com-ready payload:
 }
 ```
 
-### Workstream 5: Platform, Schema, Auth, and Deployment
+### Platform, Schema, Auth, and Deployment
 
-Own:
-
-- shared TypeScript types,
-- app shell,
-- API routes,
-- persistence,
-- deployment,
-- role simulation or auth,
-- GitHub coordination support.
-
-Output:
-
-- deployed app shell and shared backend foundation.
+These are now shared project responsibilities rather than a fifth workstream in the active four-workstream plan. Use the existing React/Vite client, Express backend, Prisma layer, and Auth0 permissions described in `project.md`.
 
 ## Wednesday alignment requirements
 

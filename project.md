@@ -152,7 +152,7 @@ Implemented backend contract slice:
 
 Current active branch:
 
-- `feature/ws4-event-request-contract`
+- `main`
 
 Use the conventional short-lived feature branch workflow described in `docs/project-context/03_github_setup_and_coordination.md`. The earlier failure to create a slash-style branch was a local filesystem permission issue writing inside `.git`, not a Git naming problem. After running Git with the required permission, `feature/ws4-event-request-contract` was created successfully.
 
@@ -163,6 +163,11 @@ Workstream guidance:
 - Merge schema/API contract changes early so other workstreams can branch from a stable shared contract.
 - Workstream 1 owns the shared `EventRequest` intake facts object; Workstream 4 owns derived tiering and stakeholder packet outputs; Workstream 3 consumes WS4 packets for generated emails and summaries.
 - Pull latest `main` before starting work and before opening pull requests.
+- Before opening or merging a PR, verify the feature branch contains the intended work with `git status --short --branch`, `git log --oneline origin/main..HEAD`, and `git diff --stat origin/main..HEAD`.
+- In GitHub, review the PR `Files changed` tab and confirm the expected routes, services, schemas, tests, and docs are present before merging.
+- After merging, fetch or pull `origin/main`, test the actual merged `main`, and only then delete the feature branch. GitHub's "safe to delete branch" message means the commits in that PR are reachable from `main`; it does not prove later local or unpushed commits were merged.
+
+The WS4 demo temporarily appeared missing because the first merged PR contained the docs/contract slice but not the later WS4 demo/backend commits. The follow-up merge to `main` restored `/ws4-demo`, the WS4 API endpoints, services, schemas, tests, and demo guidance.
 
 ## LBS Branding
 

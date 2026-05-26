@@ -11,6 +11,8 @@ Use these instructions for future work in this repository.
 - Do not commit `.env` or secret-bearing files.
 - Update `project.md` after meaningful changes.
 - Run lint, type checks, and tests after meaningful code changes when tooling is available.
+- Before making a commit intended for a PR/merge, advising the user to merge a branch, or creating a merge-ready PR, verify branch completeness with `git status --short --branch`, `git log --oneline origin/main..HEAD`, and `git diff --stat origin/main..HEAD`; explicitly confirm the expected commits and files are present.
+- After a branch is merged, verify the actual merged `main` by fetching/pulling `origin/main`, checking for the expected routes/files, and running available checks before treating the branch as safe to delete.
 
 ## Authentication And Access
 

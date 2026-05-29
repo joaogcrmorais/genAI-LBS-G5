@@ -14,7 +14,7 @@ The prototype should help a student move from an uncertain event idea to a struc
 
 The product is not just a chatbot and not just a form. It should be an intake and orchestration layer.
 
-New Monday.com context: Jo's real `Events and Key Dates 25/26` board tracks about 844 active events and key dates, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. It manages the lifecycle from initial request through business-case review, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event follow-up. One Monday export is incomplete, so do not treat every field as final yet.
+New Monday.com context: Jo's real `Events and Key Dates 25/26` board tracks about 844 active events and key dates, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. The updated AI export describes a full lifecycle from initial request through post-event follow-up, but Jo has warned that this is mostly not reality. Across LBS there are roughly 1,200 events per year, run by 300-400 people, while only two people actively track/record events in Monday and about 10 use it for awareness. Treat Monday as useful source context and a possible staff-side handoff target, not as the source of truth or the workflow followed by most organisers.
 
 ## Core product goal
 
@@ -45,7 +45,7 @@ The Saturday prototype should demonstrate this journey:
    - stakeholder email drafts,
    - timeline/checklist,
    - internal operations summary,
-   - Monday.com-ready JSON payload.
+   - optional Monday.com-ready handoff JSON.
 7. System includes a post-event feedback/handover placeholder or mock flow.
 
 ## Biggest recommendation for the team
@@ -92,12 +92,14 @@ Output generation engine
   ├─ stakeholder email drafts
   ├─ checklist and timeline
   ├─ internal Jo summary
-  └─ Monday.com-ready integration JSON
+  └─ optional Monday.com-ready handoff JSON
   ↓
 Human review and edit
   ↓
-Export / handover / future API integration
+Export / handover / future optional API integration
 ```
+
+The Monday.com-ready output in this diagram should be understood as an optional staff-side handoff artifact, not a mandatory workflow step or the product's canonical event record.
 
 ## Shared schema principle
 
@@ -285,6 +287,8 @@ Example Monday.com-ready payload:
   ]
 }
 ```
+
+This example is a candidate export shape for staff-side visibility. It should not be read as a mandatory Monday workflow or proof that most events are managed with Monday subitems.
 
 ### Platform, Schema, Auth, and Deployment
 

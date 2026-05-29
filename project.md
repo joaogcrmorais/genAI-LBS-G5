@@ -125,19 +125,30 @@ Workstream 4 now has dedicated planning docs:
 - `docs/project-context/workstream-4-mini-prd.md`
 - `docs/project-context/workstream-4-workplan.md`
 
-The latest planning context comes from two Monday.com LLM assistant exports now stored in `docs/monday-llm-responses/`. The exports describe Jo's real `Events and Key Dates 25/26` Monday board, board ID `2008539622`, with about 844 active event items, 47 tracked fields, 7 event categories, 19 filtered views, 38 organising departments, and 109 faculty members. The lifecycle export is incomplete and ends during Phase 3 data-flow detail at `numeric_mm2w8`, so field-level details may change when the full response arrives.
+The latest planning context comes from Monday.com LLM assistant exports now stored in `docs/monday-llm-responses/`, including `monday_event_management_lifecycle_updated.md`. The exports describe Jo's real `Events and Key Dates 25/26` Monday board, board ID `2008539622`, with about 844 active event items, 47 tracked fields, 7 event categories, 19 filtered views, 38 organising departments, and 109 faculty members.
+
+Jo's caveat materially changes how this evidence should be used. He said the AI-provided lifecycle is largely not representative of reality: most of the listed process does not happen or happens only for a minority of events. Across the School there are roughly 1,200 events per year run by 300-400 different people, while only two people really actively use Monday to track or record events, with around 10 people using it for awareness. Monday should therefore be treated as a partial Editorial Planning visibility record and optional staff-side handoff target, not as the source of truth or workflow engine for all LBS events.
 
 The agreed direction is:
 
 - `POST /api/tiering/classify` should use OpenAI for event tiering because tiering depends on contextual event-planning judgment.
 - `POST /api/routing/stakeholder-packets` should use deterministic service logic because it feeds Workstream 3 email and summary generation.
 - `POST /api/integrations/monday/build-payload` should remain a deterministic mock payload builder and must not call the real Monday.com API.
-- The Monday mock payload should now be planned as a mapping toward Jo's real board shape rather than a generic invented board. It should reference lifecycle status, event category/group, Monday-like columns, review gates, stakeholder tags, links, and subitem task suggestions.
+- The Monday mock payload should now be planned as a candidate mapping toward Jo's real board shape rather than a generic invented board. It should reference lifecycle status, event category/group, Monday-like columns, review gates, stakeholder tags, links, and possible subitem task suggestions, while making clear it is not a claim about how most events are currently managed.
 - The tiering endpoint should return either `classified` with user-visible reasoning or `needs_more_information` with explicit questions. It should not return confidence scores or `needs_human_review`.
 - Tiering output must be labelled as prototype guidance, not official LBS policy.
 - The Wednesday schema-lock milestone should settle the shared `EventRequest` fields needed by Workstream 4, including which Monday-derived fields are intake facts versus downstream integration mapping.
 - Current active pre-Wednesday work is the `EventRequest` contract. The proposed direction is that `EventRequest` contains shared intake facts, while tiering, stakeholder packets, generated outputs, and mock integration payloads remain separate service outputs that reference the event request.
-- Monday changes the product framing from a one-off intake helper to a lifecycle-aware assistant. Planning now needs to account for ideation, feasibility/business case, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event closure.
+- Monday changes the product framing from a one-off intake helper to a lightweight lifecycle-aware intake and triage assistant. Planning should account for ideation, feasibility/business case, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event closure where relevant, but must not force every event through the full AI-described lifecycle.
+
+Architecture direction from this context:
+
+- the app's own `EventRequest` should be the canonical event object if persistence is introduced,
+- Monday should sit behind an optional integration/export boundary,
+- staff-facing features should prioritize triage, missing information, risk, escalation, and handoff readiness,
+- stakeholder routing should be based on event facts and risk triggers rather than assumed Monday participation,
+- lifecycle/status fields should be lightweight hints or derived workflow state, not a mandatory clone of Monday statuses,
+- the product should be designed for hundreds of occasional organisers and a small staff coordination group, not trained Monday power users.
 
 Implemented backend contract slice:
 
@@ -149,7 +160,7 @@ Implemented backend contract slice:
 - `POST /api/routing/stakeholder-packets` is protected by Auth0 normal-user access and uses deterministic routing logic only.
 - The deterministic stakeholder packet endpoint now covers both the original operational stakeholders and Monday-derived editorial/governance stakeholders: Events Oversight Group, Dean's Office, Editorial Group, Event Promo Group, PR Managers / Communications, Advancement, CC Network, Social Media, Photography, Sponsorship, faculty, and task owners.
 - `POST /api/integrations/monday/build-payload` is protected by Auth0 normal-user access and returns a deterministic mock-only Monday.com payload mapped toward `Events and Key Dates 25/26` with board ID hint `2008539622`. It does not call Monday.com.
-- The Monday mock payload now includes lifecycle status, Monday-like column categories, review gates, stakeholder tags, links, and subitems for stakeholder follow-up, lifecycle review, and post-event follow-up.
+- The Monday mock payload now includes lifecycle status, Monday-like column categories, review gates, stakeholder tags, links, and subitems for stakeholder follow-up, lifecycle review, and post-event follow-up. After Jo's caveat, this should be described as a possible staff-side handoff/export view rather than the normal event workflow.
 - Current WS4 tests mock OpenAI and cover prompt contract text, classified tiering, missing-information tiering, validator revision, invalid AI JSON handling, deterministic routing scenarios including Monday lifecycle/governance tags, mock Monday payloads, and unauthenticated route protection.
 - `npm run test:live:openai` runs the gated live OpenAI classifier test when `RUN_LIVE_OPENAI_TEST=true` is set. It is skipped during normal tests.
 - The live OpenAI classifier test was run successfully on 2026-05-26. It sent the real classifier and validator prompts to OpenAI using the configured backend key and validated the final response against the WS4 schema.
@@ -253,8 +264,9 @@ The external `INITIAL_CODEX_SETUP_INSTRUCTION.md` has been updated with a Group 
 
 ## Next Steps
 
-1. Review the Monday-derived planning synthesis in `docs/project-context/monday-workflow-takeaways.md`.
-2. Update the Wednesday schema discussion to decide which Monday lifecycle fields belong in `EventRequest` now and which stay as future Monday mapping.
-3. Keep endpoints unchanged until the team explicitly asks for endpoint/schema implementation changes.
-4. Have each workstream branch from latest `main` after schema/API contract decisions merge.
-5. Fix the Auth0 client/API audience authorization in the Auth0 dashboard before full protected-route browser testing.
+1. Review the Monday-derived planning synthesis in `docs/project-context/monday-workflow-takeaways.md`, especially the reliability caveat from Jo.
+2. Decide which fields belong in a lightweight organiser-facing `EventRequest` and which stay as derived staff-side routing or future Monday export metadata.
+3. Decide whether a staff triage queue is more important than real Monday integration for the next architecture step.
+4. Keep endpoints unchanged until the team explicitly asks for endpoint/schema implementation changes.
+5. Have each workstream branch from latest `main` after schema/API contract decisions merge.
+6. Fix the Auth0 client/API audience authorization in the Auth0 dashboard before full protected-route browser testing.

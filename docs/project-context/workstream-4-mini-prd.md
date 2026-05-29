@@ -8,7 +8,7 @@ Workstream 4: Tiering, Stakeholder Packets, and Mock Integrations
 
 Workstream 4 provides the decision and handoff layer for the Event Readiness Assistant. It classifies the likely complexity of an event, prepares stakeholder-specific packets for downstream output generation, and produces a mock Monday.com-ready payload.
 
-This workstream should make the prototype feel like it captures the practical event-planning judgment that currently lives in experienced staff members' heads, while keeping outputs structured, explainable, and safe for a student-facing prototype. The Monday.com LLM exports now show that Jo's real workflow is lifecycle-based and institution-wide, so Workstream 4 should model both student-facing readiness and Jo's editorial/governance coordination spine.
+This workstream should make the prototype feel like it captures the practical event-planning judgment that currently lives in experienced staff members' heads, while keeping outputs structured, explainable, and safe for a student-facing prototype. The Monday.com LLM exports show useful vocabulary and board shape, but Jo's caveat changes their weight: the real school-wide process is decentralized, and Monday is actively maintained by only a tiny group. Workstream 4 should model student-facing readiness, Jo's editorial/governance visibility needs, and a possible Monday handoff without pretending that Monday runs the whole event lifecycle.
 
 ## Main objective
 
@@ -18,7 +18,7 @@ Build backend capabilities that:
 - ask for more information when tiering cannot be responsibly completed,
 - use deterministic logic to create stakeholder packets,
 - provide structured outputs that Workstream 3 can use to generate emails and summaries,
-- produce a mock Monday.com payload that demonstrates future integration potential against Jo's real `Events and Key Dates 25/26` board shape.
+- produce a mock Monday.com payload that demonstrates future optional handoff potential against Jo's real `Events and Key Dates 25/26` board shape.
 
 ## Product context
 
@@ -26,7 +26,7 @@ Jo described LBS events as numerous, complex, and dependent on institutional kno
 
 For that reason, tiering should use an LLM, supported by baseline guidance and a validation pass. Stakeholder packets should be deterministic because they feed downstream content generation and should not block Workstream 3 with uncertain prediction.
 
-The Monday exports add concrete operating context:
+The Monday exports add concrete board context:
 
 - the board tracks about 844 active events and key dates,
 - it has about 47 fields per event,
@@ -34,6 +34,10 @@ The Monday exports add concrete operating context:
 - it tracks 38 organising departments and 109 faculty members,
 - it uses status, date, tag, review-date, speaker, faculty, location, audience, attendance, link, and subitem task data,
 - it manages events from idea through post-event closure.
+
+Jo's later caveat is now more important than the lifecycle detail: across LBS there are about 1,200 events per year, run by 300-400 different people, and only two people really actively use Monday to track or record events, with around 10 others using it for awareness. Most of the AI-described lifecycle does not happen or only happens for a minority of events.
+
+This means the product should not become a Monday clone or a strict workflow engine. It should capture decentralized event facts, make missing information visible, route the few genuinely important escalations, and optionally produce a staff-side Monday-ready payload.
 
 ## Users
 
@@ -49,7 +53,8 @@ The Monday exports add concrete operating context:
 - As Jo / Editorial Planning, I want the tiering recommendation to account for contextual risk, visibility, VIPs, external stakeholders, and operational complexity.
 - As Workstream 3, I want deterministic stakeholder packets so I can generate emails and summaries without waiting for manual confirmation.
 - As the demo team, I want a mock Monday.com payload to show how event data could later move into Jo's existing event board without calling Monday.com.
-- As Jo / Editorial Planning, I want lifecycle and review-gate information so I can see whether an event is still an idea, needs business-case review, is in detailed planning, needs editorial/promo review, is close to event day, or needs post-event follow-up.
+- As Jo / Editorial Planning, I want lifecycle and review-gate information when relevant so I can see whether an event is still an idea, needs business-case review, is in detailed planning, needs editorial/promo review, is close to event day, or needs post-event follow-up.
+- As an occasional organiser, I want the tool to ask only for information that matters for my event, rather than forcing me through an internal Monday-style process I do not use.
 
 ## In scope
 
@@ -66,6 +71,8 @@ The Monday exports add concrete operating context:
 
 - Real Monday.com API integration.
 - Endpoint changes before the team explicitly asks for them.
+- A full clone of Jo's Monday board or the AI-described lifecycle.
+- A mandatory workflow that assumes every event passes through all Monday-style gates.
 - Official LBS policy decisions.
 - Full persistence model unless another workstream finalizes it.
 - Real confidential LBS data.
@@ -206,9 +213,9 @@ Hard requirements:
 - Must clearly label itself as a mock payload.
 - Must be suitable for demo display and future integration planning.
 - Should map to Monday-like categories from the source exports: status, timeline/date, time, organising department, location, audience, expected attendance, actual registered, speakers, faculty attending, business case link, registration link, crib sheet link, content tags, review dates, and stakeholder tags.
-- Should include subitems, because Monday's actual workflow uses subitems for task ownership, blockers, deadlines, and related links.
+- May include suggested subitems for staff-side tracking and demo purposes, but should not imply that most real events are managed through Monday subitems.
 
-Implementation status: the current backend keeps the endpoint path unchanged and returns `board_hint: "Events and Key Dates 25/26"`, `board_id_hint: "2008539622"`, `lifecycle_status`, Monday-like columns, stakeholder-derived subitems, lifecycle-review subitems, and post-event follow-up subitems.
+Implementation status: the current backend keeps the endpoint path unchanged and returns `board_hint: "Events and Key Dates 25/26"`, `board_id_hint: "2008539622"`, `lifecycle_status`, Monday-like columns, stakeholder-derived subitems, lifecycle-review subitems, and post-event follow-up subitems. This should now be understood as a candidate export/handoff view, not as evidence that the event is being managed in Monday.
 
 ## Monday-derived stakeholder coverage
 
@@ -243,7 +250,7 @@ Monday/export-derived stakeholders to add to planning:
 - faculty members,
 - task owners.
 
-Not every event needs every stakeholder. The point is that the routing model should be able to explain both physical event readiness and Jo's real editorial/governance workflow.
+Not every event needs every stakeholder. The point is that the routing model should be able to explain both physical event readiness and Jo's editorial/governance visibility needs where event facts justify them. Routing should answer "who needs to know or act?" rather than "who would update Monday?"
 
 ## AI requirements
 
@@ -290,4 +297,5 @@ Add these varied scenarios:
 - Workstream 3 can consume stakeholder packets without waiting for manual approval.
 - Monday payload demonstrates future integration without pretending to be a real integration.
 - Monday payload reflects the known board/lifecycle structure rather than a purely invented schema.
+- Monday payload is clearly framed as optional staff-side handoff, because Monday is not currently used by most event organisers.
 - The prototype visibly uses GenAI where it is useful and avoids it where deterministic logic is better.

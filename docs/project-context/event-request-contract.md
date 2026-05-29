@@ -6,11 +6,15 @@ Pre-Wednesday proposal for schema-lock discussion, partially implemented in the 
 
 This document defines the shared `EventRequest` object that Workstream 1 should produce and Workstreams 3 and 4 should consume. It is not yet a final product schema, but the backend now accepts the lifecycle/status fields below and should be treated as the coordination contract until the team agrees further changes.
 
-Latest context update: the Monday.com LLM exports in `docs/monday-llm-responses/` describe Jo's real `Events and Key Dates 25/26` board. The board is broader than student-club intake: it tracks institution-wide events through ideation, business-case review, detailed planning, editorial/content planning, final readiness, event-day execution, and post-event closure. The lifecycle export is incomplete, so the schema below remains a proposal rather than a final Monday field map.
+Latest context update: the Monday.com LLM exports in `docs/monday-llm-responses/` describe Jo's real `Events and Key Dates 25/26` board, including the newer `monday_event_management_lifecycle_updated.md` export. However, Jo has warned that the AI-generated lifecycle is largely not representative of reality: most of the listed process either does not happen or happens only for a minority of events. Across the School there are roughly 1,200 events per year run by 300-400 people, while only two people actively track/record events in Monday and about 10 people use Monday to inform their work.
+
+Schema implication: `EventRequest` should model a lightweight, organizer-facing event facts object. It should not copy Monday's 47-column board, force every event through a heavy Monday-style lifecycle, or assume that Monday is the system of record. Monday-style fields should remain optional intake hints or derived integration-mapping data unless the product explicitly needs them.
 
 ## Contract principle
 
 `EventRequest` should capture the facts the organiser has provided or confirmed about the event.
+
+It should be designed for hundreds of occasional organisers who may not know LBS internal process or Monday terminology. Unknown, tentative, and "to be confirmed" values are valid early-stage facts, not failures.
 
 Derived outputs should live in separate service responses:
 
@@ -38,7 +42,7 @@ Workstream 4 needs these fields to classify tiering and build stakeholder packet
 
 If these are missing, `POST /api/tiering/classify` may return `needs_more_information`.
 
-The Monday exports add several fields that are not all mandatory for the first prototype, but should now be discussed before schema lock:
+The Monday exports add several possible fields that are not all mandatory for the first prototype, and many should remain optional or derived. These should be discussed before schema lock:
 
 - organising department or club,
 - lifecycle status or planning phase,
@@ -55,7 +59,7 @@ The Monday exports add several fields that are not all mandatory for the first p
 - faculty attending and faculty hours where relevant,
 - post-event content or follow-up task state.
 
-Recommended contract principle: keep `EventRequest` as a manageable intake/lifecycle facts object. Do not copy all 47 Monday board columns into the base request unless the product actually asks organisers for them or the backend needs them for routing.
+Recommended contract principle: keep `EventRequest` as a manageable intake/lifecycle facts object. Do not copy all 47 Monday board columns into the base request unless the product actually asks organisers for them or the backend needs them for routing. Treat Monday output as a downstream payload built from the request, not as the request itself.
 
 ## Proposed v0 shape
 
@@ -261,6 +265,8 @@ The team should lock:
 - whether `intake_state.completeness_score` is owned by Workstream 1 or calculated on demand.
 - whether lifecycle phase and Monday status hint belong in `EventRequest` v0 or in a separate derived workflow state,
 - which Monday-derived review fields are needed for Saturday versus future integration planning.
+- whether the persisted event record, if added, should be the product's own canonical event record with optional Monday export/sync metadata rather than a mirror of Monday.
+- which fields are only for Jo/staff visibility and should not be asked of student organisers unless triggered by risk or event type.
 
 Current implementation note: `event_basics.lifecycle_phase`, `event_basics.monday_status_hint`, `event_basics.registration_link`, optional `event_basics.actual_attendance`, optional `speakers_and_guests.faculty_attending`, optional `speakers_and_guests.dean_attendance_requested`, and a permissive `planning_and_governance` object are accepted by the backend WS4 schema. The exact governance subfields remain intentionally permissive while the full Monday export is pending.
 
@@ -272,4 +278,5 @@ This contract does not define:
 - generated email/summarization output,
 - official LBS policy,
 - a complete clone of all Monday.com fields,
+- a mandatory Monday workflow,
 - post-event feedback schema.

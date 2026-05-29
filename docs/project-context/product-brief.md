@@ -16,7 +16,7 @@ London Business School runs a large volume of events, including student club eve
 
 The current process creates avoidable back-and-forth, incomplete submissions, uncertainty for students, and extra triage work for staff.
 
-New Monday.com source context: Jo's real `Events and Key Dates 25/26` board is a central Editorial Planning coordination system with about 844 active event items, 47 tracked fields per event, 7 event groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. It manages events across a lifecycle from initial request through business-case review, detailed planning, editorial/content planning, pre-event checks, event-day execution, and post-event follow-up. One of the two source exports is incomplete, so field-level mapping should remain flexible.
+New Monday.com source context: Jo's real `Events and Key Dates 25/26` board is an Editorial Planning visibility and coordination system with about 844 active event items, 47 tracked fields per event, 7 event groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. The updated LLM lifecycle export describes a full process from initial request through post-event follow-up, but Jo has warned that most of that AI-described process does not happen or happens only for a minority of events. Across the School there are roughly 1,200 events per year run by 300-400 people, while only two people actively track/record events in Monday and about 10 use it for awareness. Field-level mapping should remain flexible, and Monday should not be treated as the source of truth for all events.
 
 ## Core problem
 
@@ -32,7 +32,7 @@ They may not know:
 - what lead times apply,
 - or what makes an event more complex or higher risk.
 
-For staff, the result is fragmented information, repeated clarification emails, inconsistent handoffs, and limited early visibility into events that may require coordination.
+For staff, the result is fragmented information, repeated clarification emails, inconsistent handoffs, and limited early visibility into events that may require coordination. Jo's caveat suggests the deeper process problem is not "automate an existing Monday workflow"; it is "create a lightweight way for many decentralised organisers to produce usable event information for a small number of staff who need visibility."
 
 ## Product vision
 
@@ -49,6 +49,8 @@ It should act as an intake and orchestration layer:
 7. prepare future integration payloads,
 8. preserve learning for future organisers,
 9. show lifecycle position, review gates, and post-event follow-up needs where useful.
+
+The product should not force every event through a heavy internal workflow. It should adapt to event maturity and complexity, asking for more detail only when it affects readiness, routing, risk, or staff handoff.
 
 ## Primary users
 
@@ -75,6 +77,7 @@ Needs:
 - business-case, editorial, Dean's Office, security, promotion, and post-event follow-up cues,
 - fewer basic clarification requests,
 - support for high-value advisory work rather than repeating basic process guidance.
+- a triage layer that works even though most organisers do not use Monday.
 
 ## Affected stakeholders
 
@@ -154,7 +157,7 @@ The routing output. It should identify required and recommended stakeholders, re
 
 ### MondayIntegrationPayload
 
-A mock integration payload. It should show how the structured event and routing output could later become an item in Jo's `Events and Key Dates 25/26` Monday board with lifecycle status, group/category, columns, tags, owners, review gates, links, missing information, next actions, and subitems.
+A mock integration payload. It should show how the structured event and routing output could later become a candidate item or update in Jo's `Events and Key Dates 25/26` Monday board with lifecycle status, group/category, columns, tags, owners, review gates, links, missing information, next actions, and possible subitems. It should be framed as optional staff-side handoff, not as the canonical event record.
 
 ## Workstream 4 scope
 
@@ -201,6 +204,14 @@ Required baseline:
 - Azure-ready structure.
 - `project.md` kept up to date.
 
+Architecture direction from Jo's caveat:
+
+- the app's own `EventRequest` should be the canonical event object if persistence is introduced,
+- Monday should sit behind an optional integration/export boundary,
+- lifecycle/status should be lightweight and progressive rather than a mandatory full process,
+- staff views should prioritize triage, missing information, risk, and handoff readiness,
+- stakeholder routing should be based on event facts and risk triggers, not on assumed Monday participation.
+
 Do not implement:
 
 - custom username/password login,
@@ -223,6 +234,7 @@ Do not implement:
 7. Generate operational outputs, not just chat answers.
 8. Design for future integration without overbuilding the integration now.
 9. Treat Monday.com exports as source context for planning, not permission to store or expose real confidential event data.
+10. Treat the AI-generated Monday lifecycle as low-reliability unless validated by Jo or another human process owner.
 
 ## Success measures
 
@@ -247,3 +259,4 @@ Early success measures for the prototype:
 - Whether event data is persisted in PostgreSQL for the demo or held in request/response only.
 - Which generated outputs are demo-critical.
 - How much AI extraction is safe and necessary before Saturday.
+- Whether the staff-facing architecture needs a triage queue before any real Monday integration work.

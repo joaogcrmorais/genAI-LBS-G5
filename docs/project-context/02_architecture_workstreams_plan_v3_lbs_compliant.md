@@ -832,7 +832,7 @@ Tier 3:
 
 Do not call the real Monday.com API in the MVP.
 
-The MVP should generate a JSON payload that shows what could later be sent to Monday.com or a similar orchestration tool. After the Monday.com LLM exports, this should be framed as a mock mapping toward Jo's known `Events and Key Dates 25/26` board rather than a generic invented board. The lifecycle export is incomplete, so field-level mapping should stay provisional.
+The MVP should generate a JSON payload that shows what could later be sent to Monday.com or a similar orchestration tool. After the Monday.com LLM exports, this should be framed as a mock mapping toward Jo's known `Events and Key Dates 25/26` board rather than a generic invented board. After Jo's caveat, it should also be framed as an optional staff-side handoff/export target, not the canonical event workflow. Field-level mapping should stay provisional unless validated by a human process owner.
 
 Example fields:
 

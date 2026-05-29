@@ -8,7 +8,7 @@ These notes are for the team discussion about what the prototype should collect,
 
 This is the main item to align on. The Event Request is the shared description of an event that other workstreams can use.
 
-Monday.com update: Jo's `Events and Key Dates 25/26` board tracks a full event lifecycle, not just first intake. It includes about 844 events, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. One Monday export is incomplete, so the team should decide principles now and avoid overfitting every field until the full response arrives.
+Monday.com update: Jo's `Events and Key Dates 25/26` board includes about 844 events, 47 fields per event, 7 groups/categories, 19 filtered views, 38 organising departments, and 109 faculty members. The newer lifecycle export is fuller, but Jo has warned that the AI-described process is mostly not reality. Across the School there are roughly 1,200 events a year, run by 300-400 people; only two people actively track/record events in Monday, with about 10 others using it for awareness. The team should use Monday as source context for visibility needs and future handoff, not as a complete map of the real process.
 
 - What information must the organiser provide?
 - Which fields are mandatory vs optional?
@@ -19,6 +19,8 @@ Monday.com update: Jo's `Events and Key Dates 25/26` board tracks a full event l
 - Should `EventRequest` include lifecycle phase and Monday status hints?
 - Which fields are only needed for future Monday mapping, not intake?
 - Which fields differ between student-club events and institution-wide Editorial Planning events?
+- Which fields should be asked of all organisers, and which should be triggered only for higher-risk or higher-visibility events?
+- If the app persists events, should our database be the canonical event record with optional Monday export metadata?
 
 ## Workstream 4 Product Decisions
 
@@ -29,7 +31,7 @@ Current product direction for Workstream 4:
 - A second validator pass checks the first classification before the answer is returned.
 - Stakeholder packets are deterministic because downstream teams need stable, predictable outputs.
 - The Monday.com output is deterministic and mock-only. It demonstrates future integration potential without pretending to be a real integration.
-- The Monday.com output should now be planned against the known `Events and Key Dates 25/26` board shape, while still avoiding real API calls.
+- The Monday.com output should now be planned against the known `Events and Key Dates 25/26` board shape, while still avoiding real API calls and without implying that most organisers use Monday.
 - The tiering output should be explained to users, but it should remain prototype guidance rather than official LBS policy.
 
 Questions for the group:
@@ -42,6 +44,7 @@ Questions for the group:
 - Should WS4 produce separate operational packets and editorial/governance packets?
 - Which Monday statuses should appear in the mock payload?
 - Which review gates should be visible: business case, Events Oversight, Dean's Office, Security, Editorial Group, Event Promo Group, CC Network, PR, Advancement?
+- How should the demo explain that Monday is a staff-side visibility tool used by a small group, not the workflow followed by every event organiser?
 
 ## Proposed Technical Approach
 
@@ -54,12 +57,14 @@ High-level approach for approval:
 - OpenAI calls and secrets stay in the backend.
 - The frontend demo page is only a testing tool for now, not the final product experience.
 - Monday lifecycle awareness should influence planning docs now, but endpoint changes should wait until the team explicitly asks for them.
+- The architecture should optimize for decentralized intake and triage first, with Monday as an optional downstream handoff.
 
 Questions for the group:
 
 - Is everyone comfortable with this split between AI judgement and deterministic outputs?
 - Is the current Event Request structure good enough for teams to start building against?
 - What should be shown in the final user-facing interface versus kept as backend/supporting data?
+- What is the minimum useful staff triage view for Jo and the small number of Monday-aware users?
 
 ## Dashboard
 

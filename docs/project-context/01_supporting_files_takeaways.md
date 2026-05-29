@@ -36,7 +36,7 @@ This document gives Codex the useful takeaways from the project source materials
 
 ## 4. Current workflow understanding
 
-Current event planning broadly involves the student-facing readiness steps below, but the Monday.com exports add a more complete lifecycle used by Jo's Editorial Planning board.
+Current event planning broadly involves the student-facing readiness steps below. The Monday.com exports add useful board vocabulary and visibility needs, but Jo has warned that the AI-described full lifecycle is mostly not how events actually run.
 
 1. Student organiser has an event idea.
 2. Organiser completes an initial space/crib-style request.
@@ -49,12 +49,14 @@ Current event planning broadly involves the student-facing readiness steps below
 
 Monday.com update:
 
-- Jo's `Events and Key Dates 25/26` board is a central coordination board for events and key dates across LBS.
+- Jo's `Events and Key Dates 25/26` board is a visibility and coordination board for events and key dates across LBS.
 - It tracks about 844 active event items, about 47 fields per event, 7 event categories/groups, 19 filtered views, 38 organising departments, and 109 faculty members.
-- Its lifecycle runs from ideation and initial request, through feasibility/business-case review, detailed planning, editorial/content planning, final pre-event checks, event-day execution, and post-event closure.
+- Across the School there are roughly 1,200 events per year, run by 300-400 people.
+- Only two people really actively use Monday to track or record events, with about 10 others using it for awareness.
+- The AI-described lifecycle runs from ideation and initial request through post-event closure, but most of that process does not happen or happens only for a minority of events.
 - It uses statuses such as Requested, Proposed, More info required, Can progress, Tentative, Date to be confirmed, Confirmed - subject to business case, Confirmed, Confirmed - Space Check, Stuck/Issues, Changing plans, Cancelled/moved, and Not happening.
-- It uses subitems for task ownership, deadlines, blockers, links, and post-event follow-up.
-- One export is incomplete, so treat field IDs and later-phase details as provisional.
+- It may use subitems for task ownership, deadlines, blockers, links, and post-event follow-up, but this should not be assumed for most events.
+- Treat Monday field IDs, lifecycle details, and gates as provisional unless validated by a human process owner.
 
 Pain points:
 
@@ -206,7 +208,7 @@ Editorial Planning needs:
 - script/content quality,
 - strategic fit.
 
-Monday.com also shows Editorial Planning needs lifecycle/status information, business-case links, review dates, content tags, editorial themes, content priority, Dean attendance/briefing status, security/Advancement review markers, and post-event content follow-up state.
+Monday.com also shows Editorial Planning may need lifecycle/status information, business-case links, review dates, content tags, editorial themes, content priority, Dean attendance/briefing status, security/Advancement review markers, and post-event content follow-up state. These are staff-side visibility needs, not mandatory fields for every organiser.
 
 ## 8. Tiering and escalation takeaways
 
@@ -387,4 +389,4 @@ For Workstream 4, build:
 Do not build real Monday.com API calls for Saturday.
 Use OpenAI for tiering classification because it benefits from contextual judgment. Do not use OpenAI for stakeholder packet prediction; build stakeholder packets deterministically so Workstream 3 can consume them reliably.
 
-Update from Monday.com exports: the mock Monday payload should now target the known `Events and Key Dates 25/26` board shape in planning, including lifecycle status, group/category, Monday-like column categories, stakeholder tags, review dates, links, and subitems. It should remain a mock payload and must not call the real Monday.com API.
+Update from Monday.com exports and Jo's caveat: the mock Monday payload should now target the known `Events and Key Dates 25/26` board shape in planning, including lifecycle status, group/category, Monday-like column categories, stakeholder tags, review dates, links, and possible subitems. It should remain a mock optional staff-side handoff payload, not the product's source of truth, and must not call the real Monday.com API.

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-These notes are for the team discussion about what the prototype should collect, decide, and show. The goal is to agree the product requirements before each workstream builds too far in different directions.
+These notes were originally for the Wednesday team discussion, but the team did not meet Wednesday. Use them as source material for the Monday reset meeting, alongside `docs/project-context/monday-meeting-gameplan.md`. The goal is still to agree what the prototype should collect, decide, and show before each workstream builds too far in different directions.
 
 ## Event Request
 

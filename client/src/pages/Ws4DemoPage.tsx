@@ -79,6 +79,7 @@ const cateringStyles = ["none", "refreshments", "buffet", "plated", "reception",
 const sensitiveTopicOptions = ["yes", "no", "unknown"];
 const statuses = ["draft", "ready_for_review", "submitted"];
 const intakeSources = ["manual", "document_upload", "email_extract", "unknown"];
+const mondayHandoffIntents = ["none", "optional", "requested", "already_tracked", "unknown"];
 
 function cloneEvent(eventRequest: EventRequest) {
   return JSON.parse(JSON.stringify(eventRequest)) as EventRequest;
@@ -612,6 +613,24 @@ export function Ws4DemoPage() {
             <div className="checkbox-grid">
               <CheckboxInput label="business_case_required" checked={eventRequest.planning_and_governance.business_case_required} onChange={(value) => updateSection("planning_and_governance", "business_case_required", value)} />
               <CheckboxInput label="photography_requested" checked={eventRequest.planning_and_governance.photography_requested} onChange={(value) => updateSection("planning_and_governance", "photography_requested", value)} />
+            </div>
+          </section>
+
+          <section className="form-section">
+            <h2>Process context</h2>
+            <div className="form-grid">
+              <SelectInput
+                label="monday_handoff_intent"
+                value={eventRequest.process_context.monday_handoff_intent}
+                options={mondayHandoffIntents}
+                onChange={(value) => updateSection("process_context", "monday_handoff_intent", value as EventRequest["process_context"]["monday_handoff_intent"])}
+              />
+              <TextInput label="known_monday_item_id" value={eventRequest.process_context.known_monday_item_id} onChange={(value) => updateSection("process_context", "known_monday_item_id", value)} />
+            </div>
+            <TextArea label="process_notes" value={eventRequest.process_context.process_notes} onChange={(value) => updateSection("process_context", "process_notes", value)} />
+            <div className="checkbox-grid">
+              <CheckboxInput label="organizer_uses_monday" checked={eventRequest.process_context.organizer_uses_monday} onChange={(value) => updateSection("process_context", "organizer_uses_monday", value)} />
+              <CheckboxInput label="staff_visibility_requested" checked={eventRequest.process_context.staff_visibility_requested} onChange={(value) => updateSection("process_context", "staff_visibility_requested", value)} />
             </div>
           </section>
 

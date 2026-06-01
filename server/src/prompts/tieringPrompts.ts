@@ -16,7 +16,7 @@ export const CRITICAL_TIERING_FACTS = [
   "space",
   "sponsors/media/public visibility",
   "business-case, Dean, security, editorial, or promotion markers when provided",
-  "lifecycle phase or Monday status when provided",
+  "process context or Monday handoff intent when provided",
   "sensitive-topic signal when relevant"
 ] as const;
 
@@ -34,6 +34,12 @@ export function buildClassifierPrompt(eventRequest: EventRequest) {
     "2. Check whether critical tiering facts are missing.",
     "3. Add nuance for LBS event-planning context only when the provided facts support it.",
     "4. If nuance changes the tier, explain the evidence in user-visible reasoning.",
+    "5. Treat lifecycle phase, Monday status, and Monday handoff intent as optional context, not as mandatory workflow gates.",
+    "",
+    "Process reality:",
+    "Across LBS, events are decentralized and most organisers do not actively use Monday.com.",
+    "Monday.com is an optional staff-side visibility handoff target, not the source of truth for tiering.",
+    "Do not ask for Monday-only fields unless they are needed because the event facts show staff visibility, risk, or escalation.",
     "",
     "Baseline tiering rules:",
     ...BASELINE_TIERING_RULES.map((rule) => `- ${rule}`),
@@ -82,6 +88,11 @@ export function buildValidatorPrompt(eventRequest: EventRequest, initialResult: 
     "1. Re-check the initial result against the baseline tiering rules.",
     "2. Confirm any added nuance is grounded in the EventRequest facts.",
     "3. Revise the result if the baseline, facts, or missing information require it.",
+    "4. Do not treat Monday lifecycle/status fields as required evidence unless the event facts justify a staff-side handoff.",
+    "",
+    "Process reality:",
+    "Across LBS, events are decentralized and most organisers do not actively use Monday.com.",
+    "Monday.com is an optional staff-side visibility handoff target, not the source of truth for tiering.",
     "",
     "Baseline tiering rules:",
     ...BASELINE_TIERING_RULES.map((rule) => `- ${rule}`),

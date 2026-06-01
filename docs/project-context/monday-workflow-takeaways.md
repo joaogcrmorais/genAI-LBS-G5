@@ -150,6 +150,7 @@ Workstream 4 is the most affected stream.
 - Mock columns should use Monday-like field categories: status, timeline/date, time, organising department, location, audience, expected attendance, speakers, faculty, tags, review dates, links, and subitems.
 - The payload may include lifecycle status and subitem suggestions, but these should be framed as suggested staff-side tracking aids rather than a universal task model.
 - Stakeholder packets should distinguish operational routing from Jo's editorial/governance routing.
+- Stakeholder packet output should include a triage summary so staff can see whether visibility is routine, elevated, or urgent before any Monday handoff.
 - Security, Dean's Office, Advancement, Editorial Group, Event Promo Group, PR Managers, CC Network, Photography, and Sponsorship should be first-class planning stakeholders where the event facts trigger them.
 - The current "no real Monday API call" rule still stands.
 - Architecture should not make Monday the source of truth. If persistence is introduced, the prototype's own `EventRequest` record should be canonical and Monday should be an optional downstream integration/export target.

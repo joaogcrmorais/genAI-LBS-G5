@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const POLICY_DISCLAIMER = "Prototype guidance only; not official LBS policy." as const;
-export const MONDAY_MOCK_NOTICE = "Mock payload only; no Monday.com API call was made." as const;
+export const MONDAY_MOCK_NOTICE = "Optional staff-side handoff payload only; no Monday.com API call was made." as const;
 
 const looseObjectSchema = z.object({}).passthrough();
 
@@ -38,6 +38,27 @@ export const mondayStatusHintSchema = z.enum([
   "not_happening",
   "unknown"
 ]);
+
+export const mondayHandoffIntentSchema = z.enum([
+  "none",
+  "optional",
+  "requested",
+  "already_tracked",
+  "unknown"
+]);
+
+export const staffVisibilityLevelSchema = z.enum(["none", "routine", "elevated", "urgent"]);
+
+export const mondayHandoffRecommendationSchema = z.enum([
+  "not_needed",
+  "optional_visibility",
+  "recommended_staff_handoff",
+  "defer_until_more_info"
+]);
+
+export type MondayHandoffIntent = z.infer<typeof mondayHandoffIntentSchema>;
+export type MondayHandoffRecommendation = z.infer<typeof mondayHandoffRecommendationSchema>;
+export type StaffVisibilityLevel = z.infer<typeof staffVisibilityLevelSchema>;
 
 export const eventRequestSchema = z
   .object({
@@ -76,6 +97,16 @@ export const eventRequestSchema = z
     speakers_and_guests: looseObjectSchema.optional(),
     sponsorship_and_external_parties: looseObjectSchema.optional(),
     planning_and_governance: looseObjectSchema.optional(),
+    process_context: z
+      .object({
+        monday_handoff_intent: mondayHandoffIntentSchema.optional(),
+        organizer_uses_monday: z.boolean().optional(),
+        staff_visibility_requested: z.boolean().optional(),
+        known_monday_item_id: z.string().optional(),
+        process_notes: z.string().optional()
+      })
+      .passthrough()
+      .optional(),
     intake_state: looseObjectSchema.optional()
   })
   .passthrough();
@@ -136,6 +167,14 @@ export type Stakeholder = z.infer<typeof stakeholderSchema>;
 
 export const stakeholderPacketResultSchema = z.object({
   event_id: z.string().min(1),
+  triage_summary: z.object({
+    source_of_truth: z.literal("event_request"),
+    staff_visibility_level: staffVisibilityLevelSchema,
+    monday_handoff_recommendation: mondayHandoffRecommendationSchema,
+    monday_handoff_intent: mondayHandoffIntentSchema,
+    rationale: z.array(z.string().min(1)),
+    missing_information_count: z.number().int().nonnegative()
+  }),
   stakeholders_required: z.array(stakeholderSchema),
   stakeholders_recommended: z.array(stakeholderSchema),
   stakeholders_not_needed: z.array(stakeholderSchema),
@@ -185,6 +224,14 @@ export const mondayIntegrationPayloadSchema = z.object({
   item_name: z.string().min(1),
   group_name: z.string().min(1),
   lifecycle_status: z.string().min(1),
+  handoff_context: z.object({
+    source_of_truth: z.literal("event_request"),
+    monday_role: z.literal("optional_staff_visibility_handoff"),
+    recommendation: mondayHandoffRecommendationSchema,
+    staff_visibility_level: staffVisibilityLevelSchema,
+    handoff_intent: mondayHandoffIntentSchema,
+    reliability_note: z.string().min(1)
+  }),
   columns: z.record(z.unknown()),
   subitems: z.array(
     z.object({

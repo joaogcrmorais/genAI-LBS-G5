@@ -21,6 +21,10 @@ describe("buildMondayMockPayload", () => {
       planning_and_governance: {
         editorial_content_tags: ["Event Promo Group"],
         advancement_review_status: "Speakers shared with Advancement"
+      },
+      process_context: {
+        monday_handoff_intent: "optional",
+        staff_visibility_requested: true
       }
     };
     const classification = {
@@ -43,11 +47,16 @@ describe("buildMondayMockPayload", () => {
     expect(payload.board_hint).toBe("Events and Key Dates 25/26");
     expect(payload.board_id_hint).toBe("2008539622");
     expect(payload.lifecycle_status).toBe("Tentative");
+    expect(payload.handoff_context.source_of_truth).toBe("event_request");
+    expect(payload.handoff_context.monday_role).toBe("optional_staff_visibility_handoff");
+    expect(payload.handoff_context.handoff_intent).toBe("optional");
     expect(payload.columns.mock_only).toBe(true);
+    expect(payload.columns.source_of_truth).toBe("event_request");
+    expect(payload.columns.monday_role).toBe("optional_staff_visibility_handoff");
     expect(payload.columns.suggested_tier).toBe("tier_2");
     expect(payload.columns.editorial_content_tags).toEqual(["Event Promo Group"]);
     expect(payload.source_outputs_used).toEqual(["classification", "stakeholder_packets"]);
     expect(payload.subitems.length).toBeGreaterThan(0);
-    expect(payload.subitems.some((subitem) => subitem.name === "Confirm lifecycle status and next review gate")).toBe(true);
+    expect(payload.subitems.some((subitem) => subitem.name === "Decide whether this needs Monday visibility")).toBe(true);
   });
 });

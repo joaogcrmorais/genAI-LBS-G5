@@ -29,6 +29,8 @@ describe("tiering prompts", () => {
 
     expect(prompt).toContain("Apply the baseline tiering rules first.");
     expect(prompt).toContain("Add nuance for LBS event-planning context only when the provided facts support it.");
+    expect(prompt).toContain("Monday.com is an optional staff-side visibility handoff target, not the source of truth for tiering.");
+    expect(prompt).toContain("Do not ask for Monday-only fields unless they are needed");
     for (const rule of BASELINE_TIERING_RULES) {
       expect(prompt).toContain(rule);
     }
@@ -40,6 +42,7 @@ describe("tiering prompts", () => {
 
     expect(prompt).toContain("Re-check the initial result against the baseline tiering rules.");
     expect(prompt).toContain("Confirm any added nuance is grounded in the EventRequest facts.");
+    expect(prompt).toContain("Do not treat Monday lifecycle/status fields as required evidence");
     for (const rule of BASELINE_TIERING_RULES) {
       expect(prompt).toContain(rule);
     }

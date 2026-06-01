@@ -308,9 +308,9 @@ Before serious build work begins, agree:
 
 ## Are workstreams parallelisable?
 
-Before Wednesday, only partially. Everyone can define requirements, sample inputs, sample outputs, and mock designs. But heavy implementation should wait until the shared schema is agreed.
+Before the Monday reset meeting, only partially. Everyone can define requirements, sample inputs, sample outputs, and mock designs. But heavy implementation should wait until the shared schema is agreed.
 
-After Wednesday, yes. Once `EventRequest` and the API contracts are stable, all workstreams can build in parallel against the same object.
+After Monday, yes. Once `EventRequest` and the API contracts are stable, all workstreams can build in parallel against the same object.
 
 ## Instructions for ChatGPT/Codex
 

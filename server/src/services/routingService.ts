@@ -1,5 +1,8 @@
 import type {
   EventRequest,
+  MondayHandoffIntent,
+  MondayHandoffRecommendation,
+  StaffVisibilityLevel,
   Stakeholder,
   StakeholderPacketResult,
   TieringClassificationResult
@@ -67,6 +70,95 @@ function stringValue(value: unknown) {
   return typeof value === "string" && value.trim() ? value : null;
 }
 
+function mondayHandoffIntent(value: unknown): MondayHandoffIntent {
+  if (
+    value === "none" ||
+    value === "optional" ||
+    value === "requested" ||
+    value === "already_tracked" ||
+    value === "unknown"
+  ) {
+    return value;
+  }
+  return "unknown";
+}
+
+function hasAnyGovernanceMarker(governance: Record<string, unknown>) {
+  return Boolean(
+    bool(governance.business_case_required) ||
+      stringValue(governance.business_case_link) ||
+      stringValue(governance.dean_attendance_status) ||
+      stringValue(governance.security_review_status) ||
+      stringValue(governance.advancement_review_status) ||
+      stringValue(governance.editorial_theme) ||
+      stringValue(governance.content_priority) ||
+      stringArray(governance.editorial_content_tags).length > 0 ||
+      stringArray(governance.event_overview_tags).length > 0
+  );
+}
+
+function buildTriageSummary({
+  packets,
+  missingInformationCount,
+  handoffIntent,
+  highTier,
+  attendance,
+  hasHighVisibility,
+  hasGovernanceMarker
+}: {
+  packets: PacketDraft[];
+  missingInformationCount: number;
+  handoffIntent: MondayHandoffIntent;
+  highTier: boolean;
+  attendance: number | null;
+  hasHighVisibility: boolean;
+  hasGovernanceMarker: boolean;
+}) {
+  const requiredCount = packets.filter((packet) => packet.status === "required").length;
+  const packetCount = packets.length;
+  let staffVisibilityLevel: StaffVisibilityLevel = "none";
+
+  if (highTier || hasHighVisibility || requiredCount >= 4) {
+    staffVisibilityLevel = "urgent";
+  } else if (hasGovernanceMarker || (attendance !== null && attendance >= 100) || requiredCount >= 2 || packetCount >= 4) {
+    staffVisibilityLevel = "elevated";
+  } else if (packetCount > 0) {
+    staffVisibilityLevel = "routine";
+  }
+
+  let mondayHandoffRecommendation: MondayHandoffRecommendation = "not_needed";
+  if (missingInformationCount >= 3 && (staffVisibilityLevel === "elevated" || staffVisibilityLevel === "urgent")) {
+    mondayHandoffRecommendation = "defer_until_more_info";
+  } else if (
+    handoffIntent === "requested" ||
+    handoffIntent === "already_tracked" ||
+    staffVisibilityLevel === "elevated" ||
+    staffVisibilityLevel === "urgent"
+  ) {
+    mondayHandoffRecommendation = "recommended_staff_handoff";
+  } else if (handoffIntent === "optional" || staffVisibilityLevel === "routine") {
+    mondayHandoffRecommendation = "optional_visibility";
+  }
+
+  const rationale = [
+    "EventRequest is the source of truth for this prototype response.",
+    "Monday is treated as an optional staff-side visibility handoff, not the canonical event workflow.",
+    `${packetCount} stakeholder packet${packetCount === 1 ? "" : "s"} generated, including ${requiredCount} required packet${requiredCount === 1 ? "" : "s"}.`,
+    missingInformationCount > 0
+      ? `${missingInformationCount} missing information item${missingInformationCount === 1 ? "" : "s"} should be resolved before relying on the handoff.`
+      : "No stakeholder-specific missing information was generated."
+  ];
+
+  return {
+    source_of_truth: "event_request" as const,
+    staff_visibility_level: staffVisibilityLevel,
+    monday_handoff_recommendation: mondayHandoffRecommendation,
+    monday_handoff_intent: handoffIntent,
+    rationale,
+    missing_information_count: missingInformationCount
+  };
+}
+
 function pushPacket(packets: PacketDraft[], packet: PacketDraft) {
   packets.push({
     ...packet,
@@ -88,8 +180,10 @@ export function buildStakeholderPackets(
   const speakers = eventRequest.speakers_and_guests ?? {};
   const external = eventRequest.sponsorship_and_external_parties ?? {};
   const governance = eventRequest.planning_and_governance ?? {};
+  const processContext = eventRequest.process_context ?? {};
   const lifecyclePhase = stringValue(basics.lifecycle_phase) ?? "unknown";
   const mondayStatus = stringValue(basics.monday_status_hint) ?? "unknown";
+  const handoffIntent = mondayHandoffIntent(processContext.monday_handoff_intent);
   const contentTags = stringArray(governance.editorial_content_tags);
   const facultyAttending = stringArray(speakers.faculty_attending);
   const speakerObjects = objectArray(speakers.speakers);
@@ -116,6 +210,8 @@ export function buildStakeholderPackets(
   const riskFlags = classification?.status === "classified" ? classification.risk_flags : [];
   const escalationFlags = classification?.status === "classified" ? classification.escalation_flags : [];
   const highTier = classification?.status === "classified" && classification.suggested_tier === "tier_3";
+  const hasHighVisibility = bool(speakers.vip_or_embassy_presence) || bool(speakers.media_expected) || audienceTypes.includes("public");
+  const hasGovernanceMarker = hasAnyGovernanceMarker(governance);
   const packets: PacketDraft[] = [];
 
   const spaceRequired =
@@ -197,7 +293,7 @@ export function buildStakeholderPackets(
     bool(speakers.media_expected) ||
     bool(speakers.guest_list_required) ||
     securityMarked ||
-    attendance !== null && attendance >= 100 ||
+    (attendance !== null && attendance >= 100) ||
     bool(catering.needs_alcohol) ||
     includesAny(riskFlags, ["vip", "media_expected", "security_review"]) ||
     includesAny(escalationFlags, ["security_review"])
@@ -493,20 +589,23 @@ export function buildStakeholderPackets(
   }
 
   if (
-    packets.length >= 3 ||
-    ["detailed_planning", "editorial_content_planning", "pre_event_execution", "post_event"].includes(lifecyclePhase)
+    handoffIntent === "requested" ||
+    handoffIntent === "already_tracked" ||
+    packets.length >= 4 ||
+    (packets.length >= 3 && ["pre_event_execution", "event_day", "post_event"].includes(lifecyclePhase))
   ) {
     pushPacket(packets, {
       stakeholder: "task_owners",
       status: "recommended",
-      reasons: ["The event has enough moving parts to benefit from explicit task ownership and subitem tracking."],
+      reasons: ["The event may benefit from explicit task ownership, but this is an optional tracking aid rather than a universal Monday workflow."],
       relevant_facts: {
         lifecycle_phase: lifecyclePhase,
         monday_status_hint: mondayStatus,
+        monday_handoff_intent: handoffIntent,
         stakeholder_packet_count: packets.length
       },
       missing_information: [],
-      suggested_next_actions: ["Create or review subitems for owners, deadlines, blockers, links, and post-event follow-up."]
+      suggested_next_actions: ["If staff choose to track this event, create lightweight owner/deadline tasks only for the active handoff points."]
     });
   }
 
@@ -534,18 +633,33 @@ export function buildStakeholderPackets(
     dependencies.push("Event promotion should align with editorial/content priority and publication timing.");
   }
 
+  const missingInformationByStakeholder = packets
+    .filter((packet) => packet.missing_information.length > 0)
+    .map((packet) => ({
+      stakeholder: packet.stakeholder,
+      missing_information: packet.missing_information
+    }));
+  const missingInformationCount = missingInformationByStakeholder.reduce(
+    (count, item) => count + item.missing_information.length,
+    0
+  );
+
   return stakeholderPacketResultSchema.parse({
     event_id: getEventId(eventRequest),
+    triage_summary: buildTriageSummary({
+      packets,
+      missingInformationCount,
+      handoffIntent,
+      highTier,
+      attendance,
+      hasHighVisibility,
+      hasGovernanceMarker
+    }),
     stakeholders_required: [...new Set(required)],
     stakeholders_recommended: [...new Set(recommended)],
     stakeholders_not_needed: notNeeded,
     stakeholder_packets: packets,
     cross_stakeholder_dependencies: dependencies,
-    missing_information_by_stakeholder: packets
-      .filter((packet) => packet.missing_information.length > 0)
-      .map((packet) => ({
-        stakeholder: packet.stakeholder,
-        missing_information: packet.missing_information
-      }))
+    missing_information_by_stakeholder: missingInformationByStakeholder
   });
 }

@@ -159,6 +159,14 @@ Response shape:
 ```json
 {
   "event_id": "evt_001",
+  "triage_summary": {
+    "source_of_truth": "event_request",
+    "staff_visibility_level": "routine",
+    "monday_handoff_recommendation": "optional_visibility",
+    "monday_handoff_intent": "unknown",
+    "rationale": [],
+    "missing_information_count": 0
+  },
   "stakeholders_required": [],
   "stakeholders_recommended": [],
   "stakeholders_not_needed": [],
@@ -175,6 +183,7 @@ Hard requirements:
 - Must be stable enough for Workstream 3 to consume directly.
 - Must include required and recommended stakeholders separately.
 - Must include stakeholder-specific missing information.
+- Must include a lightweight triage summary that treats `EventRequest` as source of truth and Monday as optional handoff.
 - Must not block Workstream 3 on manual approval.
 - May use the tiering result as an input, but should not depend exclusively on it.
 
@@ -200,6 +209,14 @@ Response shape:
   "item_name": "Event name",
   "group_name": "Student Club Events",
   "lifecycle_status": "Requested",
+  "handoff_context": {
+    "source_of_truth": "event_request",
+    "monday_role": "optional_staff_visibility_handoff",
+    "recommendation": "optional_visibility",
+    "staff_visibility_level": "routine",
+    "handoff_intent": "unknown",
+    "reliability_note": "..."
+  },
   "columns": {},
   "subitems": [],
   "source_outputs_used": ["classification", "stakeholder_packets"]
@@ -212,6 +229,7 @@ Hard requirements:
 - Must be deterministic.
 - Must clearly label itself as a mock payload.
 - Must be suitable for demo display and future integration planning.
+- Must clearly state that Monday is an optional staff-side handoff target, not the product source of truth.
 - Should map to Monday-like categories from the source exports: status, timeline/date, time, organising department, location, audience, expected attendance, actual registered, speakers, faculty attending, business case link, registration link, crib sheet link, content tags, review dates, and stakeholder tags.
 - May include suggested subitems for staff-side tracking and demo purposes, but should not imply that most real events are managed through Monday subitems.
 

@@ -149,11 +149,11 @@ Keep this as one demo option, but do not treat it as the only/default scenario. 
 
 ### EventRequest
 
-The shared event object. It should capture organiser details, event basics, lifecycle/status hints, space/setup needs, catering, AV, speakers/guests, sponsorship/external parties, and intake state. Derived tiering, stakeholder packets, generated outputs, integration data, and post-event feedback should generally stay as separate outputs unless the team explicitly decides to persist them on the event record.
+The shared event object. It should capture organiser details, event basics, lifecycle/status hints, space/setup needs, catering, AV, speakers/guests, sponsorship/external parties, process context, and intake state. `process_context` should hold optional staff-side workflow facts such as Monday handoff intent, not a mandatory process. Derived tiering, stakeholder packets, generated outputs, integration data, and post-event feedback should generally stay as separate outputs unless the team explicitly decides to persist them on the event record.
 
 ### StakeholderRoutingResult
 
-The routing output. It should identify required and recommended stakeholders, reasons, risk flags, escalation flags, proposed tier, EIS or briefing requirement if relevant, Events Oversight / editorial / promotion / Dean / security review needs where relevant, and reasoning summary.
+The routing output. It should identify required and recommended stakeholders, reasons, risk flags, escalation flags, proposed tier, EIS or briefing requirement if relevant, Events Oversight / editorial / promotion / Dean / security review needs where relevant, and reasoning summary. It should also include a lightweight triage summary that says whether staff visibility is none, routine, elevated, or urgent and whether Monday handoff is unnecessary, optional, recommended, or blocked on more information.
 
 ### MondayIntegrationPayload
 

@@ -134,6 +134,13 @@ export type EventRequest = {
     photography_requested: boolean;
     event_overview_tags: string[];
   };
+  process_context: {
+    monday_handoff_intent: "none" | "optional" | "requested" | "already_tracked" | "unknown";
+    organizer_uses_monday: boolean;
+    staff_visibility_requested: boolean;
+    known_monday_item_id: string;
+    process_notes: string;
+  };
   intake_state: {
     source: "manual" | "document_upload" | "email_extract" | "unknown";
     completeness_score: number | null;
@@ -254,6 +261,13 @@ const baseEvent: EventRequest = {
     ep_review_date: "",
     photography_requested: false,
     event_overview_tags: []
+  },
+  process_context: {
+    monday_handoff_intent: "unknown",
+    organizer_uses_monday: false,
+    staff_visibility_requested: false,
+    known_monday_item_id: "",
+    process_notes: "Most organisers do not actively use Monday; treat Monday as optional staff-side handoff."
   },
   intake_state: {
     source: "manual",
@@ -406,6 +420,11 @@ export const ws4Scenarios: Record<string, EventRequest> = {
       business_case_link: "Mock business case link",
       free_or_paid: "Free",
       event_overview_tags: ["Business case required", "Sponsorship Support Requested"]
+    },
+    process_context: {
+      ...baseEvent.process_context,
+      monday_handoff_intent: "optional",
+      staff_visibility_requested: true
     }
   }),
   vipLeader: clone({
@@ -473,6 +492,12 @@ export const ws4Scenarios: Record<string, EventRequest> = {
       ep_review_date: "2026-06-07",
       photography_requested: true,
       event_overview_tags: ["Business case required", "Security issues", "Shared with PR", "Photography agreed"]
+    },
+    process_context: {
+      ...baseEvent.process_context,
+      monday_handoff_intent: "requested",
+      staff_visibility_requested: true,
+      process_notes: "High-visibility event likely needs staff triage before any optional Monday handoff."
     }
   })
 };

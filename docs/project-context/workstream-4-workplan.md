@@ -28,8 +28,10 @@ Implemented Monday update:
 
 - Existing endpoint paths remain unchanged.
 - `EventRequest` accepts lifecycle/status hints and permissive Monday-derived planning/governance metadata.
+- `EventRequest` now accepts optional `process_context` so the prototype can represent whether Monday handoff is unknown, unnecessary, optional, requested, or already tracked.
 - Deterministic stakeholder packets now include operational stakeholders plus Monday-derived editorial/governance stakeholders.
-- The Monday mock payload now targets `Events and Key Dates 25/26` with board ID hint `2008539622`, lifecycle status, Monday-like columns, review gates, links, stakeholder tags, and subitems. It should be described as a possible handoff payload rather than as a representation of how most events are currently managed.
+- Deterministic stakeholder packets now include a `triage_summary` that identifies staff visibility level, Monday handoff recommendation, missing information count, and the source-of-truth boundary.
+- The Monday mock payload now targets `Events and Key Dates 25/26` with board ID hint `2008539622`, lifecycle status, Monday-like columns, review gates, links, stakeholder tags, and possible subitems. It now includes `handoff_context` and should be described as a possible handoff payload rather than as a representation of how most events are currently managed.
 
 ## Current active work
 

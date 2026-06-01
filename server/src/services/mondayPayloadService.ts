@@ -1,6 +1,9 @@
 import type {
   EventRequest,
   MondayIntegrationPayload,
+  MondayHandoffIntent,
+  MondayHandoffRecommendation,
+  StaffVisibilityLevel,
   StakeholderPacketResult,
   TieringClassificationResult
 } from "../schemas/ws4.js";
@@ -41,6 +44,56 @@ function mondayStatusLabel(status: unknown) {
   return MONDAY_STATUS_LABELS[key] ?? key;
 }
 
+function mondayHandoffIntent(value: unknown): MondayHandoffIntent {
+  if (
+    value === "none" ||
+    value === "optional" ||
+    value === "requested" ||
+    value === "already_tracked" ||
+    value === "unknown"
+  ) {
+    return value;
+  }
+  return "unknown";
+}
+
+function fallbackHandoffRecommendation(
+  classification: TieringClassificationResult | undefined,
+  handoffIntent: MondayHandoffIntent
+): {
+  recommendation: MondayHandoffRecommendation;
+  staffVisibilityLevel: StaffVisibilityLevel;
+} {
+  if (classification?.status === "needs_more_information") {
+    return {
+      recommendation: "defer_until_more_info",
+      staffVisibilityLevel: "elevated"
+    };
+  }
+  if (classification?.status === "classified" && classification.suggested_tier === "tier_3") {
+    return {
+      recommendation: "recommended_staff_handoff",
+      staffVisibilityLevel: "urgent"
+    };
+  }
+  if (handoffIntent === "requested" || handoffIntent === "already_tracked") {
+    return {
+      recommendation: "recommended_staff_handoff",
+      staffVisibilityLevel: "elevated"
+    };
+  }
+  if (handoffIntent === "optional") {
+    return {
+      recommendation: "optional_visibility",
+      staffVisibilityLevel: "routine"
+    };
+  }
+  return {
+    recommendation: "not_needed",
+    staffVisibilityLevel: "none"
+  };
+}
+
 export function buildMondayMockPayload(
   eventRequest: EventRequest,
   classification?: TieringClassificationResult,
@@ -56,7 +109,13 @@ export function buildMondayMockPayload(
   const space = eventRequest.space_and_setup ?? {};
   const external = eventRequest.sponsorship_and_external_parties ?? {};
   const governance = eventRequest.planning_and_governance ?? {};
+  const processContext = eventRequest.process_context ?? {};
   const lifecycleStatus = mondayStatusLabel(basics.monday_status_hint);
+  const handoffIntent = mondayHandoffIntent(processContext.monday_handoff_intent);
+  const fallbackHandoff = fallbackHandoffRecommendation(classification, handoffIntent);
+  const handoffRecommendation =
+    stakeholderPackets?.triage_summary.monday_handoff_recommendation ?? fallbackHandoff.recommendation;
+  const staffVisibilityLevel = stakeholderPackets?.triage_summary.staff_visibility_level ?? fallbackHandoff.staffVisibilityLevel;
   const packetCount = stakeholderPackets?.stakeholder_packets.length ?? 0;
   const missingInformationCount =
     stakeholderPackets?.missing_information_by_stakeholder.reduce(
@@ -76,9 +135,24 @@ export function buildMondayMockPayload(
       ? "Student Club Events"
       : stringValue(organizer.club_or_department) ?? "Events and Key Dates",
     lifecycle_status: lifecycleStatus,
+    handoff_context: {
+      source_of_truth: "event_request",
+      monday_role: "optional_staff_visibility_handoff",
+      recommendation: handoffRecommendation,
+      staff_visibility_level: staffVisibilityLevel,
+      handoff_intent: handoffIntent,
+      reliability_note:
+        "Jo's caveat says the AI-described Monday lifecycle is not representative of most real events, so this payload is only a candidate staff visibility handoff."
+    },
     columns: {
       event_id: eventId,
       title,
+      source_of_truth: "event_request",
+      monday_role: "optional_staff_visibility_handoff",
+      monday_handoff_recommendation: handoffRecommendation,
+      staff_visibility_level: staffVisibilityLevel,
+      monday_handoff_intent: handoffIntent,
+      known_monday_item_id: processContext.known_monday_item_id ?? "unknown",
       monday_status_hint: lifecycleStatus,
       lifecycle_phase: basics.lifecycle_phase ?? "unknown",
       event_type: basics.event_type ?? "unknown",
@@ -140,24 +214,24 @@ export function buildMondayMockPayload(
         name: `${packet.stakeholder}: ${packet.status}`,
         owner_hint: packet.stakeholder,
         status: packet.status,
-        due_hint: "Review in the relevant Monday view before the next lifecycle gate.",
+        due_hint: "Review if this event is being handed off for staff visibility.",
         notes: [...packet.reasons, ...packet.suggested_next_actions].join(" "),
         related_fields: Object.keys(packet.relevant_facts)
       })) ?? []),
       {
-        name: "Confirm lifecycle status and next review gate",
+        name: "Decide whether this needs Monday visibility",
         owner_hint: "editorial_planning",
-        status: "recommended",
-        due_hint: "Before moving the item to the next Monday status",
-        notes: `Current mock lifecycle status is ${lifecycleStatus}.`,
-        related_fields: ["event_basics.lifecycle_phase", "event_basics.monday_status_hint"]
+        status: handoffRecommendation === "not_needed" ? "optional" : "recommended",
+        due_hint: "Before creating or updating any Monday item",
+        notes: `Current recommendation is ${handoffRecommendation}; Monday is optional staff-side visibility, not the source of truth.`,
+        related_fields: ["process_context.monday_handoff_intent", "event_basics.lifecycle_phase", "event_basics.monday_status_hint"]
       },
       {
-        name: "Capture post-event follow-up tasks",
+        name: "Capture post-event follow-up only if relevant",
         owner_hint: "task_owners",
         status: basics.lifecycle_phase === "post_event" ? "required" : "recommended",
         due_hint: "After the event date has passed",
-        notes: "Track photos, thank-you emails, content publication, feedback, and lessons learned as Monday-style subitems.",
+        notes: "Use lightweight follow-up only where photos, thank-you emails, content publication, feedback, or lessons learned are actually needed.",
         related_fields: ["event_basics.actual_attendance", "planning_and_governance.editorial_content_tags"]
       }
     ],

@@ -44,6 +44,9 @@ describe("buildStakeholderPackets", () => {
     expect(result.stakeholders_required).toContain("space_management");
     expect(result.stakeholders_required).not.toContain("security");
     expect(result.stakeholders_required).not.toContain("catering_lexington");
+    expect(result.stakeholders_recommended).not.toContain("task_owners");
+    expect(result.triage_summary.source_of_truth).toBe("event_request");
+    expect(result.triage_summary.monday_handoff_recommendation).toBe("optional_visibility");
   });
 
   it("routes an alumni reception to catering and campus services", () => {
@@ -63,6 +66,7 @@ describe("buildStakeholderPackets", () => {
     expect(result.stakeholders_required).toContain("security");
     expect(result.stakeholders_recommended).toContain("advancement");
     expect(result.stakeholders_recommended).toContain("duty_managers_campus_services");
+    expect(result.triage_summary.staff_visibility_level).toBe("elevated");
     expect(result.missing_information_by_stakeholder.some((item) => item.stakeholder === "catering_lexington")).toBe(true);
   });
 
@@ -162,6 +166,9 @@ describe("buildStakeholderPackets", () => {
           editorial_theme: "Leadership",
           content_priority: "Gold",
           photography_requested: true
+        },
+        process_context: {
+          monday_handoff_intent: "requested"
         }
       })
     );
@@ -174,5 +181,7 @@ describe("buildStakeholderPackets", () => {
     expect(result.stakeholders_required).toContain("photography");
     expect(result.stakeholders_recommended).toContain("cc_network");
     expect(result.stakeholders_recommended).toContain("task_owners");
+    expect(result.triage_summary.monday_handoff_intent).toBe("requested");
+    expect(result.triage_summary.monday_handoff_recommendation).toBe("recommended_staff_handoff");
   });
 });

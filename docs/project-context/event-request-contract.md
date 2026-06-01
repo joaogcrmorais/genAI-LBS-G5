@@ -142,6 +142,13 @@ Recommended contract principle: keep `EventRequest` as a manageable intake/lifec
     "vendor_notes": "",
     "requires_booth_or_branding": false
   },
+  "process_context": {
+    "monday_handoff_intent": "unknown",
+    "organizer_uses_monday": false,
+    "staff_visibility_requested": false,
+    "known_monday_item_id": "",
+    "process_notes": ""
+  },
   "intake_state": {
     "source": "manual",
     "completeness_score": null,
@@ -235,6 +242,14 @@ Recommended contract principle: keep `EventRequest` as a manageable intake/lifec
 - `no`
 - `unknown`
 
+`monday_handoff_intent`:
+
+- `none`
+- `optional`
+- `requested`
+- `already_tracked`
+- `unknown`
+
 ## Speaker object
 
 When speaker details are known, use:
@@ -267,8 +282,9 @@ The team should lock:
 - which Monday-derived review fields are needed for Saturday versus future integration planning.
 - whether the persisted event record, if added, should be the product's own canonical event record with optional Monday export/sync metadata rather than a mirror of Monday.
 - which fields are only for Jo/staff visibility and should not be asked of student organisers unless triggered by risk or event type.
+- whether `process_context.monday_handoff_intent` should be set by the organiser, by staff, or derived by WS4 triage logic.
 
-Current implementation note: `event_basics.lifecycle_phase`, `event_basics.monday_status_hint`, `event_basics.registration_link`, optional `event_basics.actual_attendance`, optional `speakers_and_guests.faculty_attending`, optional `speakers_and_guests.dean_attendance_requested`, and a permissive `planning_and_governance` object are accepted by the backend WS4 schema. The exact governance subfields remain intentionally permissive while the full Monday export is pending.
+Current implementation note: `event_basics.lifecycle_phase`, `event_basics.monday_status_hint`, `event_basics.registration_link`, optional `event_basics.actual_attendance`, optional `speakers_and_guests.faculty_attending`, optional `speakers_and_guests.dean_attendance_requested`, a permissive `planning_and_governance` object, and optional `process_context` are accepted by the backend WS4 schema. `process_context` currently supports `monday_handoff_intent`, `organizer_uses_monday`, `staff_visibility_requested`, `known_monday_item_id`, and `process_notes`. The exact governance subfields remain intentionally permissive while human-validated process detail is pending.
 
 ## Non-goals for this contract
 

@@ -1,0 +1,68 @@
+﻿[
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  13,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "Richard Portes\nProfessor of Economics, London Business School; Academic Director, AQR",
+        "value":  "",
+        "value_2":  "",
+        "lapel_1":  "Lapel 2",
+        "0_63541666666666663":  "0.63541666666666663",
+        "0_70138888888888884":  "0.70138888888888884",
+        "value_3":  ""
+    },
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  14,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "Lucrezia Reichlin\nProfessor of Economics, London Business School",
+        "value":  "",
+        "value_2":  "",
+        "lapel_1":  "Lapel 3",
+        "0_63541666666666663":  "0.63541666666666663",
+        "0_70138888888888884":  "0.70138888888888884",
+        "value_3":  ""
+    },
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  15,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "Jérémie Gallien\nProfessor of Management Science and Operations, London Business School",
+        "value":  "",
+        "value_2":  "",
+        "lapel_1":  "Lapel 4",
+        "0_63541666666666663":  "0.63541666666666663",
+        "0_70138888888888884":  "0.70138888888888884",
+        "value_3":  ""
+    },
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  16,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "Nicos Savva\nProfessor of Management Science and Operations, London Business School",
+        "value":  "",
+        "value_2":  "",
+        "lapel_1":  "Lapel 5",
+        "0_63541666666666663":  "0.63541666666666663",
+        "0_70138888888888884":  "0.70138888888888884",
+        "value_3":  ""
+    },
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  17,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "HOST: Ramsey Sargent EMBAG2005 \nExecutive Director, Alumni Engagement, London Business School",
+        "value":  "",
+        "value_2":  "Session 2 - Introduction\nSession 2 - Closing remarks",
+        "lapel_1":  "Lapel 6",
+        "0_63541666666666663":  "0.63541666666666663",
+        "0_70138888888888884":  "0.70138888888888884",
+        "value_3":  "Host for session 2"
+    },
+    {
+        "source_sheet":  "Example Mic schedule",
+        "source_row":  18,
+        "eshe_nelson_business_and_economic_reporter_the_new_york_times_in_london":  "Q\u0026A",
+        "value":  "4 x ushers to run mics\nUshers will come to the AV desk to collect mics and have quick briefing",
+        "value_2":  "",
+        "lapel_1":  "x 4 handhelds",
+        "0_63541666666666663":  "",
+        "0_70138888888888884":  "",
+        "value_3":  ""
+    }
+]

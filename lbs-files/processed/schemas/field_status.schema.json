@@ -1,0 +1,13 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "FieldStatus",
+    "enum":  [
+                 "final",
+                 "best_estimate",
+                 "not_sure_yet",
+                 "needs_confirmation",
+                 "not_applicable",
+                 "organiser_follow_up",
+                 "missing"
+             ]
+}

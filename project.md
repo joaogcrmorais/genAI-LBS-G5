@@ -116,7 +116,18 @@ Initial models:
 
 The initial migration `20260525142609_init` has been applied locally.
 
-The planning in `lbs-files/PLAN.md` allows processed runtime data to be loaded into PostgreSQL later. Good future table candidates include finance codes, spaces, catering space policy, lifecycle timeline items, policy rules, knowledge chunks, and example events. No conversion or DB loading has happened yet.
+The processed runtime-data migration `20260603214402_add_processed_runtime_data` has also been applied locally.
+
+Processed runtime data has been loaded into PostgreSQL with `npm.cmd run data:load`.
+
+Latest loaded counts:
+
+- `ProcessedDataSource`: 7
+- `KnowledgeChunk`: 115
+- `RuntimeLookupRecord`: 12047
+- `RuntimeRule`: 34
+- `EventScenario`: 11
+- `OutputTemplate`: 8
 
 ## Auth0
 
@@ -136,13 +147,19 @@ Known Auth0 blocker: protected route login previously reached Auth0 but returned
 
 Raw files live in `lbs-files/raw/`.
 
-Raw XLSX/DOCX/PDF/PPTX files should remain source-of-truth backups until conversion is approved. The app should use processed CSV/JSON/Markdown/DOCX templates or PostgreSQL tables at runtime, not raw Office/PDF parsing in normal chatbot flow.
+Raw XLSX/DOCX/PDF/PPTX files remain source-of-truth backups. The app should use processed CSV/JSON/Markdown/DOCX templates or PostgreSQL tables at runtime, not raw Office/PDF parsing in normal chatbot flow.
 
-No processed files have been generated yet.
+Processed files now live in `lbs-files/processed/`, including deterministic lookup data, retrieval chunks, output templates, schemas, example/test scenarios, routing rules, timeline rules, and Monday mock payload structure.
+
+`[SA Copy] LBS Event Toolkit Student Clubs Updated - Copy.pdf` remains the most authoritative toolkit source. `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md` is now stored in the repo as its authoritative parsed markdown companion, supplied by Joao after ChatGPT parsed the PDF. Current processed toolkit chunks come from that parsed markdown file, not from the older PPTX proxy.
+
+Known conversion limitation: direct local PDF text extraction is not available in this workspace yet. The Hospitality Brochure PDF currently has a placeholder extraction record.
 
 ## Security, Privacy, AI, And Copyright Safeguards
 
 - `.env` and `.env.*` are ignored by Git.
+- The repo `.gitignore` includes explicit recursive `.env`, `.env.*`, `.envrc`, credential, token, and secret patterns.
+- The local machine's Git global excludes file is configured to `C:\Users\joaog\.gitignore_global` because Git could not access the default `C:\Users\joaog\.config\git\ignore` path.
 - Do not create sample/template environment files.
 - Do not commit `.env` or secret-bearing files.
 - No local backdoor users, mock login routes, demo passwords, or authentication bypasses should be created.
@@ -165,19 +182,23 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 ## Test Status
 
-Latest recorded checks from prior implementation work:
+Latest recorded checks:
+
+- `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\convert-lbs-files.ps1`: passed on 2026-06-03.
+- `npm.cmd run data:load`: passed on 2026-06-03 and loaded processed runtime data into PostgreSQL.
+- Generated JSON/JSONL parse check: passed on 2026-06-03.
+- Generated DOCX template zip integrity check: `space_request_form_template.docx` and `eis_template.docx` opened successfully on 2026-06-03.
+
+Latest recorded app checks from prior implementation work:
 
 - `npm.cmd run typecheck`: passed on 2026-05-30.
 - `npm.cmd run lint`: passed on 2026-05-30.
 - `npm.cmd run test`: passed on 2026-05-30; backend had 17 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 
-No tests were run for the latest documentation-only planning update.
+No app lint/typecheck/test suite was run for the latest data-conversion update because no app logic changed.
 
 ## Current Next Steps
 
-1. Review `lbs-files/PLAN.md`.
-2. After approval, convert raw files into processed runtime data.
-3. Review processed outputs before implementation.
-4. Build epic by epic.
-5. For each epic, provide a frontend test/demo surface with deliverables, user stories, and checklist-style acceptance criteria.
-
+1. Start Epic 1 in a fresh session.
+2. Build against the processed files and PostgreSQL runtime-data tables.
+3. For each epic, provide a frontend test/demo surface with predetermined event scenarios, editable form fields where relevant, visible `EventRequest` population, OpenAI reasoning via backend, user stories, and checklist-style acceptance criteria.

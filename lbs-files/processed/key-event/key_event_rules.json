@@ -1,0 +1,26 @@
+﻿{
+    "source":  "docs/project-context/key_event_identification_spec.md",
+    "sole_deterministic_source":  true,
+    "triggers":  [
+                     {
+                         "id":  "attendance_100_plus",
+                         "rule":  "Confirmed expected attendance is 100+."
+                     },
+                     {
+                         "id":  "criteria_threshold",
+                         "rule":  "Two or more confirmed non-attendance criteria are present."
+                     }
+                 ],
+    "non_attendance_criteria":  [
+                                    "high_profile_speaker",
+                                    "complex_logistics",
+                                    "significant_operational_elements",
+                                    "external_audience",
+                                    "external_media_attendance"
+                                ],
+    "guardrails":  [
+                       "Missing, vague, or uncollected information must not be counted.",
+                       "Do not ask additional questions solely for Key Event scoring.",
+                       "Sensitive/political topic is passive internal signal, not standalone Key Event trigger, but should be surfaced for security/timeline implications."
+                   ]
+}

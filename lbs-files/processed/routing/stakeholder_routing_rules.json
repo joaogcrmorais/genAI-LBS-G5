@@ -1,0 +1,55 @@
+﻿[
+    {
+        "stakeholder":  "Space Management",
+        "when":  "All events",
+        "needs":  [
+                      "event title",
+                      "date/time",
+                      "attendance",
+                      "space/setup",
+                      "additional spaces"
+                  ]
+    },
+    {
+        "stakeholder":  "Catering / Lexington",
+        "when":  "Catering or alcohol involved",
+        "needs":  [
+                      "numbers",
+                      "timing",
+                      "space",
+                      "dietary/context",
+                      "alcohol"
+                  ]
+    },
+    {
+        "stakeholder":  "Security",
+        "when":  "100+ attendance, external audience, high-profile/controversial speaker/topic, children, outside equipment, alcohol risk",
+        "needs":  [
+                      "attendance",
+                      "audience",
+                      "speaker/topic risk",
+                      "timing",
+                      "access needs"
+                  ]
+    },
+    {
+        "stakeholder":  "AV / Technology",
+        "when":  "AV, filming, recording, streaming, microphones, screens",
+        "needs":  [
+                      "room",
+                      "schedule",
+                      "speaker setup",
+                      "recording/streaming requirements"
+                  ]
+    },
+    {
+        "stakeholder":  "SA Finance / Treasury",
+        "when":  "Budget involved or finance code missing",
+        "needs":  [
+                      "club",
+                      "event name",
+                      "budget context",
+                      "finance code status"
+                  ]
+    }
+]

@@ -296,6 +296,11 @@ Acceptance criteria:
 - The UI reminds João of the user stories.
 - The UI shows checklist-style acceptance criteria.
 - The UI exposes example inputs and generated outputs.
+- The UI includes all pre-determined test event scenarios for the epic.
+- The UI includes editable form fields unless the page is specifically testing chat behaviour.
+- The UI shows the populated `EventRequest` object and highlights which fields matter.
+- The UI shows OpenAI reasoning whenever an epic uses OpenAI-backed interpretation, drafting, or complexity/risk reasoning.
+- Chat test pages may hide editable form fields, but must still show the EventRequest being populated turn by turn.
 
 ## 5. Future / WS3 Next-Steps Report
 
@@ -312,4 +317,3 @@ Flag for WS3 / production-readiness reporting:
 - catering, room booking, AV, security, and service desk integrations,
 - stakeholder queues and workflow ownership,
 - permissions, audit, retention, and data governance.
-

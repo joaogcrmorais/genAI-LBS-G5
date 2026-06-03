@@ -1,0 +1,37 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "Space",
+    "type":  "object",
+    "required":  [
+                     "source_used"
+                 ],
+    "properties":  {
+                       "room_code":  {
+                                         "type":  "string"
+                                     },
+                       "room_name":  {
+                                         "type":  "string"
+                                     },
+                       "capacity":  {
+                                        "type":  "string"
+                                    },
+                       "category":  {
+                                        "type":  "string"
+                                    },
+                       "type":  {
+                                    "type":  "string"
+                                },
+                       "owner":  {
+                                     "type":  "string"
+                                 },
+                       "source_used":  {
+                                           "type":  "string"
+                                       },
+                       "source_priority":  {
+                                               "type":  [
+                                                            "integer",
+                                                            "number"
+                                                        ]
+                                           }
+                   }
+}

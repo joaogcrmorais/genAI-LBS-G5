@@ -1,0 +1,46 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "FinanceCode",
+    "type":  "object",
+    "required":  [
+                     "finance_code",
+                     "event_name",
+                     "source_sheet"
+                 ],
+    "properties":  {
+                       "academic_year":  {
+                                             "type":  "string"
+                                         },
+                       "finance_code":  {
+                                            "type":  "string"
+                                        },
+                       "club_name":  {
+                                         "type":  "string"
+                                     },
+                       "event_name":  {
+                                          "type":  "string"
+                                      },
+                       "start_date":  {
+                                          "type":  "string"
+                                      },
+                       "finish_date":  {
+                                           "type":  "string"
+                                       },
+                       "vat_status":  {
+                                          "type":  "string"
+                                      },
+                       "cost_centre":  {
+                                           "type":  "string"
+                                       },
+                       "source_sheet":  {
+                                            "type":  "string"
+                                        },
+                       "source_row":  {
+                                          "type":  [
+                                                       "integer",
+                                                       "number",
+                                                       "string"
+                                                   ]
+                                      }
+                   }
+}

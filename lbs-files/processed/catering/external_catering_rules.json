@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id":  "lexington-mandatory",
+        "rule":  "Lexington Catering is the mandatory catering supplier on LBS premises."
+    },
+    {
+        "id":  "waiver-14-days",
+        "rule":  "External/self-catering waiver must be completed, authorised, and returned 14 days prior to the event."
+    },
+    {
+        "id":  "alcohol-lexington",
+        "rule":  "All alcoholic beverages must be served by Lexington Catering in accordance with licensing policy."
+    }
+]

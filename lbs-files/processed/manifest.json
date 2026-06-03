@@ -1,0 +1,5 @@
+﻿{
+    "generated_at":  "2026-06-03T22:41:43",
+    "note":  "Generated from raw LBS files. Raw files remain source-of-truth backups.",
+    "pdf_extraction":  "Event Toolkit PDF is the most authoritative toolkit source. This conversion uses the ChatGPT-parsed markdown companion at lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md as the authoritative parsed PDF text. Hospitality Brochure PDF still requires future PDF text extraction."
+}

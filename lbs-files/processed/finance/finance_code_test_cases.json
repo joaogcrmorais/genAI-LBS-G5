@@ -1,0 +1,12 @@
+﻿[
+    {
+        "id":  "finance-repeat-event",
+        "input":  "China Business Forum",
+        "expected":  "existing_match_if_directory_contains_similar_event"
+    },
+    {
+        "id":  "finance-new-event",
+        "input":  "New Wine and Spirits Club concept",
+        "expected":  "needs_finance_code_setup_if_no_match"
+    }
+]

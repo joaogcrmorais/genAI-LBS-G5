@@ -1,0 +1,4652 @@
+﻿[
+    {
+        "room_code":  "WLT",
+        "room_name":  "Wolfson Lecture Theatre",
+        "capacity":  "82",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Quad_Upper",
+        "room_name":  "Upper Quad Area",
+        "capacity":  "100",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.L1.101",
+        "room_name":  "Upper Link Bridge",
+        "capacity":  "60",
+        "category":  "Standing",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Transmed_LT",
+        "room_name":  "Transmed Lecture Theatre",
+        "capacity":  "59",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Sussex_Room",
+        "room_name":  "Sussex Room",
+        "capacity":  "14",
+        "category":  "Boardroom",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.12",
+        "room_name":  "SO.W3.12 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.10",
+        "room_name":  "SO.W3.10 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.09",
+        "room_name":  "SO.W3.09 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.08",
+        "room_name":  "SO.W3.08 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.07",
+        "room_name":  "SO.W3.07 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.06",
+        "room_name":  "SO.W3.06 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.05",
+        "room_name":  "SO.W3.05 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.04",
+        "room_name":  "SO.W3.04 Neill Family Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.03",
+        "room_name":  "SO.W3.03 Carlsson Family Foundation Director\u0027s Room",
+        "capacity":  "16",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.02",
+        "room_name":  "SO.W3.02 The Sir John Ritblat Boardroom",
+        "capacity":  "30",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W3.01",
+        "room_name":  "SO.W3.01 Heritage Meeting Room",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.11",
+        "room_name":  "SO.W2.11 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.10",
+        "room_name":  "SO.W2.10 Seminar Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.09",
+        "room_name":  "SO.W2.09 Seminar Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.08",
+        "room_name":  "SO.W2.08 Seminar Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.07",
+        "room_name":  "SO.W2.07 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.04",
+        "room_name":  "SO.W2.04 Alumni Meeting Room",
+        "capacity":  "10",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.02",
+        "room_name":  "SO.W2.02 Finance Suite",
+        "capacity":  "6",
+        "category":  "Bloomberg",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W2.01",
+        "room_name":  "SO.W2.01 Finance Suite",
+        "capacity":  "10",
+        "category":  "Bloomberg",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W1.08",
+        "room_name":  "SO.W1.08 Faculty Room",
+        "capacity":  "6",
+        "category":  "Faculty",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W1.05",
+        "room_name":  "SO.W1.05 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.W0.03",
+        "room_name":  "SO.W0.03 Library Meeting Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E4.01",
+        "room_name":  "SO.E4.01 Executive \"Terrace\" Meeting Room",
+        "capacity":  "22",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.14",
+        "room_name":  "SO.E3.14 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.13",
+        "room_name":  "SO.E3.13 Khalid Abdulatif Alhamad Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.12",
+        "room_name":  "SO.E3.12 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.11",
+        "room_name":  "SO.E3.11 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.10",
+        "room_name":  "SO.E3.10 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.09",
+        "room_name":  "SO.E3.09 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.08",
+        "room_name":  "SO.E3.08 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.07",
+        "room_name":  "SO.E3.07 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.06",
+        "room_name":  "SO.E3.06 Meeting Room",
+        "capacity":  "2",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.05",
+        "room_name":  "SO.E3.05 Meeting Room",
+        "capacity":  "2",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.04",
+        "room_name":  "SO.E3.04 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.03",
+        "room_name":  "SO.E3.03 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.02",
+        "room_name":  "SO.E3.02 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E3.01",
+        "room_name":  "SO.E3.01 Eric and Marion Taylor Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E2.03",
+        "room_name":  "SO.E2.03 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E2.02",
+        "room_name":  "SO.E2.02 Tongyoi Songprapa Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E2.01",
+        "room_name":  "SO.E2.01 Seminar Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.08",
+        "room_name":  "SO.E1.08 Rami Makhzoumi Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.07",
+        "room_name":  "SO.E1.07 Patrick Cullinan Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.06",
+        "room_name":  "SO.E1.06 The Eagles Room",
+        "capacity":  "4",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.05",
+        "room_name":  "SO.E1.05 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.04",
+        "room_name":  "SO.E1.04 Flat Floor Room",
+        "capacity":  "22",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.03",
+        "room_name":  "SO.E1.03 Vina Mak and Vincent Mak Room",
+        "capacity":  "22",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.02",
+        "room_name":  "SO.E1.02 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E1.01",
+        "room_name":  "SO.E1.01 Mohamed A. Althani and Hanadi N. Althani Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E0.08",
+        "room_name":  "SO.E0.08 Paul Goddard and Liza Overs Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E0.07",
+        "room_name":  "SO.E0.07 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E0.06",
+        "room_name":  "SO.E0.06 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E0.05",
+        "room_name":  "SO.E0.05 Seminar Room",
+        "capacity":  "4",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.E0.04",
+        "room_name":  "SO.E0.04 Seminar Room",
+        "capacity":  "12",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT19",
+        "room_name":  "SO.E.19 David and Molly Pyott Foundation Lecture Theatre LT19",
+        "capacity":  "100",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT18",
+        "room_name":  "SO.E.18 David and Molly Pyott Foundation Lecture Theatre LT18",
+        "capacity":  "100",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT17",
+        "room_name":  "SO.E.17 Kwok Lecture Theatre LT17",
+        "capacity":  "87",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT16",
+        "room_name":  "SO.E.16 Lecture Theatre LT16",
+        "capacity":  "89",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT15",
+        "room_name":  "SO.E.15 Graduating Class Gift Lecture Theatre LT15",
+        "capacity":  "86",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT14",
+        "room_name":  "SO.E.14 Lecture Theatre LT14",
+        "capacity":  "87",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SOC_Reception",
+        "room_name":  "Sammy Ofer Registration Desk",
+        "capacity":  "4",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG09",
+        "room_name":  "RG09 Seminar Room (Park side)",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG08",
+        "room_name":  "RG08 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG07",
+        "room_name":  "RG07 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG05",
+        "room_name":  "RG05 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG04",
+        "room_name":  "RG04 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG03",
+        "room_name":  "RG03 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG02",
+        "room_name":  "RG02 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG01",
+        "room_name":  "RG01 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Regents_Room",
+        "room_name":  "Regents Room",
+        "capacity":  "27",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Ratcliffe_Welcome_Desk",
+        "room_name":  "Ratcliffe Welcome Desk",
+        "capacity":  "4",
+        "category":  "LOBBY",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Ratcliffe_Recptn_OS",
+        "room_name":  "Ratcliffe Reception Outside",
+        "capacity":  "10",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Ratcliffe_Main_Entr_Lift",
+        "room_name":  "Ratcliffe Main Entrance (Liftside)",
+        "capacity":  "4",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Ratcliffe_Main_Entrance",
+        "room_name":  "Ratcliffe Main Entrance",
+        "capacity":  "4",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RLG_Platform",
+        "room_name":  "Ratcliffe Lower Ground Platform \u0026 Foyer",
+        "capacity":  "40",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R215",
+        "room_name":  "R215 Conference Room",
+        "capacity":  "16",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R118",
+        "room_name":  "R118 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R117",
+        "room_name":  "R117 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R116",
+        "room_name":  "R116 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R115",
+        "room_name":  "R115 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R114",
+        "room_name":  "R114 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R113",
+        "room_name":  "R113 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R112",
+        "room_name":  "R112 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R111",
+        "room_name":  "R111 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R106",
+        "room_name":  "R106 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R105",
+        "room_name":  "R105 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R104",
+        "room_name":  "R104 Seminar Room (Park side)",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R103",
+        "room_name":  "R103 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R102",
+        "room_name":  "R102 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R110-D3",
+        "room_name":  "R100 Hotdesk 3",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R110-D2",
+        "room_name":  "R100 Hotdesk 2",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R110-D1",
+        "room_name":  "R100 Hotdesk 1",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R1Lounge_LT09_End",
+        "room_name":  "R1 Lounge LT9 End",
+        "capacity":  "80",
+        "category":  "Fork",
+        "type":  "",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "R1Lounge_LT10_End",
+        "room_name":  "R1 Lounge LT10 End",
+        "capacity":  "40",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Plowden_Reception",
+        "room_name":  "Plowden Reception",
+        "capacity":  "10",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PB-LAB",
+        "room_name":  "Plowden Basement Computer Lab",
+        "capacity":  "91",
+        "category":  "PC LAB",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_T1_p",
+        "room_name":  "PG02 T1 (PS)",
+        "capacity":  "8",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D42_h",
+        "room_name":  "PG02 D42 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D41",
+        "room_name":  "PG02 D41",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D40",
+        "room_name":  "PG02 D40",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D39_h",
+        "room_name":  "PG02 D39 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D38",
+        "room_name":  "PG02 D38",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D37",
+        "room_name":  "PG02 D37",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D36_h",
+        "room_name":  "PG02 D36 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D35_h",
+        "room_name":  "PG02 D35 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D34",
+        "room_name":  "PG02 D34",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D33",
+        "room_name":  "PG02 D33",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D32",
+        "room_name":  "PG02 D32",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D31_h",
+        "room_name":  "PG02 D31 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D30_h",
+        "room_name":  "PG02 D30 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D29",
+        "room_name":  "PG02 D29",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D28",
+        "room_name":  "PG02 D28",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D27",
+        "room_name":  "PG02 D27",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D26",
+        "room_name":  "PG02 D26",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D25_h",
+        "room_name":  "PG02 D25 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D24_h",
+        "room_name":  "PG02 D24 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D23",
+        "room_name":  "PG02 D23",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D21",
+        "room_name":  "PG02 D21",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D20",
+        "room_name":  "PG02 D20",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D19",
+        "room_name":  "PG02 D19",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D18_h",
+        "room_name":  "PG02 D18 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D17",
+        "room_name":  "PG02 D17",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D16",
+        "room_name":  "PG02 D16",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D15",
+        "room_name":  "PG02 D15",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D14",
+        "room_name":  "PG02 D14",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D13_h",
+        "room_name":  "PG02 D13 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D12_h",
+        "room_name":  "PG02 D12 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D11",
+        "room_name":  "PG02 D11",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D10_h",
+        "room_name":  "PG02 D10 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D09",
+        "room_name":  "PG02 D09",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D08",
+        "room_name":  "PG02 D08",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D07",
+        "room_name":  "PG02 D07",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D06",
+        "room_name":  "PG02 D06",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D05",
+        "room_name":  "PG02 D05",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D04",
+        "room_name":  "PG02 D04",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D03",
+        "room_name":  "PG02 D03",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D02",
+        "room_name":  "PG02 D02",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PG02_D01",
+        "room_name":  "PG02 D01",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Park_Restaurant_Suite_2",
+        "room_name":  "Park Restaurant Suite 2",
+        "capacity":  "81",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Park_Restaurant_Suite_1",
+        "room_name":  "Park Restaurant Suite 1",
+        "capacity":  "63",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P334",
+        "room_name":  "P334 Meeting Room",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D12",
+        "room_name":  "P332-3 D12",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D11",
+        "room_name":  "P332-3 D11",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D10",
+        "room_name":  "P332-3 D10",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D09",
+        "room_name":  "P332-3 D09",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D08",
+        "room_name":  "P332-3 D08",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D07",
+        "room_name":  "P332-3 D07",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D06",
+        "room_name":  "P332-3 D06",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D05",
+        "room_name":  "P332-3 D05",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D04",
+        "room_name":  "P332-3 D04",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D03",
+        "room_name":  "P332-3 D03",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D02",
+        "room_name":  "P332-3 D02",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P332_3_D01",
+        "room_name":  "P332-3 D01",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P303",
+        "room_name":  "P303 Meeting Room",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P301_D04",
+        "room_name":  "P301 D4",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P301_D03",
+        "room_name":  "P301 D3",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P301_D02",
+        "room_name":  "P301 D2",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P301_D01",
+        "room_name":  "P301 D1",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P123",
+        "room_name":  "P123 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P122",
+        "room_name":  "P122 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P121",
+        "room_name":  "P121 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P120",
+        "room_name":  "P120 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P119",
+        "room_name":  "P119 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P118",
+        "room_name":  "P118 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P117",
+        "room_name":  "P117 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P116",
+        "room_name":  "P116 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P115",
+        "room_name":  "P115 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P114",
+        "room_name":  "P114 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P113",
+        "room_name":  "P113 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P111",
+        "room_name":  "P111 IT Meeting Room",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P110",
+        "room_name":  "P110 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P109",
+        "room_name":  "P109 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P108",
+        "room_name":  "P108 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P107",
+        "room_name":  "P107 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P106",
+        "room_name":  "P106 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P105",
+        "room_name":  "P105 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P104",
+        "room_name":  "P104 Seminar Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P103",
+        "room_name":  "P103 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P102",
+        "room_name":  "P102 Flat Floor",
+        "capacity":  "18",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "P101",
+        "room_name":  "P101 Flat Floor",
+        "capacity":  "18",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_WLT",
+        "room_name":  "Outside Wolfson Lecture Theatre",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_Transmed",
+        "room_name":  "Outside Transmed LT",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_RHall",
+        "room_name":  "Outside Rec Hall (former Conference Room)",
+        "capacity":  "10",
+        "category":  "LOBBY",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_Nuffield_Hall",
+        "room_name":  "Outside Nuffield Hall",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_LT3_4_5_6",
+        "room_name":  "Outside Lecture Theatres 3,4,5,6",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_LT9",
+        "room_name":  "Outside Lecture Theatre 9",
+        "capacity":  "15",
+        "category":  "LOBBY",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_LT18_19",
+        "room_name":  "Outside Lecture Theatre 18,19",
+        "capacity":  "30",
+        "category":  "LOBBY",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_LT12",
+        "room_name":  "Outside Lecture Theatre 12",
+        "capacity":  "30",
+        "category":  "LOBBY",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_Gdn_Rm",
+        "room_name":  "Outside Garden Room",
+        "capacity":  "10",
+        "category":  "LOBBY",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_ELG01",
+        "room_name":  "Outside ELG01",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "o/s_E306",
+        "room_name":  "Outside E306",
+        "capacity":  "15",
+        "category":  "FCTN",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.03",
+        "room_name":  "NB.3.03 Meeting Room",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D54_h",
+        "room_name":  "NB.3.02 D54 h-adj TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D53",
+        "room_name":  "NB.3.02 D53 TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D52",
+        "room_name":  "NB.3.02 D52 TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D51",
+        "room_name":  "NB.3.02 D51 TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D50",
+        "room_name":  "NB.3.02 D50 TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D49_h",
+        "room_name":  "NB.3.02 D49 h-adj TechTeam",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D48_h",
+        "room_name":  "NB.3.02 D48 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D47",
+        "room_name":  "NB.3.02 D47",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D46",
+        "room_name":  "NB.3.02 D46",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D45",
+        "room_name":  "NB.3.02 D45",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D44",
+        "room_name":  "NB.3.02 D44",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D43_h",
+        "room_name":  "NB.3.02 D43 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D42_h",
+        "room_name":  "NB.3.02 D42 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D41",
+        "room_name":  "NB.3.02 D41",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D40",
+        "room_name":  "NB.3.02 D40",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D39",
+        "room_name":  "NB.3.02 D39",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D38",
+        "room_name":  "NB.3.02 D38",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D37_h",
+        "room_name":  "NB.3.02 D37 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D36_h",
+        "room_name":  "NB.3.02 D36 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D35",
+        "room_name":  "NB.3.02 D35",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D34",
+        "room_name":  "NB.3.02 D34",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D33",
+        "room_name":  "NB.3.02 D33 PA Priority",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D32",
+        "room_name":  "NB.3.02 D32 PA Priority",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D31_h",
+        "room_name":  "NB.3.02 D31 h-adj PA Priority",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D30_h",
+        "room_name":  "NB.3.02 D30 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D29",
+        "room_name":  "NB.3.02 D29",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D28",
+        "room_name":  "NB.3.02 D28",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D27",
+        "room_name":  "NB.3.02 D27",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D26",
+        "room_name":  "NB.3.02 D26",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D25_h",
+        "room_name":  "NB.3.02 D25 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D24_h",
+        "room_name":  "NB.3.02 D24 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D23",
+        "room_name":  "NB.3.02 D23",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D22",
+        "room_name":  "NB.3.02 D22",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D21",
+        "room_name":  "NB.3.02 D21",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D20",
+        "room_name":  "NB.3.02 D20",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D19_h",
+        "room_name":  "NB.3.02 D19 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D18_h",
+        "room_name":  "NB.3.02 D18 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D17",
+        "room_name":  "NB.3.02 D17",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D16",
+        "room_name":  "NB.3.02 D16",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D15",
+        "room_name":  "NB.3.02 D15",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D14",
+        "room_name":  "NB.3.02 D14",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D13_h",
+        "room_name":  "NB.3.02 D13 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D12_h",
+        "room_name":  "NB.3.02 D12 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D11",
+        "room_name":  "NB.3.02 D11",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D10",
+        "room_name":  "NB.3.02 D10",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D09",
+        "room_name":  "NB.3.02 D09",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D08",
+        "room_name":  "NB.3.02 D08",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D07_h",
+        "room_name":  "NB.3.02 D07 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D06_h",
+        "room_name":  "NB.3.02 D06 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D05",
+        "room_name":  "NB.3.02 D05",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D04",
+        "room_name":  "NB.3.02 D04",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D03",
+        "room_name":  "NB.3.02 D03",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D02",
+        "room_name":  "NB.3.02 D02",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.02_D01_h",
+        "room_name":  "NB.3.02 D01 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.01_T3",
+        "room_name":  "NB.3.01 T3",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.01_T2",
+        "room_name":  "NB.3.01 T2",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.3.01_T1",
+        "room_name":  "NB.3.01 T1",
+        "capacity":  "2",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.147",
+        "room_name":  "NB.2.147 Executive Meeting Room",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D30_h",
+        "room_name":  "NB.2.12 D30 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D29",
+        "room_name":  "NB.2.12 D29",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D28",
+        "room_name":  "NB.2.12 D28",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D27_h",
+        "room_name":  "NB.2.12 D27 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D26_h",
+        "room_name":  "NB.2.12 D26 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D25",
+        "room_name":  "NB.2.12 D25",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D24",
+        "room_name":  "NB.2.12 D24",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D23_h",
+        "room_name":  "NB.2.12 D23 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D22_h",
+        "room_name":  "NB.2.12 D22 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D21",
+        "room_name":  "NB.2.12 D21",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D20",
+        "room_name":  "NB.2.12 D20",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D19_h",
+        "room_name":  "NB.2.12 D19 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D18_h",
+        "room_name":  "NB.2.12 D18 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D17",
+        "room_name":  "NB.2.12 D17",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D16",
+        "room_name":  "NB.2.12 D16",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D15",
+        "room_name":  "NB.2.12 D15",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D14",
+        "room_name":  "NB.2.12 D14",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D13_h",
+        "room_name":  "NB.2.12 D13 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D12_h",
+        "room_name":  "NB.2.12 D12 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D11",
+        "room_name":  "NB.2.12 D11",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D10_h",
+        "room_name":  "NB.2.12 D10 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D09_h",
+        "room_name":  "NB.2.12 D09 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D08",
+        "room_name":  "NB.2.12 D08",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D07_h",
+        "room_name":  "NB.2.12 D07 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D06_h",
+        "room_name":  "NB.2.12 D06 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D05",
+        "room_name":  "NB.2.12 D05",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D04",
+        "room_name":  "NB.2.12 D04",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D03",
+        "room_name":  "NB.2.12 D03",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D02",
+        "room_name":  "NB.2.12 D02",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.12_D01_h",
+        "room_name":  "NB.2.12 D01 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.11_p",
+        "room_name":  "NB.2.11 Meeting Room (PS)",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.10_p",
+        "room_name":  "NB.2.10 Meeting Room (PS)",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D20_h",
+        "room_name":  "NB.2.09 D20 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D19_m",
+        "room_name":  "NB.2.09 D19",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D18_m",
+        "room_name":  "NB.2.09 D18 mac",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D17_h",
+        "room_name":  "NB.2.09 D17 mac h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D16_h",
+        "room_name":  "NB.2.09 D16 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D15",
+        "room_name":  "NB.2.09 D15",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D14",
+        "room_name":  "NB.2.09 D14",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D13_h",
+        "room_name":  "NB.2.09 D13 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D12_h",
+        "room_name":  "NB.2.09 D12 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D11",
+        "room_name":  "NB.2.09 D11",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D10",
+        "room_name":  "NB.2.09 D10",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D09",
+        "room_name":  "NB.2.09 D09",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D08",
+        "room_name":  "NB.2.09 D08",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D07_h",
+        "room_name":  "NB.2.09 D07 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D06",
+        "room_name":  "NB.2.09 D06",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D05",
+        "room_name":  "NB.2.09 D05",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D04",
+        "room_name":  "NB.2.09 D04",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D03",
+        "room_name":  "NB.2.09 D03",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D02",
+        "room_name":  "NB.2.09 D02",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.09_D01_h",
+        "room_name":  "NB.2.09 D01 h-adj",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.07_8",
+        "room_name":  "NB.2.07 \u0026 8 Executive Lounge \u0026 Dining Room",
+        "capacity":  "12",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.06",
+        "room_name":  "NB.2.06 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.05",
+        "room_name":  "NB.2.05 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.04",
+        "room_name":  "NB.2.04 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.03",
+        "room_name":  "NB.2.03 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.02",
+        "room_name":  "NB.2.02 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.2.01",
+        "room_name":  "NB.2.01 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.14_Pod2",
+        "room_name":  "NB.1.14 Pod2",
+        "capacity":  "2",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.14_Pod1",
+        "room_name":  "NB.1.14 Pod1",
+        "capacity":  "2",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_T4_p",
+        "room_name":  "NB.1.13 T4 (PS)",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_T3",
+        "room_name":  "NB.1.13 T3",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_T2",
+        "room_name":  "NB.1.13 T2",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_T1_p",
+        "room_name":  "NB.1.13 T1 (PS)",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D12",
+        "room_name":  "NB.1.13 D12 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D11",
+        "room_name":  "NB.1.13 D11 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D10",
+        "room_name":  "NB.1.13 D10 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D09",
+        "room_name":  "NB.1.13 D09 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D08",
+        "room_name":  "NB.1.13 D08 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D07",
+        "room_name":  "NB.1.13 D07 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D06",
+        "room_name":  "NB.1.13 D06 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D05",
+        "room_name":  "NB.1.13 D05 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D04",
+        "room_name":  "NB.1.13 D04 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D03",
+        "room_name":  "NB.1.13 D03 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D02",
+        "room_name":  "NB.1.13 D02 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.13_D01",
+        "room_name":  "NB.1.13 D01 no IT",
+        "capacity":  "1",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Comm_Rm",
+        "room_name":  "NB.1.12 Committee Room",
+        "capacity":  "36",
+        "category":  "Cabaret",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Nuffield_Hall",
+        "room_name":  "NB.1.11 Nuffield Hall",
+        "capacity":  "176",
+        "category":  "Cabaret",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "C_Chamber",
+        "room_name":  "NB.1.10 Council Chamber",
+        "capacity":  "48",
+        "category":  "Cabaret",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.09",
+        "room_name":  "NB.1.09 Executive Group Room (Terrace)",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.08",
+        "room_name":  "NB.1.08 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.-1.08",
+        "room_name":  "NB.-1.08 Classroom (Virtual Studio)",
+        "capacity":  "2",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.07",
+        "room_name":  "NB.1.07 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.06",
+        "room_name":  "NB.1.06 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.05",
+        "room_name":  "NB.1.05 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.04",
+        "room_name":  "NB.1.04 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.03",
+        "room_name":  "NB.1.03 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.02",
+        "room_name":  "NB.1.02 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.1.01",
+        "room_name":  "NB.1.01 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "The_Hive",
+        "room_name":  "NB.0.18 The Hive",
+        "capacity":  "220",
+        "category":  "ExtLect",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.12",
+        "room_name":  "NB.0.12 Executive Group Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.11",
+        "room_name":  "NB.0.11 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.10",
+        "room_name":  "NB.0.10 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.09",
+        "room_name":  "NB.0.09 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.08",
+        "room_name":  "NB.0.08 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.07",
+        "room_name":  "NB.0.07 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.06",
+        "room_name":  "NB.0.06 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.05",
+        "room_name":  "NB.0.05 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.04",
+        "room_name":  "NB.0.04 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.03",
+        "room_name":  "NB.0.03 Executive Group Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.02",
+        "room_name":  "NB.0.02 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB.0.01",
+        "room_name":  "NB.0.01 Executive Group Room",
+        "capacity":  "8",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB_Recptn",
+        "room_name":  "NB Reception",
+        "capacity":  "4",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "NB_Patio",
+        "room_name":  "NB Patio Area",
+        "capacity":  "40",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT12",
+        "room_name":  "NB Lecture Theatre 12",
+        "capacity":  "80",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "The_Nash_Lounge",
+        "room_name":  "Nash Lounge",
+        "capacity":  "130",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Quad_Lower",
+        "room_name":  "Lower Quad Area",
+        "capacity":  "150",
+        "category":  "FCTN",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Lower_Nash_Lounge",
+        "room_name":  "Lower Nash Lounge",
+        "capacity":  "50",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "SO.L1.102",
+        "room_name":  "Lower Link Bridge",
+        "capacity":  "60",
+        "category":  "Standing",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LHG01",
+        "room_name":  "LHG01 Meeting Room (Park side)",
+        "capacity":  "16",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "RG06",
+        "room_name":  "Lecture Theatre RG06",
+        "capacity":  "41",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT9",
+        "room_name":  "Lecture Theatre 9",
+        "capacity":  "80",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT7",
+        "room_name":  "Lecture Theatre 7",
+        "capacity":  "93",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT6",
+        "room_name":  "Lecture Theatre 6",
+        "capacity":  "120",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT5",
+        "room_name":  "Lecture Theatre 5",
+        "capacity":  "47",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT4",
+        "room_name":  "Lecture Theatre 4",
+        "capacity":  "55",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT3",
+        "room_name":  "Lecture Theatre 3",
+        "capacity":  "55",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT2",
+        "room_name":  "Lecture Theatre 2",
+        "capacity":  "45",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT10",
+        "room_name":  "Lecture Theatre 10",
+        "capacity":  "81",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "LT1",
+        "room_name":  "Lecture Theatre 1",
+        "capacity":  "100",
+        "category":  "LECT",
+        "type":  "Tiered",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Hs42-G01",
+        "room_name":  "Hs42-G01 Meeting Room",
+        "capacity":  "6",
+        "category":  "MEET",
+        "type":  "Non-cater",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "GPExit",
+        "room_name":  "Gloucester Place Exit",
+        "capacity":  "1",
+        "category":  "LOBBY",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Garden_Room",
+        "room_name":  "Garden Room",
+        "capacity":  "72",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Lawn_Nash",
+        "room_name":  "Front Lawn (Nash End)",
+        "capacity":  "150",
+        "category":  "MULTI-FTN",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Lawn_Gdn_Rm",
+        "room_name":  "Front Lawn (Garden Room End)",
+        "capacity":  "150",
+        "category":  "MULTI-FTN",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Lawn_Centre",
+        "room_name":  "Front Lawn (Centre Circle)",
+        "capacity":  "150",
+        "category":  "MULTI-FTN",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Fairbairn",
+        "room_name":  "Fairbairn Room",
+        "capacity":  "24",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "ELG05",
+        "room_name":  "ELG05 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "ELG04",
+        "room_name":  "ELG04 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "ELG03",
+        "room_name":  "ELG03 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "ELG02",
+        "room_name":  "ELG02 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "ELG01",
+        "room_name":  "ELG01 Flat Floor",
+        "capacity":  "42",
+        "category":  "Cabaret",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG06",
+        "room_name":  "EG06 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG05",
+        "room_name":  "EG05 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG04",
+        "room_name":  "EG04 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG03",
+        "room_name":  "EG03 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG02",
+        "room_name":  "EG02 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "EG01",
+        "room_name":  "EG01 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E306",
+        "room_name":  "E306 Flat Floor",
+        "capacity":  "42",
+        "category":  "Cabaret",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E305",
+        "room_name":  "E305 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E304",
+        "room_name":  "E304 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E303",
+        "room_name":  "E303 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E302",
+        "room_name":  "E302 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E301",
+        "room_name":  "E301 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E300-D4",
+        "room_name":  "E300 Desk 4",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E300-D3",
+        "room_name":  "E300 Desk 3",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E300-D2",
+        "room_name":  "E300 Desk 2",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E300-D1",
+        "room_name":  "E300 Desk 1",
+        "capacity":  "1",
+        "category":  "PM Desk",
+        "type":  "Flat",
+        "owner":  "EXECED",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E207",
+        "room_name":  "E207 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E206",
+        "room_name":  "E206 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E205",
+        "room_name":  "E205 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E204",
+        "room_name":  "E204 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E203",
+        "room_name":  "E203 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E202",
+        "room_name":  "E202 Flat Floor",
+        "capacity":  "22",
+        "category":  "Boardroom",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E106",
+        "room_name":  "E106 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E105",
+        "room_name":  "E105 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E104",
+        "room_name":  "E104 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E103",
+        "room_name":  "E103 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E102",
+        "room_name":  "E102 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E101",
+        "room_name":  "E101 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E_Wing_Lounge",
+        "room_name":  "E Wing Lounge",
+        "capacity":  "60",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "E_Foyer",
+        "room_name":  "E Wing Foyer Reception",
+        "capacity":  "4",
+        "category":  "Reception",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "Dining_Room",
+        "room_name":  "Dining Room",
+        "capacity":  "118",
+        "category":  "Buffet",
+        "type":  "Function",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG06",
+        "room_name":  "DG06 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG05",
+        "room_name":  "DG05 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG04",
+        "room_name":  "DG04 Seminar Room",
+        "capacity":  "4",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG03",
+        "room_name":  "DG03 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG02",
+        "room_name":  "DG02 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "DG01",
+        "room_name":  "DG01 Seminar Room",
+        "capacity":  "5",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D202",
+        "room_name":  "D202 Meeting Room",
+        "capacity":  "4",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D08",
+        "room_name":  "D103 D8",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D07",
+        "room_name":  "D103 D7",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D06",
+        "room_name":  "D103 D6",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D05",
+        "room_name":  "D103 D5",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D04",
+        "room_name":  "D103 D4",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D03",
+        "room_name":  "D103 D3",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D02",
+        "room_name":  "D103 D2",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "D103_D01",
+        "room_name":  "D103 D1",
+        "capacity":  "1",
+        "category":  "Desk",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "PLG01",
+        "room_name":  "Collaborative Learning Classroom",
+        "capacity":  "112",
+        "category":  "CLC",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "CG04",
+        "room_name":  "CG04 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "CG03",
+        "room_name":  "CG03 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "CG02",
+        "room_name":  "CG02 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "CG01",
+        "room_name":  "CG01 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "C301",
+        "room_name":  "C301 Meeting Room",
+        "capacity":  "5",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "B128_9",
+        "room_name":  "B128_9 Seminar Room",
+        "capacity":  "10",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "B104_5",
+        "room_name":  "B104_5 Meeting Room (Park side)",
+        "capacity":  "12",
+        "category":  "MEET",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "B102_3",
+        "room_name":  "B102_3 IT Training Room (Park side)",
+        "capacity":  "6",
+        "category":  "PC LAB",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG16",
+        "room_name":  "AG16 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG15",
+        "room_name":  "AG15 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG14",
+        "room_name":  "AG14 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG13",
+        "room_name":  "AG13 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG12",
+        "room_name":  "AG12 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG11",
+        "room_name":  "AG11 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG10",
+        "room_name":  "AG10 Seminar Room (Park side)",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG09",
+        "room_name":  "AG09 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG08",
+        "room_name":  "AG08 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG07",
+        "room_name":  "AG07 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG06",
+        "room_name":  "AG06 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG05",
+        "room_name":  "AG05 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG04",
+        "room_name":  "AG04 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG03",
+        "room_name":  "AG03 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG02",
+        "room_name":  "AG02 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "AG01",
+        "room_name":  "AG01 Seminar Room",
+        "capacity":  "6",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A127",
+        "room_name":  "A127 Seminar Room (Park side)",
+        "capacity":  "16",
+        "category":  "SEMINAR",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A106",
+        "room_name":  "A106 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A105",
+        "room_name":  "A105 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A104",
+        "room_name":  "A104 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A103",
+        "room_name":  "A103 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A102",
+        "room_name":  "A102 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    },
+    {
+        "room_code":  "A101",
+        "room_name":  "A101 Interview Room",
+        "capacity":  "6",
+        "category":  "CORP",
+        "type":  "Flat",
+        "owner":  "SPMT",
+        "source_used":  "Space Matrix",
+        "source_priority":  1
+    }
+]

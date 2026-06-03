@@ -1,0 +1,622 @@
+﻿[
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  2,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "LT14 (SO.E.14)",
+        "cap":  "85",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  3,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "LT15 (SO.E.15)",
+        "cap":  "85",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  4,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.E0.04",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  5,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.E0.05",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  6,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.E0.06",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  7,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.E0.07",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  8,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.E0.08 Goddard and Overs Seminar Room",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  9,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.W0.02",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  10,
+        "building":  "SOC",
+        "floor":  "G",
+        "room":  "SO.W0.03",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  11,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "LT16 (SO.E.16)",
+        "cap":  "85",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  12,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "LT17 Kwok Lecture Theatre (SO.E.17)",
+        "cap":  "85",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  13,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.01 Althani Study Room",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  14,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.02",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  15,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.03 Mak Flat Floor Room",
+        "cap":  "32",
+        "room_type":  "Flat Floor",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  16,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.04",
+        "cap":  "32",
+        "room_type":  "Flat Floor",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  17,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.05",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  18,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.06 The Eagles Study Room",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  19,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.07 Cullinan Study Room",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  20,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.E1.08 Makhzoumi Seminar Room",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  21,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.W1.05",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  22,
+        "building":  "SOC",
+        "floor":  "1",
+        "room":  "SO.W1.08",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  23,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.E2.01",
+        "cap":  "12",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  24,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.E2.02 Songprapa Study Room",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  25,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.E2.03",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  26,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.01 Library Finance Suite",
+        "cap":  "10",
+        "room_type":  "Computer Lab",
+        "comments":  "Room non-bookable.  Restricted to Library use only."
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  27,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.02 Library Finance Suite",
+        "cap":  "6",
+        "room_type":  "Computer Lab",
+        "comments":  "Room non-bookable.  Restricted to Library use only."
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  28,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.04 Alumni Meeting Room",
+        "cap":  "6",
+        "room_type":  "Meeting Room",
+        "comments":  "Room use restricted to Advancement only.  Webcam."
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  29,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.07",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  30,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.08",
+        "cap":  "12",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  31,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.09",
+        "cap":  "12",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  32,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.10",
+        "cap":  "12",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  33,
+        "building":  "SOC",
+        "floor":  "2",
+        "room":  "SO.W2.11",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  34,
+        "building":  "SOC",
+        "floor":  "2/3",
+        "room":  "LT18 Pyott Foundation Lecture Theatre (SO.E.18)",
+        "cap":  "100",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  35,
+        "building":  "SOC",
+        "floor":  "2/3",
+        "room":  "LT19 Pyott Foundation Lecture Theatre (SO.E.19)",
+        "cap":  "100",
+        "room_type":  "Lecture Theatre",
+        "comments":  "2 X lapel microphone, webcam, touch panel control"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  36,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.01 Taylor Seminar Room",
+        "cap":  "12",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  37,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.02",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  38,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.03",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  39,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.04",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  40,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.05",
+        "cap":  "2",
+        "room_type":  "Meeting Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  41,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.06",
+        "cap":  "2",
+        "room_type":  "Meeting Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  42,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.07",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  43,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.08",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  44,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.09",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  45,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.10",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  46,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.11",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  47,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.12",
+        "cap":  "10",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  48,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.13 Alhamad Study Room",
+        "cap":  "4",
+        "room_type":  "Study Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  49,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.E3.14",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  50,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.01 Advancement Meeting Room",
+        "cap":  "6",
+        "room_type":  "Meeting Room",
+        "comments":  "Room use restricted to Advancement only"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  51,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.02 Sir John Ritblat Boardroom",
+        "cap":  "30",
+        "room_type":  "Meeting Room",
+        "comments":  "Room use restricted to Dean\u0027s Committees and Senior Management Committees only. Webcam"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  52,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.03 Carlsson Family Foundation Directors Room",
+        "cap":  "16",
+        "room_type":  "Meeting Room",
+        "comments":  "Room use restricted to Dean\u0027s Committees and Senior Management Committees only. Webcam"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  53,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.04 Neill Family Seminar Room",
+        "cap":  "6",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  54,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.05",
+        "cap":  "6",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  55,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.06",
+        "cap":  "6",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  56,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.07",
+        "cap":  "6",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  57,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.08",
+        "cap":  "6",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  58,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.09",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  59,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.10",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  60,
+        "building":  "SOC",
+        "floor":  "3",
+        "room":  "SO.W3.12",
+        "cap":  "8",
+        "room_type":  "Seminar Room",
+        "comments":  "Fixed table - room set up cannot be changed"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  61,
+        "building":  "SOC",
+        "floor":  "4",
+        "room":  "SO.E4.01 Executive (Terrace) Boardroom",
+        "cap":  "22",
+        "room_type":  "Meeting Room",
+        "comments":  "Room use restricted to Dean\u0027s Committees and Senior Management Committees only. Webcam"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  62,
+        "building":  "SOC",
+        "floor":  "4",
+        "room":  "SO.W4.02",
+        "cap":  "4",
+        "room_type":  "Meeting Room",
+        "comments":  "Staff meeting rooms"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  63,
+        "building":  "SOC",
+        "floor":  "4",
+        "room":  "SO.W4.04",
+        "cap":  "4",
+        "room_type":  "Meeting Room",
+        "comments":  "Staff meeting rooms"
+    }
+]

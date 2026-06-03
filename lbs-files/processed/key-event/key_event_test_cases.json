@@ -1,0 +1,30 @@
+﻿[
+    {
+        "id":  "attendance-120",
+        "expected_attendance":  120,
+        "confirmed_criteria":  [
+
+                               ],
+        "expected_candidate":  true,
+        "trigger":  "attendance_100_plus"
+    },
+    {
+        "id":  "criteria-multiroom-external",
+        "expected_attendance":  80,
+        "confirmed_criteria":  [
+                                   "complex_logistics",
+                                   "external_audience"
+                               ],
+        "expected_candidate":  true,
+        "trigger":  "criteria_threshold"
+    },
+    {
+        "id":  "below-threshold",
+        "expected_attendance":  30,
+        "confirmed_criteria":  [
+                                   "external_audience"
+                               ],
+        "expected_candidate":  false,
+        "trigger":  "none"
+    }
+]

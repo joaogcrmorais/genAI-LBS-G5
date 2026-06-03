@@ -283,10 +283,19 @@ For each epic, the implementation should include a frontend test/demo surface th
 - the user stories covered,
 - acceptance checklist status,
 - example inputs,
+- all pre-determined test event scenarios relevant to that epic,
+- editable form fields for changing event facts and rerunning outputs,
+- the populated `EventRequest` object,
+- which EventRequest fields matter for that epic,
+- OpenAI reasoning where OpenAI is used,
 - generated outputs,
 - any unresolved gaps.
 
 This can be implemented as an internal demo/test page if that is fastest for MVP.
+
+When testing chat behaviour, editable form fields can be hidden, but the test page should still show the `EventRequest` being populated turn by turn and any OpenAI reasoning returned by the backend.
+
+The project has an OpenAI API key available. The MVP should use OpenAI through backend services for free-text interpretation, drafting, and preliminary complexity/risk reasoning, while keeping Key Event categorisation and other deterministic rules outside the model.
 
 ## 16. Future / WS3 Production Readiness Topics
 
@@ -301,4 +310,3 @@ Flag these for the next-steps report, not MVP:
 - real integration with ERP/finance/catering/room-booking/fundraising/CRM systems,
 - production deployment, permissions, audit, retention, and data governance,
 - staff feedback loop for improving recommendations and routing.
-

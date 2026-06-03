@@ -1,0 +1,137 @@
+﻿[
+    {
+        "label":  "Name of person making the request",
+        "key":  "organiser_name",
+        "category":  "organiser"
+    },
+    {
+        "label":  "Club or Programme affiliation",
+        "key":  "club_or_programme_affiliation",
+        "category":  "organiser"
+    },
+    {
+        "label":  "Contact mobile/phone number",
+        "key":  "contact_mobile_phone",
+        "category":  "organiser"
+    },
+    {
+        "label":  "Event title",
+        "key":  "event_title",
+        "category":  "event_basics"
+    },
+    {
+        "label":  "Number of attendees",
+        "key":  "number_of_attendees",
+        "category":  "event_basics"
+    },
+    {
+        "label":  "DATE",
+        "key":  "date",
+        "category":  "timing"
+    },
+    {
+        "label":  "Start and Finish time of the proposed event",
+        "key":  "start_finish_time",
+        "category":  "timing"
+    },
+    {
+        "label":  "What type of event is this?",
+        "key":  "event_type",
+        "category":  "event_basics"
+    },
+    {
+        "label":  "Event Details",
+        "key":  "event_details",
+        "category":  "purpose_context"
+    },
+    {
+        "label":  "External Guest Speaker Details",
+        "key":  "external_guest_speaker_details",
+        "category":  "speakers"
+    },
+    {
+        "label":  "Will the event have external guest speaker(s)?",
+        "key":  "has_external_guest_speakers",
+        "category":  "speakers"
+    },
+    {
+        "label":  "Is the nature of the event deemed to be politically sensitive or controversial in any way?",
+        "key":  "politically_sensitive_or_controversial",
+        "category":  "risk_security"
+    },
+    {
+        "label":  "Will there be any children attending?",
+        "key":  "children_attending",
+        "category":  "audience"
+    },
+    {
+        "label":  "What type of activities will be taking place?",
+        "key":  "activities",
+        "category":  "format_logistics"
+    },
+    {
+        "label":  "Are any of these likely to have a noise impact to the rest of the School community?",
+        "key":  "noise_impact",
+        "category":  "format_logistics"
+    },
+    {
+        "label":  "Type of space \u0026 proposed room setup required",
+        "key":  "space_and_setup",
+        "category":  "space"
+    },
+    {
+        "label":  "Do you require a registration desk, what time?",
+        "key":  "registration_desk",
+        "category":  "services"
+    },
+    {
+        "label":  "Decorations",
+        "key":  "decorations",
+        "category":  "services"
+    },
+    {
+        "label":  "Will catering be ordered?",
+        "key":  "catering",
+        "category":  "catering"
+    },
+    {
+        "label":  "Will alcohol be available for consumption as part of your event?",
+        "key":  "alcohol",
+        "category":  "catering"
+    },
+    {
+        "label":  "Will recorded music be played, what time?",
+        "key":  "recorded_music",
+        "category":  "services"
+    },
+    {
+        "label":  "Will live music be played i.e. School or external band?",
+        "key":  "live_music",
+        "category":  "services"
+    },
+    {
+        "label":  "Do you require a cloakroom?",
+        "key":  "cloakroom",
+        "category":  "services"
+    },
+    {
+        "label":  "Will any outside or extra equipment be hired or leased for the event?",
+        "key":  "outside_equipment",
+        "category":  "equipment"
+    },
+    {
+        "label":  "Will any filming take place during the event?",
+        "key":  "filming",
+        "category":  "media"
+    },
+    {
+        "label":  "What will be filmed and by whom?",
+        "key":  "filming_details",
+        "category":  "media"
+    },
+    {
+        "label":  "Any additional information",
+        "key":  "additional_information",
+        "category":  "additional_context"
+    }
+]

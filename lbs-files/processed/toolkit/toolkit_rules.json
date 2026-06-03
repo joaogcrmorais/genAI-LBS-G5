@@ -1,0 +1,18 @@
+﻿[
+    {
+        "id":  "shape-purpose",
+        "rule":  "For vague ideas, ask about strategic alignment and what the club is trying to achieve."
+    },
+    {
+        "id":  "shape-audience",
+        "rule":  "Ask who the event is for and what they should get out of it."
+    },
+    {
+        "id":  "shape-resource-readiness",
+        "rule":  "Ask about budget, time, team capacity, constraints, and success signal."
+    },
+    {
+        "id":  "space-first",
+        "rule":  "Confirm space before advertising, selling tickets, or confirming speakers."
+    }
+]

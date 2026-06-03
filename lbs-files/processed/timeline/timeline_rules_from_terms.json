@@ -1,0 +1,27 @@
+﻿[
+    {
+        "id":  "space-before-publicity",
+        "timing":  "before publicity",
+        "rule":  "Secure correct space before publicising the event."
+    },
+    {
+        "id":  "catering-order",
+        "timing":  "30 days before",
+        "rule":  "Place catering orders at least 30 days before the event."
+    },
+    {
+        "id":  "catering-final-numbers",
+        "timing":  "5 days before",
+        "rule":  "Confirm final catering numbers 5 days before."
+    },
+    {
+        "id":  "security-large-events",
+        "timing":  "3 weeks before",
+        "rule":  "Inform Security for larger 100+ events no later than 3 weeks before."
+    },
+    {
+        "id":  "key-events-meeting",
+        "timing":  "2 weeks before",
+        "rule":  "Key Events meeting occurs two weeks ahead when applicable."
+    }
+]

@@ -1,0 +1,12 @@
+﻿{
+    "board_hint":  "Events and Key Dates 25/26",
+    "item_name":  "Example Student Event",
+    "columns":  {
+                    "status":  "intake_complete",
+                    "attendance":  "needs_confirmation",
+                    "space":  "needs_confirmation"
+                },
+    "subitems":  [
+
+                 ]
+}

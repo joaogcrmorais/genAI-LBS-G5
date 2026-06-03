@@ -1,0 +1,30 @@
+﻿[
+    {
+        "id":  "prepared-alumni-panel",
+        "type":  "prepared_event",
+        "prompt":  "I want to host an alumni panel next month for about 80 people with a guest speaker in a lecture theatre."
+    },
+    {
+        "id":  "budget-only",
+        "type":  "budget_only",
+        "prompt":  "My club has a budget but no idea what event to run."
+    },
+    {
+        "id":  "key-event-attendance",
+        "type":  "key_event_candidate",
+        "expected_attendance":  120,
+        "prompt":  "A careers panel for 120 people with ordinary-profile company speakers."
+    },
+    {
+        "id":  "key-event-criteria",
+        "type":  "key_event_candidate",
+        "expected_attendance":  80,
+        "prompt":  "An 80-person multi-room workshop with external attendees."
+    },
+    {
+        "id":  "below-threshold",
+        "type":  "routine",
+        "expected_attendance":  30,
+        "prompt":  "A 30-person lunch with an external guest speaker and catering."
+    }
+]

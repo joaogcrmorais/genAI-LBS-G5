@@ -1,0 +1,28 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "MondayMockPayload",
+    "type":  "object",
+    "required":  [
+                     "board_hint",
+                     "item_name",
+                     "columns"
+                 ],
+    "properties":  {
+                       "board_hint":  {
+                                          "type":  "string"
+                                      },
+                       "item_name":  {
+                                         "type":  "string"
+                                     },
+                       "columns":  {
+                                       "type":  "object",
+                                       "additionalProperties":  true
+                                   },
+                       "subitems":  {
+                                        "type":  "array",
+                                        "items":  {
+                                                      "type":  "object"
+                                                  }
+                                    }
+                   }
+}

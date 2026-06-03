@@ -9,6 +9,10 @@
 # ------------------------------------------------------------
 .env
 .env.*
+**/.env
+**/.env.*
+.envrc
+**/.envrc
 *.pem
 *.key
 *.crt
@@ -16,6 +20,9 @@
 *.pfx
 *.token
 *.secret
+*.credentials
+*.credential
+credentials/
 secrets/
 .secret/
 

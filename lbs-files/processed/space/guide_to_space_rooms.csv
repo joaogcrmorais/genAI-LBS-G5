@@ -1,0 +1,578 @@
+﻿"source_sheet","source_row","location_and_capacity","value","value_2","value_3","value_4","room_layout","value_5","value_6","value_7","value_8","value_9","value_10","value_11","value_12","room_features","value_13","value_14","value_15","value_16","value_17","value_18","value_19","value_20","av_facilities_in_rooms","value_21","value_22","value_23","value_24","value_25","value_26","value_27","value_28","value_29","value_30","value_31","value_32","value_33","av_supplied_to_rooms","value_34","value_35","value_36","value_37","value_38","value_39"
+"Teaching & Office Support","2","Location and Capacity","Building","Floor","Room","Default Capacity","Boardroom","Hollow Square","U-Shape","Theatre (Flat)","Theatre (Tier)","Classroom","Exam Seating","Cabaret","Stand up","Room Type","Linked to","Activity type","Facing","Bookable on App","AV Delivered","Catering Delivered (Y/N)","Shop kit orientation (sign outside)","Wheelchair accessible (May not include front of LT)","Projector/Plasma","PC","Phone (Extension)","AMX control","DVD","Video player","Printer","Whiteboard(s)","Flipchart(s)","Induction loop","Laptop plug","Document projector","Video conference","Satellite (IP) TV","Data projector booked on request (8 at any one time)","Video role play rigs booked on request (10 at any one time)","Audio conference phones (5 at any one time)","Document camera on request","Video conferencing on request","(Media Services) Filming request with operator/consultation required","Comments"
+"Teaching & Office Support","3","Linhope Street","17 Linhope Street","G","17LNHG01","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","Plasma","1","6594","YES","NO","NO","NO","NO","1","NO","YES","NO","NO","NO","YES","NO","YES","YES","NO","YES",""
+"Teaching & Office Support","4","Linhope Street","17 Linhope Street","G","17LNHG02","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","NO","1","6589","NO","NO","NO","NO","NO","NO","NO","YES","NO","NO","NO","YES","N","YES","YES","NO","YES",""
+"Teaching & Office Support","5","Linhope Street","36 Linhope Street","1","36LNH101","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","Plasma","1","6124","YES","NO","NO","NO","NO","1","NO","YES","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","6","Linhope Street","36 Linhope Street","G","36LNHG01","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","Plasma","1","6117","YES (wall plate)","NO","NO","NO","1","NO","NO","YES","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","7","Linhope Street","36 Linhope Street","G","36LNHG02","5","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","Plasma","1","6118","YES (wall plate)","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","8","Linhope Street","36 Linhope Street","G","36LNHG03","5","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","NO","NO","6116","NO","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","9","Lorne Close","Lorne Close","1","LC101","16","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","NO","YES","YES","N/A","NO","NO","NO","NO","1","1","NO","YES","YES","NO","NO","NO","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","10","Lorne Close","Lorne Close","G","LCG01","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","Internal","STAFF","YES","NO","L","YES","YES","YES","N/A","NO","NO","NO","NO","1","1","NO","YES","YES","NO","NO","NO","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","11","Sammy Ofer Centre","Sammy Ofer Centre","G","LT14 (SO.E.14)","85","NO","NO","NO","NO","Default","NO","42","NO","NO","Lecture Theatre","NO","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","TBC","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","12","Sammy Ofer Centre","Sammy Ofer Centre","G","LT15 (SO.E.15)","85","NO","NO","NO","NO","Default","NO","42","NO","NO","Lecture Theatre","NO","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","TBC","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","13","Sammy Ofer Centre","Sammy Ofer Centre","1","LT16 (SO.E.16)","85","NO","NO","NO","NO","Default","NO","42","NO","NO","Lecture Theatre","NO","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","TBC","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","14","Sammy Ofer Centre","Sammy Ofer Centre","1","LT17 Kwok Lecture Theatre (SO.E.17)","85","NO","NO","NO","NO","Default","NO","42","NO","NO","Lecture Theatre","NO","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","TBC","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","15","Sammy Ofer Centre","Sammy Ofer Centre","2/3","LT18 Pyott Foundation Lecture Theatre (SO.E.18)","100","NO","NO","NO","NO","Default","NO","50","NO","NO","Lecture Theatre","LT19","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","2 x interactive","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","16","Sammy Ofer Centre","Sammy Ofer Centre","2/3","LT19 Pyott Foundation Lecture Theatre (SO.E.19)","100","NO","NO","NO","NO","Default","NO","50","NO","NO","Lecture Theatre","LT18","Teaching","","NO","YES","NO","","YES","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","2 x interactive","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","17","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.E0.04","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","18","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.E0.05","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","19","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.E0.06","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","20","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.E0.07","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","21","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.E0.08 Goddard and Overs Seminar Room","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","22","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.01 Althani Study Room","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","23","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.02","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","24","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.03 Mak Flat Floor Room","32","NO","NO","NO","NO","NO","NO","","Default","NO","Flat Floor","","Teaching","","NO","YES","TBC","","TBC","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","25","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.04","32","NO","NO","NO","NO","NO","NO","","Default","NO","Flat Floor","","Teaching","","NO","YES","TBC","","TBC","2 x Projectors","1","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","YES","YES","NO","NO","YES","NO","NO","YES","YES","2 X lapel microphone, webcam, touch panel control"
+"Teaching & Office Support","26","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.05","10","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","27","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.06 The Eagles Study Room","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","28","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.07 Cullinan Study Room","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","29","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.E1.08 Makhzoumi Seminar Room","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","30","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.E2.01","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","31","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.E2.02 Songprapa Study Room","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","32","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.E2.03","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","33","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.01 Taylor Seminar Room","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","34","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.02","10","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","35","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.03","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","36","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.04","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","37","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.07","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","38","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.08","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","39","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.09","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","40","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.10","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","41","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.11","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","42","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.12","10","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","43","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.13 Alhamad Study Room","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","44","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.E3.14","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","45","Sammy Ofer Centre","Sammy Ofer Centre","4","SO.E4.01 Executive (Terrace) Boardroom","22","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","LCD screen, wireless presentation device","1","Lync Desktop Phone","YES","NO","NO","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","NO","YES","YES","YES","YES","Room use restricted to Dean's Committees and Senior Management Committees only. Webcam"
+"Teaching & Office Support","46","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.W0.02","4","Default","NO","NO","NO","NO","NO","YES","NO","NO","Study Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","No","TBC","YES","NO","YES","NO","YES","YES","YES","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","47","Sammy Ofer Centre","Sammy Ofer Centre","G","SO.W0.03","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","48","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.W1.05","10","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","49","Sammy Ofer Centre","Sammy Ofer Centre","1","SO.W1.08","10","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","50","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.01 Library Finance Suite","TBC","NO","NO","NO","NO","NO","Default","NO","NO","NO","Computer Lab","NO","Not bookable","","NO","NO","NO","","YES","TBC","TBC","TBC","TBC","NO","NO","TBC","TBC","NO","TBC","TBC","TBC","TBC","NO","TBC","NO","TBC","TBC","TBC","TBC","Room non-bookable.  Restricted to Library use only."
+"Teaching & Office Support","51","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.02 Library Finance Suite","TBC","NO","NO","NO","NO","NO","Default","NO","NO","NO","Computer Lab","NO","Not bookable","","NO","NO","NO","","YES","TBC","TBC","TBC","TBC","NO","NO","TBC","TBC","NO","TBC","TBC","TBC","TBC","NO","TBC","NO","TBC","TBC","TBC","TBC","Room non-bookable.  Restricted to Library use only."
+"Teaching & Office Support","52","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.04 Alumni Meeting Room","6","Default","NO","NO","NO","NO","NO","","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","LCD screen, wireless presentation device","1","Lync Desktop Phone","YES","NO","NO","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","NO","YES","YES","YES","YES","Room use restricted to Advancement only.  Webcam."
+"Teaching & Office Support","53","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.07","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","54","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.08","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","55","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.09","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","56","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.10","12","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","57","Sammy Ofer Centre","Sammy Ofer Centre","2","SO.W2.11","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","58","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.01 Advancement Meeting Room","6","Default","NO","NO","NO","NO","NO","","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","LCD screen, wireless presentation device","1","Lync Desktop Phone","YES","NO","NO","NO","NO","NO","TBC","YES","NO","NO","NO","NO","NO","YES","YES","YES","YES","Room use restricted to Advancement only"
+"Teaching & Office Support","59","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.02 Sir John Ritblat Boardroom","30","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","LCD screen, wireless presentation device","1","Lync Desktop Phone","YES","NO","NO","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","NO","YES","YES","YES","YES","Room use restricted to Dean's Committees and Senior Management Committees only. Webcam"
+"Teaching & Office Support","60","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.03 Carlsson Family Foundation Directors Room","16","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","LCD screen, wireless presentation device","1","Lync Desktop Phone","YES","NO","NO","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","NO","YES","YES","YES","YES","Room use restricted to Dean's Committees and Senior Management Committees only. Webcam"
+"Teaching & Office Support","61","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.04 Neill Family Seminar Room","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","62","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.05","6","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","63","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.06","6","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","64","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.07","6","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","65","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.08","6","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","66","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.09","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","67","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.10","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","68","Sammy Ofer Centre","Sammy Ofer Centre","3","SO.W3.12","8","Default","NO","NO","NO","NO","NO","YES","NO","NO","Seminar Room","","Teaching","","STAFF/STUDENTS","YES","TBC","","TBC","LCD screen, wireless presentation device","YES","Lync Desktop Phone","YES","TBC","TBC","NO","Smart Kapp interactive","NO","TBC","YES","NO","NO","NO","NO","YES","NO","YES","YES","YES","Fixed table - room set up cannot be changed"
+"Teaching & Office Support","69","Sammy Ofer Centre","Sammy Ofer Centre","4","SO.W4.02","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","NO","TBC","TBC","TBC","TBC","TBC","TBC",""
+"Teaching & Office Support","70","Sammy Ofer Centre","Sammy Ofer Centre","4","SO.W4.04","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting Room","NO","Office Support","","NO","YES","YES (SOC catering restrictions apply)","","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","TBC","NO","TBC","TBC","TBC","TBC","TBC","TBC",""
+"Teaching & Office Support","71","Sussex Place","A Wing","1","A101","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6451","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","72","Sussex Place","A Wing","1","A102","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6452","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","73","Sussex Place","A Wing","1","A103","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6453","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","74","Sussex Place","A Wing","1","A104","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6454","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","75","Sussex Place","A Wing","1","A105","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6455","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","76","Sussex Place","A Wing","1","A126","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","LT9","Teaching","Park","STAFF/STUDENTS","YES","YES","L","YES","NO","1","6436","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","77","Sussex Place","A Wing","1","A127","16","Default","NO","NO","NO","NO","NO","6","NO","NO","Seminar room","LT9","Teaching","Park","NO","YES","YES","L","YES","Projector (on table)","1","6437","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","78","Sussex Place","A Wing","G","AG01","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6401","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","79","Sussex Place","A Wing","G","AG02_3","10","Default","NO","NO","NO","NO","NO","4","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6402","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","80","Sussex Place","A Wing","G","AG04","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6404","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","81","Sussex Place","A Wing","G","AG05","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6405","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","82","Sussex Place","A Wing","G","AG06_7","10","Default","NO","NO","NO","NO","NO","4","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6406","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","83","Sussex Place","A Wing","G","AG08","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6407","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","84","Sussex Place","A Wing","G","AG09","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Car Park","STUDENTS","YES","YES","L","YES","NO","1","6408","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","85","Sussex Place","A Wing","G","AG10","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6409","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","86","Sussex Place","A Wing","G","AG11","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6410","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","87","Sussex Place","A Wing","G","AG12","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6411","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","88","Sussex Place","A Wing","G","AG13","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6412","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","89","Sussex Place","A Wing","G","AG14","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6413","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","90","Sussex Place","A Wing","G","AG15","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6414","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","91","Sussex Place","A Wing","G","AG16","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT9","Teaching","Park","STUDENTS","YES","YES","L","YES","NO","1","6415","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","92","Sussex Place","B Wing","1","B102_3","12","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","LT10","Teaching","Park","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6456  BAT phone","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","93","Sussex Place","B Wing","1","B104_5","12","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","LT10","Teaching","Park","STAFF","YES","YES","P","YES","NO","1","6449  BAT phone","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","94","Sussex Place","B Wing","1","B121","12","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF","YES","YES","P","YES","NO","1","6416  BAT phone","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","95","Sussex Place","B Wing","1","B124","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6458","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","96","Sussex Place","B Wing","1","B125","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6459","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","97","Sussex Place","B Wing","1","B126","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6460","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","98","Sussex Place","B Wing","1","B127","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6469","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","99","Sussex Place","B Wing","1","B128_9","14","Default","NO","NO","NO","NO","NO","5","NO","NO","Seminar room","LT10","Teaching","Loading Bay","STAFF/STUDENTS","YES","YES","P","YES","NO","1","6481","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","100","Sussex Place","C Wing","G","CG01","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","1","6467","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","101","Sussex Place","C Wing","G","CG02","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","1","6468","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","102","Sussex Place","C Wing","G","CG03","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Car Park","STUDENTS","YES","YES","L","NO","NO","1","6469","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","103","Sussex Place","C Wing","G","CG04","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","1","6470","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","104","Sussex Place","C Wing","LG","CLG01","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","1","6478","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","105","Sussex Place","C Wing","LG","CLG02","4","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","1","6479","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","106","Sussex Place","D Wing","G","DG01","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Car Park","STUDENTS","YES","YES","L","NO","NO","2","6467","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","107","Sussex Place","D Wing","G","DG02","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","2","6468","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","108","Sussex Place","D Wing","G","DG03","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","2","6469","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","109","Sussex Place","D Wing","G","DG04","4","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Car Park","STUDENTS","YES","YES","L","NO","NO","1","6470","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","110","Sussex Place","D Wing","G","DG05","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Car Park","STUDENTS","YES","YES","L","NO","NO","2","6478","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","111","Sussex Place","D Wing","G","DG06","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","YES","YES","L","NO","NO","2","6479","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","112","Sussex Place","E Wing","1","E101","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6471","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","113","Sussex Place","E Wing","1","E102","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6472","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","114","Sussex Place","E Wing","1","E103","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6473","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","115","Sussex Place","E Wing","1","E104","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6474","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","116","Sussex Place","E Wing","1","E105","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6475","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","117","Sussex Place","E Wing","1","E106","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT8","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6476","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","118","Sussex Place","E Wing","1","Transmed LT","63","N/A","NO","NO","NO","Default","NO","35","NO","NO","Lecture Theatre","NO","Teaching","Car Park","NO","YES","NO","L","YES","2 x Projectors","1","6648","YES","YES","NO","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Chairs: Not fixed seats"
+"Teaching & Office Support","119","Sussex Place","E Wing","2","E202","30","30","22","24","30","NO","NO","10","Default","40","Flat Floor","NO","Teaching","Car Park","NO","NO","YES","L","YES","2 x Projectors","1","6482","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","120","Sussex Place","E Wing","2","E203","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E202","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6483","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","121","Sussex Place","E Wing","2","E204","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E202","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6484","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","122","Sussex Place","E Wing","2","E205","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E202","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6485","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","123","Sussex Place","E Wing","2","E206","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E202","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6486","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","124","Sussex Place","E Wing","2","E207","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E202","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6487","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","125","Sussex Place","E Wing","3","E301","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E306","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6491","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","126","Sussex Place","E Wing","3","E302","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E306","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6492","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","127","Sussex Place","E Wing","3","E303","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E306","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6494","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","128","Sussex Place","E Wing","3","E304","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E306","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6495","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","129","Sussex Place","E Wing","3","E305","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","E306","Teaching","Roadside","STAFF","NO","YES","L","YES","NO","2","6496","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","130","Sussex Place","E Wing","3","E306","42","N/A","NO","NO","42","NO","NO","14","Default","60","Flat Floor","NO","Teaching","Car Park","NO","NO","YES","L","YES","2 x Projectors","1","6497","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","131","Sussex Place","E Wing","G","EG01","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6461","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","132","Sussex Place","E Wing","G","EG02","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6462","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","133","Sussex Place","E Wing","G","EG03","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6463","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","134","Sussex Place","E Wing","G","EG04","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6464","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","135","Sussex Place","E Wing","G","EG05","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6465","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","136","Sussex Place","E Wing","G","EG06","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","LT7","Teaching","Roadside","STUDENTS","NO","YES","L","YES","NO","2","6466","NO","NO","NO","NO","1","2","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","YES",""
+"Teaching & Office Support","137","Sussex Place","E Wing","G","LT7","95","N/A","NO","NO","NO","Default","NO","35","NO","NO","Lecture Theatre","NO","Teaching","Car Park","NO","YES","NO","L","YES","2 x Projectors","1","6647","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","YES","YES","YES","NO","NO","YES","Chairs: Fixed seats (Includes 12 high chairs at the back)"
+"Teaching & Office Support","138","Sussex Place","E Wing","LG","ELG01","42","N/A","NO","NO","20","NO","36","32","Default","NO","Flat Floor","NO","Teaching","Internal","NO","YES","YES","L","YES","2 x Projectors","1","6421","YES","NO","NO","NO","2","2","NO","YES","YES","NO","NO","NO","YES","YES","NO","NO","","Room layout: Wellness session for mat based activities, 32 people max"
+"Teaching & Office Support","139","Sussex Place","E Wing","LG","ELG02","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","ELG01","Teaching","Internal","STAFF","NO","YES","L","NO","Plasma","1","6422","YES (wall plate)","YES","NO","NO","2","1","NO","YES","NO","NO","NO","NO","NO (HAS FIXED INSTALL DVD RECORDING UNIT)","YES","NO","NO","","AV Facilties: Small whiteboard panels around the plasma screen & with flipchart"
+"Teaching & Office Support","140","Sussex Place","E Wing","LG","ELG03","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","ELG01","Teaching","Internal","STAFF","NO","YES","L","NO","Plasma","1","6423","YES (wall plate)","YES","NO","NO","2","1","NO","YES","NO","NO","NO","NO","NO (HAS FIXED INSTALL DVD RECORDING UNIT)","YES","NO","NO","","AV Facilties: Small whiteboard panels around the plasma screen & with flipchart"
+"Teaching & Office Support","141","Sussex Place","E Wing","LG","ELG04","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","ELG01","Teaching","Internal","STAFF","NO","YES","L","NO","Plasma","1","6424","YES (wall plate)","YES","NO","NO","2","1","NO","YES","NO","NO","NO","NO","NO (HAS FIXED INSTALL DVD RECORDING UNIT)","YES","NO","NO","","AV Facilties: Small whiteboard panels around the plasma screen & with flipchart"
+"Teaching & Office Support","142","Sussex Place","E Wing","LG","ELG05","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","ELG01","Teaching","Internal","STAFF","NO","YES","L","NO","Plasma","1","6425","YES (wall plate)","YES","NO","NO","2","1","NO","YES","NO","NO","NO","NO","NO (HAS FIXED INSTALL DVD RECORDING UNIT)","YES","NO","NO","","AV Facilties: Small whiteboard panels around the plasma screen & with flipchart"
+"Teaching & Office Support","143","Sussex Place","House 38","3","Hs38 - 301","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","NO","YES","NO","L","NO","NO","NO","6619","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES","Prioritised for Incubator Group bookings"
+"Teaching & Office Support","144","Sussex Place","House 40","1","Hs40 - 101","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6625","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","145","Sussex Place","House 40","1","Hs40 - 102","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","Fairbairn","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6626","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","146","Sussex Place","House 40","2","Hs40 - 201","6","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6627","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","147","Sussex Place","House 40","2","Hs40 - 202","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","Fairbairn","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6628","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","148","Sussex Place","House 40","3","Hs40 - 301","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6629","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","149","Sussex Place","House 40","G","Hs40 - G01","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6623","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","150","Sussex Place","House 40","G","Hs40 - G02","5","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","Fairbairn","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6624","NO","NO","NO","1","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","151","Sussex Place","House 40","LG","Hs40 - LG01","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","Fairbairn","Teaching","Loading Bay","STAFF/STUDENTS","YES","NO","L","NO","NO","1","6621","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","152","Sussex Place","Laing House","1","LH101","30","26","24","24","NO","NO","NO","10","Default","NO","Seminar room","NO","Teaching","Park","NO","YES","NO","P","NO","Projector (ceiling)","1","6551","YES","YES","YES","NO","1","2","NO","YES","YES","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","153","Sussex Place","Laing House","1","LH102","18","18","18","15","NO","NO","NO","6","Default","NO","Seminar room","NO","Teaching","Park","NO","YES","NO","P","NO","Projector (ceiling)","1","6552","YES","YES","YES","NO","2","2","NO","YES","NO","NO","NO","YES","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","154","Sussex Place","Laing House","G","LHG01","21","Default","NO","NO","NO","NO","NO","10","NO","NO","Meeting Room","NO","Office Support","Park","STAFF","YES","YES","P","NO","NO","NO","7580","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES","Exam: ONLY use this room if you have no other space as this room leads into the kitchen.   If using, Estates needs to lock two doors that access the kitchen - door from the foyer and door from inside Room LHG01.  Kitchen cannot be used during the exam time.  Would have to separate the tables."
+"Teaching & Office Support","155","Sussex Place","Laing House","LG","LHLG01","10","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","NO","Teaching","Park","NO","YES","NO","P","NO","NO","1","6541","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","YES","AV Facilties: Small whiteboard which can hold flipchart paper"
+"Teaching & Office Support","156","Sussex Place","Northumberland House","1","N102","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Meeting room","NO","Office Support","Internal","STAFF","YES","NO","P","NO","NO","YES","7682","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","157","Sussex Place","Plowden","1","P101","17","16","20","Default","30","NO","10","6","25","NO","Flat Floor","NO","Teaching","Quad","NO","YES","YES","L","YES","2 x Projectors","1","6550","YES","YES","YES","NO","2","NO","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Furniture: Tables & chairs to remain in the room regardless of set up."
+"Teaching & Office Support","158","Sussex Place","Plowden","1","P102","19","20","16","Default","30","NO","12","5","32","NO","Flat Floor","NO","Teaching","Quad","NO","YES","YES","L","YES","2 x Projectors","1","6565","YES","YES","YES","NO","NO","1","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Furniture: Tables & chairs to remain in the room regardless of set up."
+"Teaching & Office Support","159","Sussex Place","Plowden","1","P103","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6564","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","160","Sussex Place","Plowden","1","P104","8","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6566","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","161","Sussex Place","Plowden","1","P105","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6567","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","162","Sussex Place","Plowden","1","P106","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6566","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","163","Sussex Place","Plowden","1","P107","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6567","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","164","Sussex Place","Plowden","1","P108","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6568","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","165","Sussex Place","Plowden","1","P109","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Quad","STUDENTS","YES","YES","L","YES","NO","1","6569","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","166","Sussex Place","Plowden","1","P116","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6576","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","167","Sussex Place","Plowden","1","P117","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6577","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","168","Sussex Place","Plowden","1","P118","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6578","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","169","Sussex Place","Plowden","1","P119","6","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6574","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","170","Sussex Place","Plowden","1","P120","8","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6575","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","171","Sussex Place","Plowden","1","P121","8","Default","NO","NO","NO","NO","NO","2","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6576","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","Exam: Estates would have to set up room so desks are separated"
+"Teaching & Office Support","172","Sussex Place","Plowden","1","P122","8","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6577","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","173","Sussex Place","Plowden","1","P123","8","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6577","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","174","Sussex Place","Plowden","1","P124","8","Default","NO","NO","NO","NO","NO","1","NO","NO","Seminar room","WLT/P101/P102","Teaching","Roadside","STUDENTS","YES","YES","L","YES","NO","1","6579","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","175","Sussex Place","Plowden","1","WLT","80","N/A","NO","NO","NO","Default","NO","45","NO","NO","Lecture Theatre","NO","Teaching","Car Park/Roadside","NO","NO","NO","L","NO","2 x Projectors","1","6651","YES","YES","YES","NO","2","2","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Chairs: Not fixed seats"
+"Teaching & Office Support","176","Sussex Place","Plowden","G","Fairbairn","36","30","30","24","60","NO","30","24","Default","70","Flat Floor","NO","Teaching","Quad/Roadside","NO","YES","YES","L","NO","2 x Projectors","1","6584","YES","YES","YES","NO","3","2","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES",""
+"Teaching & Office Support","177","Sussex Place","Plowden","LG","PB-Lab","84","Default","NO","NO","NO","NO","NO","45","NO","NO","Computer Lab","NO","Teaching","Internal","NO","YES","YES","L","NO","Projector/8 x Plasma","86","6588","NO","NO","NO","NO","2","1","NO","YES","YES","NO","NO","NO","NO","NO","NO","NO","NO",""
+"Teaching & Office Support","178","Sussex Place","Plowden","LG","PLG02","20","Default","NO","NO","NO","NO","NO","10","NO","NO","Meeting Room","NO","Office Support","Internal","NO","YES","YES","L","NO","Projector","1","6585","YES","NO","NO","NO","2","1","NO","YES","NO","YES","NO","NO","NO","NO","NO","YES","YES","AV Facilties: Small whiteboard panels around the projector screen"
+"Teaching & Office Support","179","Sussex Place","Plowden","LG","PLG03","40","32","36","24","70","NO","NO","30","36","NO","Flat Floor","NO","Teaching","Internal","NO","YES","YES","L","NO","Projector","1","6586","YES","NO","NO","NO","NO","2","NO","YES","YES","NO","NO","NO","NO","NO","NO","NO","YES",""
+"Teaching & Office Support","180","Sussex Place","Ratcliffe","1","LT10","82","N/A","NO","NO","NO","Default","NO","45","NO","NO","Lecture Theatre","NO","Teaching","Park","NO","YES","NO","L","YES","2 x Projectors","1","6650","YES","YES","NO","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Exam: Power sockets available for electronic exams
+Chairs: Not fixed seats"
+"Teaching & Office Support","181","Sussex Place","Ratcliffe","1","LT9","82","N/A","NO","NO","NO","Default","NO","45","NO","NO","Lecture Theatre","NO","Teaching","Park","NO","YES","NO","L","YES","2 x Projectors","1","6649","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Exam: Power sockets available for electronic exams
+Chairs: Not fixed seats"
+"Teaching & Office Support","182","Sussex Place","Ratcliffe","1","R102","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6512","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","183","Sussex Place","Ratcliffe","1","R103","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6513","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","184","Sussex Place","Ratcliffe","1","R104","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6514","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","185","Sussex Place","Ratcliffe","1","R105","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6515","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","186","Sussex Place","Ratcliffe","1","R106","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6516","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","187","Sussex Place","Ratcliffe","1","R111","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6521","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","188","Sussex Place","Ratcliffe","1","R112","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6522","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","189","Sussex Place","Ratcliffe","1","R113","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Park","STAFF/STUDENTS","NO","YES","P","YES","NO","1","6523","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","190","Sussex Place","Ratcliffe","1","R114","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6524","NO","NO","NO","NO","1*","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","* In addition to a traditional whiteboard, this room also has SMART board installed that works with your phone."
+"Teaching & Office Support","191","Sussex Place","Ratcliffe","1","R115","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6525","NO","NO","NO","NO","1*","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","* In addition to a traditional whiteboard, this room also has SMART board installed that works with your phone."
+"Teaching & Office Support","192","Sussex Place","Ratcliffe","1","R116","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6526","NO","NO","NO","NO","1*","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","* In addition to a traditional whiteboard, this room also has SMART board installed that works with your phone."
+"Teaching & Office Support","193","Sussex Place","Ratcliffe","1","R117","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6527","NO","NO","NO","NO","1*","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","* In addition to a traditional whiteboard, this room also has SMART board installed that works with your phone."
+"Teaching & Office Support","194","Sussex Place","Ratcliffe","1","R118","10","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","LT9/LT10","Teaching","Quad","STUDENTS","NO","YES","P","YES","NO","1","6528","NO","NO","NO","NO","1*","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO","* In addition to a traditional whiteboard, this room also has SMART board installed that works with your phone."
+"Teaching & Office Support","195","Sussex Place","Ratcliffe","2","R215","18","Default","NO","NO","NO","NO","NO","8","NO","NO","Meeting Room","NO","Office Support","Park","NO","NO","YES","P","YES","Plasma","1","6535","YES","YES","YES","NO","NO","1","NO","YES","NO","YES","NO","NO","NO","YES","NO","YES","NO",""
+"Teaching & Office Support","196","Sussex Place","Ratcliffe","G","RG01","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Car Park","STUDENTS","NO","YES","L","YES","NO","1","6501","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","197","Sussex Place","Ratcliffe","G","RG02","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Car Park","STUDENTS","NO","YES","L","YES","NO","1","6502","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","198","Sussex Place","Ratcliffe","G","RG03","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Car Park","STUDENTS","NO","YES","L","YES","NO","1","6503","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","199","Sussex Place","Ratcliffe","G","RG04","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Car Park","STUDENTS","NO","YES","L","YES","NO","1","6504","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","200","Sussex Place","Ratcliffe","G","RG05","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Car Park","STUDENTS","NO","YES","L","YES","NO","1","6505","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","201","Sussex Place","Ratcliffe","G","RG06","44","N/A","NO","NO","NO","Default","NO","24","NO","NO","Lecture Theatre","NO","Teaching","Carpark/Park","NO","NO","NO","L","NO","2 x Projectors","1","6506","YES","YES","NO","1","NO","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","NO","Chairs: Not fixed seats"
+"Teaching & Office Support","202","Sussex Place","Ratcliffe","G","RG07","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Park","STUDENTS","NO","YES","L","YES","NO","1","6507","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","203","Sussex Place","Ratcliffe","G","RG08","6","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Park","STUDENTS","NO","YES","L","YES","NO","1","6508","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","204","Sussex Place","Ratcliffe","G","RG09","5","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","SG06","Teaching","Park","STUDENTS","NO","YES","L","YES","NO","1","6509","NO","NO","NO","NO","1","1","NO","NO","NO","NO","NO","YES","YES","YES","NO","NO","NO",""
+"Teaching & Office Support","205","Sussex Place","Ratcliffe","LG","LT1","100","N/A","NO","NO","NO","Default","NO","54","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6641","YES","YES","NO","NO","2","2","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Exam: Power sockets available for electronic exams
+VC: Can video link to 5 & 6 (Master LT)
+Chairs: Fixed seats"
+"Teaching & Office Support","206","Sussex Place","Ratcliffe","LG","LT2","47","N/A","NO","NO","NO","Default","NO","24","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6642","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Exam: Power sockets available for electronic exams
+Chairs: Not fixed seats"
+"Teaching & Office Support","207","Sussex Place","Ratcliffe","LG","LT3","56","N/A","NO","NO","NO","Default","NO","24","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6643","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Exam: Power sockets available for electronic exams
+Chairs: Fixed seats"
+"Teaching & Office Support","208","Sussex Place","Ratcliffe","LG","LT4","56","N/A","NO","NO","NO","Default","NO","24","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6644","YES","YES","YES","NO","2","2","YES","YES","YES","NO","NO","NO","YES","YES","NO","NO","YES","Exam: Power sockets available for electronic exams
+Chairs: Fixed seats"
+"Teaching & Office Support","209","Sussex Place","Ratcliffe","LG","LT5","48","N/A","NO","NO","NO","Default","NO","24","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6645","YES","YES","NO","NO","2","2","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Exam: Power sockets available for electronic exams
+VC: Can video link to 1 & 6 (Master LT)
+Chairs: Fixed seats"
+"Teaching & Office Support","210","Sussex Place","Ratcliffe","LG","LT6","135","N/A","NO","NO","NO","Default","NO","58","NO","NO","Lecture Theatre","LG Platform","Teaching","Internal","NO","YES","NO","L","YES","2 x Projectors","1","6646","YES","YES","NO","NO","2","2","YES","YES","YES","YES","NO","NO","YES","YES","NO","YES","YES","Exam: Power sockets available for electronic exams
+VC: Master LT for video link to 1, 5
+Chairs: Fixed seats"
+"Teaching & Office Support","211","Taunton","Taunton","1","Mini Lab_T102","12","N/A","NO","NO","NO","NO","Default","NO","NO","NO","Computer Lab","NO","Teaching","Roadside","NO","YES","NO","L","YES","Projector","12","6112","YES (not AMX but projector/audio control)","","","NO","1","1","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","",""
+"Teaching & Office Support","212","Taunton","Taunton","2","T201","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","YES","NO","P","YES","NO","NO","6121","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","213","Taunton","Taunton","2","T202","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","YES","NO","L","YES","Plasma","NO","6122","NO","NO","NO","NO","1","1","NO","YES","NO","NO","NO","NO","NO","YES","NO","NO","YES",""
+"Teaching & Office Support","214","Taunton","Taunton","2","T203","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","NO","NO","L","YES","NO","2","6123","NO","NO","NO","NO","1","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",""
+"Teaching & Office Support","215","Taunton","Taunton","6","T602","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6162","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","216","Taunton","Taunton","6","T603","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6163","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","217","Taunton","Taunton","6","T604","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6164","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","218","Taunton","Taunton","6","T605","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6165","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","219","Taunton","Taunton","6","T607","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6167","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","220","Taunton","Taunton","6","T608","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6168","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","221","Taunton","Taunton","6","T609","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6169","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","222","Taunton","Taunton","6","T610","4","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","1","6168","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","223","Taunton","Taunton","6","T611","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6171","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","224","Taunton","Taunton","6","T612","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6172","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","225","Taunton","Taunton","6","T613","2","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STAFF/STUDENTS","YES","NO","L","YES","NO","NO","6173","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","YES","NO","NO","NO",""
+"Teaching & Office Support","226","Taunton","Taunton","G","TG01","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","NO","NO","P","YES","Projector/Plasma","1","6101","YES (wall plate)","NO","NO","NO","1","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO",""
+"Teaching & Office Support","227","Taunton","Taunton","G","TG02","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","NO","NO","P","YES","Projector/Plasma","1","6102","YES (wall plate)","NO","NO","NO","1","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO",""
+"Teaching & Office Support","228","Taunton","Taunton","G","TG03","8","Default","NO","NO","NO","NO","NO","NO","NO","NO","Seminar room","NO","Teaching","Roadside","STUDENTS","NO","NO","P","YES","Plasma","1","6103","YES","NO","NO","NO","1","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO",""
+"Hospitality","2","Site","Building","Floor","Room","Plated Service (Cabaret/Dining)",,"Stand Up Recepion","Collection","Boardroom","Hollow Square","U-Shape","Theatre","Classroom","Exam Seating","Room Type","Linked to","Activity type","Double","Facing","AV Delivered","Catering Delivered (Y/N)","Type of Catering (Hot/Cold)","Alcohol served (Y/N)","Projector/Plasma","Wheelchair accessible (May not include front of LT)","PC","Phone (Extension)","AMX control","DVD","Video player","Printer","Whiteboard(s)","Flipchart(s)","Induction loop","Laptop plug","Document projector","Video conference",,"Satellite (IP) TV","Video role play rigs booked on request (10 at any one time)","Audio conference phones (5 at any one time)","Document camera on request","Video conferencing on request","(Media Services) Filming request with operator/consultation required"
+"Hospitality","3","Sussex Place","A Wing","G","Nash Lounge","N/A",,"100","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Park","NO","YES","HOT/COLD","YES","1 Plasma","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","YES","NO","NO",,"YES","NO","NO","NO","NO","NO"
+"Hospitality","4","Sussex Place","A Wing","LG","Nash Lower","N/A",,"80","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Basement","YES","YES","HOT/COLD","YES","1 Projector","YES","NO","NO","YES (not AMX but projector/audio & IP TV control)","NO","NO","NO","NO","NO","NO","YES","NO","NO",,"YES","NO","NO","NO","NO","YES"
+"Hospitality","5","Sussex Place","B Wing","G","Garden Room","72",,"100","100","24","24","21","40","N/A","N/A","Hospitality","N/A","Catering","NO","Park","YES","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","YES","NO","YES"
+"Hospitality","6","Sussex Place","B Wing","G","os Gdn Room","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","Garden Room/PR1&2","Catering","NO","Loading Bay","NO","NO","NO","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","7","Sussex Place","B Wing","G","Park Restaurant 1","64",,"70","70","22","N/A","N/A","60","N/A","N/A","Hospitality","Park Restaurant 2","Catering","Yes PR 2","Park","YES","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","8","Sussex Place","B Wing","G","Park Restaurant 2","84",,"90","90","22","N/A","N/A","60","N/A","N/A","Hospitality","Park Restaurant 1","Catering","Yes PR 1","Park/Loading Bay","YES","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","9","Sussex Place","E Wing","1","os Transmed LT","N/A",,"N/A","20","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT8","Catering","NO","Car Park","NO","YES","COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","10","Sussex Place","E Wing","2","Elounge","N/A",,"80","70","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT7/LT8/E202/E306","Catering","NO","Car Park","NO","YES","HOT/COLD","YES","1 Plasma (for IPTV)","YES","NO","6480","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"YES","NO","NO","NO","NO","YES"
+"Hospitality","11","Sussex Place","E Wing","3","osE306","N/A",,"N/A","50","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","E306","Catering","NO","Internal","NO","YES","COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","12","Sussex Place","E Wing","LG","os ELG01","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","ELG01","Catering","NO","Roadside","NO","YES","COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","13","Sussex Place","Front Lawn","G","Front Lawn Centre","N/A",,"150","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","Dining Room/Regents Room","Catering","NO","Park","NO","YES","HOT/COLD","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","14","Sussex Place","Front Lawn","G","Front Lawn Nash Lounge","N/A",,"150","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","Nash Lounge","Catering","NO","Park","NO","YES","HOT/COLD","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","15","Sussex Place","Front Lawn","G","Front Lawn Garden Room","N/A",,"150","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","Garden Room/PR1&2","Catering","NO","Park","NO","YES","HOT/COLD","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","16","Sussex Place","Plowden","1","os WLT","N/A",,"80","80","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","WLT","Catering","NO","Car Park","NO","YES","COLD","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","17","Sussex Place","Ratcliffe","1","osLT10","N/A",,"N/A","30","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT10","Catering","NO","Quad","NO","YES","COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","18","Sussex Place","Ratcliffe","1","osLT9","N/A",,"N/A","30","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT9","Catering","NO","CarPark","NO","YES","COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","19","Sussex Place","Ratcliffe","1","R1 Lounge LT10 End","N/A",,"40","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT9/LT10","Catering","Yes LT10/9 End split","Park","NO","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","20","Sussex Place","Ratcliffe","1","R1 Lounge LT9 End","N/A",,"90","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT9/LT10","Catering","Yes LT10/9 End split","Park","NO","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","21","Sussex Place","Ratcliffe","G","Cloakroom","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Cloakroom","N/A","Storage","NO","Park","NO","NO","NO","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","22","Sussex Place","Ratcliffe","G","Dining Room","135",,"160","160","N/A","N/A","N/A","220","70","70 - see comments","Hospitality","Regents Room","Catering","Yes Regents Room","Quad/Park","YES","YES","HOT/COLD","YES","NO","YES","NO","6518","NO","NO","NO","NO","NO","NO","YES","NO","NO","NO",,"NO","NO","NO","NO","NO","YES"
+"Hospitality","23","Sussex Place","Ratcliffe","G","Lower QUAD","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Quad","NO","YES","HOT/COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","24","Sussex Place","Ratcliffe","G","MARQUEE","90",,"150","N/A","N/A","N/A","N/A","100","N/A","N/A","Hospitality","N/A","Catering","NO","Quad","YES","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","YES","NO","YES"
+"Hospitality","25","Sussex Place","Ratcliffe","G","Regents Room","30",,"40","40","18","23","24","40","N/A","70 - see comments","Hospitality","Dining Room","Catering","Yes Dining Hall","Park","NO","YES","HOT/COLD","YES","NO","YES","NO","6511","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","YES","NO","NO","NO","NO"
+"Hospitality","26","Sussex Place","Ratcliffe","G","Ratcliffe Reception","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Park","NO","NO","N/A","NO","1 Plasma","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"YES","NO","NO","NO","NO","NO"
+"Hospitality","27","Sussex Place","Ratcliffe","G","Sussex Room","14",,"20","10","14","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Park","NO","YES","HOT/COLD","YES","NO","YES","NO","6510","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","YES","YES","YES","NO","NO"
+"Hospitality","28","Sussex Place","Ratcliffe","G","Upper QUAD","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Hospitality","N/A","Catering","NO","Quad","NO","YES","HOT/COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","29","Sussex Place","Ratcliffe","LG","Cloakroom","N/A",,"N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","Cloakroom","N/A","Storage","NO","Internal","NO","NO","NO","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","30","Sussex Place","Ratcliffe","LG","LG Platform","N/A",,"40","N/A","N/A","N/A","","N/A","N/A","N/A","Refreshment/Break out","LT1/LT2/LT3/LT4/LT5/LT6","Catering","NO","Park","NO","YES","HOT/COLD","YES","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Hospitality","31","Sussex Place","Ratcliffe","LG","os LTs3, 4, 5, & 6","N/A",,"N/A","35","N/A","N/A","N/A","N/A","N/A","N/A","Refreshment/Break out","LT3/4/5/6","Catering","NO","Internal","NO","YES","COLD","NO","NO","YES","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO","NO",,"NO","NO","NO","NO","NO","NO"
+"Flat Floor","2","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","3","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","4","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","5","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","6","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","7","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","8","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","9","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Flat Floor","10","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","2","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","3","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","4","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","5","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","6","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","7","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","8","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","9","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","10","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","11","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","12","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","13","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","14","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","15","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","16","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","17","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","18","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"LTs","19","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","2","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","3","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","4","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","5","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","6","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","7","Linhope Street",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","8","Lorne Close",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","9","Lorne Close",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","10","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","11","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","12","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","13","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","14","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","15","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","16","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","17","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","18","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","19","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","20","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","21","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","22","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","23","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","24","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","25","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","26","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","27","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","28","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","29","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","30","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","31","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","32","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","33","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","34","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","35","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","36","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","37","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","38","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","39","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","40","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","41","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","42","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","43","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","44","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","45","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","46","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","47","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","48","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","49","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","50","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","51","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","52","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","53","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","54","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","55","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","56","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","57","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","58","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","59","Sammy Ofer Centre",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","60","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","61","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","62","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","63","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","64","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","65","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","66","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","67","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","68","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","69","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","70","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","71","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","72","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","73","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","74","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","75","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","76","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","77","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","78","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","79","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","80","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","81","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","82","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","83","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","84","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","85","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","86","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","87","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","88","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","89","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","90","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","91","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","92","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","93","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","94","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","95","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","96","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","97","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","98","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","99","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","100","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","101","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","102","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","103","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","104","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","105","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","106","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","107","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","108","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","109","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","110","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","111","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","112","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","113","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","114","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","115","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","116","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","117","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","118","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","119","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","120","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","121","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","122","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","123","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","124","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","125","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","126","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","127","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","128","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","129","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","130","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","131","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","132","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","133","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","134","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","135","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","136","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","137","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","138","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","139","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","140","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","141","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","142","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","143","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","144","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","145","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","146","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","147","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","148","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","149","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","150","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","151","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","152","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","153","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","154","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","155","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","156","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","157","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","158","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","159","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","160","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","161","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","162","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","163","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","164","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","165","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","166","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","167","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","168","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","169","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","170","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","171","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","172","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","173","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","174","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","175","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","176","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","177","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","178","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","179","Sussex Place",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","180","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","181","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","182","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","183","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","184","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","185","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","186","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","187","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","188","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","189","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","190","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","191","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","192","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","193","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","194","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","195","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Meeting rooms","196","Taunton",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","6",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","8",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","9",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","10",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","11",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","13",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","14",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","15",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Catering","16",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","6",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","8",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","9",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","10",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","11",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Refreshments","13",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","2",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","3",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","4",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","5",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","6",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","7",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","8",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","9",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","10",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","11",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","12",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","13",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","14",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","15",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","16",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","17",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","18",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","19",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","20",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","21",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","22",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","23",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","24",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","25",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","26",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","27",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","28",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","29",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","30",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","31",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","32",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","33",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","34",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","35",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","36",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","37",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","38",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","39",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","40",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","41",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","42",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","43",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","44",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","45",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","46",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","47",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","48",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","49",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","50",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","51",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","52",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","53",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","54",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","55",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","56",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","57",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","58",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","59",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","60",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+"SOC","61",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

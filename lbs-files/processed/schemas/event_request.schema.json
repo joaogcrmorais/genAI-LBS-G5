@@ -1,0 +1,26 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "EventRequest",
+    "type":  "object",
+    "additionalProperties":  true,
+    "properties":  {
+                       "fields":  {
+                                      "type":  "object",
+                                      "additionalProperties":  true
+                                  },
+                       "field_status":  {
+                                            "type":  "object",
+                                            "additionalProperties":  {
+                                                                         "enum":  [
+                                                                                      "final",
+                                                                                      "best_estimate",
+                                                                                      "not_sure_yet",
+                                                                                      "needs_confirmation",
+                                                                                      "not_applicable",
+                                                                                      "organiser_follow_up",
+                                                                                      "missing"
+                                                                                  ]
+                                                                     }
+                                        }
+                   }
+}

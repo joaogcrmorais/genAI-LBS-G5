@@ -1,0 +1,137 @@
+﻿[
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  3,
+        "lt1":  "LT2",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6642",
+        "fixed_chair_100":  "Default 47 (not fixed chairs)\ndefault set up based on the number of chairs in the room",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating: 25"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  4,
+        "lt1":  "LT3",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6643",
+        "fixed_chair_100":  "Default 45 fixed seats, altogether 56",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "11 fixed chairs in the back / exam seating: 24 normal desks (6 at back with fold down desks)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  5,
+        "lt1":  "LT4",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6644",
+        "fixed_chair_100":  "Default 46 fixed seats, altogether 56",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "10 fixed chairs in the back / exam seating: 24 normal desks (5 at the back with fold down desks)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  6,
+        "lt1":  "LT5",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6645",
+        "fixed_chair_100":  "Default 46 fixed seats",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "No extra chairs in the back / exam seating: 24"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  7,
+        "lt1":  "LT6",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6646",
+        "fixed_chair_100":  "Default 106 fixed seats, altogether max 125",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "19 extra seats in the back / exam seating: 58 (plus 10 with 5 additional treasle tables)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  8,
+        "lt1":  "LT7",
+        "ratcliffe":  "E Wing",
+        "6641":  "6647",
+        "fixed_chair_100":  "Default 75 (fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "20 Extra seat in the back/ exam seating: 36 (plus 10 with seats at back)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  9,
+        "lt1":  "LT8",
+        "ratcliffe":  "E Wing",
+        "6641":  "3622",
+        "fixed_chair_100":  "Altogether max 63",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating: 35 (plus 8 with 4 additional treasle tables)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  10,
+        "lt1":  "LT9",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6649",
+        "fixed_chair_100":  "Default 81 (not fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating 42"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  11,
+        "lt1":  "LT10",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6650",
+        "fixed_chair_100":  "Default 81 (not fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating 42"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  12,
+        "lt1":  "SG06",
+        "ratcliffe":  "Ratcliffe",
+        "6641":  "6506",
+        "fixed_chair_100":  "Default 42 (not fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating 17"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  13,
+        "lt1":  "WLT",
+        "ratcliffe":  "Plowden",
+        "6641":  "6651",
+        "fixed_chair_100":  "Default 79 (not fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Exam seating 41 (plus 6 with 3 additional treasle tables)"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  14,
+        "lt1":  "E202",
+        "ratcliffe":  "E Wing",
+        "6641":  "6482",
+        "fixed_chair_100":  "Default 28",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Board room: 20\nU-shape: 20\nTheatre: 30\nExam seating: 10"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  15,
+        "lt1":  "Fairbairn room",
+        "ratcliffe":  "Plowden",
+        "6641":  "6584",
+        "fixed_chair_100":  "Default 28",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Board room: 28\nU-shape: 28\nTheatre: 80\nClassroom: 40\nCabare: 36\nExam seating: 24"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  16,
+        "lt1":  "Labzone",
+        "ratcliffe":  "Plowden",
+        "6641":  "6585",
+        "fixed_chair_100":  "Default 60",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Cabare style: 42\nBoard room: not ideal\nTheatre: 60\nExam seating: 24"
+    },
+    {
+        "source_sheet":  "Sheet1",
+        "source_row":  17,
+        "lt1":  "E306",
+        "ratcliffe":  "E Wing",
+        "6641":  "",
+        "fixed_chair_100":  "Default 42 (not fixed chairs)",
+        "max_7_8_in_the_back_exam_seating_54_plus_4_with_2_additinoal_treasle_tables":  "Maximum 42 - Only Cabare style\nExam seating: 16"
+    }
+]

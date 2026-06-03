@@ -1,0 +1,49 @@
+﻿{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "title":  "KeyEventAssessment",
+    "type":  "object",
+    "required":  [
+                     "key_event_candidate",
+                     "trigger_type",
+                     "confirmed_criteria"
+                 ],
+    "properties":  {
+                       "key_event_candidate":  {
+                                                   "type":  "boolean"
+                                               },
+                       "trigger_type":  {
+                                            "enum":  [
+                                                         "attendance_100_plus",
+                                                         "criteria_threshold",
+                                                         "none"
+                                                     ]
+                                        },
+                       "confirmed_criteria":  {
+                                                  "type":  "array",
+                                                  "items":  {
+                                                                "type":  "string"
+                                                            }
+                                              },
+                       "non_counted_signals":  {
+                                                   "type":  "array",
+                                                   "items":  {
+                                                                 "type":  "string"
+                                                             }
+                                               },
+                       "rationale_user_facing":  {
+                                                     "type":  "string"
+                                                 },
+                       "rationale_internal":  {
+                                                  "type":  "string"
+                                              },
+                       "eis_offer_status":  {
+                                                "enum":  [
+                                                             "offered",
+                                                             "accepted",
+                                                             "deferred",
+                                                             "info_requested",
+                                                             "not_applicable"
+                                                         ]
+                                            }
+                   }
+}

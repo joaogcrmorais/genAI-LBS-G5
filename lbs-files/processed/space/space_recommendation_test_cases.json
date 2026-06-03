@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id":  "panel-80-theatre",
+        "attendance":  80,
+        "format":  "panel",
+        "preferred_setup":  "theatre"
+    },
+    {
+        "id":  "reception-100-catering",
+        "attendance":  100,
+        "format":  "networking reception",
+        "catering":  true
+    }
+]

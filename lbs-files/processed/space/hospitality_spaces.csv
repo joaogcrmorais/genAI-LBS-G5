@@ -1,0 +1,62 @@
+﻿"source_sheet","source_row","site","building_name","floor","room_name","activity_type","buffet_service_cabaret_dining","plated_service_cabaret_dining","fork_buffet","drinks_reception","catering_delivered","type_of_catering_hot_cold","alcohol_served_y_n","comments"
+"Sheet1","2","Sussex Place","A Wing","Ground","Nash Lounge","Hospitality","130","","100","100","yes","hot/cold","yes",""
+"Sheet1","3","Sussex Place","A Wing","Lower Ground","Lower Nash","Hospitality","50","","50","80","yes","hot/cold","yes",""
+"Sheet1","4","Sussex Place","B Wing","Ground","Garden Room","Hospitality","72","72","100","100","yes","hot/cold","yes",""
+"Sheet1","5","Sussex Place","B Wing","Ground","Park Restaurant Suite 1","Hospitality","63","63","70","70","yes","hot/cold","yes","Buffet Service in Park 1: 63 people max
+Plated Service in Park 1: 63 people max, will require Garden Room to be blocked out for plating;
+Drinks Reception in Park 1: 70 people max"
+"Sheet1","6","Sussex Place","B Wing","Ground","Park Restaurant Suite 2","Hospitality","81","72","81","90","yes","hot/cold","yes","Buffet Service in Park 2: 81 people max
+Plated Service in Park 2: 72 people max, will require Park Restaurant 1 to be blocked out for plating;
+Drinks Reception in Park 2: 90 people max"
+"Sheet1","7","Sussex Place","B Wing","Ground","Park Restaurant 1 & 2","Hospitality","144","144","160","160","yes","hot/cold","yes","Maximum numbers for using both Park 1 & 2:
+Buffet Service in Park 1 & 2: 144 people max
+Plated Service in Park 1 & 2: 144 people max, will require Garden Room to be blocked out for plating;
+Drinks Reception in Park 1 & 2: 160 people max"
+"Sheet1","8","Sussex Place","B Wing","Ground","Outside Garden Room","Hospitality","","","","10","no","no","no",""
+"Sheet1","9","Sussex Place","E Wing","Second","E Wing Lounge","Hospitality","60","","60","80","yes","hot/cold","yes",""
+"Sheet1","10","Sussex Place","E Wing","Lower Ground","Outside ELG01","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","11","Sussex Place","E Wing","Third","Outside E306","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","12","Sussex Place","E Wing","First","Outside Transmed LT","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","13","Sussex Place","E Wing","Ground","E Wing Foyer","Hospitality","","","","","no","no","no",""
+"Sheet1","14","North Building","North Building","Lower Ground 2","Outside LT 12","Hospitality","","","","30","","cold","yes",""
+"Sheet1","15","North Building","North Building","First","Outside Nuffield Hall","Hospitality","","","","15","","cold","no",""
+"Sheet1","16","North Building","North Building","Ground","The Bagri Hive","Hospitality","","","","150","","","",""
+"Sheet1","17","North Building","North Building","First","NB.1.11 Nuffield Hall","Hospitality","","","","","","","",""
+"Sheet1","18","North Building","North Building","Second","NB.2.07 & 8 Executive Lounge & Dining Room","Hospitality","","","","","","","",""
+"Sheet1","19","North Building","North Building","Ground","North Building Reception Desk","Hospitality","","","","","","","",""
+"Sheet1","20","Sussex Place","Plowden","First","Outside Wolfson LT","Hospitality","","","","15","yes","cold","yes",""
+"Sheet1","21","Sussex Place","Plowden","Ground","Upper Quad","Hospitality","","","","100","yes","hot/cold","no",""
+"Sheet1","22","Sussex Place","Plowden","Ground","Lower Quad","Hospitality","","","","150","yes","hot/cold","no",""
+"Sheet1","23","Sussex Place","Plowden","Ground","Plowden Reception Desk","Hospitality","","","","","","","",""
+"Sheet1","24","Sussex Place","Ratcliffe","Ground","Sussex Room","Hospitality","10","12","10","20","yes","hot/cold","yes","Plated Service in Sussex Room: 14 people max, will require Regents Room to be blocked out for plating"
+"Sheet1","25","Sussex Place","Ratcliffe","Ground","Dining Room","Hospitality","118","135","160","160","yes","hot/cold","yes",""
+"Sheet1","26","Sussex Place","Ratcliffe","Ground","Regents Room","Hospitality","27","27","40","40","yes","hot/cold","yes","Plated Service in Regents Room: 27 people max, will require Sussex Room to be blocked out for plating;"
+"Sheet1","27","Sussex Place","Ratcliffe","Ground","Dining & Regents Room (combined)","Hospitality","160","162","160","200","yes","hot/cold","yes","Maximum numbers for using both Dining & Regents Rooms:
+Buffet Service in Dining Room & Regents Room: 160 people max
+Plated Service in Dining Room & Regents Room: 162 people max, will require Garden Room to be blocked out for plating;
+Drinks Reception in Dining Room & Regents Room: 200 people max 
+Exam: Booked with Dining Room 70 - must order furniture for exams here"
+"Sheet1","28","Sussex Place","Ratcliffe","First","R1 Lounge LT9  End","Hospitality","80","","80","90","yes","hot/cold","yes",""
+"Sheet1","29","Sussex Place","Ratcliffe","First","R1 Lounge LT10 End","Hospitality","40","","20","40","yes","hot/cold","yes",""
+"Sheet1","30","Sussex Place","Ratcliffe","First","R1 Lounge LT9 & LT10 End combined","Hospitality","100","","100","130","yes","hot/cold","yes","Maximum numbers for using both S1 Lounge LT9 & LT10 End:
+Buffet Service in R1 Lounge LT9 & LT10 End: 100 people max
+Drinks Reception in R1 Lounge LT9 & LT10 End: 130 people max"
+"Sheet1","31","Sussex Place","Ratcliffe","Lower Ground","Ratcliffe LG Platform & Foyer","Hospitality","40","","40","40","yes","cold","yes",""
+"Sheet1","32","Sussex Place","Ratcliffe","Lower Ground","Outside LTs 3,4,5,6","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","33","Sussex Place","Ratcliffe","First","Outside LT 9","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","34","Sussex Place","Ratcliffe","First","Outside LT 10","Hospitality","","","","15","yes","cold","no",""
+"Sheet1","35","Sussex Place","Ratcliffe","Ground","Front Lawn (Nash)","Hospitality","","","","150","yes","hot/cold","no","See Front Lawn Policy for details of types of events that can be hosted incl. Barbecues"
+"Sheet1","36","Sussex Place","Ratcliffe","Ground","Front Lawn (Centre)","Hospitality","","","","150","yes","hot/cold","no","See Front Lawn Policy for details of types of events that can be hosted incl. Barbecues"
+"Sheet1","37","Sussex Place","Ratcliffe","Ground","Front Lawn (Gdn Rm)","Hospitality","","","","150","yes","hot/cold","no","See Front Lawn Policy for details of types of events that can be hosted incl. Barbecues"
+"Sheet1","38","Sussex Place","Ratcliffe","Ground","Ratcliffe Welcome Desk","Hospitality","","","","","no","no","no",""
+"Sheet1","39","Sussex Place","Ratcliffe","Ground","Main Ratcliffe Entrance","Hospitality","","","","","no","no","no",""
+"Sheet1","40","Sussex Place","Ratcliffe","Ground","Main Ratcliffe Entrance (Lift)","Hospitality","","","","","no","no","no",""
+"Sheet1","41","Sussex Place","Ratcliffe","G","Cloakroom (Ground Floor)","Hospitality","","","","","no","no","no","Managed by Reception. Email or book in person at Ratcliffe Reception with the team."
+"Sheet1","42","Sussex Place","Ratcliffe","LG","Cloakroom (Lower Ground Floor)","Hospitality","","","","","no","no","no","Managed by Reception. Email or book in person at Ratcliffe Reception with the team."
+"Sheet1","43","Sussex Place","Ratcliffe","Ground","Ratcliffe Outside Entrance","Hospitality","","","","","","","",""
+"Sheet1","44","Sammy Ofer Centre","SOC-East Wing","Level 2","Outside LTs 18,19","Hospitality","","","","30","","cold","no",""
+"Sheet1","45","Sammy Ofer Centre","SOC-East Wing","Level 0","Sammy Ofer Centre Registration Desk","Hospitality","","","","","no","no","no",""
+"Sheet1","46","Sammy Ofer Centre","SOC-East Wing","Level 1","SO.L1.101 Upper Link","Hospitality","","","","","","","",""
+"Sheet1","47","Sammy Ofer Centre","SOC-East Wing","Level 0","SO.L1.102 Lower Link","Hospitality","","","","80","yes","hot/cold","yes",""
+"Sheet1","48","Sammy Ofer Centre","SOC-West Wing","Level 1","Student Lounge","Hospitality","","","","","","","",""
+"Sheet1","58","","","","0","","","","","","","","",""

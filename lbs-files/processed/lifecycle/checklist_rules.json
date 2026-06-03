@@ -1,0 +1,10 @@
+﻿[
+    {
+        "id":  "space-request-first",
+        "rule":  "Complete EventRequest / Space Request before downstream MVP outputs."
+    },
+    {
+        "id":  "post-phase1-outputs",
+        "rule":  "After EventRequest completion, generate Key Event assessment, EIS if relevant, routing, emails, timeline/checklist, risk flags, and Monday mock payload."
+    }
+]

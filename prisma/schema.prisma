@@ -28,3 +28,81 @@ model AppEventLog {
   @@index([eventType, createdAt])
   @@index([actorSub])
 }
+
+model ProcessedDataSource {
+  id            String   @id @default(cuid())
+  sourcePath    String   @unique
+  sourceKind    String
+  authorityRank Int      @default(100)
+  description   String?
+  metadata      Json?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([sourceKind])
+  @@index([authorityRank])
+}
+
+model KnowledgeChunk {
+  id         String   @id @default(cuid())
+  chunkKey   String   @unique
+  sourcePath String
+  parsedPath String?
+  category   String
+  title      String?
+  body       String
+  metadata   Json?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([category])
+  @@index([sourcePath])
+}
+
+model RuntimeLookupRecord {
+  id        String   @id @default(cuid())
+  dataset   String
+  recordKey String
+  data      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([dataset, recordKey])
+  @@index([dataset])
+}
+
+model RuntimeRule {
+  id        String   @id @default(cuid())
+  ruleset   String
+  ruleKey   String
+  data      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([ruleset, ruleKey])
+  @@index([ruleset])
+}
+
+model EventScenario {
+  id           String   @id @default(cuid())
+  scenarioKey  String   @unique
+  scenarioType String?
+  data         Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([scenarioType])
+}
+
+model OutputTemplate {
+  id          String   @id @default(cuid())
+  templateKey String   @unique
+  format      String
+  sourcePath  String
+  body        String?
+  metadata    Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([format])
+}

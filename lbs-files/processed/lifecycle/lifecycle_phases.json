@@ -1,0 +1,79 @@
+﻿[
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  3,
+        "phase":  "1. Ideation",
+        "approximate_time_window":  "12+ months → 3 months before",
+        "notes":  "Start point driven entirely by event format chosen; no fixed deadline"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  4,
+        "phase":  "2. Initial Request",
+        "approximate_time_window":  "9+ months → 12 weeks before",
+        "notes":  "Space Request Form is the hard anchor at 12+ weeks; external venues require 9 months"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  5,
+        "phase":  "3. Coordinated Planning",
+        "approximate_time_window":  "6 months → 2 weeks before",
+        "notes":  "Runs concurrently with Phase 4; densest deadline cluster sits at the 4-week mark"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  6,
+        "phase":  "4. Content Planning",
+        "approximate_time_window":  "6 weeks → 2 weeks before",
+        "notes":  "Runs concurrently with Phase 3; Promo Group review is the closing milestone at 2–4 weeks"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  7,
+        "phase":  "5. Pre-Event Execution",
+        "approximate_time_window":  "2 weeks → day before",
+        "notes":  "Hard window; no major changes permitted within 48 hours of event"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  8,
+        "phase":  "6. Event Day",
+        "approximate_time_window":  "T − 90 min → event close",
+        "notes":  "Fixed sequence from team arrival through doors open"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  9,
+        "phase":  "7. Post-Event Closure",
+        "approximate_time_window":  "Day after → 1 month after",
+        "notes":  "Budget reconciliation at 10 working days and reporting form at 1 month are the hard closing anchors"
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  11,
+        "phase":  "\u003e\u003e our tool in its ultimate version will cover the first 5 phases. It will help guide students and help Jo project manage all events",
+        "approximate_time_window":  "",
+        "notes":  ""
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  12,
+        "phase":  "It will inform the students",
+        "approximate_time_window":  "",
+        "notes":  ""
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  13,
+        "phase":  "MVP will cover the 1st 3 phases",
+        "approximate_time_window":  "",
+        "notes":  ""
+    },
+    {
+        "source_sheet":  "Lifecycle Phases Overview",
+        "source_row":  14,
+        "phase":  "Tool can pre-populate submission forms and help with the next steps",
+        "approximate_time_window":  "",
+        "notes":  ""
+    }
+]

@@ -1,0 +1,65 @@
+﻿[
+    {
+        "id":  "entry-diagnosis",
+        "purpose":  "Classify the organiser entry point without asking for information already provided.",
+        "options":  [
+                        "prepared_event_request",
+                        "budget_only_no_event_idea",
+                        "general_event_idea",
+                        "pasted_draft"
+                    ],
+        "max_questions_default":  3,
+        "include_options":  [
+                                "Other",
+                                "Not sure yet",
+                                "Help me decide"
+                            ]
+    },
+    {
+        "id":  "space-request-form-order",
+        "purpose":  "When the user has not led with a middle section, collect fields in Space Request Form order.",
+        "field_keys":  [
+                           "organiser_name",
+                           "club_or_programme_affiliation",
+                           "contact_mobile_phone",
+                           "event_title",
+                           "number_of_attendees",
+                           "date",
+                           "start_finish_time",
+                           "event_type",
+                           "event_details",
+                           "external_guest_speaker_details",
+                           "has_external_guest_speakers",
+                           "politically_sensitive_or_controversial",
+                           "children_attending",
+                           "activities",
+                           "noise_impact",
+                           "space_and_setup",
+                           "registration_desk",
+                           "decorations",
+                           "catering",
+                           "alcohol",
+                           "recorded_music",
+                           "live_music",
+                           "cloakroom",
+                           "outside_equipment",
+                           "filming",
+                           "filming_details",
+                           "additional_information"
+                       ],
+        "field_statuses":  [
+                               "final",
+                               "best_estimate",
+                               "not_sure_yet",
+                               "needs_confirmation",
+                               "not_applicable",
+                               "organiser_follow_up",
+                               "missing"
+                           ]
+    },
+    {
+        "id":  "middle-section-follow",
+        "purpose":  "If the organiser starts with catering, AV, space, budget, or another middle section, preserve that context and continue from there.",
+        "rule":  "Do not discard extra context; map it to EventRequest fields, routing facts, or later output notes."
+    }
+]

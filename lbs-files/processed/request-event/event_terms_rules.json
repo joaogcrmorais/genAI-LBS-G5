@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  "space-first",
+        "rule":  "Secure correct space before publicising the event."
+    },
+    {
+        "id":  "short-notice",
+        "rule":  "Requests less than two weeks in advance may be difficult for service teams."
+    },
+    {
+        "id":  "catering-30-days",
+        "rule":  "Catering orders should be placed 30 days before the event and final numbers confirmed 5 days before."
+    },
+    {
+        "id":  "security-100-plus",
+        "rule":  "Additional security is required for larger events of 100+; inform security no later than 3 weeks before."
+    },
+    {
+        "id":  "higher-risk-alcohol",
+        "rule":  "Higher risk events with 50+ people and alcohol need number-management procedure agreed with Head of Security."
+    }
+]

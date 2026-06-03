@@ -1,0 +1,10 @@
+﻿[
+    {
+        "id":  "lexington-default",
+        "rule":  "Lexington is the default mandatory catering supplier unless an exception is approved."
+    },
+    {
+        "id":  "external-catering-waiver",
+        "rule":  "External catering requires waiver/approval and should be raised with Catering Events and Space."
+    }
+]

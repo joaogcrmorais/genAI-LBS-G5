@@ -75,13 +75,14 @@ Programmatically inspected:
 - DOCX files by reading `word/document.xml` from the DOCX archive and extracting paragraph text.
 - PPTX files by reading slide XML text.
 - XLSX files by reading workbook XML, sheet names, dimensions, and representative rows/cells.
-- PDF files enough to confirm they are PDF binaries, but not full text-extracted because no PDF text extractor is currently installed in the repo/session.
+- PDF files enough to confirm they are PDF binaries, but not full text-extracted locally because no PDF text extractor is currently installed in the repo/session.
+- `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md`, supplied by João after ChatGPT parsed the Event Toolkit PDF, is now the authoritative parsed-text companion for the Event Toolkit PDF.
 
 Important PDF handling:
 
-- João confirmed `[SA Copy] LBS Event Toolkit Student Clubs Updated - Copy.pdf` is the most authoritative source and contains the same material as `Student Event Organisers Guide - Copy.pptx`.
-- I inspected the PPTX content directly and use it as the readable proxy for the toolkit content in this plan.
-- During conversion, the PDF should still be treated as the authoritative input for final retrieval chunks if a reliable PDF extractor is available.
+- João confirmed `[SA Copy] LBS Event Toolkit Student Clubs Updated - Copy.pdf` is the most authoritative process source.
+- João provided `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md` as the authoritative parsed version of that PDF.
+- The older `Student Event Organisers Guide - Copy.pptx` is retained only as comparison/historical fallback context.
 - `Hospitality Brochure Autumn Winter 2025.pdf` has not yet been text-extracted. Conversion should include a PDF extraction step before runtime use.
 
 ## 5. Source Priority And Conflict Rules
@@ -92,8 +93,9 @@ Source priorities:
 
 1. Student event guidance:
    - Most authoritative: `[SA Copy] LBS Event Toolkit Student Clubs Updated - Copy.pdf`.
-   - Duplicate readable source: `Student Event Organisers Guide - Copy.pptx`.
-   - The PPTX can be deleted later because João confirmed it duplicates the PDF, but deletion is deferred until conversion is approved.
+   - Authoritative parsed text: `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md`.
+   - Historical fallback/comparison source: `Student Event Organisers Guide - Copy.pptx`.
+   - The PPTX can be deleted later if João approves, but it is currently retained for comparison.
 
 2. Space Request / EventRequest field list:
    - `CribSheet - Copy.docx`.
@@ -127,8 +129,9 @@ Known intentional overrides:
 Observed content basis:
 
 - Binary PDF confirmed.
-- João confirmed this is the most authoritative source and the same content as the readable PPTX.
-- The readable PPTX contains sections on before you start, defining an event, planning, team roles, audience/programming, fundraising/sponsorship, brand/marketing/comms, press invitation templates, ticketing, speakers, on-campus logistics, external venues, event-day logistics, final considerations, EIS, and Key Events meeting.
+- João confirmed this is the most authoritative source.
+- João supplied `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md` as the authoritative parsed markdown version.
+- The parsed markdown contains strategic event-planning process guidance, event necessity and definition, decision framework, audience/owner guidance, SMART objectives, costs/returns, planning questions, marketing/communications, speaker considerations, finance/sponsorship, logistics, EIS, and Key Event-related guidance.
 
 MVP relevance:
 
@@ -560,8 +563,8 @@ Observed content:
 
 MVP relevance:
 
-- High as readable proxy for authoritative Event Toolkit PDF.
-- The PPTX can be deleted later because João confirmed it duplicates the PDF, but deletion is not part of this planning-only step.
+- Historical fallback/comparison context only.
+- It should not be the runtime source now that `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md` exists.
 
 Classification:
 
@@ -569,18 +572,18 @@ Classification:
 
 Processed outputs:
 
-- Prefer extracting from authoritative PDF during conversion.
-- If PDF extraction is poor, use PPTX to generate:
+- Runtime toolkit chunks should come from `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md`.
+- Retain PPTX-derived outputs only for comparison:
   - `processed/toolkit/student_event_organisers_guide_sections.md`
   - `processed/toolkit/student_event_organisers_guide_chunks.jsonl`
 
 Runtime use:
 
-- Toolkit retrieval and shaping prompts.
+- Comparison/historical fallback only.
 
 DB candidate:
 
-- Same as toolkit chunks.
+- No, unless retained for audit/comparison.
 
 ### Space files
 
@@ -933,10 +936,10 @@ After this plan is approved, convert all listed conversion candidates, including
 
 ### Toolkit
 
-- Extract authoritative Event Toolkit PDF where possible.
-- Use PPTX as duplicate readable fallback.
+- Use `lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md` as the parsed authoritative Event Toolkit text.
+- Keep PPTX outputs only as comparison/historical fallback context.
 - Convert to sections/chunks/rules.
-- After approved conversion, delete PPTX only if PDF extraction and processed outputs are satisfactory.
+- Delete PPTX only if João explicitly approves after reviewing parsed PDF-derived outputs.
 
 ### Request / outputs
 
@@ -1203,13 +1206,21 @@ For each epic:
 - show the relevant user stories;
 - show checklist-style acceptance criteria;
 - include example inputs;
+- include all pre-determined test event scenarios for that epic;
+- provide editable form fields so João can alter the event facts and rerun the output;
+- expose the populated `EventRequest` object, including which fields matter for the epic;
+- show OpenAI reasoning where OpenAI is used;
 - expose generated outputs;
 - record any unresolved gaps before moving to the next epic.
 
 This is how João and Codex will verify that each story is actually being met.
 
+When testing the chat itself, editable form controls may be hidden so the conversation can be evaluated naturally. Even in chat tests, the test surface should still show the `EventRequest` object being populated turn by turn, the fields that matter, and any OpenAI reasoning used by the backend.
+
+The project has an OpenAI API key available through backend configuration. MVP features that call for LLM interpretation, drafting, or preliminary complexity/risk reasoning should use OpenAI through the backend instead of hard-coded mock reasoning, while keeping deterministic rules deterministic.
+
 ## 16. Stop Point
 
-This plan is still pre-conversion.
+João approved this plan and the conversion strategy on 2026-06-03. Conversion may now proceed.
 
-Do not create processed files, convert raw data, implement app logic, delete raw source files, or remove the duplicate PPTX until João approves this revised plan.
+Do not implement app logic, delete raw source files, or remove the duplicate PPTX until processed outputs are created and reviewed.

@@ -1,5 +1,7 @@
 # Workstream 4 Workplan
 
+Status update, 2026-06-03: this workplan is historical context. The old technical workstream split is obsolete, and WS4 is no longer the active delivery stream. Use `lbs-files/PLAN.md` and the new WS1 Phase 1 docs for current MVP planning. Keep this file only for understanding previously implemented tiering, routing, and mock Monday work.
+
 ## Technical direction
 
 - `POST /api/tiering/classify` uses OpenAI because tiering is contextual and sponsor knowledge is partly tacit.

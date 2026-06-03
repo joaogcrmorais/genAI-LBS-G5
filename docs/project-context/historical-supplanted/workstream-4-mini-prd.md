@@ -1,5 +1,7 @@
 # Workstream 4 Mini PRD
 
+Status update, 2026-06-03: this document is historical context for the existing WS4 prototype slice. The old technical workstream split is obsolete, and this is no longer the primary MVP flow. Current product requirements and technical delivery are owned by João + Codex. Tiering, stakeholder packets, EIS, and Monday.com payloads should be treated as post-Phase 1 or future/demo work after the Space Request Form draft is generated, uploaded, or confirmed complete.
+
 ## Workstream name
 
 Workstream 4: Tiering, Stakeholder Packets, and Mock Integrations

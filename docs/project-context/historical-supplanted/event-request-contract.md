@@ -1,5 +1,7 @@
 # EventRequest Contract
 
+Status update, 2026-06-03: this contract describes the previous shared `EventRequest`/WS4 coordination shape. It should be reconciled with the new Phase 1 Space Request Form field map before further implementation. Use it as implementation history, not as the final intake schema.
+
 ## Status
 
 Pre-Wednesday proposal for schema-lock discussion, partially implemented in the current WS4 backend schema.

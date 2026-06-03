@@ -1,5 +1,7 @@
 # Event Readiness Assistant: Architecture and 4-Workstream Build Plan
 
+Status update, 2026-06-03: this document is historical planning context. The four technical workstream split described here is obsolete. Current product requirements and technical delivery are owned by João + Codex, and the MVP is now a Phase 1 Space Request readiness assistant first. Use `lbs-files/PLAN.md`, `docs/project-context/event_readiness_assistant_phase_1_conversation_rules_spec.md`, `docs/project-context/key_event_identification_spec.md`, and `docs/project-context/06_user_view_prd_phase1_event_readiness_assistant.md` for current planning before using this document.
+
 Version: 3 — LBS Codex-compliant  
 Date: 2026-05-25  
 Status: Working baseline for build coordination  

@@ -1,5 +1,7 @@
 # GitHub Setup and Coordination Guide
 
+Status update, 2026-06-03: the Git workflow guidance remains useful, but references to separate WS1, WS2, WS3, and WS4 technical branches are historical. Product requirements and technical delivery are now owned by João + Codex unless the user creates a new branch plan.
+
 This document explains how to set up GitHub for the Event Readiness Assistant project and coordinate parallel work across the team.
 
 ## 1. Repository structure

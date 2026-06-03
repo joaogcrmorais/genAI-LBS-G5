@@ -1,5 +1,7 @@
 # Wednesday Discussion Notes
 
+Status update, 2026-06-03: these discussion notes are historical. The old workstream questions and WS4 framing are superseded by `lbs-files/PLAN.md` and the new WS1 Phase 1 business-logic documents.
+
 ## Purpose
 
 These notes were originally for the Wednesday team discussion, but the team did not meet Wednesday. Use them as source material for the Monday reset meeting, alongside `docs/project-context/monday-meeting-gameplan.md`. The goal is still to agree what the prototype should collect, decide, and show before each workstream builds too far in different directions.

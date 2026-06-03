@@ -1,5 +1,7 @@
 # Source Takeaways for Codex: Event Readiness Assistant
 
+Status update, 2026-06-03: this document is supporting historical context. Any references to the old WS1-WS4 technical delivery split or WS4 implementation focus are superseded by `lbs-files/PLAN.md` and the new Phase 1 Space Request readiness docs. Use this file for source takeaways only, not current work allocation.
+
 ## Purpose
 
 This document gives Codex the useful takeaways from the project source materials without requiring Codex to inspect or reason over the original source files directly. It intentionally avoids listing source filenames. Use this as context for product and architecture work.

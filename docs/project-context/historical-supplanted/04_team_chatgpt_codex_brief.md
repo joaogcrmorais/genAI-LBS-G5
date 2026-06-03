@@ -1,5 +1,7 @@
 # Brief for Team Members to Upload to ChatGPT / Codex
 
+Status update, 2026-06-03: this brief is historical. Its four technical workstreams have been superseded by the revised work allocation in `lbs-files/PLAN.md`: business logic; product requirements and technical delivery owned by João + Codex; next-step/future-opportunity reporting; and presentation/organisation/final review.
+
 Use this document as context when asking ChatGPT or Codex to help with your workstream.
 
 ## Project name

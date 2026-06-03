@@ -28,6 +28,14 @@ The backend runs on `http://localhost:3001`.
 
 Codex installed Node.js LTS and PostgreSQL 18 with permission. Dependencies have been installed in `node_modules/`, Prisma Client generation succeeds, and the initial PostgreSQL migration has been applied.
 
+## Current Product Direction
+
+The current planning source is `lbs-files/PLAN.md`.
+
+The MVP starts with Phase 1: helping an LBS student club organiser complete a structured `EventRequest` / Space Request Form draft. After that object is complete, the MVP should produce deterministic Key Event assessment, EIS-style draft for Key Event candidates, stakeholder routing and email drafts, timeline/checklist guidance, preliminary complexity/risk flags, and a Monday.com-ready mock payload.
+
+The old four technical workstream split is obsolete. Product requirements and technical delivery are owned by João + Codex. Raw LBS event-planning source files live under `lbs-files/raw/`; once approved, processed CSV/JSON/Markdown/DOCX template outputs or PostgreSQL tables should be used by the app at runtime.
+
 ## Environment Variables
 
 The app reads the real local `.env` file in the repository root. Do not commit it.

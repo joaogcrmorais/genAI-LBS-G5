@@ -1,5 +1,7 @@
 # Monday Meeting Gameplan
 
+Status update, 2026-06-03: this gameplan is historical. References to WS1-WS4 technical ownership and Monday-centered reset planning are superseded by `lbs-files/PLAN.md` and the Phase 1 Space Request readiness MVP framing.
+
 ## Purpose
 
 The team did not meet Wednesday, and there is no visible open PR activity from other workstreams. Use Monday as a reset meeting: align on the prototype story, assign concrete owners, and leave with small buildable tasks rather than broad intentions.

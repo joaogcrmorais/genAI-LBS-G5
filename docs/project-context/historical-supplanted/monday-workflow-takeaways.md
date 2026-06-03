@@ -1,5 +1,7 @@
 # Monday.com Workflow Takeaways
 
+Status update, 2026-06-03: this document remains useful context for future integration and staff-side visibility, but its workstream implications are historical. Monday.com should not drive the Phase 1 Space Request readiness flow.
+
 ## Source status
 
 This synthesis is based on the Monday.com LLM assistant exports in `docs/monday-llm-responses/`:

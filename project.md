@@ -115,6 +115,7 @@ The new Event Readiness endpoints are the active starting contract for Epic 1 / 
 
 Current Event Readiness chat behaviour notes:
 
+- Assistant responses should sound like an experienced LBS events colleague: short natural synthesis first, no field-by-field capture lists, no internal field names/statuses in the chat response, and only the next high-value questions.
 - Ordinary alumni/career/product/mixer topics should not trigger political/controversial confirmation unless the organiser gives a real sensitivity signal.
 - Concrete organiser-provided facts should be marked final or best-estimate, not `needs_confirmation`; use `needs_confirmation` only when the organiser explicitly says they need to check or do not know.
 - Low-probability miscellaneous fields such as children, decorations, recorded/live music, cloakroom, hired equipment, and filming should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
@@ -203,6 +204,9 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-04 after making Event Readiness chat response style less robotic.
+- `npm.cmd run lint`: passed on 2026-06-04 after making Event Readiness chat response style less robotic.
+- `npm.cmd run test`: passed on 2026-06-04; backend had 26 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run lint`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run test`: passed on 2026-06-04; backend had 25 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.

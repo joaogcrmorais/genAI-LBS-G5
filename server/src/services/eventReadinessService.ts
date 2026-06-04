@@ -7,6 +7,9 @@ import type {
   EventReadinessEventRequest,
   FieldStatus
 } from "../schemas/eventReadiness.js";
+import { assessKeyEvent } from "./keyEventService.js";
+import { phase1Epics, phase1Features, phase1UserStories } from "./phase1Metadata.js";
+import { buildSourceGuidance } from "./sourceGuidanceService.js";
 
 type SpaceRequestField = {
   label: string;
@@ -152,51 +155,6 @@ function hasPoliticalRiskSignal(text: string) {
     lower
   );
 }
-
-const userStories = [
-  {
-    epic: "E-01",
-    story: "US-01",
-    title: "Prepared event request",
-    acceptance: [
-      "Identify provided event type, timing, attendance, speaker, venue, catering, budget, or AV details.",
-      "Do not ask for the same detail again unless it is unclear.",
-      "Ask no more than three related follow-up questions by default."
-    ]
-  },
-  {
-    epic: "E-01",
-    story: "US-02",
-    title: "Budget-only user",
-    acceptance: [
-      "Ask about objective, audience, constraints, resources, and success signal.",
-      "Suggest suitable formats in later guided flow.",
-      "Raise finance-code implications because budget is involved.",
-      "Continue even if the initial idea is weak."
-    ]
-  },
-  {
-    epic: "E-02",
-    story: "US-04",
-    title: "Working event profile",
-    acceptance: [
-      "Each evaluation updates the EventRequest.",
-      "Every official CribSheet field has a value or explicit marker before Phase 1 ends.",
-      "Additional context is preserved.",
-      "No numeric completeness score is shown or required."
-    ]
-  },
-  {
-    epic: "E-02",
-    story: "US-05",
-    title: "Proceed-readiness",
-    acceptance: [
-      "All official fields from the CribSheet source are covered.",
-      "Values may be final, best estimate, not sure yet, needs confirmation, not applicable, or organiser follow-up.",
-      "Phase 1 completion creates the source EventRequest for downstream logic."
-    ]
-  }
-];
 
 function getRepoRoot() {
   const candidates = [process.cwd(), path.resolve(process.cwd(), "..")];
@@ -518,7 +476,9 @@ export function getEventReadinessBootstrap() {
     official_fields: getSpaceRequestFields(),
     question_flow: getQuestionFlow(),
     scenarios: getScenarios(),
-    user_stories: userStories
+    epics: phase1Epics,
+    features: phase1Features,
+    user_stories: phase1UserStories
   };
 }
 
@@ -556,6 +516,8 @@ export function evaluateEventRequestState(
     coverage,
     next_questions: buildNextQuestions(coverage),
     guidance_flags: buildGuidanceFlags(prompt, eventRequest, entryType),
+    source_guidance: buildSourceGuidance(prompt, eventRequest, entryType),
+    key_event_assessment: assessKeyEvent(eventRequest),
     source_notes: [
       "Coverage is evaluated against the active processed CribSheet field map.",
       "Allowed uncertainty markers count as proceed-ready; missing does not.",

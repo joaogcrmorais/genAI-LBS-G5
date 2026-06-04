@@ -1,26 +1,18 @@
-# Event Readiness Assistant: Epics, Features, User Stories, And Acceptance Criteria
+# Event Readiness Assistant: Phase 1 Epics, Features, User Stories, And Acceptance Criteria
 
 ## 0. Purpose
 
-This is the active MVP epics and user-story document.
+This is the active Phase 1 epics and user-story document.
 
 It replaces earlier WS1-WS4 technical-workstream framing. Historical planning files have been moved to `docs/project-context/historical-supplanted/` and are no longer source of truth.
 
-The implementation will proceed epic by epic with João reviewing each main deliverable through a frontend test/demo surface.
+Implementation proceeds epic by epic with Joao reviewing each main deliverable through the frontend test/demo surface.
 
 ## 1. Product Interpretation
 
-Phase 1 is the required intake phase. Its output is a fully populated `EventRequest` object and Space Request DOCX.
+Phase 1 is the required intake phase. Its output is a fully populated `EventRequest` object, Space Request DOCX, and deterministic Key Event assessment when the completed EventRequest contains enough confirmed information.
 
-After Phase 1, the MVP continues into:
-
-- deterministic Key Event assessment,
-- EIS-style draft for Key Event candidates,
-- stakeholder routing matrix,
-- stakeholder email drafts,
-- timeline/checklist display,
-- OpenAI-backed preliminary complexity/risk flags,
-- Monday.com-ready mock payload.
+Pasted drafts are not a standalone epic. They are handled by the normal conversational loop as organiser-provided context.
 
 No automatic submission, email sending, or real external system write-back is in scope.
 
@@ -36,22 +28,23 @@ No automatic submission, email sending, or real external system write-back is in
 | F-06 | Official Space Request / crib sheet field map | Keep | `CribSheet - Copy.docx` |
 | F-07 | Coverage check for all required fields | Keep, no numeric completeness score | CribSheet + Phase 1 spec |
 | F-08 | Space Request DOCX generation | Keep | CribSheet |
-| F-09 | In-chat preview | Post-MVP | João feedback |
-| F-10 | Pasted/manual draft review | Keep | João feedback |
-| F-11 | Document upload parsing | Future | João feedback |
-| F-12 | Finance-code lookup whenever budget is involved | Keep | Finance directory + João feedback |
-| F-13 | Space/room guidance | Keep | Space Matrix first, fallbacks after |
-| F-14 | Catering/alcohol/security/timeline guidance | Keep | Catering, terms, toolkit |
-| F-15 | Deterministic Key Event assessment | Keep | `key_event_identification_spec.md` only |
-| F-16 | EIS-style draft | Keep for Key Event candidates | EIS template + Key Event spec |
-| F-17 | Stakeholder routing matrix | Keep | Source rules + EventRequest |
-| F-18 | Stakeholder email drafts | Keep | Routing matrix + EventRequest |
-| F-19 | Timeline/checklist display | Keep | Lifecycle, terms, toolkit |
-| F-20 | OpenAI-backed preliminary complexity/risk flags | Keep | Existing WS4 implementation direction, revised scope |
-| F-21 | Monday.com-ready mock JSON payload | Keep | Existing Monday payload work + João feedback |
-| F-22 | Completeness score | Cut | João feedback |
-| F-23 | Post-event feedback, impact, lessons learned, handover | Future / WS3 report | João feedback |
-| F-24 | Reusable future-event recommendations | Future / WS3 report | João feedback |
+| F-09 | Finance-code lookup whenever budget is involved | Keep | Finance directory + Joao feedback |
+| F-10 | Space/room guidance | Keep | Space Matrix first, fallbacks after |
+| F-11 | Catering/alcohol/security/timeline guidance | Keep | Catering, terms, toolkit |
+| F-12 | Deterministic Key Event assessment | Keep | `key_event_identification_spec.md` only |
+| F-13 | Frontend Phase 1 QA checklist | Keep | Joao feedback |
+| F-14 | In-chat preview | Post-MVP | Joao feedback |
+| F-15 | Document upload parsing | Future | Joao feedback |
+| F-16 | EIS-style draft | Future / downstream | EIS template + Key Event spec |
+| F-17 | Stakeholder routing matrix | Future / downstream | Source rules + EventRequest |
+| F-18 | Stakeholder email drafts | Future / downstream | Routing matrix + EventRequest |
+| F-19 | Timeline/checklist display | Future / downstream | Lifecycle, terms, toolkit |
+| F-20 | OpenAI-backed preliminary complexity/risk flags | Future / downstream | Existing WS4 implementation direction, revised scope |
+| F-21 | Monday.com-ready mock JSON payload | Future / downstream | Existing Monday payload work + Joao feedback |
+| F-22 | Completeness score | Cut | Joao feedback |
+| F-23 | Pasted/manual draft review as standalone epic | Cut; handled by normal conversation | Joao feedback |
+| F-24 | Post-event feedback, impact, lessons learned, handover | Future / WS3 report | Joao feedback |
+| F-25 | Reusable future-event recommendations | Future / WS3 report | Joao feedback |
 
 ## 3. Epics
 
@@ -61,12 +54,8 @@ No automatic submission, email sending, or real external system write-back is in
 | E-02 | Build the EventRequest | Working event profile with all CribSheet fields |
 | E-03 | Guide form-ready answers with source data | Question flow using toolkit, finance, space, catering, and policy data |
 | E-04 | Generate the Space Request DOCX | Editable DOCX with all official fields |
-| E-05 | Review pasted/manual drafts | Pasted draft mapping and gap-fill flow |
-| E-06 | Assess Key Event candidacy deterministically | Key Event assessment using only `key_event_identification_spec.md` |
-| E-07 | Generate post-Phase-1 documents and guidance | EIS draft, timeline/checklist, stakeholder emails |
-| E-08 | Route stakeholders and flag complexity/risk | Routing matrix plus OpenAI-backed preliminary LBS staff risk flags |
-| E-09 | Generate Monday.com mock payload | Monday-ready mock JSON, no API call |
-| E-10 | Validate epic-by-epic in frontend | Demo/test surface with checklist and story coverage |
+| E-05 | Assess Key Event candidacy deterministically | Key Event assessment using only `key_event_identification_spec.md` |
+| E-06 | Validate Phase 1 in frontend | Demo/test surface with checklist and story coverage |
 
 ## 4. User Stories
 
@@ -155,7 +144,7 @@ Acceptance criteria:
 
 - Space Matrix is checked first.
 - If a room is missing, fallback sources are checked.
-- If supporting sources conflict, the source with more entries is preferred and the used source is stated.
+- If supporting sources conflict, the used source is stated.
 - Catering, alcohol, political/sensitive topic, security, decoration, equipment, and timing implications are surfaced when relevant.
 
 ### E-04: Generate the Space Request DOCX
@@ -172,33 +161,19 @@ Acceptance criteria:
 - Uncertain fields are visibly marked.
 - No form is submitted automatically.
 
-### E-05: Review pasted/manual drafts
+### E-05: Assess Key Event candidacy deterministically
 
-#### US-10: Pasted draft review
-
-As an organiser with a partial draft, I want to paste it and fill gaps.
-
-Acceptance criteria:
-
-- Assistant maps pasted content into EventRequest fields.
-- Assistant preserves user-provided answers.
-- Assistant identifies missing, vague, or contradictory fields.
-- Assistant asks targeted follow-ups.
-- Document upload is not required for MVP.
-
-### E-06: Assess Key Event candidacy deterministically
-
-#### US-11: Attendance trigger
+#### US-10: Attendance trigger
 
 As LBS staff, I want 100+ attendee events flagged after EventRequest completion.
 
 Acceptance criteria:
 
-- Confirmed attendance 100+ sets `key_event_candidate` true.
+- Confirmed or best-estimate attendance 100+ sets `key_event_candidate` true.
 - The user-facing language says `could be considered` or `may qualify`.
 - LBS staff retain final determination.
 
-#### US-12: Criteria threshold trigger
+#### US-11: Criteria threshold trigger
 
 As LBS staff, I want confirmed complexity indicators to trigger Key Event candidacy.
 
@@ -207,9 +182,8 @@ Acceptance criteria:
 - Two or more confirmed non-attendance criteria set `key_event_candidate` true.
 - Criteria are only those in `docs/project-context/key_event_identification_spec.md`.
 - Missing, vague, or uncollected information is not counted.
-- If deterministic coding is not possible from the spec, Codex flags it to João.
 
-#### US-13: Sensitive topic handling
+#### US-12: Sensitive topic handling
 
 As an organiser, I need to know if political/sensitive topics affect planning.
 
@@ -219,88 +193,24 @@ Acceptance criteria:
 - It is surfaced to the user because it requires security/timeline attention.
 - It is included in internal rationale/signals.
 
-### E-07: Generate post-Phase-1 documents and guidance
+### E-06: Validate Phase 1 in frontend
 
-#### US-14: EIS draft
+#### US-13: Frontend checklist per Phase 1 epic
 
-As a Key Event candidate organiser, I want an EIS-style draft from known information.
-
-Acceptance criteria:
-
-- EIS draft is offered/generated only after EventRequest completion and Key Event candidate assessment.
-- No additional questions are asked solely to complete EIS.
-- Missing EIS-specific values are marked `needs confirmation`.
-
-#### US-15: Stakeholder email drafts
-
-As an organiser, I want editable messages to stakeholders.
+As Joao, I want a frontend validation surface for each Phase 1 epic.
 
 Acceptance criteria:
 
-- Drafts are generated for stakeholders identified by routing.
-- Messages are editable.
-- No emails are sent automatically.
-
-#### US-16: Timeline/checklist
-
-As the LBS crew assisting an organiser, I want an actionable checklist.
-
-Acceptance criteria:
-
-- Checklist uses lifecycle, terms, toolkit, catering, and space timing rules where available.
-- Political/sensitive topics, alcohol, catering, external speakers, external audience, and 100+ attendance surface timeline impacts where source rules support them.
-
-### E-08: Route stakeholders and flag complexity/risk
-
-#### US-17: Routing matrix
-
-As staff, I want clear stakeholder routing from event facts.
-
-Acceptance criteria:
-
-- Routing matrix is derived from EventRequest facts and source rules.
-- Each stakeholder includes why they are involved and what information they need.
-
-#### US-18: Preliminary complexity/risk flags
-
-As LBS staff, I want a preliminary complexity/risk signal separate from deterministic Key Event status.
-
-Acceptance criteria:
-
-- OpenAI may be used for broader complexity/risk reasoning.
-- Output is labelled preliminary guidance.
-- It does not override deterministic Key Event logic.
-
-### E-09: Generate Monday.com mock payload
-
-#### US-19: Monday-ready mock JSON
-
-As the demo team, I want a realistic Monday.com payload without real integration.
-
-Acceptance criteria:
-
-- Payload is generated after EventRequest completion.
-- Payload maps as closely as repo knowledge allows to the known Monday expectations.
-- No Monday API call is made.
-- Payload clearly remains a mock/export artifact.
-
-### E-10: Validate epic-by-epic in frontend
-
-#### US-20: Frontend checklist per epic
-
-As João, I want a frontend validation surface for each epic.
-
-Acceptance criteria:
-
-- Each epic has a visible/testable demo path.
-- The UI reminds João of the user stories.
+- The UI lists Phase 1 epics E-01 to E-06.
+- The UI lists all Phase 1 features and user stories.
 - The UI shows checklist-style acceptance criteria.
 - The UI exposes example inputs and generated outputs.
 - The UI includes all pre-determined test event scenarios for the epic.
 - The UI includes editable form fields unless the page is specifically testing chat behaviour.
 - The UI shows the populated `EventRequest` object and highlights which fields matter.
-- The UI shows OpenAI reasoning whenever an epic uses OpenAI-backed interpretation, drafting, or complexity/risk reasoning.
+- The UI shows OpenAI reasoning whenever an epic uses OpenAI-backed interpretation or source guidance.
 - Chat test pages may hide editable form fields, but must still show the EventRequest being populated turn by turn.
+- Checklist ticks persist in browser localStorage.
 
 ## 5. Future / WS3 Next-Steps Report
 
@@ -311,6 +221,12 @@ Flag for WS3 / production-readiness reporting:
 - handover summary,
 - reusable recommendations for future similar events,
 - secure document upload/storage,
+- EIS-style draft generation,
+- stakeholder routing matrix,
+- stakeholder email drafts,
+- staff-side timeline/checklist display,
+- OpenAI-backed preliminary complexity/risk flags,
+- Monday.com-ready mock JSON payload,
 - real Monday.com API integration,
 - ERP / finance integration,
 - fundraising / Advancement / CRM integration,

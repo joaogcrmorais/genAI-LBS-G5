@@ -40,3 +40,20 @@ export async function apiPost<T>(path: string, body: unknown, token?: string): P
 
   return response.json() as Promise<T>;
 }
+
+export async function apiPostBlob(path: string, body: unknown, token?: string): Promise<Blob> {
+  const response = await fetch(`${appConfig.apiBaseUrl}${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
+    },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    throw new Error(await readError(response));
+  }
+
+  return response.blob();
+}

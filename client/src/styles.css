@@ -259,6 +259,29 @@ h1 {
   gap: 16px;
 }
 
+.era-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.era-tabs button,
+.era-qa-header button {
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #002776;
+  cursor: pointer;
+  padding: 9px 12px;
+}
+
+.era-tabs button.active {
+  background: #002776;
+  border-color: #002776;
+  color: #ffffff;
+}
+
 .era-chat-window {
   display: grid;
   gap: 10px;
@@ -340,6 +363,70 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.era-qa {
+  display: grid;
+  gap: 16px;
+}
+
+.era-qa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 16px;
+}
+
+.era-qa-header h2,
+.era-epic-title h2 {
+  margin: 0 0 6px;
+  color: #002776;
+  font-size: 1.15rem;
+}
+
+.era-epic-card h3 {
+  margin: 16px 0 10px;
+  color: #002776;
+  font-size: 0.95rem;
+}
+
+.era-epic-title .eyebrow {
+  margin: 0 0 4px;
+}
+
+.era-checklist {
+  display: grid;
+  gap: 8px;
+}
+
+.era-check-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  border: 1px solid #e4e7ec;
+  border-radius: 6px;
+  background: #f8fafc;
+  padding: 10px;
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.era-check-item input {
+  margin-top: 3px;
+}
+
+.era-check-item small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .era-field-row {
@@ -487,8 +574,13 @@ h1 {
   }
 
   .scenario-control,
-  .ws4-output {
+  .ws4-output,
+  .era-qa-header {
     margin-top: 16px;
+  }
+
+  .era-qa-header {
+    display: grid;
   }
 
   .form-grid {

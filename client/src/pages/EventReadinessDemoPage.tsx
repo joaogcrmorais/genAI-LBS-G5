@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useMemo, useState } from "react";
-import { apiGet, apiPost } from "../services/api";
+import { apiGet, apiPost, apiPostBlob } from "../services/api";
 
 type FieldStatus =
   | "final"
@@ -33,7 +33,23 @@ type UserStory = {
   epic: string;
   story: string;
   title: string;
+  feature_ids: string[];
   acceptance: string[];
+};
+
+type Epic = {
+  id: string;
+  title: string;
+  deliverable: string;
+  features: string[];
+};
+
+type Feature = {
+  id: string;
+  epic: string;
+  title: string;
+  status: "keep" | "post_mvp" | "cut" | "future";
+  source: string;
 };
 
 type BootstrapResponse = {
@@ -46,6 +62,8 @@ type BootstrapResponse = {
   field_statuses: FieldStatus[];
   official_fields: SpaceRequestField[];
   scenarios: Scenario[];
+  epics: Epic[];
+  features: Feature[];
   user_stories: UserStory[];
 };
 
@@ -83,6 +101,22 @@ type EvaluateResponse = {
     label: string;
     rationale: string;
   }>;
+  source_guidance: Array<{
+    type: string;
+    label: string;
+    rationale: string;
+    source: string;
+    details?: unknown;
+  }>;
+  key_event_assessment: {
+    key_event_candidate: boolean;
+    trigger_reasons: string[];
+    counted_criteria: string[];
+    non_counted_or_missing_criteria: string[];
+    internal_signals: string[];
+    user_facing_message: string;
+    source_notes: string[];
+  };
   source_notes: string[];
 };
 
@@ -152,6 +186,8 @@ function ResponsePanel({ title, children }: { title: string; children: React.Rea
   );
 }
 
+const QA_STORAGE_KEY = "event-readiness-phase1-qa-v1";
+
 export function EventReadinessDemoPage() {
   const { getAccessTokenSilently } = useAuth0();
   const [bootstrap, setBootstrap] = useState<BootstrapResponse | null>(null);
@@ -164,6 +200,14 @@ export function EventReadinessDemoPage() {
   const [chatResult, setChatResult] = useState<ChatResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [activeTab, setActiveTab] = useState<"chat" | "qa">("chat");
+  const [qaTicks, setQaTicks] = useState<Record<string, boolean>>(() => {
+    try {
+      return JSON.parse(window.localStorage.getItem(QA_STORAGE_KEY) ?? "{}") as Record<string, boolean>;
+    } catch {
+      return {};
+    }
+  });
 
   const fieldsByCategory = useMemo(() => {
     const grouped = new Map<string, SpaceRequestField[]>();
@@ -172,6 +216,35 @@ export function EventReadinessDemoPage() {
     }
     return Array.from(grouped.entries());
   }, [bootstrap?.official_fields]);
+
+  const storiesByEpic = useMemo(() => {
+    const grouped = new Map<string, UserStory[]>();
+    for (const story of bootstrap?.user_stories ?? []) {
+      grouped.set(story.epic, [...(grouped.get(story.epic) ?? []), story]);
+    }
+    return grouped;
+  }, [bootstrap?.user_stories]);
+
+  const featuresByEpic = useMemo(() => {
+    const grouped = new Map<string, Feature[]>();
+    for (const feature of bootstrap?.features ?? []) {
+      grouped.set(feature.epic, [...(grouped.get(feature.epic) ?? []), feature]);
+    }
+    return grouped;
+  }, [bootstrap?.features]);
+
+  function setQaTick(id: string, checked: boolean) {
+    setQaTicks((current) => {
+      const next = { ...current, [id]: checked };
+      window.localStorage.setItem(QA_STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
+  }
+
+  function resetQaTicks() {
+    window.localStorage.removeItem(QA_STORAGE_KEY);
+    setQaTicks({});
+  }
 
   async function loadBootstrap() {
     const token = await getAccessTokenSilently();
@@ -240,6 +313,31 @@ export function EventReadinessDemoPage() {
       setChatResult(result);
       setEvaluation(result);
       setEventRequest(result.event_request);
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : String(caught));
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function downloadSpaceRequestDocx() {
+    setBusy(true);
+    setError(null);
+    try {
+      const token = await getAccessTokenSilently();
+      const blob = await apiPostBlob(
+        "/api/event-readiness/space-request-docx",
+        { event_request: eventRequest },
+        token
+      );
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "lbs-space-request-draft.docx";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : String(caught));
     } finally {
@@ -317,7 +415,28 @@ export function EventReadinessDemoPage() {
         </label>
       </div>
 
-      <div className="era-layout">
+      <div className="era-tabs" role="tablist" aria-label="Event Readiness views">
+        <button
+          type="button"
+          className={activeTab === "chat" ? "active" : undefined}
+          onClick={() => setActiveTab("chat")}
+          role="tab"
+          aria-selected={activeTab === "chat"}
+        >
+          Chat / EventRequest
+        </button>
+        <button
+          type="button"
+          className={activeTab === "qa" ? "active" : undefined}
+          onClick={() => setActiveTab("qa")}
+          role="tab"
+          aria-selected={activeTab === "qa"}
+        >
+          Epic QA checklist
+        </button>
+      </div>
+
+      {activeTab === "chat" ? <div className="era-layout">
         <div className="era-main">
           <section className="form-section">
             <h2>Chat test</h2>
@@ -375,6 +494,13 @@ export function EventReadinessDemoPage() {
               </button>
               <button
                 type="button"
+                onClick={() => void downloadSpaceRequestDocx()}
+                disabled={busy || !evaluation?.coverage.phase_1_ready}
+              >
+                Download Space Request DOCX
+              </button>
+              <button
+                type="button"
                 onClick={() => {
                   setEventRequest({ fields: {}, field_status: {} });
                   setEvaluation(null);
@@ -389,7 +515,7 @@ export function EventReadinessDemoPage() {
 
           <section className="scenario-guide">
             <table>
-              <caption>Epic 1-2 story checklist</caption>
+              <caption>Phase 1 story checklist snapshot</caption>
               <thead>
                 <tr>
                   <th>Story</th>
@@ -464,6 +590,7 @@ export function EventReadinessDemoPage() {
                   ? {
                       entry_type: evaluation.entry_type,
                       guidance_flags: evaluation.guidance_flags,
+                      source_guidance: evaluation.source_guidance,
                       source_notes: evaluation.source_notes
                     }
                   : { note: bootstrap.source_of_truth.note },
@@ -471,6 +598,13 @@ export function EventReadinessDemoPage() {
                 2
               )}
             </pre>
+          </ResponsePanel>
+
+          <ResponsePanel title="Key Event assessment">
+            <p className="panel-note">
+              Deterministic assessment from current EventRequest facts. It does not ask extra questions solely for scoring.
+            </p>
+            <pre>{JSON.stringify(evaluation?.key_event_assessment ?? { note: "No evaluation yet." }, null, 2)}</pre>
           </ResponsePanel>
 
           <ResponsePanel title="Assistant turn">
@@ -514,7 +648,73 @@ export function EventReadinessDemoPage() {
             <pre>{JSON.stringify(eventRequest, null, 2)}</pre>
           </ResponsePanel>
         </aside>
-      </div>
+      </div> : (
+        <section className="era-qa">
+          <div className="era-qa-header">
+            <div>
+              <h2>Phase 1 QA checklist</h2>
+              <p className="panel-note">
+                Local checklist for tracking whether features and user stories are working as intended.
+              </p>
+            </div>
+            <button type="button" onClick={resetQaTicks}>
+              Reset checklist
+            </button>
+          </div>
+
+          {bootstrap.epics.map((epic) => (
+            <section className="form-section era-epic-card" key={epic.id}>
+              <div className="era-epic-title">
+                <div>
+                  <p className="eyebrow">{epic.id}</p>
+                  <h2>{epic.title}</h2>
+                  <p className="panel-note">{epic.deliverable}</p>
+                </div>
+              </div>
+
+              <h3>Features</h3>
+              <div className="era-checklist">
+                {(featuresByEpic.get(epic.id) ?? []).map((feature) => {
+                  const tickId = `feature:${feature.id}`;
+                  return (
+                    <label className="era-check-item" key={feature.id}>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(qaTicks[tickId])}
+                        onChange={(event) => setQaTick(tickId, event.target.checked)}
+                      />
+                      <span>
+                        <strong>{feature.id}</strong> {feature.title}
+                        <small>{feature.source}</small>
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+
+              <h3>User stories</h3>
+              <div className="era-checklist">
+                {(storiesByEpic.get(epic.id) ?? []).map((story) => {
+                  const tickId = `story:${story.story}`;
+                  return (
+                    <label className="era-check-item" key={story.story}>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(qaTicks[tickId])}
+                        onChange={(event) => setQaTick(tickId, event.target.checked)}
+                      />
+                      <span>
+                        <strong>{story.story}</strong> {story.title}
+                        <small>{story.acceptance.join(" ")}</small>
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
+        </section>
+      )}
     </section>
   );
 }

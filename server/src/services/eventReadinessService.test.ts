@@ -14,6 +14,9 @@ describe("eventReadinessService", () => {
     expect(bootstrap.official_fields.length).toBeGreaterThan(20);
     expect(bootstrap.scenarios.map((scenario) => scenario.id)).toContain("prepared-alumni-panel");
     expect(bootstrap.source_of_truth.note).toContain("WS4");
+    expect(bootstrap.epics.map((epic) => epic.id)).toEqual(["E-01", "E-02", "E-03", "E-04", "E-05", "E-06"]);
+    expect(bootstrap.features.map((feature) => feature.id)).toContain("F-12");
+    expect(bootstrap.user_stories.map((story) => story.story)).toContain("US-13");
   });
 
   it("builds a new EventRequest draft from a prepared-event scenario", () => {
@@ -34,6 +37,19 @@ describe("eventReadinessService", () => {
     expect(result.event_request.fields.event_type).toBe("Help me decide");
     expect(result.guidance_flags.map((flag) => flag.type)).toContain("finance_code");
     expect(result.guidance_flags.map((flag) => flag.type)).toContain("toolkit_shaping");
+    expect(result.source_guidance.map((item) => item.type)).toContain("finance_code");
+    expect(result.source_guidance.map((item) => item.type)).toContain("toolkit_shaping");
+  });
+
+  it("surfaces source guidance for space, catering, and timeline signals", () => {
+    const result = evaluateEventReadiness({
+      prompt:
+        "We need a lecture theatre space for 120 people with catering, alcohol, and external audience guests."
+    });
+
+    expect(result.source_guidance.map((item) => item.type)).toContain("space_lookup");
+    expect(result.source_guidance.map((item) => item.type)).toContain("catering_policy");
+    expect(result.source_guidance.map((item) => item.type)).toContain("timeline_policy");
   });
 
   it("does not ask political confirmation for ordinary alumni/product events", () => {

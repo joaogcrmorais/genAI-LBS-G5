@@ -44,4 +44,11 @@ describe("event readiness route auth", () => {
     });
     expect(response.status).toBe(401);
   });
+
+  it("requires auth for Space Request DOCX generation", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/space-request-docx").send({
+      event_request: { fields: {}, field_status: {} }
+    });
+    expect(response.status).toBe(401);
+  });
 });

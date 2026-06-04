@@ -4,7 +4,7 @@
 
 This repository is the London Business School Generative AI Elective group prototype.
 
-The current product is the Event Readiness Assistant: a student-facing LBS event planning assistant that first helps a club organiser complete a structured `EventRequest` / Space Request Form draft, then uses that event object to generate downstream planning outputs.
+The current product is the Event Readiness Assistant: a student-facing LBS event planning assistant that helps a club organiser complete a structured `EventRequest` / Space Request Form draft, generate a Space Request DOCX, and assess deterministic Key Event candidacy when enough confirmed information is available.
 
 ## Current Product Direction
 
@@ -23,22 +23,21 @@ The old four technical workstream split is obsolete. João is the only technical
 
 Phase 1 creates a fully populated `EventRequest` object using the official field source in `lbs-files/raw/request-event/CribSheet - Copy.docx`. The generated Space Request output should be DOCX and include all of the same fields, though it does not need to match the original visual formatting.
 
-After Phase 1, the MVP should use the completed `EventRequest` to produce:
+Current Phase 1 ends at:
 
-- deterministic Key Event assessment;
-- EIS-style draft for Key Event candidates;
-- stakeholder routing matrix;
-- stakeholder email drafts;
-- timeline/checklist display;
-- OpenAI-backed preliminary complexity/risk flags for LBS staff;
-- Monday.com-ready mock JSON payload.
+- complete `EventRequest` / Space Request field coverage;
+- source-data guidance for toolkit shaping, finance, space, catering, policy, security, and timeline implications;
+- Space Request DOCX generation;
+- deterministic Key Event assessment when existing EventRequest facts are sufficient.
+
+EIS draft generation, stakeholder routing, stakeholder emails, staff-side timeline/checklist outputs, OpenAI-backed broader complexity/risk flags, and Monday.com mock payloads are future/downstream work, not part of the current Phase 1 implementation pass.
 
 Important rules:
 
 - `docs/project-context/key_event_identification_spec.md` is the sole deterministic source for Key Event categorisation.
 - Finance-code lookup must be surfaced whenever budget is involved, and finance codes may be shown to users.
 - Space lookup should use `lbs-files/raw/space/Space Matrix (1) - Copy.xlsx` first, with fallbacks only when needed.
-- The MVP uses pasted text/manual input for existing drafts, not document upload.
+- Pasted text/manual draft material is handled by the normal conversational loop, not as a standalone epic.
 - In-chat form preview is post-MVP; users can review the generated DOCX.
 - No automatic form submission, email sending, real Monday API call, web speaker lookup, or write-back to LBS systems is in scope.
 
@@ -84,7 +83,7 @@ Current routes:
 - `/health`: public backend health check page.
 - `/dashboard`: protected by Auth0 login plus `user_normal` or `user_admin`.
 - `/admin`: protected by Auth0 login plus `user_admin`.
-- `/event-readiness-demo`: protected current-scope Epic 1 / Epic 2 validation surface.
+- `/event-readiness-demo`: protected current-scope Phase 1 validation surface for E-01 through E-06.
 - `/ws4-demo`: historical protected demo harness from the previous WS4 prototype slice.
 
 The `/ws4-demo` route and related files may be reused or replaced during the new epic-by-epic build, but they should not define current product scope by themselves.
@@ -109,9 +108,10 @@ Current notable routes:
 - `GET /api/event-readiness/bootstrap`
 - `POST /api/event-readiness/event-request/evaluate`
 - `POST /api/event-readiness/chat`
+- `POST /api/event-readiness/space-request-docx`
 - historical WS4 routes for tiering, stakeholder packets, and Monday mock payloads
 
-The new Event Readiness endpoints are the active starting contract for Epic 1 / Epic 2 validation. The `/api/event-readiness/chat` endpoint is the current chatbot testing contract: OpenAI interprets organiser messages and proposes field updates, then deterministic coverage/readiness logic evaluates the resulting `EventRequest`. The historical WS4 routes remain present for now, but are not source-of-truth product endpoints.
+The new Event Readiness endpoints are the active Phase 1 contract. The `/api/event-readiness/chat` endpoint is the current chatbot testing contract: OpenAI interprets organiser messages and proposes field updates, then deterministic coverage/readiness logic evaluates the resulting `EventRequest`. The current contract also exposes source guidance, deterministic Key Event assessment, and Space Request DOCX generation. The historical WS4 routes remain present for now, but are not source-of-truth product endpoints.
 
 Current Event Readiness chat behaviour notes:
 
@@ -203,6 +203,9 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-04 after implementing Phase 1 E-03 through E-06 source guidance, DOCX generation, Key Event assessment, QA checklist, and OpenAI contract retry.
+- `npm.cmd run lint`: passed on 2026-06-04 after implementing Phase 1 E-03 through E-06 source guidance, DOCX generation, Key Event assessment, QA checklist, and OpenAI contract retry.
+- `npm.cmd run test`: passed on 2026-06-04; backend had 32 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run lint`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run test`: passed on 2026-06-04; backend had 25 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
@@ -224,7 +227,7 @@ No app lint/typecheck/test suite was run for the latest data-conversion update b
 
 ## Current Next Steps
 
-1. Continue Epic 1 / Epic 2 from the new chat-first `/event-readiness-demo` validation page and `/api/event-readiness/*` backend contract.
+1. Validate Phase 1 E-01 through E-06 from `/event-readiness-demo` using the chat/EventRequest tab and Epic QA checklist tab.
 2. Expand deterministic EventRequest population beyond the first source-backed heuristic pass, keeping the official CribSheet field map as source of truth.
-3. Add source-data guidance for finance, space, catering, policy, and toolkit shaping as Epic 3.
-4. For each epic, provide a frontend test/demo surface with predetermined event scenarios, editable form fields where relevant, visible `EventRequest` population, OpenAI reasoning via backend, user stories, and checklist-style acceptance criteria.
+3. Validate generated Space Request DOCX output against representative completed EventRequests.
+4. Revisit downstream/future outputs only after Phase 1 is stable: EIS draft, stakeholder routing, emails, timeline/checklist, complexity/risk flags, and Monday mock payload.

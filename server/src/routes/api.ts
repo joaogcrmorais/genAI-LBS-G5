@@ -9,6 +9,7 @@ import {
 } from "../schemas/ws4.js";
 import {
   eventReadinessChatRequestSchema,
+  eventReadinessEventRequestSchema,
   eventReadinessEvaluateRequestSchema
 } from "../schemas/eventReadiness.js";
 import {
@@ -22,6 +23,7 @@ import {
 import { buildMondayMockPayload } from "../services/mondayPayloadService.js";
 import { openAiStatus } from "../services/openai.js";
 import { buildStakeholderPackets } from "../services/routingService.js";
+import { buildSpaceRequestDocx } from "../services/spaceRequestDocxService.js";
 import { classifyEventTier, TieringServiceError } from "../services/tieringService.js";
 
 export const apiRouter = Router();
@@ -89,6 +91,19 @@ apiRouter.post("/event-readiness/chat", requireNormalUser, async (req: Request, 
     }
     throw error;
   }
+});
+
+apiRouter.post("/event-readiness/space-request-docx", requireNormalUser, async (req: Request, res: Response) => {
+  const parsed = eventReadinessEventRequestSchema.safeParse(req.body?.event_request);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid EventRequest for Space Request DOCX", details: parsed.error.flatten() });
+    return;
+  }
+
+  const docx = await buildSpaceRequestDocx(parsed.data);
+  res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+  res.setHeader("Content-Disposition", 'attachment; filename="lbs-space-request-draft.docx"');
+  res.send(docx);
 });
 
 apiRouter.post("/tiering/classify", requireNormalUser, async (req: Request, res: Response) => {

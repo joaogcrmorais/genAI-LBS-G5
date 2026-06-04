@@ -13,6 +13,8 @@ import {
 } from "./eventReadinessService.js";
 
 const MODEL = "gpt-4o-mini";
+export const GENERIC_EVENT_READINESS_CHAT_ERROR =
+  "An error has occurred. Please restart the conversation.";
 
 export class EventReadinessChatError extends Error {
   constructor(
@@ -120,6 +122,33 @@ function buildUserPrompt(input: EventReadinessChatRequest) {
   );
 }
 
+function buildRepairPrompt(input: EventReadinessChatRequest, validationError: string) {
+  return JSON.stringify(
+    {
+      instruction:
+        "Your previous Event Readiness response violated the required JSON contract. Return corrected JSON only, with no markdown or commentary.",
+      validation_error: validationError,
+      required_contract: {
+        assistant_message: "string",
+        field_updates: [
+          {
+            key: "official field key string",
+            value: "captured value or explicit marker",
+            status:
+              "final | best_estimate | not_sure_yet | needs_confirmation | not_applicable | organiser_follow_up | missing",
+            rationale: "string"
+          }
+        ],
+        reasoning_summary: ["string"],
+        unanswered_questions: ["up to five strings"]
+      },
+      original_request: JSON.parse(buildUserPrompt(input)) as unknown
+    },
+    null,
+    2
+  );
+}
+
 function summariseAutoClosedFields(input: EventReadinessChatRequest, eventRequest: EventReadinessChatRequest["event_request"]) {
   const before = input.event_request?.fields ?? {};
   const after = eventRequest?.fields ?? {};
@@ -152,7 +181,7 @@ function composeAssistantMessage(
   return `${aiTurn.assistant_message}${autoClosed}`.trim();
 }
 
-async function requestJson(client: OpenAI, input: EventReadinessChatRequest) {
+async function requestJson(client: OpenAI, input: EventReadinessChatRequest, repairError?: string) {
   try {
     const response = await client.chat.completions.create({
       model: MODEL,
@@ -164,7 +193,7 @@ async function requestJson(client: OpenAI, input: EventReadinessChatRequest) {
         },
         {
           role: "user",
-          content: buildUserPrompt(input)
+          content: repairError ? buildRepairPrompt(input, repairError) : buildUserPrompt(input)
         }
       ],
       temperature: 0.2
@@ -179,7 +208,23 @@ async function requestJson(client: OpenAI, input: EventReadinessChatRequest) {
 
 export async function continueEventReadinessChat(input: EventReadinessChatRequest) {
   const client = getOpenAiClient();
-  const aiTurn = validateAiTurn(await requestJson(client, input));
+  let aiTurn: EventReadinessAiTurn;
+  try {
+    aiTurn = validateAiTurn(await requestJson(client, input));
+  } catch (error) {
+    if (!(error instanceof EventReadinessChatError) || error.code !== "invalid_ai_response") {
+      throw error;
+    }
+
+    try {
+      aiTurn = validateAiTurn(await requestJson(client, input, error.message));
+    } catch (retryError) {
+      if (retryError instanceof EventReadinessChatError && retryError.code === "invalid_ai_response") {
+        throw new EventReadinessChatError(GENERIC_EVENT_READINESS_CHAT_ERROR, "invalid_ai_response");
+      }
+      throw retryError;
+    }
+  }
   const eventRequest = applyAiTurnToEventRequest(input.event_request, aiTurn);
   const entryType = detectEntryType(input.transcript.length ? `${input.transcript[0]?.content} ${input.message}` : input.message);
   const evaluated = evaluateEventRequestState(eventRequest, input.message, entryType);

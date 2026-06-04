@@ -6,24 +6,33 @@ Date: 2026-06-03
 
 The Event Readiness Assistant MVP has a required Phase 1 and a downstream output phase.
 
-Phase 1 exists to create a fully populated `EventRequest` object. Technically, Phase 1 is complete when every field required by the official Space Request / crib sheet source has a concrete value, best estimate, `not sure yet`, `needs confirmation`, `not applicable`, or explicit organiser follow-up marker.
+Phase 1 exists to create a fully populated `EventRequest` object. Technically, Phase 1 is complete when every field required by the official updated Space Request Form source has a concrete value, best estimate, `not sure yet`, `needs confirmation`, `not applicable`, or explicit organiser follow-up marker.
 
 The official field source for the Phase 1 output is:
 
-- `lbs-files/raw/request-event/CribSheet - Copy.docx`
+- `lbs-files/raw/request-event/Event form - Space Request Form.docx`
 
-The generated final output should be a DOCX. It does not need to visually match the current crib sheet, but it must contain the same fields.
+The completed example source is:
 
-Phase 1 is not the whole product. After the `EventRequest` is complete, the MVP should use it to produce:
+- `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx`
+
+The generated final output should be a DOCX. It does not need to visually match the current Space Request Form, but it must contain the same fields. The completed AMC crib sheet is used for examples and test values, not as the field source.
+
+DOCX generation may proceed with declaration fields marked `needs_confirmation`. The generated output should show the download link followed by the declaration list, explaining that sending the form to `space@london.edu` means the organiser is agreeing to those declarations. The output pattern is stored in `lbs-files/processed/request-event/space_request_generation_output.md`.
+
+Phase 1 is not the whole product. After the `EventRequest` is complete, the core MVP should use it to produce:
 
 - Space Request DOCX;
 - deterministic Key Event candidate assessment;
-- EIS-style draft for Key Event candidates;
-- stakeholder routing matrix;
-- stakeholder email drafts;
+- Key Event / EIS recommendation;
+- full SA Operations / Eventscase email draft to `saoperations@london.edu`;
 - timeline/checklist display for the LBS crew assisting the organiser;
 - OpenAI-backed preliminary complexity/risk flags for LBS staff;
 - Monday.com-ready mock JSON payload.
+
+EIS-style drafting and stakeholder routing are MVP stretch. Broader stakeholder email drafting is stretch / V2 unless templates and stakeholder expectations are confirmed.
+The confirmed SA Operations / Eventscase email template is stored in `lbs-files/processed/routing/stakeholder_email_templates.md`.
+The Eventscase email draft should be generated or noted with the Space Request output when the Audience field includes anything besides `Current students` and `Children (Under 18s)`. Student admin names and LBS emails stay out of the official Space Request field map and are optional Eventscase email fields.
 
 No automatic external action is in scope. The app must not submit forms, send emails, create Monday items through the API, write to catering/finance/room systems, or call other LBS systems.
 
@@ -98,7 +107,8 @@ Source priorities:
    - The PPTX can be deleted later if João approves, but it is currently retained for comparison.
 
 2. Space Request / EventRequest field list:
-   - `CribSheet - Copy.docx`.
+   - Primary source: `Event form - Space Request Form.docx`.
+   - Completed example: `LBS Crib Sheet_AMC.docx`.
 
 3. Key Event categorisation:
    - Sole deterministic source: `docs/project-context/key_event_identification_spec.md`.
@@ -455,13 +465,13 @@ DB candidate:
 
 ### Request-event files
 
-#### `lbs-files/raw/request-event/CribSheet - Copy.docx`
+#### `lbs-files/raw/request-event/Event form - Space Request Form.docx`
 
 Observed content:
 
-- Official source of fields for final Phase 1 output.
-- Extracted fields include organiser, club/programme affiliation, contact number, event title, attendees, date, start/finish time, event type, event details, attendee types, external guest speakers, political sensitivity, children, activities, noise impact, space/setup, registration desk, decorations, catering, external catering note, alcohol, recorded/live music, cloakroom, outside/extra equipment, filming, additional information.
-- Also includes licensing/policy material about licensable activities, licensing objectives, alcohol, premises, and organiser responsibilities.
+- Primary updated blank Space Request Form source for final Phase 1 output.
+- Extracted fields include organiser name, project manager, deputy organiser, LBS email, contact number, school affiliation, event title, expected attendance, audience, children, event date, setup/arrival/start/end/breakdown times, event type, external speaker details, event purpose/context, political sensitivity, preferred venue type, room configuration, additional spaces, registration/welcome support, decorations, catering, alcohol, AV, noise/disruption, outside equipment, filming, streaming media, submission timing, additional comments, declarations, and office-use-only assessment fields.
+- The assistant should map organiser-facing fields into EventRequest. Office-use-only fields are not organiser intake questions.
 
 MVP relevance:
 
@@ -474,7 +484,9 @@ Classification:
 Processed outputs:
 
 - `processed/request-event/space_request_fields.json`
+- `processed/request-event/space_request_field_mapping_examples.md`
 - `processed/request-event/space_request_form_template.md`
+- `processed/request-event/space_request_generation_output.md`
 - `processed/templates/space_request_form_template.docx`
 - `processed/schemas/event_request.schema.json`
 - `processed/schemas/space_request_docx.schema.json`
@@ -484,12 +496,39 @@ Runtime use:
 - EventRequest schema.
 - Question flow.
 - DOCX generation.
+- Post-generation declaration output.
 - Proceed-readiness.
 
 DB candidate:
 
 - EventRequest persistence table later.
 - For MVP, EventRequest can be request/session state unless persistence is chosen.
+
+#### `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx`
+
+Observed content:
+
+- Completed crib sheet for Asset Management Conference.
+- The format is not identical to the updated blank Space Request Form, but it gives realistic example values for many fields.
+- Useful values include organiser name, club, contact number, event title, expected attendance around 200, date, broad timing, event type, purpose/context, external speaker details, political sensitivity, children, space request, registration desk, decorations, catering, alcohol, music, cloakroom, equipment, and photos/filming.
+
+MVP relevance:
+
+- High as a completed example and test fixture, not as the field source.
+
+Classification:
+
+- Example data source for mapping, examples, and test scenarios.
+
+Processed outputs:
+
+- `processed/request-event/space_request_field_mapping_examples.md`
+- Example values embedded in `processed/request-event/space_request_fields.json`
+
+Runtime use:
+
+- Example/test data.
+- Demonstrates how older combined crib-sheet answers map into the updated form's more granular fields.
 
 #### `lbs-files/raw/request-event/LBS Event Information Sheet 2023-24 - Copy.docx`
 
@@ -943,7 +982,8 @@ After this plan is approved, convert all listed conversion candidates, including
 
 ### Request / outputs
 
-- Convert CribSheet to field map, schema, and DOCX template.
+- Convert updated Space Request Form to field map, schema, and DOCX template.
+- Use completed AMC crib sheet as a mapping/example fixture.
 - Convert EIS template to schema/template.
 - Convert terms and conditions to rules/chunks.
 - Convert run-of-show and mic schedule to templates/examples.
@@ -1004,10 +1044,16 @@ Use retrieval chunks for:
 Generate:
 
 - Space Request DOCX;
-- EIS-style DOCX/draft for Key Event candidates;
-- stakeholder emails;
+- Key Event / EIS recommendation;
+- full SA Operations / Eventscase email draft to `saoperations@london.edu`;
 - timeline/checklist;
 - Monday mock JSON.
+
+Stretch generated artifacts:
+
+- EIS-style DOCX/draft for Key Event candidates;
+- stakeholder routing matrix;
+- broader stakeholder email drafts after templates and expectations are confirmed.
 
 Do not automatically submit, send, or write back.
 
@@ -1022,13 +1068,18 @@ In scope:
 - Toolkit-based event shaping.
 - Space, catering, alcohol, security, political/sensitive topic, and timeline guidance.
 - Deterministic Key Event assessment after EventRequest completion.
-- EIS-style draft for Key Event candidates.
-- Stakeholder routing matrix.
-- Stakeholder email drafts.
+- Key Event / EIS recommendation.
+- Full SA Operations / Eventscase email draft to `saoperations@london.edu`, using `lbs-files/processed/routing/stakeholder_email_templates.md`.
 - Timeline/checklist display.
 - OpenAI-backed preliminary complexity/risk flags for LBS staff.
 - Monday.com-ready mock JSON payload.
 - Frontend epic test/demo surface.
+
+MVP stretch:
+
+- EIS-style draft for Key Event candidates.
+- Stakeholder routing matrix.
+- Broader stakeholder email drafts after templates and stakeholder expectations are confirmed.
 
 Out of scope:
 
@@ -1111,9 +1162,9 @@ Topics:
 
 ## 13. Questions Answered By João
 
-1. Is `CribSheet - Copy.docx` the official Space Request Form source?
-   - Answer: Yes. It is the official source of what should be included in the final output.
-   - Rationale: The final output does not need the same formatting, but must contain all the same fields.
+1. What is the official Space Request Form source?
+   - Answer: Use `Event form - Space Request Form.docx` as the updated blank form and current field source.
+   - Rationale: `LBS Crib Sheet_AMC.docx` is a completed example and is not identical to the updated blank form.
 
 2. Which fields must be final before proceeding?
    - Answer: Use the LBS guide, transcript, and repo knowledge to understand what the user needs to proceed; guide until all fields are filled or explicitly marked.
@@ -1150,7 +1201,7 @@ Topics:
    - Rationale: Use `docs/project-context/key_event_identification_spec.md` as the sole deterministic approach and flag ambiguity during implementation.
 
 11. How much EIS support?
-   - Answer: Work with current EIS information and offer/build it if the event is classified as a Key Event, after Phase 1.
+   - Answer: Core MVP should recommend EIS when the deterministic Key Event candidate assessment is triggered. EIS-style draft generation is MVP stretch.
    - Rationale: Phase 1 creates EventRequest; do not ask extra questions solely to fill EIS.
 
 12. Should political topics alter user-facing wording?

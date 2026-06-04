@@ -12,15 +12,16 @@ The implementation will proceed epic by epic with João reviewing each main deli
 
 Phase 1 is the required intake phase. Its output is a fully populated `EventRequest` object and Space Request DOCX.
 
-After Phase 1, the MVP continues into:
+After Phase 1, the core MVP continues into:
 
 - deterministic Key Event assessment,
-- EIS-style draft for Key Event candidates,
-- stakeholder routing matrix,
-- stakeholder email drafts,
+- Key Event / EIS recommendation,
+- a full SA Operations / Eventscase email draft to `saoperations@london.edu`,
 - timeline/checklist display,
 - OpenAI-backed preliminary complexity/risk flags,
 - Monday.com-ready mock payload.
+
+EIS-style drafting and stakeholder routing are MVP stretch. Broader stakeholder email drafting is stretch / V2 unless specific stakeholder templates are confirmed.
 
 No automatic submission, email sending, or real external system write-back is in scope.
 
@@ -29,13 +30,13 @@ No automatic submission, email sending, or real external system write-back is in
 | Feature ID | Feature | MVP status | Source |
 |---|---|---|---|
 | F-01 | Entry-type detection | Keep | Phase 1 conversation spec |
-| F-02 | Working event profile / EventRequest | Keep | Phase 1 conversation spec + CribSheet |
+| F-02 | Working event profile / EventRequest | Keep | Phase 1 conversation spec + updated Space Request Form |
 | F-03 | Small themed questions | Keep | Phase 1 conversation spec |
 | F-04 | Structured options and uncertainty markers | Keep | Phase 1 conversation spec |
 | F-05 | Toolkit-based shaping for vague/budget-only users | Keep | Event Toolkit / Student Guide |
-| F-06 | Official Space Request / crib sheet field map | Keep | `CribSheet - Copy.docx` |
-| F-07 | Coverage check for all required fields | Keep, no numeric completeness score | CribSheet + Phase 1 spec |
-| F-08 | Space Request DOCX generation | Keep | CribSheet |
+| F-06 | Official Space Request field map | Keep | `Event form - Space Request Form.docx` |
+| F-07 | Coverage check for all required fields | Keep, no numeric completeness score | Updated Space Request Form + Phase 1 spec |
+| F-08 | Space Request DOCX generation | Keep | Updated Space Request Form |
 | F-09 | In-chat preview | Post-MVP | João feedback |
 | F-10 | Pasted/manual draft review | Keep | João feedback |
 | F-11 | Document upload parsing | Future | João feedback |
@@ -43,9 +44,9 @@ No automatic submission, email sending, or real external system write-back is in
 | F-13 | Space/room guidance | Keep | Space Matrix first, fallbacks after |
 | F-14 | Catering/alcohol/security/timeline guidance | Keep | Catering, terms, toolkit |
 | F-15 | Deterministic Key Event assessment | Keep | `key_event_identification_spec.md` only |
-| F-16 | EIS-style draft | Keep for Key Event candidates | EIS template + Key Event spec |
-| F-17 | Stakeholder routing matrix | Keep | Source rules + EventRequest |
-| F-18 | Stakeholder email drafts | Keep | Routing matrix + EventRequest |
+| F-16 | EIS-style draft | MVP stretch for Key Event candidates | EIS template + Key Event spec |
+| F-17 | Stakeholder routing matrix | MVP stretch | Source rules + EventRequest |
+| F-18 | Stakeholder email drafts | MVP only for SA Operations / Eventscase; broader drafts stretch / V2 | Eventscase handoff + future stakeholder templates |
 | F-19 | Timeline/checklist display | Keep | Lifecycle, terms, toolkit |
 | F-20 | OpenAI-backed preliminary complexity/risk flags | Keep | Existing WS4 implementation direction, revised scope |
 | F-21 | Monday.com-ready mock JSON payload | Keep | Existing Monday payload work + João feedback |
@@ -58,13 +59,13 @@ No automatic submission, email sending, or real external system write-back is in
 | Epic ID | Epic | Main deliverable |
 |---|---|---|
 | E-01 | Start and triage the organiser journey | Entry-type-aware intake flow |
-| E-02 | Build the EventRequest | Working event profile with all CribSheet fields |
+| E-02 | Build the EventRequest | Working event profile with all updated Space Request Form fields |
 | E-03 | Guide form-ready answers with source data | Question flow using toolkit, finance, space, catering, and policy data |
 | E-04 | Generate the Space Request DOCX | Editable DOCX with all official fields |
 | E-05 | Review pasted/manual drafts | Pasted draft mapping and gap-fill flow |
 | E-06 | Assess Key Event candidacy deterministically | Key Event assessment using only `key_event_identification_spec.md` |
-| E-07 | Generate post-Phase-1 documents and guidance | EIS draft, timeline/checklist, stakeholder emails |
-| E-08 | Route stakeholders and flag complexity/risk | Routing matrix plus OpenAI-backed preliminary LBS staff risk flags |
+| E-07 | Generate post-Phase-1 documents and guidance | Key Event/EIS recommendation, timeline/checklist, SA Operations/Eventscase email; EIS draft as stretch |
+| E-08 | Route stakeholders and flag complexity/risk | OpenAI-backed preliminary LBS staff risk flags; routing matrix as stretch |
 | E-09 | Generate Monday.com mock payload | Monday-ready mock JSON, no API call |
 | E-10 | Validate epic-by-epic in frontend | Demo/test surface with checklist and story coverage |
 
@@ -112,7 +113,7 @@ As a student organiser, I want the assistant to remember details across turns.
 Acceptance criteria:
 
 - Each user turn updates the EventRequest.
-- Every official CribSheet field has a value or explicit marker before Phase 1 ends.
+- Every official updated Space Request Form field has a value or explicit marker before Phase 1 ends.
 - Additional context is preserved.
 - No numeric completeness score is shown or required.
 
@@ -122,7 +123,7 @@ As the system, I need to know when Phase 1 is complete so downstream outputs can
 
 Acceptance criteria:
 
-- All official fields from `CribSheet - Copy.docx` are covered.
+- All official fields from `Event form - Space Request Form.docx` are covered.
 - Values may be final, best estimate, `not sure yet`, `needs confirmation`, `not applicable`, or organiser follow-up.
 - Phase 1 completion creates the source EventRequest for downstream logic.
 
@@ -167,9 +168,11 @@ As a student organiser, I want an editable DOCX that contains all required field
 Acceptance criteria:
 
 - Output is DOCX.
-- Output includes all fields from `CribSheet - Copy.docx`.
+- Output includes all fields from `Event form - Space Request Form.docx`.
 - Formatting may differ from the raw form.
 - Uncertain fields are visibly marked.
+- DOCX generation can proceed while declaration fields are `needs_confirmation`.
+- The generation output lists the required declarations below the download link and explains that sending the form to `space@london.edu` means the organiser is agreeing to them.
 - No form is submitted automatically.
 
 ### E-05: Review pasted/manual drafts
@@ -223,22 +226,29 @@ Acceptance criteria:
 
 #### US-14: EIS draft
 
-As a Key Event candidate organiser, I want an EIS-style draft from known information.
+As a Key Event candidate organiser, I want an optional EIS-style draft from known information if stretch scope allows it.
 
 Acceptance criteria:
 
-- EIS draft is offered/generated only after EventRequest completion and Key Event candidate assessment.
+- EIS recommendation is core MVP after EventRequest completion and Key Event candidate assessment.
+- EIS draft generation is MVP stretch, not required for the core MVP.
 - No additional questions are asked solely to complete EIS.
 - Missing EIS-specific values are marked `needs confirmation`.
 
-#### US-15: Stakeholder email drafts
+#### US-15: SA Operations / Eventscase email draft
 
-As an organiser, I want editable messages to stakeholders.
+As an organiser, I want an editable email draft to SA Operations for Eventscase handoff.
 
 Acceptance criteria:
 
-- Drafts are generated for stakeholders identified by routing.
-- Messages are editable.
+- The core MVP generates one full stakeholder email draft addressed to `saoperations@london.edu`.
+- The draft is for Eventscase / SA Operations handoff.
+- The draft uses the confirmed subject pattern `Eventscase page request - [Event Name] - [Club Name]`.
+- The draft includes event name, club hosting the event, date/time, location placeholder pending Space Management confirmation, and student admin names/LBS emails or the Eventscase account instruction.
+- The draft is generated or noted with the Space Request output when the Audience field includes anything besides `Current students` and `Children (Under 18s)`.
+- Student admin names and LBS emails are not part of the Space Request field map; they are optional Eventscase email fields.
+- The message is editable.
+- Broader stakeholder email drafts are stretch / V2 and require confirmed templates or stakeholder expectations.
 - No emails are sent automatically.
 
 #### US-16: Timeline/checklist
@@ -254,12 +264,13 @@ Acceptance criteria:
 
 #### US-17: Routing matrix
 
-As staff, I want clear stakeholder routing from event facts.
+As staff, I want clear stakeholder routing from event facts if stretch scope allows it.
 
 Acceptance criteria:
 
-- Routing matrix is derived from EventRequest facts and source rules.
-- Each stakeholder includes why they are involved and what information they need.
+- Stakeholder routing matrix is MVP stretch, not required for the core MVP.
+- If built, routing matrix is derived from EventRequest facts and source rules.
+- If built, each stakeholder includes why they are involved and what information they need.
 
 #### US-18: Preliminary complexity/risk flags
 

@@ -21,17 +21,21 @@ Historical/supplanted planning files have been moved to `docs/project-context/hi
 
 The old four technical workstream split is obsolete. João is the only technical delivery owner, with Codex as the technical build partner.
 
-Phase 1 creates a fully populated `EventRequest` object using the official field source in `lbs-files/raw/request-event/CribSheet - Copy.docx`. The generated Space Request output should be DOCX and include all of the same fields, though it does not need to match the original visual formatting.
+Phase 1 creates a fully populated `EventRequest` object using the official updated field source in `lbs-files/raw/request-event/Event form - Space Request Form.docx`. `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx` is a completed example used for mapping and test values, not the field source. The generated Space Request output should be DOCX and include all of the same fields, though it does not need to match the original visual formatting.
 
-After Phase 1, the MVP should use the completed `EventRequest` to produce:
+Space Request DOCX generation may proceed with declaration fields marked `needs_confirmation`. After generation, the UI should show the download link followed by the declarations that apply when the organiser sends the form to `space@london.edu`.
+
+After Phase 1, the core MVP should use the completed `EventRequest` to produce:
 
 - deterministic Key Event assessment;
-- EIS-style draft for Key Event candidates;
-- stakeholder routing matrix;
-- stakeholder email drafts;
+- Key Event / EIS recommendation;
+- full SA Operations / Eventscase email draft to `saoperations@london.edu`;
 - timeline/checklist display;
 - OpenAI-backed preliminary complexity/risk flags for LBS staff;
 - Monday.com-ready mock JSON payload.
+
+EIS-style drafting and stakeholder routing are MVP stretch. Broader stakeholder email drafting is stretch / V2 unless templates and stakeholder expectations are confirmed.
+The Eventscase email draft is generated or noted with the Space Request output only when Audience includes anything besides `Current students` and `Children (Under 18s)`. Student admin names and LBS emails are optional Eventscase email fields, not official Space Request fields.
 
 Important rules:
 

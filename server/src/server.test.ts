@@ -26,3 +26,22 @@ describe("ws4 route auth", () => {
     expect(response.status).toBe(401);
   });
 });
+
+describe("event readiness route auth", () => {
+  it("requires auth for bootstrap metadata", async () => {
+    const response = await request(createServer()).get("/api/event-readiness/bootstrap");
+    expect(response.status).toBe(401);
+  });
+
+  it("requires auth for EventRequest evaluation", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/event-request/evaluate").send({});
+    expect(response.status).toBe(401);
+  });
+
+  it("requires auth for Event Readiness chat", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/chat").send({
+      message: "I want to run a panel."
+    });
+    expect(response.status).toBe(401);
+  });
+});

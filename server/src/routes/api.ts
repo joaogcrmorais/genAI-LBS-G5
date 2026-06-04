@@ -7,6 +7,18 @@ import {
   routingRequestSchema,
   tieringRequestSchema
 } from "../schemas/ws4.js";
+import {
+  eventReadinessChatRequestSchema,
+  eventReadinessEvaluateRequestSchema
+} from "../schemas/eventReadiness.js";
+import {
+  continueEventReadinessChat,
+  EventReadinessChatError
+} from "../services/eventReadinessChatService.js";
+import {
+  evaluateEventReadiness,
+  getEventReadinessBootstrap
+} from "../services/eventReadinessService.js";
 import { buildMondayMockPayload } from "../services/mondayPayloadService.js";
 import { openAiStatus } from "../services/openai.js";
 import { buildStakeholderPackets } from "../services/routingService.js";
@@ -45,6 +57,38 @@ apiRouter.get("/admin/check", requireAdminUser, (_req: Request, res: Response) =
 
 apiRouter.get("/ai/status", requireNormalUser, (_req: Request, res: Response) => {
   res.json(openAiStatus());
+});
+
+apiRouter.get("/event-readiness/bootstrap", requireNormalUser, (_req: Request, res: Response) => {
+  res.json(getEventReadinessBootstrap());
+});
+
+apiRouter.post("/event-readiness/event-request/evaluate", requireNormalUser, (req: Request, res: Response) => {
+  const parsed = eventReadinessEvaluateRequestSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid Event Readiness request", details: parsed.error.flatten() });
+    return;
+  }
+
+  res.json(evaluateEventReadiness(parsed.data));
+});
+
+apiRouter.post("/event-readiness/chat", requireNormalUser, async (req: Request, res: Response) => {
+  const parsed = eventReadinessChatRequestSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid Event Readiness chat request", details: parsed.error.flatten() });
+    return;
+  }
+
+  try {
+    res.json(await continueEventReadinessChat(parsed.data));
+  } catch (error) {
+    if (error instanceof EventReadinessChatError) {
+      res.status(error.code === "invalid_ai_response" ? 502 : 503).json({ error: error.message });
+      return;
+    }
+    throw error;
+  }
 });
 
 apiRouter.post("/tiering/classify", requireNormalUser, async (req: Request, res: Response) => {

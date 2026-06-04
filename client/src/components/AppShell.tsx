@@ -16,6 +16,7 @@ export function AppShell({ children }: PropsWithChildren) {
         <nav className="nav-links" aria-label="Primary navigation">
           <NavLink to="/health">Health</NavLink>
           <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/event-readiness-demo">Event Readiness</NavLink>
           <NavLink to="/ws4-demo">WS4 Demo</NavLink>
           <NavLink to="/admin">Admin</NavLink>
         </nav>

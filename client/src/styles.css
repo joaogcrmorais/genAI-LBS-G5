@@ -151,6 +151,10 @@ h1 {
   max-width: 1480px;
 }
 
+.era-demo {
+  max-width: 1520px;
+}
+
 .ws4-header {
   display: flex;
   align-items: end;
@@ -243,6 +247,73 @@ h1 {
   align-items: start;
 }
 
+.era-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.era-main {
+  display: grid;
+  gap: 16px;
+}
+
+.era-chat-window {
+  display: grid;
+  gap: 10px;
+  min-height: 220px;
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #f8fafc;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.era-chat-message {
+  max-width: 86%;
+  border: 1px solid #d9e1ec;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 10px 12px;
+}
+
+.era-chat-message.assistant {
+  justify-self: start;
+  border-color: #b8c7dd;
+}
+
+.era-chat-message.user {
+  justify-self: end;
+  background: #eef4ff;
+  border-color: #b8c7dd;
+}
+
+.era-chat-message span {
+  display: block;
+  margin-bottom: 4px;
+  color: #002776;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.era-chat-message p,
+.era-empty-chat,
+.panel-note {
+  margin: 0;
+  color: #334155;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.era-empty-chat {
+  align-self: center;
+  justify-self: center;
+  color: #64748b;
+}
+
 .ws4-form,
 .ws4-output {
   display: grid;
@@ -269,6 +340,20 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+}
+
+.era-field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 220px);
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid #eef2f7;
+}
+
+.era-field-row:first-of-type {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .form-field {
@@ -350,6 +435,35 @@ h1 {
   color: #ffe4e6;
 }
 
+.response-panel .panel-note {
+  margin-bottom: 10px;
+}
+
+.era-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.era-metrics div {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #d9e1ec;
+  border-radius: 6px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.era-metrics strong {
+  color: #002776;
+  font-size: 1.35rem;
+}
+
+.era-metrics span {
+  color: #475569;
+  font-size: 0.82rem;
+}
+
 .configuration-message {
   margin: 48px;
 }
@@ -367,7 +481,8 @@ h1 {
   }
 
   .ws4-header,
-  .ws4-layout {
+  .ws4-layout,
+  .era-layout {
     display: block;
   }
 
@@ -377,6 +492,10 @@ h1 {
   }
 
   .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .era-field-row {
     grid-template-columns: 1fr;
   }
 }

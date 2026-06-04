@@ -84,9 +84,16 @@ Current routes:
 - `/health`: public backend health check page.
 - `/dashboard`: protected by Auth0 login plus `user_normal` or `user_admin`.
 - `/admin`: protected by Auth0 login plus `user_admin`.
+- `/event-readiness-demo`: protected current-scope Epic 1 / Epic 2 validation surface.
 - `/ws4-demo`: historical protected demo harness from the previous WS4 prototype slice.
 
 The `/ws4-demo` route and related files may be reused or replaced during the new epic-by-epic build, but they should not define current product scope by themselves.
+
+Current scope reset note as of 2026-06-03:
+
+- The historical WS4 `EventRequest` shape and historical tiering/routing/Monday endpoints are no longer authoritative for the Event Readiness Assistant.
+- They may be mined for useful implementation ideas, but new MVP work should use the active processed CribSheet/EventRequest artifacts and new `event-readiness` backend contract.
+- The first current-scope frontend validation URL is `/event-readiness-demo`.
 
 ## Backend
 
@@ -99,7 +106,19 @@ Current notable routes:
 - `GET /api/normal/check`
 - `GET /api/admin/check`
 - `GET /api/ai/status`
+- `GET /api/event-readiness/bootstrap`
+- `POST /api/event-readiness/event-request/evaluate`
+- `POST /api/event-readiness/chat`
 - historical WS4 routes for tiering, stakeholder packets, and Monday mock payloads
+
+The new Event Readiness endpoints are the active starting contract for Epic 1 / Epic 2 validation. The `/api/event-readiness/chat` endpoint is the current chatbot testing contract: OpenAI interprets organiser messages and proposes field updates, then deterministic coverage/readiness logic evaluates the resulting `EventRequest`. The historical WS4 routes remain present for now, but are not source-of-truth product endpoints.
+
+Current Event Readiness chat behaviour notes:
+
+- Ordinary alumni/career/product/mixer topics should not trigger political/controversial confirmation unless the organiser gives a real sensitivity signal.
+- Concrete organiser-provided facts should be marked final or best-estimate, not `needs_confirmation`; use `needs_confirmation` only when the organiser explicitly says they need to check or do not know.
+- Low-probability miscellaneous fields such as children, decorations, recorded/live music, cloakroom, hired equipment, and filming should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
+- When deterministic `next_questions` is empty and Phase 1 is ready, the assistant should stop asking follow-ups and tell the organiser the Space Request DOCX draft is the next step.
 
 OpenAI SDK configuration exists only in the backend. The frontend must never read `OPENAI_API_KEY`.
 
@@ -184,6 +203,12 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
+- `npm.cmd run lint`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
+- `npm.cmd run test`: passed on 2026-06-04; backend had 25 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
+- `npm.cmd run typecheck`: passed on 2026-06-03 after adding the first Event Readiness backend/frontend validation slice.
+- `npm.cmd run lint`: passed on 2026-06-03 after adding the first Event Readiness backend/frontend validation slice.
+- `npm.cmd run test`: passed on 2026-06-03; backend had 22 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 - `powershell -NoProfile -ExecutionPolicy Bypass -File scripts\convert-lbs-files.ps1`: passed on 2026-06-03.
 - `npm.cmd run data:load`: passed on 2026-06-03 and loaded processed runtime data into PostgreSQL.
 - Generated JSON/JSONL parse check: passed on 2026-06-03.
@@ -199,6 +224,7 @@ No app lint/typecheck/test suite was run for the latest data-conversion update b
 
 ## Current Next Steps
 
-1. Start Epic 1 in a fresh session.
-2. Build against the processed files and PostgreSQL runtime-data tables.
-3. For each epic, provide a frontend test/demo surface with predetermined event scenarios, editable form fields where relevant, visible `EventRequest` population, OpenAI reasoning via backend, user stories, and checklist-style acceptance criteria.
+1. Continue Epic 1 / Epic 2 from the new chat-first `/event-readiness-demo` validation page and `/api/event-readiness/*` backend contract.
+2. Expand deterministic EventRequest population beyond the first source-backed heuristic pass, keeping the official CribSheet field map as source of truth.
+3. Add source-data guidance for finance, space, catering, policy, and toolkit shaping as Epic 3.
+4. For each epic, provide a frontend test/demo surface with predetermined event scenarios, editable form fields where relevant, visible `EventRequest` population, OpenAI reasoning via backend, user stories, and checklist-style acceptance criteria.

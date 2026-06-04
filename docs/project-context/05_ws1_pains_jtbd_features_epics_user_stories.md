@@ -245,7 +245,8 @@ Acceptance criteria:
 - The draft is for Eventscase / SA Operations handoff.
 - The draft uses the confirmed subject pattern `Eventscase page request - [Event Name] - [Club Name]`.
 - The draft includes event name, club hosting the event, date/time, location placeholder pending Space Management confirmation, and student admin names/LBS emails or the Eventscase account instruction.
-- The draft is generated or noted with the Space Request output when the Audience field includes anything besides `Current students` and `Children (Under 18s)`.
+- The draft is generated or noted with the Space Request output only when the Audience field includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees.
+- The draft is not generated for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences.
 - Student admin names and LBS emails are not part of the Space Request field map; they are optional Eventscase email fields.
 - The message is editable.
 - Broader stakeholder email drafts are stretch / V2 and require confirmed templates or stakeholder expectations.

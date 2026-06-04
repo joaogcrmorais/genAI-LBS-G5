@@ -8,9 +8,9 @@ This is the only full stakeholder email draft in core MVP.
 
 Trigger:
 
-- Generate or note this draft alongside Space Request Form generation when the `Audience` field includes anything besides `Current students` and `Children (Under 18s)`.
-- Do not trigger this draft for events whose audience is only current students, or only current students plus children.
-- If the organiser explicitly asks for an Eventscase page even when the audience does not trigger it, treat that as a product/business-logic follow-up rather than an automatic trigger.
+- Generate or note this draft alongside Space Request Form generation only when the `Audience` field includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees.
+- Do not trigger this draft for events whose audience is only current students, or only current students plus children. For current-students-only events, CampusGroups is the go-to channel.
+- If the organiser explicitly asks for an Eventscase page but the audience is current-students-only, do not generate it automatically; explain that Eventscase is only needed when external audiences are invited.
 
 Recipient:
 

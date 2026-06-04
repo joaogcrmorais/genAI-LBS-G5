@@ -54,7 +54,7 @@
   },
   {
     "stakeholder": "SA Operations / Eventscase",
-    "when": "Audience includes anything besides Current students and Children (Under 18s)",
+    "when": "Audience includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees",
     "needs": [
       "event name",
       "club hosting the event",
@@ -63,6 +63,6 @@
       "student admin names and LBS email addresses if known"
     ],
     "mvp_email_template": "lbs-files/processed/routing/stakeholder_email_templates.md",
-    "notes": "Generate or note the Eventscase email draft with the Space Request output. Student admin details are optional Eventscase email fields, not official Space Request fields."
+    "notes": "Generate or note the Eventscase email draft with the Space Request output only for external-audience events. Do not trigger for current-students-only events, including current students plus children; CampusGroups is the go-to channel for current-student audiences. Student admin details are optional Eventscase email fields, not official Space Request fields."
   }
 ]

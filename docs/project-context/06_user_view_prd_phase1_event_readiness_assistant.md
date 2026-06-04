@@ -240,7 +240,7 @@ Stakeholder routing matrix is MVP stretch. If implemented, generate it determini
 
 Core MVP generates one full editable stakeholder email draft: the SA Operations / Eventscase handoff email to `saoperations@london.edu`. Use the confirmed template in `lbs-files/processed/routing/stakeholder_email_templates.md`, with subject pattern `Eventscase page request - [Event Name] - [Club Name]`.
 
-Generate or note the Eventscase email draft with the Space Request output when the Audience field includes anything besides `Current students` and `Children (Under 18s)`. Do not trigger it for current-students-only events or current-students-plus-children-only events. Student admin names and LBS emails are not part of the Space Request field map; they are optional Eventscase email fields. Broader stakeholder email drafts are stretch / V2 and require confirmed templates or stakeholder expectations. Do not send any emails automatically.
+Generate or note the Eventscase email draft with the Space Request output only when the Audience field includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees. Do not trigger it for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences. Student admin names and LBS emails are not part of the Space Request field map; they are optional Eventscase email fields. Broader stakeholder email drafts are stretch / V2 and require confirmed templates or stakeholder expectations. Do not send any emails automatically.
 
 ### Timeline / Checklist
 

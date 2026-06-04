@@ -99,9 +99,9 @@ The completed AMC crib sheet can be used as a first canonical example for a larg
 - AV should be asked as a follow-up because panels/keynotes strongly imply AV, but the AMC crib sheet does not provide explicit AV requirements.
 - Setup, guest arrival, breakdown, and organiser email should be asked or marked `needs_confirmation` because the updated form requires more granular detail than the completed crib sheet contains.
 - Student admins for Eventscase should stay out of the official Space Request field map. They belong to the Eventscase email draft only.
-- Generate or note the Eventscase email draft alongside the Space Request output when the `audience_types` selection includes anything besides `Current students` and `Children (Under 18s)`.
-- Do not trigger the Eventscase email draft for a current-students-only event, or for an event that only adds children to current students.
+- Generate or note the Eventscase email draft alongside the Space Request output only when `audience_types` includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees.
+- Do not trigger the Eventscase email draft for a current-students-only event, or for an event that only adds children to current students. CampusGroups is the go-to channel for current-student audiences.
 
 ## Open Business-Logic Checks
 
-- Confirm whether any additional Eventscase trigger should apply when audience is current-students-only but the organiser explicitly asks for an Eventscase page.
+- None currently.

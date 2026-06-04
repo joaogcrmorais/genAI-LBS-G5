@@ -35,7 +35,7 @@ After Phase 1, the core MVP should use the completed `EventRequest` to produce:
 - Monday.com-ready mock JSON payload.
 
 EIS-style drafting and stakeholder routing are MVP stretch. Broader stakeholder email drafting is stretch / V2 unless templates and stakeholder expectations are confirmed.
-The Eventscase email draft is generated or noted with the Space Request output only when Audience includes anything besides `Current students` and `Children (Under 18s)`. Student admin names and LBS emails are optional Eventscase email fields, not official Space Request fields.
+The Eventscase email draft is generated or noted with the Space Request output only when Audience includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees. Do not trigger it for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences. Student admin names and LBS emails are optional Eventscase email fields, not official Space Request fields.
 
 Important rules:
 

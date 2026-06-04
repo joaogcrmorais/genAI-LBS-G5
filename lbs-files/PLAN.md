@@ -32,7 +32,7 @@ Phase 1 is not the whole product. After the `EventRequest` is complete, the core
 
 EIS-style drafting and stakeholder routing are MVP stretch. Broader stakeholder email drafting is stretch / V2 unless templates and stakeholder expectations are confirmed.
 The confirmed SA Operations / Eventscase email template is stored in `lbs-files/processed/routing/stakeholder_email_templates.md`.
-The Eventscase email draft should be generated or noted with the Space Request output when the Audience field includes anything besides `Current students` and `Children (Under 18s)`. Student admin names and LBS emails stay out of the official Space Request field map and are optional Eventscase email fields.
+The Eventscase email draft should be generated or noted with the Space Request output only when the Audience field includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees. Do not trigger it for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences. Student admin names and LBS emails stay out of the official Space Request field map and are optional Eventscase email fields.
 
 No automatic external action is in scope. The app must not submit forms, send emails, create Monday items through the API, write to catering/finance/room systems, or call other LBS systems.
 

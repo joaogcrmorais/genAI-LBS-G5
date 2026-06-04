@@ -255,6 +255,7 @@ export const phase1UserStories: Phase1UserStory[] = [
       "Output includes all fields from CribSheet - Copy.docx.",
       "Formatting may differ from the raw form.",
       "Uncertain fields are visibly marked.",
+      "Demo download remains available for incomplete drafts so missing fields can be tested in the generated DOCX.",
       "No form is submitted automatically."
     ]
   },

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   applyAiTurnToEventRequest,
+  applySessionMemoryToEventRequest,
   detectEntryType,
   evaluateEventReadiness,
   evaluateEventRequestState,
@@ -103,5 +104,102 @@ describe("eventReadinessService", () => {
     expect(result.event_request.field_status.decorations).toBe("not_applicable");
     expect(result.event_request.field_status.filming).toBe("not_applicable");
     expect(result.next_questions.map((question) => question.field_key)).not.toContain("cloakroom");
+  });
+
+  it("mines the careers-panel session so provided facts are not re-asked", () => {
+    const transcript = [
+      {
+        role: "user" as const,
+        content: "A careers panel for 120 people with ordinary-profile company speakers."
+      },
+      {
+        role: "user" as const,
+        content:
+          "Careers in the Third Age: how Palantir and Anduril can save Middle-Earth. We want to host it 2 months from now, do we still have time? It's going to run from 19:00 to 22:00, and we'd like a large event hall, possibly Nuffield Hall"
+      },
+      {
+        role: "user" as const,
+        content:
+          "I said in the first message. 120 attendees, a career panel where we will discuss these two companies in detail, with ordinary people from these two companies coming to speak"
+      },
+      {
+        role: "user" as const,
+        content:
+          "Yes, there will be external guest speakers. We won't have food, but we will have alcohol. We will have a registration desk, it's 120 people"
+      }
+    ];
+    const latest =
+      "yes there will be noise. 120 people + alcohol = noise. I don't know how much in advance the registration desk will need to be set up, you tell me. No additional information that I can give you at the time. I also want to know, do we still have time to make this event happen in 2 months?";
+    const eventRequest = applySessionMemoryToEventRequest(undefined, transcript, latest);
+    const result = evaluateEventRequestState(eventRequest, latest, detectEntryType(transcript[0].content));
+    const nextQuestionKeys = result.next_questions.map((question) => question.field_key);
+    const spaceGuidance = result.source_guidance.find((item) => item.type === "space_lookup");
+
+    expect(result.event_request.fields.number_of_attendees).toBe(120);
+    expect(result.event_request.field_status.event_details).toBe("final");
+    expect(result.event_request.field_status.external_guest_speaker_details).toBe("final");
+    expect(result.event_request.field_status.noise_impact).toBe("final");
+    expect(String(result.event_request.fields.space_and_setup)).toContain("Nuffield Hall");
+    expect(result.source_guidance.map((item) => item.type)).toContain("timeline_policy");
+    expect(JSON.stringify(spaceGuidance?.details)).toContain("Nuffield Hall");
+    expect(nextQuestionKeys).not.toContain("number_of_attendees");
+    expect(nextQuestionKeys).not.toContain("external_guest_speaker_details");
+    expect(nextQuestionKeys).not.toContain("event_details");
+  });
+
+  it("mines the multi-room workshop session and respects final no-more-info answers", () => {
+    const transcript = [
+      {
+        role: "user" as const,
+        content: "An 80-person multi-room workshop with external attendees."
+      },
+      {
+        role: "user" as const,
+        content: "The title is \"World Quidditch Conference\", in exactly 6 months from today. There will be panels, mixers, discussions, networking"
+      },
+      {
+        role: "user" as const,
+        content:
+          "We will need multiple rooms, lecture theatres for the panels and the Hive or similar for networking. There will be external guests. We will definetely require a registraton desk opening at 7 AM every day"
+      },
+      {
+        role: "user" as const,
+        content:
+          "yes there will be noise, it's 80 people with alcohol. No additional info. There will be 5 external speakers speaker 1 speaker 2 speaker 3 speaker 4 speaker 5 none of them are VIPs or politically sensitive people"
+      },
+      {
+        role: "user" as const,
+        content: "start and finish: 8:00 to 16:00, nothing else to add, no additional informaton."
+      }
+    ];
+    const latest =
+      "no additional requirements for space and setup. there is no more additional informaton to provide. mark this asa FINAL. there are NO MORE ADDITIONAL ACTIVITIES PLANNED. MARK THIS AS FINAL";
+    const eventRequest = applySessionMemoryToEventRequest(undefined, transcript, latest);
+    const result = evaluateEventRequestState(eventRequest, latest, detectEntryType(transcript[0].content));
+    const nextQuestionKeys = result.next_questions.map((question) => question.field_key);
+
+    expect(result.event_request.fields.event_title).toBe("World Quidditch Conference");
+    expect(result.event_request.fields.start_finish_time).toBe("8:00 to 16:00");
+    expect(String(result.event_request.fields.external_guest_speaker_details)).toContain("Speaker 5");
+    expect(String(result.event_request.fields.space_and_setup)).toContain("The Hive");
+    expect(result.event_request.field_status.space_and_setup).toBe("final");
+    expect(result.event_request.field_status.activities).toBe("final");
+    expect(result.event_request.field_status.additional_information).toBe("final");
+    expect(nextQuestionKeys).not.toContain("external_guest_speaker_details");
+    expect(nextQuestionKeys).not.toContain("start_finish_time");
+    expect(nextQuestionKeys).not.toContain("activities");
+    expect(nextQuestionKeys).not.toContain("additional_information");
+  });
+
+  it("groups missing catering and alcohol into one food-and-drink question", () => {
+    const result = evaluateEventRequestState(
+      { fields: { event_details: "Panel for students." }, field_status: { event_details: "final" } },
+      "Panel for students.",
+      "general_event_idea"
+    );
+
+    expect(result.next_questions.some((question) => question.field_key === "food_and_drink")).toBe(true);
+    expect(result.next_questions.some((question) => question.field_key === "catering")).toBe(false);
+    expect(result.next_questions.some((question) => question.field_key === "alcohol")).toBe(false);
   });
 });

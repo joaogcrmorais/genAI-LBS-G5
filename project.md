@@ -39,6 +39,7 @@ Important rules:
 - Space lookup should use `lbs-files/raw/space/Space Matrix (1) - Copy.xlsx` first, with fallbacks only when needed.
 - Pasted text/manual draft material is handled by the normal conversational loop, not as a standalone epic.
 - In-chat form preview is post-MVP; users can review the generated DOCX.
+- For demo/testing, Space Request DOCX download should remain available for incomplete drafts; missing or uncertain fields must be visibly marked in the generated DOCX rather than blocking download.
 - No automatic form submission, email sending, real Monday API call, web speaker lookup, or write-back to LBS systems is in scope.
 
 ## Current Architecture
@@ -115,6 +116,11 @@ The new Event Readiness endpoints are the active Phase 1 contract. The `/api/eve
 
 Current Event Readiness chat behaviour notes:
 
+- The chat should behave like it has full current-session memory. Each organiser message should be mined for any official CribSheet field it can fill, even when the organiser was answering a different question.
+- The assistant should ask 3-5 broad, themed questions when many fields are missing, and fewer only when the remaining blocker is narrow.
+- Repetitive note-taking openers such as "I noted" / "I've captured" should be avoided.
+- Catering and alcohol remain separate official fields for DOCX compatibility, but should be handled as one conversational food-and-drink topic.
+- Source-backed guidance should be used in the chat turn when relevant, including room matches, finance-code next steps, catering/alcohol policy, and timeline implications.
 - Ordinary alumni/career/product/mixer topics should not trigger political/controversial confirmation unless the organiser gives a real sensitivity signal.
 - Concrete organiser-provided facts should be marked final or best-estimate, not `needs_confirmation`; use `needs_confirmation` only when the organiser explicitly says they need to check or do not know.
 - Low-probability miscellaneous fields such as children, decorations, recorded/live music, cloakroom, hired equipment, and filming should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
@@ -203,6 +209,9 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
+- `npm.cmd run lint`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
+- `npm.cmd run test`: passed on 2026-06-04; backend had 36 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after implementing Phase 1 E-03 through E-06 source guidance, DOCX generation, Key Event assessment, QA checklist, and OpenAI contract retry.
 - `npm.cmd run lint`: passed on 2026-06-04 after implementing Phase 1 E-03 through E-06 source guidance, DOCX generation, Key Event assessment, QA checklist, and OpenAI contract retry.
 - `npm.cmd run test`: passed on 2026-06-04; backend had 32 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.

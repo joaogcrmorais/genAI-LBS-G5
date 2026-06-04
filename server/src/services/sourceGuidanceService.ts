@@ -62,7 +62,9 @@ function includesAny(text: string, words: string[]) {
 }
 
 function hasBudgetSignal(text: string) {
-  return /\b(budget|cost|spend|paid|invoice|finance|treasury|gbp|pounds?)\b|£/.test(text);
+  return /\b(budget|cost|spend|paid|invoice|finance|treasury|gbp|pounds?|ticketing|tickets?|sponsorship|sponsor|catering|alcohol|beer|wine)\b|£/.test(
+    text
+  );
 }
 
 function hasCateringSignal(text: string) {
@@ -72,6 +74,9 @@ function hasCateringSignal(text: string) {
 function hasTimelineSignal(text: string) {
   return includesAny(text, [
     "100",
+    "120",
+    "multi-room",
+    "multiple rooms",
     "political",
     "controversial",
     "sensitive",
@@ -113,12 +118,18 @@ function matchSpaces(text: string, attendance: number | undefined) {
   const wantsLecture = includesAny(text, ["lecture theatre", "lect", "theatre"]);
   const wantsReception = includesAny(text, ["reception", "standing", "networking"]);
   const wantsBoardroom = includesAny(text, ["boardroom", "meeting"]);
+  const namedRoomTokens = ["nuffield", "hive", "wolfson", "transmed", "nash", "sussex"].filter((token) =>
+    tokens.includes(token)
+  );
+  const wantsOutsideSpace = includesAny(text, ["outside space", "outdoor space", "front lawn", "outside room"]);
 
   return records
     .map((record) => {
       const capacity = Number.parseInt(record.capacity, 10);
       const haystack = normalise(`${record.room_code} ${record.room_name} ${record.category} ${record.type}`);
       let score = tokens.filter((token) => haystack.includes(token)).length;
+      if (!wantsOutsideSpace && haystack.includes("outside")) score -= 5;
+      if (namedRoomTokens.some((token) => haystack.includes(token))) score += 10;
       if (wantsLecture && includesAny(haystack, ["lecture", "tiered", "lect"])) score += 3;
       if (wantsReception && includesAny(haystack, ["function", "standing"])) score += 3;
       if (wantsBoardroom && haystack.includes("boardroom")) score += 3;
@@ -173,7 +184,10 @@ export function buildSourceGuidance(
     });
   }
 
-  if (normalise(eventRequest.fields.space_and_setup) || includesAny(text, ["space", "room", "lecture theatre", "venue"])) {
+  if (
+    normalise(eventRequest.fields.space_and_setup) ||
+    includesAny(text, ["space", "room", "lecture theatre", "venue", "nuffield", "hive", "multi-room", "multiple rooms"])
+  ) {
     guidance.push({
       type: "space_lookup",
       label: "Space Matrix checked first",
@@ -196,7 +210,8 @@ export function buildSourceGuidance(
     });
   }
 
-  if (hasTimelineSignal(text)) {
+  const attendance = parseAttendance(eventRequest);
+  if (hasTimelineSignal(text) || (attendance !== undefined && attendance >= 80)) {
     guidance.push({
       type: "timeline_policy",
       label: "Timeline and security implications",

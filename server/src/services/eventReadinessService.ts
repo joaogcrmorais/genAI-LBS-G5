@@ -3,6 +3,7 @@ import path from "node:path";
 import type {
   EntryType,
   EventReadinessAiTurn,
+  EventReadinessChatRequest,
   EventReadinessEvaluateRequest,
   EventReadinessEventRequest,
   FieldStatus
@@ -115,8 +116,8 @@ const missingQuestionByField: Record<string, string> = {
   space_and_setup: "What space type, room setup, or preferred room do you need?",
   registration_desk: "Do you need a registration desk or Welcome Desk support?",
   decorations: "Will you use decorations or branded setup?",
-  catering: "Will catering be ordered or budgeted?",
-  alcohol: "Will alcohol be available?",
+  catering: "What food and drink should be planned: catering, alcohol, both, or neither?",
+  alcohol: "What food and drink should be planned: catering, alcohol, both, or neither?",
   recorded_music: "Will recorded music be played?",
   live_music: "Will live music be played?",
   cloakroom: "Do you need a cloakroom?",
@@ -125,6 +126,11 @@ const missingQuestionByField: Record<string, string> = {
   filming_details: "What will be filmed, and by whom?",
   additional_information: "Is there any extra context LBS should preserve?"
 };
+
+const userSaysNoMoreInfoPattern =
+  /\b(no additional|no more|nothing else|nothing more|no further|no extra)\b.{0,80}\b(info|information|details|context|requirements|activities|planned|add)\b|\bmark\b.{0,40}\bfinal\b/i;
+
+const foodAndDrinkFieldKeys = new Set(["catering", "alcohol"]);
 
 function isUncertaintyValue(value: unknown) {
   const text = normaliseText(value).toLowerCase();
@@ -195,6 +201,191 @@ function hasMeaningfulValue(value: unknown) {
 
 function compactText(parts: Array<string | undefined>) {
   return parts.map((part) => part?.trim()).filter(Boolean).join(" ");
+}
+
+function setFieldIfUseful(
+  eventRequest: EventReadinessEventRequest,
+  key: string,
+  value: unknown,
+  status: FieldStatus = "final",
+  overwrite = false
+) {
+  if (!hasMeaningfulValue(value)) return;
+  const existingStatus = eventRequest.field_status[key];
+  const existingValue = eventRequest.fields[key];
+  if (!overwrite && existingStatus && existingStatus !== "missing" && hasMeaningfulValue(existingValue)) return;
+  eventRequest.fields[key] = value;
+  eventRequest.field_status[key] = status;
+}
+
+function transcriptText(transcript: EventReadinessChatRequest["transcript"], message: string) {
+  return [...transcript.filter((item) => item.role === "user").map((item) => item.content), message].join("\n");
+}
+
+function lastUsefulLine(text: string) {
+  return text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .at(-1);
+}
+
+function extractQuotedTitle(text: string) {
+  const quoteMatch = text.match(/["“]([^"”]{3,160})["”]/);
+  if (quoteMatch?.[1]) return quoteMatch[1].trim();
+  const titleMatch = text.match(/\b(?:event title|title)\s+(?:is|will be|should be)\s+([^.\n]+)/i);
+  return titleMatch?.[1]?.trim();
+}
+
+function extractTimeRange(text: string) {
+  const match = text.match(/\b(?:from\s+)?(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\s*(?:to|-|until)\s*(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\b/i);
+  if (!match?.[1] || !match[2]) return undefined;
+  return `${match[1].trim()} to ${match[2].trim()}`;
+}
+
+function extractRegistrationDesk(text: string) {
+  const lower = text.toLowerCase();
+  if (!lower.includes("registration")) return undefined;
+  const time = text.match(/\b(?:at|opening at|from|around)\s+(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\b/i)?.[1];
+  if (time) return `Registration desk required from ${time.trim()}.`;
+  if (/\byes\b|\brequire|need|required/.test(lower)) return "Registration desk required; setup time needs confirmation.";
+  return undefined;
+}
+
+function extractSpeakerList(text: string) {
+  const speakerSeries = text.match(/\b(speaker\s*1(?:[\s,;]+speaker\s*\d+){1,})\b/i)?.[1];
+  if (speakerSeries) {
+    return speakerSeries
+      .replace(/\s+/g, " ")
+      .replace(/speaker\s*(\d+)/gi, "Speaker $1")
+      .trim();
+  }
+  const companySpeakers = text.match(/\bpeople from ([^.?!\n]+?) (?:will come|coming|come to speak|speaking)/i)?.[1];
+  if (companySpeakers) return `Speakers from ${companySpeakers.trim()}.`;
+  if (/\bexternal (?:guest )?speakers?\b/i.test(text)) return "External guest speakers will attend; details to be confirmed.";
+  return undefined;
+}
+
+function buildEventDetailsSummary(eventRequest: EventReadinessEventRequest) {
+  const details = normaliseText(eventRequest.fields.event_details);
+  if (details && !isUncertaintyValue(details)) return undefined;
+  const parts = [
+    normaliseText(eventRequest.fields.event_title),
+    normaliseText(eventRequest.fields.event_type),
+    hasMeaningfulValue(eventRequest.fields.number_of_attendees)
+      ? `${eventRequest.fields.number_of_attendees} attendees`
+      : undefined,
+    normaliseText(eventRequest.fields.activities),
+    normaliseText(eventRequest.fields.external_guest_speaker_details),
+    normaliseText(eventRequest.fields.space_and_setup)
+  ].filter((part): part is string => Boolean(part));
+  if (parts.length < 2) return undefined;
+  return `Event summary: ${parts.join("; ")}.`;
+}
+
+function markFinalDeclines(eventRequest: EventReadinessEventRequest, message: string) {
+  if (!userSaysNoMoreInfoPattern.test(message)) return;
+  setFieldIfUseful(
+    eventRequest,
+    "additional_information",
+    "No additional information provided; organiser asked to treat current details as final.",
+    "final",
+    false
+  );
+  if (hasMeaningfulValue(eventRequest.fields.activities)) {
+    eventRequest.field_status.activities = "final";
+  }
+  if (hasMeaningfulValue(eventRequest.fields.space_and_setup)) {
+    eventRequest.field_status.space_and_setup = "final";
+  }
+}
+
+function applySessionFacts(
+  eventRequest: EventReadinessEventRequest,
+  transcript: EventReadinessChatRequest["transcript"],
+  message: string
+) {
+  const next: EventReadinessEventRequest = {
+    ...eventRequest,
+    fields: { ...eventRequest.fields },
+    field_status: { ...eventRequest.field_status }
+  };
+  const fullText = transcriptText(transcript, message);
+  const lower = fullText.toLowerCase();
+  const latestLower = message.toLowerCase();
+
+  const attendance = extractAttendance(fullText);
+  if (attendance) setFieldIfUseful(next, "number_of_attendees", attendance, "best_estimate");
+
+  const title = extractQuotedTitle(fullText);
+  if (title) setFieldIfUseful(next, "event_title", title, "final");
+
+  const timeRange = extractTimeRange(fullText);
+  if (timeRange) setFieldIfUseful(next, "start_finish_time", timeRange, "final");
+
+  if (/\bexactly\s+6 months from today\b/i.test(fullText)) {
+    setFieldIfUseful(next, "date", "Exactly 6 months from today.", "best_estimate");
+  } else if (/\b6 months\b/i.test(fullText)) {
+    setFieldIfUseful(next, "date", "In 6 months.", "best_estimate");
+  } else if (/\b2 months\b/i.test(fullText)) {
+    setFieldIfUseful(next, "date", "In 2 months.", "best_estimate");
+  }
+
+  if (lower.includes("conference")) setFieldIfUseful(next, "event_type", "Conference", "final");
+  if (lower.includes("workshop")) setFieldIfUseful(next, "event_type", "Workshop", "final");
+  if (lower.includes("panel")) setFieldIfUseful(next, "event_type", "Panel", "final");
+
+  const activityMatches = [
+    lower.includes("panel") ? "panels" : undefined,
+    lower.includes("mixer") ? "mixers" : undefined,
+    lower.includes("discussion") ? "discussions" : undefined,
+    lower.includes("networking") ? "networking" : undefined,
+    lower.includes("workshop") ? "workshop sessions" : undefined
+  ].filter((item): item is string => Boolean(item));
+  if (activityMatches.length > 0) {
+    setFieldIfUseful(next, "activities", activityMatches.join(", "), "final");
+  }
+
+  if (/\bexternal\b.{0,40}\b(attendees?|guests?|speakers?)\b/i.test(fullText) || /\bpeople from\b/i.test(fullText)) {
+    setFieldIfUseful(next, "has_external_guest_speakers", "Yes", "final");
+    setFieldIfUseful(next, "external_guest_speaker_details", extractSpeakerList(fullText) ?? "External guests/speakers will attend.", "final");
+  }
+  const speakerList = extractSpeakerList(fullText);
+  if (speakerList) setFieldIfUseful(next, "external_guest_speaker_details", speakerList, "final", true);
+  if (/\bnone of them are (?:vips|vip|politically sensitive)\b/i.test(fullText)) {
+    setFieldIfUseful(next, "politically_sensitive_or_controversial", "No VIP or politically sensitive speakers indicated.", "final", true);
+  }
+
+  const spaceTerms = [];
+  if (lower.includes("nuffield")) spaceTerms.push("Nuffield Hall");
+  if (lower.includes("the hive") || lower.includes(" hive")) spaceTerms.push("The Hive");
+  if (lower.includes("lecture theatre") || lower.includes("lecture theatres")) spaceTerms.push("lecture theatres");
+  if (lower.includes("multi-room") || lower.includes("multiple rooms")) spaceTerms.push("multiple rooms");
+  if (lower.includes("large event hall")) spaceTerms.push("large event hall");
+  if (spaceTerms.length > 0) setFieldIfUseful(next, "space_and_setup", spaceTerms.join(", "), "final", latestLower.includes("space") || latestLower.includes("room"));
+
+  const registration = extractRegistrationDesk(fullText);
+  if (registration) setFieldIfUseful(next, "registration_desk", registration, registration.includes("needs confirmation") ? "needs_confirmation" : "final", true);
+
+  if (/\b(no|won't|will not)\b.{0,20}\b(food|catering)\b/i.test(fullText)) {
+    setFieldIfUseful(next, "catering", "No catering/food requested.", "not_applicable", true);
+  } else if (/\b(catering|food|lunch|dinner|breakfast)\b/i.test(fullText)) {
+    setFieldIfUseful(next, "catering", "Catering requested.", "final");
+  }
+  if (/\b(alcohol|beer|wine|drinks)\b/i.test(fullText)) {
+    setFieldIfUseful(next, "alcohol", "Alcohol will be available for consumption.", "final", true);
+  }
+
+  if (/\bnoise\b/i.test(fullText) || /\b(alcohol|beer|wine)\b.{0,60}\bnoise\b/i.test(fullText)) {
+    const line = lastUsefulLine(fullText);
+    setFieldIfUseful(next, "noise_impact", line?.includes("noise") ? line : "Noise expected based on organiser description.", "final", true);
+  }
+
+  markFinalDeclines(next, message);
+  const summary = buildEventDetailsSummary(next);
+  if (summary) setFieldIfUseful(next, "event_details", summary, "final", false);
+
+  return applyOperationalDefaults(next, fullText);
 }
 
 export function detectEntryType(prompt: string): EntryType {
@@ -403,13 +594,25 @@ function buildNextQuestions(coverage: ReturnType<typeof buildCoverage>) {
 
   const miscItems = missingItems.filter((item) => miscellaneousFieldKeys.has(item.key));
   const coreItems = missingItems.filter((item) => !miscellaneousFieldKeys.has(item.key));
-  const questions = coreItems.slice(0, 4).map((item) => ({
+  const groupedCoreItems = coreItems.filter((item) => !foodAndDrinkFieldKeys.has(item.key));
+  const foodAndDrinkItems = coreItems.filter((item) => foodAndDrinkFieldKeys.has(item.key));
+  const questions = groupedCoreItems.slice(0, 4).map((item) => ({
       field_key: item.key,
       label: item.label,
       category: item.category,
       question: missingQuestionByField[item.key] ?? `What should LBS know for ${item.label}?`,
       options: ["Other", "Not sure yet", "Needs confirmation"]
   }));
+
+  if (foodAndDrinkItems.length > 0 && questions.length < 5) {
+    questions.push({
+      field_key: "food_and_drink",
+      label: "Food and drink",
+      category: "catering",
+      question: "What should we plan for food and drink: catering, alcohol, both, or neither?",
+      options: ["Catering and alcohol", "Catering only", "Alcohol only", "Neither", "Not sure yet"]
+    });
+  }
 
   if (miscItems.length > 0 && questions.length < 5) {
     questions.push({
@@ -429,11 +632,11 @@ function buildGuidanceFlags(prompt: string, eventRequest: EventReadinessEventReq
   const text = `${prompt} ${Object.values(eventRequest.fields).join(" ")}`.toLowerCase();
   const flags = [];
 
-  if (text.includes("budget") || text.includes("catering/budget")) {
+  if (/\b(budget|spend|cost|finance|treasury|ticketing|sponsorship|sponsor|catering|alcohol|beer|wine)\b/.test(text)) {
     flags.push({
       type: "finance_code",
-      label: "Finance-code lookup should be surfaced",
-      rationale: "Budget is involved, and project scope says finance-code lookup must appear whenever budget is involved."
+      label: "Finance-code guidance should be surfaced",
+      rationale: "Spend, catering, alcohol, ticketing, sponsorship, or treasury context may require finance-code awareness."
     });
   }
 
@@ -453,7 +656,7 @@ function buildGuidanceFlags(prompt: string, eventRequest: EventReadinessEventReq
     });
   }
 
-  if (text.includes("lecture theatre") || text.includes("multi-room") || text.includes("space")) {
+  if (text.includes("lecture theatre") || text.includes("multi-room") || text.includes("multiple rooms") || text.includes("space") || text.includes("nuffield") || text.includes("hive")) {
     flags.push({
       type: "space_lookup",
       label: "Space Matrix should be checked first",
@@ -502,6 +705,14 @@ export function applyAiTurnToEventRequest(
     },
     Object.values(fields).join(" ")
   );
+}
+
+export function applySessionMemoryToEventRequest(
+  eventRequest: EventReadinessEventRequest | undefined,
+  transcript: EventReadinessChatRequest["transcript"],
+  message: string
+) {
+  return applySessionFacts(eventRequest ?? { fields: {}, field_status: {} }, transcript, message);
 }
 
 export function evaluateEventRequestState(

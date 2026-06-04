@@ -233,6 +233,33 @@ export function EventReadinessDemoPage() {
     return grouped;
   }, [bootstrap?.features]);
 
+  const currentCoverage = useMemo(() => {
+    const items = (bootstrap?.official_fields ?? []).map((field) => {
+      const status = eventRequest.field_status[field.key] ?? "missing";
+      return {
+        ...field,
+        status,
+        value: eventRequest.fields[field.key],
+        ready: status !== "missing"
+      };
+    });
+    const readyFields = items.filter((item) => item.ready).length;
+    const missingFields = items.length - readyFields;
+    return {
+      total_fields: items.length,
+      ready_fields: readyFields,
+      missing_fields: missingFields,
+      phase_1_ready: items.length > 0 && missingFields === 0,
+      items
+    };
+  }, [bootstrap?.official_fields, eventRequest]);
+
+  const missingFieldLabels = currentCoverage.items.filter((item) => !item.ready).map((item) => item.label);
+  const hasDraft =
+    Object.keys(eventRequest.fields).length > 0 ||
+    Object.keys(eventRequest.field_status).length > 0 ||
+    Boolean(evaluation);
+
   function setQaTick(id: string, checked: boolean) {
     setQaTicks((current) => {
       const next = { ...current, [id]: checked };
@@ -495,7 +522,7 @@ export function EventReadinessDemoPage() {
               <button
                 type="button"
                 onClick={() => void downloadSpaceRequestDocx()}
-                disabled={busy || !evaluation?.coverage.phase_1_ready}
+                disabled={busy || !hasDraft}
               >
                 Download Space Request DOCX
               </button>
@@ -511,6 +538,13 @@ export function EventReadinessDemoPage() {
                 Clear Draft
               </button>
             </div>
+            {hasDraft && missingFieldLabels.length > 0 ? (
+              <p className="panel-note">
+                DOCX download is available for testing. Missing fields will be marked in the draft:{" "}
+                {missingFieldLabels.slice(0, 6).join(", ")}
+                {missingFieldLabels.length > 6 ? `, and ${missingFieldLabels.length - 6} more` : ""}.
+              </p>
+            ) : null}
           </section>
 
           <section className="scenario-guide">
@@ -560,18 +594,18 @@ export function EventReadinessDemoPage() {
             <p className="panel-note">
               Readiness counters from deterministic coverage. This is not model judgment.
             </p>
-            {evaluation ? (
+            {currentCoverage.items.length ? (
               <div className="era-metrics">
                 <div>
-                  <strong>{evaluation.coverage.ready_fields}</strong>
+                  <strong>{currentCoverage.ready_fields}</strong>
                   <span>ready</span>
                 </div>
                 <div>
-                  <strong>{evaluation.coverage.missing_fields}</strong>
+                  <strong>{currentCoverage.missing_fields}</strong>
                   <span>missing</span>
                 </div>
                 <div>
-                  <strong>{evaluation.coverage.phase_1_ready ? "Yes" : "No"}</strong>
+                  <strong>{currentCoverage.phase_1_ready ? "Yes" : "No"}</strong>
                   <span>Phase 1 ready</span>
                 </div>
               </div>
@@ -638,7 +672,7 @@ export function EventReadinessDemoPage() {
             <p className="panel-note">
               JSON list of every official CribSheet field with current value, status, category, and ready/not-ready flag.
             </p>
-            <pre>{JSON.stringify(evaluation?.coverage.items ?? [], null, 2)}</pre>
+            <pre>{JSON.stringify(currentCoverage.items, null, 2)}</pre>
           </ResponsePanel>
 
           <ResponsePanel title="Populated EventRequest">

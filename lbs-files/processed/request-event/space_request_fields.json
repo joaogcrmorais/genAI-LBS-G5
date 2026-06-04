@@ -1,137 +1,347 @@
-﻿[
-    {
-        "label":  "Name of person making the request",
-        "key":  "organiser_name",
-        "category":  "organiser"
-    },
-    {
-        "label":  "Club or Programme affiliation",
-        "key":  "club_or_programme_affiliation",
-        "category":  "organiser"
-    },
-    {
-        "label":  "Contact mobile/phone number",
-        "key":  "contact_mobile_phone",
-        "category":  "organiser"
-    },
-    {
-        "label":  "Event title",
-        "key":  "event_title",
-        "category":  "event_basics"
-    },
-    {
-        "label":  "Number of attendees",
-        "key":  "number_of_attendees",
-        "category":  "event_basics"
-    },
-    {
-        "label":  "DATE",
-        "key":  "date",
-        "category":  "timing"
-    },
-    {
-        "label":  "Start and Finish time of the proposed event",
-        "key":  "start_finish_time",
-        "category":  "timing"
-    },
-    {
-        "label":  "What type of event is this?",
-        "key":  "event_type",
-        "category":  "event_basics"
-    },
-    {
-        "label":  "Event Details",
-        "key":  "event_details",
-        "category":  "purpose_context"
-    },
-    {
-        "label":  "External Guest Speaker Details",
-        "key":  "external_guest_speaker_details",
-        "category":  "speakers"
-    },
-    {
-        "label":  "Will the event have external guest speaker(s)?",
-        "key":  "has_external_guest_speakers",
-        "category":  "speakers"
-    },
-    {
-        "label":  "Is the nature of the event deemed to be politically sensitive or controversial in any way?",
-        "key":  "politically_sensitive_or_controversial",
-        "category":  "risk_security"
-    },
-    {
-        "label":  "Will there be any children attending?",
-        "key":  "children_attending",
-        "category":  "audience"
-    },
-    {
-        "label":  "What type of activities will be taking place?",
-        "key":  "activities",
-        "category":  "format_logistics"
-    },
-    {
-        "label":  "Are any of these likely to have a noise impact to the rest of the School community?",
-        "key":  "noise_impact",
-        "category":  "format_logistics"
-    },
-    {
-        "label":  "Type of space \u0026 proposed room setup required",
-        "key":  "space_and_setup",
-        "category":  "space"
-    },
-    {
-        "label":  "Do you require a registration desk, what time?",
-        "key":  "registration_desk",
-        "category":  "services"
-    },
-    {
-        "label":  "Decorations",
-        "key":  "decorations",
-        "category":  "services"
-    },
-    {
-        "label":  "Will catering be ordered?",
-        "key":  "catering",
-        "category":  "catering"
-    },
-    {
-        "label":  "Will alcohol be available for consumption as part of your event?",
-        "key":  "alcohol",
-        "category":  "catering"
-    },
-    {
-        "label":  "Will recorded music be played, what time?",
-        "key":  "recorded_music",
-        "category":  "services"
-    },
-    {
-        "label":  "Will live music be played i.e. School or external band?",
-        "key":  "live_music",
-        "category":  "services"
-    },
-    {
-        "label":  "Do you require a cloakroom?",
-        "key":  "cloakroom",
-        "category":  "services"
-    },
-    {
-        "label":  "Will any outside or extra equipment be hired or leased for the event?",
-        "key":  "outside_equipment",
-        "category":  "equipment"
-    },
-    {
-        "label":  "Will any filming take place during the event?",
-        "key":  "filming",
-        "category":  "media"
-    },
-    {
-        "label":  "What will be filmed and by whom?",
-        "key":  "filming_details",
-        "category":  "media"
-    },
-    {
-        "label":  "Any additional information",
-        "key":  "additional_information",
-        "category":  "additional_context"
-    }
+[
+  {
+    "key": "organiser_name",
+    "label": "Your name (Event Organiser)",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Rita Cui"
+  },
+  {
+    "key": "project_manager",
+    "label": "Project manager",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "deputy_event_organiser",
+    "label": "Deputy event organiser",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "organiser_lbs_email",
+    "label": "Your LBS email address",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "contact_number",
+    "label": "Contact number",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "+44 7934281743"
+  },
+  {
+    "key": "school_affiliation",
+    "label": "School affiliation",
+    "category": "organiser",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Investment Management Club"
+  },
+  {
+    "key": "event_title",
+    "label": "Event title",
+    "category": "event_fundamentals",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Asset Management Conference"
+  },
+  {
+    "key": "expected_attendance",
+    "label": "Expected attendance",
+    "category": "event_fundamentals",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "~200"
+  },
+  {
+    "key": "audience_types",
+    "label": "Audience",
+    "category": "event_fundamentals",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "Current students",
+      "Alumni",
+      "Faculty and staff",
+      "External guests/industry partners",
+      "VIPs or high public profile",
+      "Media representatives",
+      "Children (Under 18s)",
+      "Other"
+    ],
+    "example_from_lbs_crib_sheet_amc": "Students, staff, alumni, external guests inferred from event details and speaker list"
+  },
+  {
+    "key": "children_attending",
+    "label": "Will children attend your event?",
+    "category": "event_fundamentals",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "children_details",
+    "label": "Number of children and age range",
+    "category": "event_fundamentals",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Not applicable"
+  },
+  {
+    "key": "event_date",
+    "label": "Event date",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "May 11, 2026"
+  },
+  {
+    "key": "setup_start_time",
+    "label": "Set up start time",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "guest_arrival_time",
+    "label": "Guest arrival time",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "event_start_time",
+    "label": "Event start time",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "10am"
+  },
+  {
+    "key": "event_end_time",
+    "label": "Event end time",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Presentation ends 5pm; networking if applicable until 6pm"
+  },
+  {
+    "key": "breakdown_complete_time",
+    "label": "Breakdown complete time",
+    "category": "timing",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "event_type",
+    "label": "What type of event are you planning?",
+    "category": "purpose_format",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "Guest speaker / lecture",
+      "Panel discussion",
+      "Workshop/masterclass",
+      "Networking reception",
+      "Conference",
+      "Social gathering",
+      "Lunch/dinner",
+      "Celebration/awards",
+      "Other"
+    ],
+    "example_from_lbs_crib_sheet_amc": "Guest speakers, a mix of panels and keynotes"
+  },
+  {
+    "key": "external_guest_speaker_details",
+    "label": "External guest speaker details",
+    "category": "purpose_format",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Yes. Confirmed speakers include founders, CIOs, portfolio managers, research heads, market strategists, and product specialists."
+  },
+  {
+    "key": "event_purpose_context",
+    "label": "Tell us about your event",
+    "category": "purpose_format",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "To discuss topics in the asset management industry for knowledge sharing, including global macro, developed and developing equity markets, AI in asset management, and portfolio construction."
+  },
+  {
+    "key": "politically_sensitive_or_controversial",
+    "label": "Is the nature of the event politically sensitive or controversial in any way?",
+    "category": "purpose_format",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "preferred_venue_type",
+    "label": "Preferred venue type",
+    "category": "space_setup",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "Lecture theatre",
+      "Flat classroom",
+      "Function space",
+      "Outdoor space",
+      "Multiple spaces needed",
+      "Other",
+      "Not sure - please advise me"
+    ],
+    "example_from_lbs_crib_sheet_amc": "Other: Nuffield Hall"
+  },
+  {
+    "key": "room_configuration",
+    "label": "Room configuration",
+    "category": "space_setup",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "Theatre style",
+      "Classroom",
+      "Boardroom",
+      "Cabaret/rounds",
+      "Reception/standing",
+      "Other",
+      "Not sure - please advise me"
+    ],
+    "example_from_lbs_crib_sheet_amc": "Needs confirmation"
+  },
+  {
+    "key": "additional_spaces_needed",
+    "label": "Additional spaces needed",
+    "category": "space_setup",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "Registration/welcome area",
+      "Speaker green room",
+      "Cloakroom",
+      "Storage for materials/gifts",
+      "Breakout rooms",
+      "Organiser workspace",
+      "Networking space"
+    ],
+    "example_from_lbs_crib_sheet_amc": "Registration/welcome area and cloakroom; networking if applicable"
+  },
+  {
+    "key": "welcome_registration",
+    "label": "Welcome and registration",
+    "category": "event_services",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Registration desk required, 9-10am at the ground floor of Nuffield Hall"
+  },
+  {
+    "key": "decorations",
+    "label": "Decorations",
+    "category": "event_services",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "catering",
+    "label": "Catering",
+    "category": "event_services",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Yes. Coffee and refreshments, and light lunch on May 11."
+  },
+  {
+    "key": "alcohol",
+    "label": "Will alcohol be available for consumption as part of your event?",
+    "category": "event_services",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "audio_visual_requirements",
+    "label": "Audio-visual requirements",
+    "category": "event_services",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Needs confirmation"
+  },
+  {
+    "key": "noise_disruption",
+    "label": "Potential noise or disruption",
+    "category": "important_considerations",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "outside_equipment",
+    "label": "Will any outside or extra equipment be hired or leased for the event?",
+    "category": "important_considerations",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "No"
+  },
+  {
+    "key": "filming",
+    "label": "Will any filming or photography take place during the event?",
+    "category": "important_considerations",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": "Event photos for club record keeping by IMC members"
+  },
+  {
+    "key": "streaming_media",
+    "label": "Will you be streaming movies, TV shows or live TV at your event?",
+    "category": "important_considerations",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "submission_timing",
+    "label": "When are you submitting this request?",
+    "category": "timing_compliance",
+    "source": "Event form - Space Request Form.docx",
+    "options": [
+      "12+ weeks before the event",
+      "4-12 weeks before the event",
+      "Less than 4 weeks before the event"
+    ],
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "late_submission_urgency",
+    "label": "If less than 4 weeks, please explain the urgency",
+    "category": "timing_compliance",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "additional_comments_special_requirements",
+    "label": "Additional comments or special requirements",
+    "category": "timing_compliance",
+    "source": "Event form - Space Request Form.docx",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "declaration_space_not_confirmed",
+    "label": "I understand that space is not confirmed until I receive written confirmation from Space Management.",
+    "category": "declaration",
+    "source": "Event form - Space Request Form.docx",
+    "docx_generation_rule": "Can remain needs_confirmation for DOCX generation; show in declaration list below download output.",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "declaration_key_events_meeting",
+    "label": "I will attend the Key Events Meeting if my event is designated a Key Event.",
+    "category": "declaration",
+    "source": "Event form - Space Request Form.docx",
+    "docx_generation_rule": "Can remain needs_confirmation for DOCX generation; show in declaration list below download output.",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "declaration_catering_final_numbers",
+    "label": "If catering is required, I commit to providing final guest numbers to catering at least 5 working days before the event.",
+    "category": "declaration",
+    "source": "Event form - Space Request Form.docx",
+    "docx_generation_rule": "Can remain needs_confirmation for DOCX generation; show in declaration list below download output.",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "declaration_guest_list_security",
+    "label": "I will submit a provisional guest list to Security at least 5 working days before the event, and the final list no more than 2 days before the event.",
+    "category": "declaration",
+    "source": "Event form - Space Request Form.docx",
+    "docx_generation_rule": "Can remain needs_confirmation for DOCX generation; show in declaration list below download output.",
+    "example_from_lbs_crib_sheet_amc": null
+  },
+  {
+    "key": "declaration_approval_confirmed",
+    "label": "My line manager or Student Club President has approved this event request.",
+    "category": "declaration",
+    "source": "Event form - Space Request Form.docx",
+    "docx_generation_rule": "Can remain needs_confirmation for DOCX generation; show in declaration list below download output.",
+    "example_from_lbs_crib_sheet_amc": null
+  }
 ]

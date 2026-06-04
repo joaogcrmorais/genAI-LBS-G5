@@ -8,18 +8,19 @@ Event Readiness Assistant
 
 The MVP is a student-facing LBS event planning assistant with a required first phase and a downstream output phase.
 
-Phase 1 gets the user to a fully populated `EventRequest` object. The `EventRequest` is the technical equivalent of a complete Space Request / crib sheet draft. It must contain all fields from `lbs-files/raw/request-event/CribSheet - Copy.docx`, though the generated DOCX does not need to match the original visual layout.
+Phase 1 gets the user to a fully populated `EventRequest` object. The `EventRequest` is the technical equivalent of a complete Space Request draft. It must contain all fields from the updated blank form in `lbs-files/raw/request-event/Event form - Space Request Form.docx`, though the generated DOCX does not need to match the original visual layout. `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx` is a completed example used for mapping and test values, not the field source.
 
-After Phase 1, the assistant should use the completed `EventRequest` to generate the MVP outputs:
+After Phase 1, the assistant should use the completed `EventRequest` to generate the core MVP outputs:
 
 - Space Request Form DOCX,
 - deterministic Key Event candidate assessment,
-- EIS-style draft for Key Event candidates,
-- stakeholder routing matrix,
-- stakeholder email drafts,
+- Key Event / EIS recommendation,
+- full SA Operations / Eventscase email draft to `saoperations@london.edu`,
 - timeline/checklist display,
 - OpenAI-backed preliminary complexity/risk flags for LBS staff,
 - Monday.com-ready mock JSON payload.
+
+EIS-style draft generation and stakeholder routing are MVP stretch. Broader stakeholder email drafts are stretch / V2 and should not be treated as core MVP unless templates and stakeholder expectations are confirmed.
 
 Phase 1 is mandatory before the downstream functionality. It is not the whole product.
 
@@ -39,7 +40,11 @@ Sole deterministic Key Event categorisation source:
 
 Official output field source:
 
-- `lbs-files/raw/request-event/CribSheet - Copy.docx`
+- `lbs-files/raw/request-event/Event form - Space Request Form.docx`
+
+Completed example source:
+
+- `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx`
 
 Most authoritative toolkit source:
 
@@ -85,7 +90,7 @@ Secondary beneficiaries:
 ## 6. MVP Goals
 
 1. Guide the user to a complete `EventRequest`.
-2. Use all official Space Request / crib sheet fields.
+2. Use all official updated Space Request Form fields.
 3. Keep the user moving even when some values are uncertain, as long as the uncertainty is explicit.
 4. Bring up finance-code lookup whenever budget is involved.
 5. Surface rules that significantly affect timelines, including political/sensitive topics requiring security review.
@@ -118,11 +123,12 @@ User starts intake
   -> assistant generates Space Request DOCX
   -> downstream logic runs from completed EventRequest
   -> assistant shows Key Event result where triggered
-  -> assistant generates EIS draft if Key Event candidate
-  -> assistant generates stakeholder routing and email drafts
+  -> assistant recommends EIS where relevant
+  -> assistant generates the SA Operations / Eventscase email draft
   -> assistant generates timeline/checklist
   -> assistant generates preliminary complexity/risk flags
   -> assistant generates Monday.com-ready mock JSON payload
+  -> stretch: assistant may generate EIS draft and stakeholder routing
 ```
 
 Supported entry types:
@@ -154,7 +160,7 @@ The assistant does not need to ask permission before generating the core Space R
 
 ## 10. Phase 1 EventRequest Requirements
 
-The EventRequest must map the official fields in `CribSheet - Copy.docx`.
+The EventRequest must map the official fields in `Event form - Space Request Form.docx`.
 
 Required components:
 
@@ -179,7 +185,7 @@ Required components:
 | Music | Capture recorded/live music and timing |
 | Cloakroom | Capture whether needed |
 | Outside equipment | Capture hired/leased equipment and security/parking implications |
-| Filming | Capture whether filming happens, by whom, and usage context |
+| Filming | Capture whether filming or photography happens, by whom, and usage context |
 | Streaming media | Capture movies, TV, or live TV streaming where relevant |
 | Additional information | Preserve all extra context that does not map cleanly elsewhere |
 
@@ -187,7 +193,7 @@ Required components:
 
 Question 2 from João is answered as follows:
 
-The event can proceed to Space Request DOCX generation when every official CribSheet / Space Request field has either:
+The event can proceed to Space Request DOCX generation when every official updated Space Request Form field has either:
 
 - a concrete answer,
 - a best estimate,
@@ -198,7 +204,7 @@ The event can proceed to Space Request DOCX generation when every official CribS
 
 The assistant should guide the user until all fields are filled or explicitly marked. It should use:
 
-- `CribSheet - Copy.docx` for the required field list,
+- `Event form - Space Request Form.docx` for the required field list,
 - Event Toolkit / Student Guide content for quality of event purpose, team, audience, speaker, logistics, and planning prompts,
 - Terms and Conditions for lead times, point-of-contact, catering, alcohol, security, decoration, noise, and equipment implications,
 - finance directory rules when budget is involved,
@@ -206,25 +212,35 @@ The assistant should guide the user until all fields are filled or explicitly ma
 
 The user should not be blocked because some details are still provisional, but uncertainty must be visible in the generated DOCX and downstream outputs.
 
+Declaration fields may remain `needs_confirmation` for DOCX generation. After the Space Request DOCX is generated, the output should show the download link followed by the declaration list, explaining that sending the form to `space@london.edu` means the organiser is agreeing to those declarations.
+
 Completeness score is cut from MVP.
 
 ## 12. Output Requirements
 
 ### Space Request DOCX
 
-Generate a DOCX containing all fields from the official crib sheet source. It can use different formatting.
+Generate a DOCX containing all fields from the official updated Space Request Form source. It can use different formatting. The generation output should include the declaration text below the download link:
+
+- I understand that space is not confirmed until I receive written confirmation from Space Management.
+- I will attend the Key Events Meeting if my event is designated a Key Event.
+- If catering is required, I commit to providing final guest numbers to catering at least 5 working days before the event.
+- I will submit a provisional guest list to Security at least 5 working days before the event, and the final list no more than 2 days before the event.
+- My line manager or Student Club President has approved this event request.
 
 ### EIS Draft
 
-If the event is classified as a Key Event candidate, generate an EIS-style draft using available information. Do not ask additional questions solely to complete the EIS. Mark missing EIS-specific details as `needs confirmation`.
+Core MVP should recommend EIS where the deterministic Key Event candidate assessment is triggered. EIS-style draft generation is MVP stretch. If implemented, generate an EIS-style draft using available information, do not ask additional questions solely to complete the EIS, and mark missing EIS-specific details as `needs confirmation`.
 
 ### Stakeholder Routing Matrix
 
-Generate a deterministic routing matrix from the completed EventRequest and source rules.
+Stakeholder routing matrix is MVP stretch. If implemented, generate it deterministically from the completed EventRequest and source rules.
 
 ### Stakeholder Email Drafts
 
-Generate editable email drafts for the stakeholders that need to be contacted. Do not send them.
+Core MVP generates one full editable stakeholder email draft: the SA Operations / Eventscase handoff email to `saoperations@london.edu`. Use the confirmed template in `lbs-files/processed/routing/stakeholder_email_templates.md`, with subject pattern `Eventscase page request - [Event Name] - [Club Name]`.
+
+Generate or note the Eventscase email draft with the Space Request output only when the Audience field includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees. Do not trigger it for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences. Student admin names and LBS emails are not part of the Space Request field map; they are optional Eventscase email fields. Broader stakeholder email drafts are stretch / V2 and require confirmed templates or stakeholder expectations. Do not send any emails automatically.
 
 ### Timeline / Checklist
 

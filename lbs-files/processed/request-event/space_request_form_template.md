@@ -1,110 +1,185 @@
-﻿# Space Request Form Template
+# Space Request Form Template
 
-## Name of person making the request
+Source: `lbs-files/raw/request-event/Event form - Space Request Form.docx`
+
+## Event Organiser Details
+
+### Your name (Event Organiser)
 
 {{organiser_name}}
 
-## Club or Programme affiliation
+### Project manager
 
-{{club_or_programme_affiliation}}
+{{project_manager}}
 
-## Contact mobile/phone number
+### Deputy event organiser
 
-{{contact_mobile_phone}}
+{{deputy_event_organiser}}
 
-## Event title
+### Your LBS email address
+
+{{organiser_lbs_email}}
+
+### Contact number
+
+{{contact_number}}
+
+### School affiliation
+
+{{school_affiliation}}
+
+## Event Fundamentals
+
+### Event title
 
 {{event_title}}
 
-## Number of attendees
+### Expected attendance
 
-{{number_of_attendees}}
+{{expected_attendance}}
 
-## DATE
+### Audience
 
-{{date}}
+{{audience_types}}
 
-## Start and Finish time of the proposed event
-
-{{start_finish_time}}
-
-## What type of event is this?
-
-{{event_type}}
-
-## Event Details
-
-{{event_details}}
-
-## External Guest Speaker Details
-
-{{external_guest_speaker_details}}
-
-## Will the event have external guest speaker(s)?
-
-{{has_external_guest_speakers}}
-
-## Is the nature of the event deemed to be politically sensitive or controversial in any way?
-
-{{politically_sensitive_or_controversial}}
-
-## Will there be any children attending?
+### Will children attend your event?
 
 {{children_attending}}
 
-## What type of activities will be taking place?
+### Number of children and age range
 
-{{activities}}
+{{children_details}}
 
-## Are any of these likely to have a noise impact to the rest of the School community?
+## Date And Timing
 
-{{noise_impact}}
+### Event date
 
-## Type of space & proposed room setup required
+{{event_date}}
 
-{{space_and_setup}}
+### Set up start time
 
-## Do you require a registration desk, what time?
+{{setup_start_time}}
 
-{{registration_desk}}
+### Guest arrival time
 
-## Decorations
+{{guest_arrival_time}}
+
+### Event start time
+
+{{event_start_time}}
+
+### Event end time
+
+{{event_end_time}}
+
+### Breakdown complete time
+
+{{breakdown_complete_time}}
+
+## Event Purpose And Format
+
+### What type of event are you planning?
+
+{{event_type}}
+
+### External guest speaker details
+
+{{external_guest_speaker_details}}
+
+### Tell us about your event
+
+{{event_purpose_context}}
+
+### Is the nature of the event politically sensitive or controversial in any way?
+
+{{politically_sensitive_or_controversial}}
+
+## Space And Setup Requirements
+
+### Preferred venue type
+
+{{preferred_venue_type}}
+
+### Room configuration
+
+{{room_configuration}}
+
+### Additional spaces needed
+
+{{additional_spaces_needed}}
+
+## Event Services
+
+### Welcome and registration
+
+{{welcome_registration}}
+
+### Decorations
 
 {{decorations}}
 
-## Will catering be ordered?
+### Catering
 
 {{catering}}
 
-## Will alcohol be available for consumption as part of your event?
+### Will alcohol be available for consumption as part of your event?
 
 {{alcohol}}
 
-## Will recorded music be played, what time?
+### Audio-visual requirements
 
-{{recorded_music}}
+{{audio_visual_requirements}}
 
-## Will live music be played i.e. School or external band?
+## Important Considerations
 
-{{live_music}}
+### Potential noise or disruption
 
-## Do you require a cloakroom?
+{{noise_disruption}}
 
-{{cloakroom}}
-
-## Will any outside or extra equipment be hired or leased for the event?
+### Will any outside or extra equipment be hired or leased for the event?
 
 {{outside_equipment}}
 
-## Will any filming take place during the event?
+### Will any filming take place during the event?
 
 {{filming}}
 
-## What will be filmed and by whom?
+### Will you be streaming movies, TV shows or live TV at your event?
 
-{{filming_details}}
+{{streaming_media}}
 
-## Any additional information
+## Timing And Compliance
 
-{{additional_information}}
+### When are you submitting this request?
 
+{{submission_timing}}
+
+### If less than 4 weeks, please explain the urgency
+
+{{late_submission_urgency}}
+
+### Additional comments or special requirements
+
+{{additional_comments_special_requirements}}
+
+## Declaration
+
+### I understand that space is not confirmed until I receive written confirmation from Space Management.
+
+{{declaration_space_not_confirmed}}
+
+### I will attend the Key Events Meeting if my event is designated a Key Event.
+
+{{declaration_key_events_meeting}}
+
+### If catering is required, I commit to providing final guest numbers to catering at least 5 working days before the event.
+
+{{declaration_catering_final_numbers}}
+
+### I will submit a provisional guest list to Security at least 5 working days before the event, and the final list no more than 2 days before the event.
+
+{{declaration_guest_list_security}}
+
+### My line manager or Student Club President has approved this event request.
+
+{{declaration_approval_confirmed}}

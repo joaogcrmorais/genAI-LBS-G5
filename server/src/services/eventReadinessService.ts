@@ -12,6 +12,7 @@ type SpaceRequestField = {
   label: string;
   key: string;
   category: string;
+  docx_generation_rule?: string;
 };
 
 type QuestionFlowItem = {
@@ -52,20 +53,20 @@ const lowProbabilityDefaultFields: Record<string, { value: string; status: Field
     value: "No children indicated; treated as not attending for this draft unless the organiser revises.",
     status: "not_applicable"
   },
+  children_details: {
+    value: "Not applicable because no children are indicated.",
+    status: "not_applicable"
+  },
   decorations: {
     value: "No decorations indicated; treated as not present for this draft unless the organiser revises.",
     status: "not_applicable"
   },
-  recorded_music: {
-    value: "No recorded music indicated; treated as not present for this draft unless the organiser revises.",
+  alcohol: {
+    value: "No alcohol indicated; treated as not present for this draft unless the organiser revises.",
     status: "not_applicable"
   },
-  live_music: {
-    value: "No live music indicated; treated as not present for this draft unless the organiser revises.",
-    status: "not_applicable"
-  },
-  cloakroom: {
-    value: "No cloakroom indicated; treated as not required for this draft unless the organiser revises.",
+  noise_disruption: {
+    value: "No noise or disruption indicated; treated as not present for this draft unless the organiser revises.",
     status: "not_applicable"
   },
   outside_equipment: {
@@ -73,54 +74,94 @@ const lowProbabilityDefaultFields: Record<string, { value: string; status: Field
     status: "not_applicable"
   },
   filming: {
-    value: "No filming indicated; treated as not taking place for this draft unless the organiser revises.",
+    value: "No filming or photography indicated; treated as not taking place for this draft unless the organiser revises.",
     status: "not_applicable"
   },
-  filming_details: {
-    value: "Not applicable because no filming is indicated.",
+  streaming_media: {
+    value: "No movie, TV, or live TV streaming indicated; treated as not present for this draft unless the organiser revises.",
     status: "not_applicable"
+  }
+};
+
+const declarationDefaultFields: Record<string, { value: string; status: FieldStatus }> = {
+  declaration_space_not_confirmed: {
+    value: "Needs confirmation before the organiser sends the form to Space Management.",
+    status: "needs_confirmation"
+  },
+  declaration_key_events_meeting: {
+    value: "Needs confirmation before the organiser sends the form to Space Management.",
+    status: "needs_confirmation"
+  },
+  declaration_catering_final_numbers: {
+    value: "Needs confirmation before the organiser sends the form to Space Management.",
+    status: "needs_confirmation"
+  },
+  declaration_guest_list_security: {
+    value: "Needs confirmation before the organiser sends the form to Space Management.",
+    status: "needs_confirmation"
+  },
+  declaration_approval_confirmed: {
+    value: "Needs confirmation before the organiser sends the form to Space Management.",
+    status: "needs_confirmation"
   }
 };
 
 const miscellaneousFieldKeys = new Set([
   "children_attending",
+  "children_details",
   "decorations",
-  "recorded_music",
-  "live_music",
-  "cloakroom",
+  "alcohol",
+  "noise_disruption",
   "outside_equipment",
   "filming",
-  "filming_details"
+  "streaming_media"
+]);
+
+const declarationFieldKeys = new Set([
+  "declaration_space_not_confirmed",
+  "declaration_key_events_meeting",
+  "declaration_catering_final_numbers",
+  "declaration_guest_list_security",
+  "declaration_approval_confirmed"
 ]);
 
 const missingQuestionByField: Record<string, string> = {
   organiser_name: "Who is the named organiser for the request?",
-  club_or_programme_affiliation: "Which club or programme is this for?",
-  contact_mobile_phone: "What phone number should LBS use for urgent event questions?",
+  project_manager: "Who is the project manager, if different from the organiser?",
+  deputy_event_organiser: "Who is the deputy event organiser, if one has been appointed?",
+  organiser_lbs_email: "What LBS email address should be used for the organiser?",
+  contact_number: "What phone number should LBS use for urgent event questions?",
+  school_affiliation: "Which club, programme, or school affiliation is this for?",
   event_title: "What working title should appear on the Space Request?",
-  number_of_attendees: "How many attendees do you expect, even as a range or best estimate?",
-  date: "What date, month, or target window should LBS plan around?",
-  start_finish_time: "What start and finish time should be used, even provisionally?",
+  expected_attendance: "How many attendees do you expect, even as a range or best estimate?",
+  audience_types: "Who is the audience: current students, alumni, external guests, staff, VIPs, media, children, or another group?",
+  event_date: "What date, month, or target window should LBS plan around?",
+  setup_start_time: "What time do you expect setup to begin?",
+  guest_arrival_time: "What time should guests arrive?",
+  event_start_time: "What event start time should be used, even provisionally?",
+  event_end_time: "What event end time should be used, even provisionally?",
+  breakdown_complete_time: "What time should breakdown be complete?",
   event_type: "What format best describes the event?",
-  event_details: "What is the purpose, subject, and intended outcome?",
+  event_purpose_context: "What is the purpose, subject, and intended outcome?",
   external_guest_speaker_details: "Who are the external speakers, if any?",
-  has_external_guest_speakers: "Will external guest speakers attend?",
   politically_sensitive_or_controversial: "Could the topic be politically sensitive or controversial?",
   children_attending: "Will children under 18 attend?",
-  activities: "What activities will happen during the event?",
-  noise_impact: "Could any activity create noise or disruption?",
-  space_and_setup: "What space type, room setup, or preferred room do you need?",
-  registration_desk: "Do you need a registration desk or Welcome Desk support?",
+  children_details: "If children will attend, how many and what age range?",
+  preferred_venue_type: "What venue type or preferred room should Space Management consider?",
+  room_configuration: "What room configuration do you need, such as theatre, classroom, boardroom, cabaret, or reception?",
+  additional_spaces_needed: "Do you need any additional spaces, such as registration, green room, cloakroom, storage, breakout rooms, or networking space?",
+  welcome_registration: "Do you need a registration desk or Welcome Desk support, and at what time?",
   decorations: "Will you use decorations or branded setup?",
   catering: "Will catering be ordered or budgeted?",
   alcohol: "Will alcohol be available?",
-  recorded_music: "Will recorded music be played?",
-  live_music: "Will live music be played?",
-  cloakroom: "Do you need a cloakroom?",
+  audio_visual_requirements: "What AV requirements should be captured?",
+  noise_disruption: "Could any activity create noise or disruption?",
   outside_equipment: "Will outside or extra equipment be hired or brought in?",
-  filming: "Will filming take place?",
-  filming_details: "What will be filmed, and by whom?",
-  additional_information: "Is there any extra context LBS should preserve?"
+  filming: "Will filming or photography take place?",
+  streaming_media: "Will you stream movies, TV shows, or live TV at the event?",
+  submission_timing: "How far ahead of the event are you submitting this request?",
+  late_submission_urgency: "If this is less than 4 weeks before the event, what explains the urgency?",
+  additional_comments_special_requirements: "Is there any extra context or special requirement LBS should preserve?"
 };
 
 function isUncertaintyValue(value: unknown) {
@@ -137,7 +178,7 @@ function isNegativeValue(value: unknown) {
 
 function hasCoreEventContext(eventRequest: EventReadinessEventRequest) {
   return Boolean(
-    hasMeaningfulValue(eventRequest.fields.event_details) ||
+    hasMeaningfulValue(eventRequest.fields.event_purpose_context) ||
       hasMeaningfulValue(eventRequest.fields.event_title) ||
       hasMeaningfulValue(eventRequest.fields.event_type)
   );
@@ -181,7 +222,7 @@ const userStories = [
     title: "Working event profile",
     acceptance: [
       "Each evaluation updates the EventRequest.",
-      "Every official CribSheet field has a value or explicit marker before Phase 1 ends.",
+      "Every official updated Space Request Form field has a value or explicit marker before Phase 1 ends.",
       "Additional context is preserved.",
       "No numeric completeness score is shown or required."
     ]
@@ -191,7 +232,7 @@ const userStories = [
     story: "US-05",
     title: "Proceed-readiness",
     acceptance: [
-      "All official fields from the CribSheet source are covered.",
+      "All official fields from the updated Space Request Form source are covered.",
       "Values may be final, best estimate, not sure yet, needs confirmation, not applicable, or organiser follow-up.",
       "Phase 1 completion creates the source EventRequest for downstream logic."
     ]
@@ -291,41 +332,51 @@ function inferInitialFields(prompt: string, entryType: EntryType, scenario?: Eve
   const attendance = extractAttendance(prompt, scenario);
   const hasExternalSpeaker = text.includes("external") || text.includes("guest speaker");
   const hasCatering = text.includes("catering") || text.includes("lunch") || text.includes("food") || text.includes("drinks");
-  const hasBudget = text.includes("budget") || /£|\bgpb\b|\bgbp\b/i.test(prompt);
+  const hasBudget = text.includes("budget") || /\bgpb\b|\bgbp\b|\bpounds?\b/i.test(prompt);
+  const hasExternalAudience =
+    text.includes("external attendees") ||
+    text.includes("external guests") ||
+    text.includes("alumni") ||
+    text.includes("industry partner") ||
+    text.includes("public") ||
+    text.includes("vip") ||
+    text.includes("media");
   const fields: Record<string, unknown> = {
     event_title: inferEventTitle(prompt, entryType),
     event_type: inferEventType(prompt, entryType),
-    event_details: prompt,
-    number_of_attendees: attendance,
-    date: inferDate(prompt),
-    has_external_guest_speakers: hasExternalSpeaker ? "Yes" : "",
+    event_purpose_context: prompt,
+    expected_attendance: attendance,
+    audience_types: hasExternalAudience ? "External audience indicated; exact audience mix needs confirmation." : "",
+    event_date: inferDate(prompt),
     external_guest_speaker_details: hasExternalSpeaker ? "External speaker details need confirmation" : "Not applicable",
     politically_sensitive_or_controversial: hasPoliticalRiskSignal(prompt)
       ? "Potentially sensitive or controversial topic; context needs confirmation"
       : "No political or controversial indicators surfaced from the organiser's description.",
     children_attending: text.includes("children") ? "Yes, details need confirmation" : "Not applicable",
-    activities: text.includes("workshop") ? "Workshop activities" : "",
-    noise_impact: text.includes("noise") ? "Noise expected based on organiser description." : "",
-    space_and_setup: text.includes("lecture theatre")
+    children_details: text.includes("children") ? "Number and age range need confirmation" : "Not applicable",
+    preferred_venue_type: text.includes("lecture theatre")
       ? "Lecture theatre"
       : text.includes("multi-room")
         ? "Multi-room setup"
         : "",
-    registration_desk: text.includes("registration") ? "Yes, timing needs confirmation" : "",
+    room_configuration: text.includes("lecture theatre") ? "Theatre style" : "",
+    additional_spaces_needed: text.includes("multi-room") ? "Breakout rooms or multiple spaces need confirmation" : "",
+    welcome_registration: text.includes("registration") ? "Yes, timing needs confirmation" : "",
     decorations: "",
     catering: hasCatering || hasBudget ? "Catering/budget needs to be confirmed with finance-code awareness" : "",
     alcohol: text.includes("alcohol") || text.includes("drinks") ? "Needs confirmation" : "",
-    recorded_music: "not applicable",
-    live_music: "not applicable",
-    cloakroom: "",
+    audio_visual_requirements: hasExternalSpeaker || text.includes("panel") ? "Microphones/screen requirements need confirmation" : "",
+    noise_disruption: text.includes("noise") ? "Noise expected based on organiser description." : "",
     outside_equipment: text.includes("booth") || text.includes("equipment") ? "Needs confirmation" : "",
-    filming: text.includes("filming") || text.includes("record") ? "Needs confirmation" : "",
-    filming_details: text.includes("filming") || text.includes("record") ? "Needs confirmation" : "Not applicable",
-    additional_information: compactText([hasBudget ? "Budget is involved; finance-code lookup must be surfaced." : undefined])
+    filming: text.includes("filming") || text.includes("record") || text.includes("photograph") ? "Needs confirmation" : "",
+    streaming_media: text.includes("streaming") || text.includes("live tv") ? "Needs confirmation" : "",
+    additional_comments_special_requirements: compactText([
+      hasBudget ? "Budget is involved; finance-code lookup must be surfaced." : undefined
+    ])
   };
 
   if (entryType === "budget_only_no_event_idea") {
-    fields.event_details = "Budget-only starting point; event concept needs shaping.";
+    fields.event_purpose_context = "Budget-only starting point; event concept needs shaping.";
     fields.event_title = "Needs event concept";
     fields.event_type = "Help me decide";
     fields.catering = "Budget is involved; finance-code lookup must be surfaced if catering or event spend is planned.";
@@ -375,6 +426,13 @@ function applyOperationalDefaults(eventRequest: EventReadinessEventRequest, cont
     }
   }
 
+  for (const [key, defaultValue] of Object.entries(declarationDefaultFields)) {
+    if (!hasMeaningfulValue(next.fields[key])) {
+      next.fields[key] = defaultValue.value;
+      next.field_status[key] = defaultValue.status;
+    }
+  }
+
   return normaliseConcreteStatuses(next);
 }
 
@@ -385,8 +443,8 @@ function inferStatus(key: string, value: unknown): FieldStatus {
   if (text.includes("not sure")) return "not_sure_yet";
   if (text.includes("needs confirmation") || text.includes("need confirmation")) return "needs_confirmation";
   if (text.includes("help me decide")) return "not_sure_yet";
-  if (key === "number_of_attendees" && typeof value === "number") return "best_estimate";
-  if (key === "date" && text === "next month") return "best_estimate";
+  if (key === "expected_attendance" && typeof value === "number") return "best_estimate";
+  if (key === "event_date" && text === "next month") return "best_estimate";
   return "final";
 }
 
@@ -444,7 +502,7 @@ function buildNextQuestions(coverage: ReturnType<typeof buildCoverage>) {
   if (missingItems.length === 0) return [];
 
   const miscItems = missingItems.filter((item) => miscellaneousFieldKeys.has(item.key));
-  const coreItems = missingItems.filter((item) => !miscellaneousFieldKeys.has(item.key));
+  const coreItems = missingItems.filter((item) => !miscellaneousFieldKeys.has(item.key) && !declarationFieldKeys.has(item.key));
   const questions = coreItems.slice(0, 4).map((item) => ({
       field_key: item.key,
       label: item.label,
@@ -457,9 +515,9 @@ function buildNextQuestions(coverage: ReturnType<typeof buildCoverage>) {
     questions.push({
       field_key: "miscellaneous_services",
       label: "Miscellaneous Space Request fields",
-      category: "services",
+      category: "important_considerations",
       question:
-        "Unless any apply, I will mark these as not present: children attending, decorations, recorded/live music, cloakroom, hired equipment, and filming. Do any of those apply?",
+        "Unless any apply, I will mark these as not present: children attending, decorations, alcohol, noise/disruption, hired equipment, filming/photography, and streaming media. Do any of those apply?",
       options: ["None of these apply", "Some apply", "Not sure yet", "Needs confirmation"]
     });
   }
@@ -503,16 +561,48 @@ function buildGuidanceFlags(prompt: string, eventRequest: EventReadinessEventReq
     });
   }
 
+  if (
+    text.includes("alumni") ||
+    text.includes("external audience") ||
+    text.includes("external guests") ||
+    text.includes("industry partner") ||
+    text.includes("public attendees") ||
+    text.includes("vip") ||
+    text.includes("media")
+  ) {
+    flags.push({
+      type: "eventscase_email",
+      label: "SA Operations / Eventscase email draft may be needed",
+      rationale:
+        "External audiences may need an Eventscase page; generate an editable draft only, and do not send it automatically."
+    });
+  }
+
   return flags;
 }
 
 export function getEventReadinessBootstrap() {
+  const declarationFields = getSpaceRequestFields().filter((field) => declarationFieldKeys.has(field.key));
   return {
     source_of_truth: {
-      field_source: "lbs-files/raw/request-event/CribSheet - Copy.docx",
+      field_source: "lbs-files/raw/request-event/Event form - Space Request Form.docx",
+      completed_example_source: "lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx",
       processed_field_map: "lbs-files/processed/request-event/space_request_fields.json",
       question_flow: "lbs-files/processed/request-event/event_profile_question_flow.json",
       note: "WS4 EventRequest schemas and endpoints are historical only and are not authoritative for this page."
+    },
+    declaration_output: {
+      rule:
+        "Declaration fields may remain needs_confirmation for DOCX generation. Show these declarations below the download output because sending the form to space@london.edu is when the organiser agrees to them.",
+      fields: declarationFields.map((field) => ({ key: field.key, label: field.label }))
+    },
+    eventscase_email: {
+      recipient: "saoperations@london.edu",
+      subject_pattern: "Eventscase page request - [Event Name] - [Club Name]",
+      trigger:
+        "Generate or note this draft only when the audience includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees.",
+      non_trigger:
+        "Do not trigger for current-students-only events or current-students-plus-children-only events; CampusGroups is the go-to channel for current-student audiences."
     },
     field_statuses: Array.from(allowedReadyStatuses).concat("missing"),
     official_fields: getSpaceRequestFields(),
@@ -557,8 +647,9 @@ export function evaluateEventRequestState(
     next_questions: buildNextQuestions(coverage),
     guidance_flags: buildGuidanceFlags(prompt, eventRequest, entryType),
     source_notes: [
-      "Coverage is evaluated against the active processed CribSheet field map.",
+      "Coverage is evaluated against the active processed updated Space Request Form field map.",
       "Allowed uncertainty markers count as proceed-ready; missing does not.",
+      "Declaration fields can remain needs_confirmation for DOCX generation but must be shown below the download output.",
       "The model can propose field updates, but readiness is checked deterministically afterward."
     ]
   };

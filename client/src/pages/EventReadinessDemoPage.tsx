@@ -39,9 +39,23 @@ type UserStory = {
 type BootstrapResponse = {
   source_of_truth: {
     field_source: string;
+    completed_example_source: string;
     processed_field_map: string;
     question_flow: string;
     note: string;
+  };
+  declaration_output: {
+    rule: string;
+    fields: Array<{
+      key: string;
+      label: string;
+    }>;
+  };
+  eventscase_email: {
+    recipient: string;
+    subject_pattern: string;
+    trigger: string;
+    non_trigger: string;
   };
   field_statuses: FieldStatus[];
   official_fields: SpaceRequestField[];
@@ -473,6 +487,24 @@ export function EventReadinessDemoPage() {
             </pre>
           </ResponsePanel>
 
+          <ResponsePanel title="Declaration and Eventscase rules">
+            <p className="panel-note">
+              Source-backed rules for the Space Request output and the one core MVP stakeholder email draft.
+            </p>
+            <pre>
+              {JSON.stringify(
+                bootstrap
+                  ? {
+                      declaration_output: bootstrap.declaration_output,
+                      eventscase_email: bootstrap.eventscase_email
+                    }
+                  : { note: "Bootstrap not loaded yet." },
+                null,
+                2
+              )}
+            </pre>
+          </ResponsePanel>
+
           <ResponsePanel title="Assistant turn">
             <p className="panel-note">
               JSON returned by the OpenAI-backed chat interpreter: response text, field updates, and reasoning summary.
@@ -495,14 +527,14 @@ export function EventReadinessDemoPage() {
 
           <ResponsePanel title="Next questions">
             <p className="panel-note">
-              Deterministic next missing CribSheet fields, capped at three, for the assistant to keep the conversation moving.
+              Deterministic next missing updated Space Request Form fields, capped at three, for the assistant to keep the conversation moving.
             </p>
             <pre>{JSON.stringify(evaluation?.next_questions ?? [], null, 2)}</pre>
           </ResponsePanel>
 
           <ResponsePanel title="Coverage detail">
             <p className="panel-note">
-              JSON list of every official CribSheet field with current value, status, category, and ready/not-ready flag.
+              JSON list of every official updated Space Request Form field with current value, status, category, and ready/not-ready flag.
             </p>
             <pre>{JSON.stringify(evaluation?.coverage.items ?? [], null, 2)}</pre>
           </ResponsePanel>

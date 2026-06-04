@@ -52,15 +52,17 @@ function validateAiTurn(value: unknown): EventReadinessAiTurn {
 function buildSystemPrompt() {
   return [
     "You are the Event Readiness Assistant for London Business School student club organisers: an expert colleague, not a passive note-taker.",
-    "Phase 1 goal: guide the organiser until every official Space Request / CribSheet field has a concrete value or explicit uncertainty marker.",
+    "Phase 1 goal: guide the organiser until every official updated Space Request Form field has a concrete value or explicit uncertainty marker.",
     "Do not use the historical WS4 EventRequest contract. Use only the official field keys supplied in this prompt.",
     "Be decisive, calm, and practical. Briefly confirm what you captured, then ask only the next high-value questions.",
     "Ask no more than three themed questions by default. You may ask up to five only when they are a single bundled checklist.",
     "Do not ask for information already provided unless it is truly contradictory or unusable.",
-    "Trust concrete organiser answers. If the organiser says there will be noise and gives a rationale, mark noise_impact final, not needs_confirmation.",
+    "Trust concrete organiser answers. If the organiser says there will be noise and gives a rationale, mark noise_disruption final, not needs_confirmation.",
     "Use needs_confirmation only when the organiser explicitly says they do not know, must check, or cannot confirm yet.",
     "If there is no political, controversial, or sensitive signal in the event topic, infer a low-risk answer and do not ask political confirmation.",
-    "For common absent/miscellaneous items such as cloakroom, decorations, filming, children, recorded music, live music, and outside equipment, bundle them together. If the user says no/none/that's all, mark them not_applicable or final as appropriate.",
+    "For common absent/miscellaneous items such as children, decorations, alcohol, noise/disruption, filming/photography, streaming media, and outside equipment, bundle them together. If the user says no/none/that's all, mark them not_applicable or final as appropriate.",
+    "Declaration fields may remain needs_confirmation for DOCX generation, but they must be visible because sending the form to space@london.edu is when the organiser agrees to them.",
+    "Generate or note an SA Operations / Eventscase email draft only when the audience includes alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees. Do not trigger it for current-students-only events.",
     "If a user is vague or budget-only, help shape a viable event instead of blocking them.",
     "Surface finance-code awareness whenever budget is involved.",
     "Surface political/sensitive-topic security and timeline implications only when there is a real signal.",
@@ -109,9 +111,10 @@ function buildUserPrompt(input: EventReadinessChatRequest) {
         "Preserve useful extra context in additional_information when it does not fit a specific field.",
         "Use needs_confirmation, not_sure_yet, not_applicable, or organiser_follow_up instead of leaving a field blank when the organiser has explicitly given that state.",
         "If the user gives a concrete value, mark it final unless it is explicitly an estimate.",
-        "If the user says there will be noise, mark noise_impact final with the user's rationale.",
+        "If the user says there will be noise, mark noise_disruption final with the user's rationale.",
         "If the topic is ordinary alumni, career, networking, club, product, AI, mixer, or panel content with no sensitive signal, mark politically_sensitive_or_controversial as final no/low-risk and do not ask about it.",
         "If the user says no, none, or that's all for miscellaneous items, mark those fields not_applicable/final and do not ask again.",
+        "Use event_purpose_context for the main event description, expected_attendance for attendee count, event_date for the date, and preferred_venue_type/room_configuration/additional_spaces_needed for space requirements.",
         "If you ask questions in assistant_message, keep them to three or fewer by default, or up to five only as one bundled checklist."
       ]
     },
@@ -126,11 +129,11 @@ function summariseAutoClosedFields(input: EventReadinessChatRequest, eventReques
   const closed = [
     ["children_attending", "children attending"],
     ["decorations", "decorations"],
-    ["recorded_music", "recorded music"],
-    ["live_music", "live music"],
-    ["cloakroom", "cloakroom"],
+    ["alcohol", "alcohol"],
+    ["noise_disruption", "noise/disruption"],
     ["outside_equipment", "outside or hired equipment"],
-    ["filming", "filming"]
+    ["filming", "filming or photography"],
+    ["streaming_media", "streaming media"]
   ]
     .filter(([key]) => !before[key] && typeof after[key] === "string" && String(after[key]).toLowerCase().includes("not"))
     .map(([, label]) => label);

@@ -1,55 +1,68 @@
-﻿[
-    {
-        "stakeholder":  "Space Management",
-        "when":  "All events",
-        "needs":  [
-                      "event title",
-                      "date/time",
-                      "attendance",
-                      "space/setup",
-                      "additional spaces"
-                  ]
-    },
-    {
-        "stakeholder":  "Catering / Lexington",
-        "when":  "Catering or alcohol involved",
-        "needs":  [
-                      "numbers",
-                      "timing",
-                      "space",
-                      "dietary/context",
-                      "alcohol"
-                  ]
-    },
-    {
-        "stakeholder":  "Security",
-        "when":  "100+ attendance, external audience, high-profile/controversial speaker/topic, children, outside equipment, alcohol risk",
-        "needs":  [
-                      "attendance",
-                      "audience",
-                      "speaker/topic risk",
-                      "timing",
-                      "access needs"
-                  ]
-    },
-    {
-        "stakeholder":  "AV / Technology",
-        "when":  "AV, filming, recording, streaming, microphones, screens",
-        "needs":  [
-                      "room",
-                      "schedule",
-                      "speaker setup",
-                      "recording/streaming requirements"
-                  ]
-    },
-    {
-        "stakeholder":  "SA Finance / Treasury",
-        "when":  "Budget involved or finance code missing",
-        "needs":  [
-                      "club",
-                      "event name",
-                      "budget context",
-                      "finance code status"
-                  ]
-    }
+[
+  {
+    "stakeholder": "Space Management",
+    "when": "All events",
+    "needs": [
+      "event title",
+      "date/time",
+      "attendance",
+      "space/setup",
+      "additional spaces"
+    ]
+  },
+  {
+    "stakeholder": "Catering / Lexington",
+    "when": "Catering or alcohol involved",
+    "needs": [
+      "numbers",
+      "timing",
+      "space",
+      "dietary/context",
+      "alcohol"
+    ]
+  },
+  {
+    "stakeholder": "Security",
+    "when": "100+ attendance, external audience, high-profile/controversial speaker/topic, children, outside equipment, alcohol risk",
+    "needs": [
+      "attendance",
+      "audience",
+      "speaker/topic risk",
+      "timing",
+      "access needs"
+    ]
+  },
+  {
+    "stakeholder": "AV / Technology",
+    "when": "AV, filming, recording, streaming, microphones, screens",
+    "needs": [
+      "room",
+      "schedule",
+      "speaker setup",
+      "recording/streaming requirements"
+    ]
+  },
+  {
+    "stakeholder": "SA Finance / Treasury",
+    "when": "Budget involved or finance code missing",
+    "needs": [
+      "club",
+      "event name",
+      "budget context",
+      "finance code status"
+    ]
+  },
+  {
+    "stakeholder": "SA Operations / Eventscase",
+    "when": "Audience includes external audiences who need an Eventscase page, such as alumni, external guests, corporate partners, public attendees, VIP/high-profile non-LBS guests, media, or other non-current-student external attendees",
+    "needs": [
+      "event name",
+      "club hosting the event",
+      "date and time",
+      "location once Space Management confirms space",
+      "student admin names and LBS email addresses if known"
+    ],
+    "mvp_email_template": "lbs-files/processed/routing/stakeholder_email_templates.md",
+    "notes": "Generate or note the Eventscase email draft with the Space Request output only for external-audience events. Do not trigger for current-students-only events, including current students plus children; CampusGroups is the go-to channel for current-student audiences. Student admin details are optional Eventscase email fields, not official Space Request fields."
+  }
 ]

@@ -21,8 +21,10 @@ describe("eventReadinessService", () => {
 
     expect(result.entry_type).toBe("prepared_event_request");
     expect(result.event_request.fields.event_title).toBe("Alumni panel");
-    expect(result.event_request.fields.number_of_attendees).toBe(80);
-    expect(result.coverage.total_fields).toBeGreaterThan(20);
+    expect(result.event_request.fields.expected_attendance).toBe(80);
+    expect(result.event_request.fields.event_date).toBe("next month");
+    expect(result.event_request.fields.audience_types).toContain("External audience");
+    expect(result.coverage.total_fields).toBeGreaterThan(35);
     expect(result.coverage.ready_fields).toBeGreaterThan(5);
     expect(result.next_questions.length).toBeLessThanOrEqual(5);
   });
@@ -41,7 +43,7 @@ describe("eventReadinessService", () => {
       assistant_message: "Captured.",
       field_updates: [
         {
-          key: "event_details",
+          key: "event_purpose_context",
           value: "Alumni panel about moving into Product roles and using AI day to day.",
           status: "final",
           rationale: "User gave the topic."
@@ -65,13 +67,13 @@ describe("eventReadinessService", () => {
       assistant_message: "Captured.",
       field_updates: [
         {
-          key: "event_details",
+          key: "event_purpose_context",
           value: "Panel followed by informal mixer.",
           status: "final",
           rationale: "User gave the format."
         },
         {
-          key: "noise_impact",
+          key: "noise_disruption",
           value: "There will be noise from 80 people talking after beer and wine.",
           status: "needs_confirmation",
           rationale: "User described noise."
@@ -82,10 +84,24 @@ describe("eventReadinessService", () => {
     });
     const result = evaluateEventRequestState(eventRequest, "There will be noise from 80 people talking.", detectEntryType("panel"));
 
-    expect(result.event_request.field_status.noise_impact).toBe("final");
-    expect(result.event_request.field_status.cloakroom).toBe("not_applicable");
+    expect(result.event_request.field_status.noise_disruption).toBe("final");
     expect(result.event_request.field_status.decorations).toBe("not_applicable");
     expect(result.event_request.field_status.filming).toBe("not_applicable");
-    expect(result.next_questions.map((question) => question.field_key)).not.toContain("cloakroom");
+    expect(result.event_request.field_status.streaming_media).toBe("not_applicable");
+    expect(result.next_questions.map((question) => question.field_key)).not.toContain("streaming_media");
+  });
+
+  it("keeps declaration fields proceed-ready as needs_confirmation for the DOCX output", () => {
+    const result = evaluateEventReadiness({ scenario_id: "prepared-alumni-panel" });
+
+    expect(result.event_request.field_status.declaration_space_not_confirmed).toBe("needs_confirmation");
+    expect(result.coverage.items.find((item) => item.key === "declaration_space_not_confirmed")?.ready).toBe(true);
+    expect(result.source_notes.join(" ")).toContain("Declaration fields can remain needs_confirmation");
+  });
+
+  it("surfaces Eventscase guidance for external audiences", () => {
+    const result = evaluateEventReadiness({ scenario_id: "prepared-alumni-panel" });
+
+    expect(result.guidance_flags.map((flag) => flag.type)).toContain("eventscase_email");
   });
 });

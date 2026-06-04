@@ -21,17 +21,20 @@ Historical/supplanted planning files have been moved to `docs/project-context/hi
 
 The old four technical workstream split is obsolete. João is the only technical delivery owner, with Codex as the technical build partner.
 
-Phase 1 creates a fully populated `EventRequest` object using the official field source in `lbs-files/raw/request-event/CribSheet - Copy.docx`. The generated Space Request output should be DOCX and include all of the same fields, though it does not need to match the original visual formatting.
+Phase 1 creates a fully populated `EventRequest` object using the official updated field source in `lbs-files/raw/request-event/Event form - Space Request Form.docx`. `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx` is a completed example used for mapping and test values, not the field source. The generated Space Request output should be DOCX and include all of the same organiser-facing fields, though it does not need to match the original visual formatting.
 
-After Phase 1, the MVP should use the completed `EventRequest` to produce:
+Space Request DOCX generation may proceed with declaration fields marked `needs_confirmation`. After generation, the UI should show the download link followed by the declaration list, because sending the form to `space@london.edu` is when the organiser agrees to those declarations.
+
+After Phase 1, the core MVP should use the completed `EventRequest` to produce:
 
 - deterministic Key Event assessment;
-- EIS-style draft for Key Event candidates;
-- stakeholder routing matrix;
-- stakeholder email drafts;
+- Key Event / EIS recommendation;
+- full SA Operations / Eventscase email draft to `saoperations@london.edu` when the event has an external audience needing Eventscase;
 - timeline/checklist display;
 - OpenAI-backed preliminary complexity/risk flags for LBS staff;
 - Monday.com-ready mock JSON payload.
+
+EIS-style drafting, stakeholder routing, and broader stakeholder email drafting are MVP stretch unless templates and stakeholder expectations are confirmed.
 
 Important rules:
 
@@ -92,7 +95,7 @@ The `/ws4-demo` route and related files may be reused or replaced during the new
 Current scope reset note as of 2026-06-03:
 
 - The historical WS4 `EventRequest` shape and historical tiering/routing/Monday endpoints are no longer authoritative for the Event Readiness Assistant.
-- They may be mined for useful implementation ideas, but new MVP work should use the active processed CribSheet/EventRequest artifacts and new `event-readiness` backend contract.
+- They may be mined for useful implementation ideas, but new MVP work should use the active processed updated Space Request Form artifacts and new `event-readiness` backend contract.
 - The first current-scope frontend validation URL is `/event-readiness-demo`.
 
 ## Backend
@@ -117,7 +120,7 @@ Current Event Readiness chat behaviour notes:
 
 - Ordinary alumni/career/product/mixer topics should not trigger political/controversial confirmation unless the organiser gives a real sensitivity signal.
 - Concrete organiser-provided facts should be marked final or best-estimate, not `needs_confirmation`; use `needs_confirmation` only when the organiser explicitly says they need to check or do not know.
-- Low-probability miscellaneous fields such as children, decorations, recorded/live music, cloakroom, hired equipment, and filming should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
+- Low-probability miscellaneous fields such as children, decorations, alcohol, noise/disruption, hired equipment, filming/photography, and streaming media should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
 - When deterministic `next_questions` is empty and Phase 1 is ready, the assistant should stop asking follow-ups and tell the organiser the Space Request DOCX draft is the next step.
 
 OpenAI SDK configuration exists only in the backend. The frontend must never read `OPENAI_API_KEY`.
@@ -203,6 +206,9 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-04 after updating Event Readiness to the new Space Request Form field map.
+- `npm.cmd run lint`: passed on 2026-06-04 after updating Event Readiness to the new Space Request Form field map.
+- `npm.cmd run test`: passed on 2026-06-04; backend had 27 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run lint`: passed on 2026-06-04 after tightening Event Readiness chat guidance and deterministic field handling.
 - `npm.cmd run test`: passed on 2026-06-04; backend had 25 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.
@@ -225,6 +231,6 @@ No app lint/typecheck/test suite was run for the latest data-conversion update b
 ## Current Next Steps
 
 1. Continue Epic 1 / Epic 2 from the new chat-first `/event-readiness-demo` validation page and `/api/event-readiness/*` backend contract.
-2. Expand deterministic EventRequest population beyond the first source-backed heuristic pass, keeping the official CribSheet field map as source of truth.
+2. Expand deterministic EventRequest population beyond the first source-backed heuristic pass, keeping the official updated Space Request Form field map as source of truth.
 3. Add source-data guidance for finance, space, catering, policy, and toolkit shaping as Epic 3.
 4. For each epic, provide a frontend test/demo surface with predetermined event scenarios, editable form fields where relevant, visible `EventRequest` population, OpenAI reasoning via backend, user stories, and checklist-style acceptance criteria.

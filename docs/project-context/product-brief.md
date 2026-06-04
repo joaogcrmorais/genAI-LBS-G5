@@ -26,7 +26,7 @@ A student-facing LBS event planning assistant that first guides a club organiser
 
 The assistant helps LBS student club organisers move from a vague idea, a budget-only starting point, a prepared request, or pasted draft content into a complete structured `EventRequest`.
 
-Phase 1 is mandatory and comes first. Phase 1 ends when the `EventRequest` object is fully populated enough to generate the Space Request Form DOCX output using the official field set from `lbs-files/raw/request-event/CribSheet - Copy.docx`.
+Phase 1 is mandatory and comes first. Phase 1 ends when the `EventRequest` object is fully populated enough to generate the Space Request Form DOCX output using the official updated field set from `lbs-files/raw/request-event/Event form - Space Request Form.docx`. `lbs-files/raw/request-event/LBS Crib Sheet_AMC.docx` is a completed example used for mapping and test data, not the field source.
 
 Phase 1 is not the end of the product. After the `EventRequest` exists, the assistant should trigger the downstream MVP capabilities that depend on a complete event object.
 
@@ -106,7 +106,7 @@ Important source priorities:
 
 - Most authoritative toolkit source: `lbs-files/raw/[SA Copy] LBS Event Toolkit Student Clubs Updated - Copy.pdf`.
 - Same toolkit content in editable/extractable source: `lbs-files/raw/request-event/Student Event Organisers Guide - Copy.pptx`; João confirmed this is the same as the PDF, and the PPTX can be removed later once conversion strategy is approved.
-- Official final output field source: `lbs-files/raw/request-event/CribSheet - Copy.docx`; the generated DOCX does not need to match the visual formatting but must contain the same fields.
+- Official final output field source: `lbs-files/raw/request-event/Event form - Space Request Form.docx`; the generated DOCX does not need to match the visual formatting but must contain the same organiser-facing fields.
 - Sole deterministic Key Event categorisation source: `docs/project-context/key_event_identification_spec.md`.
 - Conversation behaviour source: `docs/project-context/event_readiness_assistant_phase_1_conversation_rules_spec.md`.
 - Room source priority: `lbs-files/raw/space/Space Matrix (1) - Copy.xlsx`, then fallback to the largest relevant supporting source if the room is absent.
@@ -157,4 +157,3 @@ The next-steps report should explain what would be required to productionise thi
 - data governance across departments and systems,
 - permissions, audit logs, security review, and retention,
 - operational ownership after the class prototype.
-

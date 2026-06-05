@@ -51,4 +51,16 @@ describe("event readiness route auth", () => {
     });
     expect(response.status).toBe(401);
   });
+
+  it("requires auth for post-Phase-1 bootstrap", async () => {
+    const response = await request(createServer()).get("/api/event-readiness/post-phase1/bootstrap");
+    expect(response.status).toBe(401);
+  });
+
+  it("requires auth for post-Phase-1 orchestration", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/post-phase1/run").send({
+      event_request: { fields: {}, field_status: {} }
+    });
+    expect(response.status).toBe(401);
+  });
 });

@@ -12,6 +12,7 @@ import {
   eventReadinessEventRequestSchema,
   eventReadinessEvaluateRequestSchema
 } from "../schemas/eventReadiness.js";
+import { postPhase1RunRequestSchema } from "../schemas/postPhase1.js";
 import {
   continueEventReadinessChat,
   EventReadinessChatError
@@ -22,6 +23,11 @@ import {
 } from "../services/eventReadinessService.js";
 import { buildMondayMockPayload } from "../services/mondayPayloadService.js";
 import { openAiStatus } from "../services/openai.js";
+import {
+  getPostPhase1Bootstrap,
+  runPostPhase1Flow
+} from "../services/postPhase1OrchestrationService.js";
+import { getPostPhase1Fixtures } from "../services/postPhase1DataService.js";
 import { buildStakeholderPackets } from "../services/routingService.js";
 import { buildSpaceRequestDocx } from "../services/spaceRequestDocxService.js";
 import { classifyEventTier, TieringServiceError } from "../services/tieringService.js";
@@ -104,6 +110,23 @@ apiRouter.post("/event-readiness/space-request-docx", requireNormalUser, async (
   res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
   res.setHeader("Content-Disposition", 'attachment; filename="lbs-space-request-draft.docx"');
   res.send(docx);
+});
+
+apiRouter.get("/event-readiness/post-phase1/bootstrap", requireNormalUser, (_req: Request, res: Response) => {
+  res.json(getPostPhase1Bootstrap());
+});
+
+apiRouter.post("/event-readiness/post-phase1/run", requireNormalUser, async (req: Request, res: Response) => {
+  const parsed = postPhase1RunRequestSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid post-Phase-1 request", details: parsed.error.flatten() });
+    return;
+  }
+
+  const expected = parsed.data.scenario_id
+    ? getPostPhase1Fixtures().find((fixture) => fixture.id === parsed.data.scenario_id)?.expected
+    : undefined;
+  res.json(await runPostPhase1Flow(parsed.data.event_request, parsed.data.options, expected));
 });
 
 apiRouter.post("/tiering/classify", requireNormalUser, async (req: Request, res: Response) => {

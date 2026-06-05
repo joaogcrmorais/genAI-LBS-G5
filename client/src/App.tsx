@@ -7,6 +7,7 @@ import { AdminPage } from "./pages/AdminPage";
 import { HealthPage } from "./pages/HealthPage";
 import { Ws4DemoPage } from "./pages/Ws4DemoPage";
 import { EventReadinessDemoPage } from "./pages/EventReadinessDemoPage";
+import { PostPhase1DemoPage } from "./pages/PostPhase1DemoPage";
 
 export function App() {
   return (
@@ -35,6 +36,14 @@ export function App() {
           element={
             <ProtectedRoute allowedPermissions={["user_normal", "user_admin"]}>
               <EventReadinessDemoPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/event-readiness-post-phase1-demo"
+          element={
+            <ProtectedRoute allowedPermissions={["user_normal", "user_admin"]}>
+              <PostPhase1DemoPage />
             </ProtectedRoute>
           }
         />

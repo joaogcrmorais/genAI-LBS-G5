@@ -30,7 +30,7 @@ Current Phase 1 ends at:
 - Space Request DOCX generation;
 - deterministic Key Event assessment when existing EventRequest facts are sufficient.
 
-EIS draft generation, stakeholder routing, stakeholder emails, staff-side timeline/checklist outputs, OpenAI-backed broader complexity/risk flags, and Monday.com mock payloads are future/downstream work, not part of the current Phase 1 implementation pass.
+The first post-Phase-1 backend QA implementation now exists as a proof-of-concept testing surface. It treats the completed flat Phase 1 `EventRequest` as the source of truth and generates deterministic Key Event assessment, EIS draft, real LBS stakeholder routing, editable stakeholder email drafts, timeline/checklist guidance, optional OpenAI complexity/risk classification, and a mock-only Monday payload.
 
 Important rules:
 
@@ -85,6 +85,7 @@ Current routes:
 - `/dashboard`: protected by Auth0 login plus `user_normal` or `user_admin`.
 - `/admin`: protected by Auth0 login plus `user_admin`.
 - `/event-readiness-demo`: protected current-scope Phase 1 validation surface for E-01 through E-06.
+- `/event-readiness-post-phase1-demo`: protected internal QA surface for post-Phase-1 backend outputs using complete EventRequest fixtures.
 - `/ws4-demo`: historical protected demo harness from the previous WS4 prototype slice.
 
 The `/ws4-demo` route and related files may be reused or replaced during the new epic-by-epic build, but they should not define current product scope by themselves.
@@ -110,9 +111,13 @@ Current notable routes:
 - `POST /api/event-readiness/event-request/evaluate`
 - `POST /api/event-readiness/chat`
 - `POST /api/event-readiness/space-request-docx`
+- `GET /api/event-readiness/post-phase1/bootstrap`
+- `POST /api/event-readiness/post-phase1/run`
 - historical WS4 routes for tiering, stakeholder packets, and Monday mock payloads
 
 The new Event Readiness endpoints are the active Phase 1 contract. The `/api/event-readiness/chat` endpoint is the current chatbot testing contract: OpenAI interprets organiser messages and proposes field updates, then deterministic coverage/readiness logic evaluates the resulting `EventRequest`. The current contract also exposes source guidance, deterministic Key Event assessment, and Space Request DOCX generation. The historical WS4 routes remain present for now, but are not source-of-truth product endpoints.
+
+The post-Phase-1 endpoints are a new POC/testing contract, not the historical WS4 contract. They use complete flat Phase 1 EventRequests from `lbs-files/processed/examples/post_phase1_event_requests.json`, route stakeholders from converted LBS lifecycle/routing/contact sources, draft emails without sending, and allow OpenAI risk classification to be skipped so deterministic outputs remain reliable for demo use.
 
 Current Event Readiness chat behaviour notes:
 
@@ -209,6 +214,7 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd --workspace @lbs-genai/server run test`: passed on 2026-06-05 after adding post-Phase-1 fixtures, deterministic Key Event assessment, real-contact stakeholder routing, stakeholder email drafts, EIS draft, timeline/checklist, mock Monday payload, optional OpenAI risk fallback, and route auth checks; backend had 44 passing tests and 1 skipped gated live OpenAI test.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
 - `npm.cmd run lint`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
 - `npm.cmd run test`: passed on 2026-06-04; backend had 36 passing tests and 1 skipped gated live OpenAI test, client had no tests yet.

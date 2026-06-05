@@ -155,6 +155,10 @@ h1 {
   max-width: 1520px;
 }
 
+.post-phase-demo {
+  max-width: 1680px;
+}
+
 .ws4-header {
   display: flex;
   align-items: end;
@@ -551,6 +555,123 @@ h1 {
   font-size: 0.82rem;
 }
 
+.post-runner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 18px;
+  align-items: start;
+}
+
+.post-main,
+.post-side {
+  display: grid;
+  gap: 16px;
+}
+
+.post-scenario-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 16px;
+  align-items: start;
+}
+
+.post-status-grid,
+.post-output-summary {
+  display: grid;
+  gap: 10px;
+}
+
+.post-status-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.post-status-card,
+.post-output-summary div {
+  border: 1px solid #d9e1ec;
+  border-radius: 6px;
+  background: #f8fafc;
+  padding: 12px;
+}
+
+.post-status-card.pass {
+  border-color: #8fc6a3;
+  background: #f2fbf5;
+}
+
+.post-status-card.fail {
+  border-color: #e0a1aa;
+  background: #fff5f6;
+}
+
+.post-status-card strong,
+.post-output-summary strong {
+  display: block;
+  color: #002776;
+  font-size: 0.95rem;
+}
+
+.post-status-card span,
+.post-output-summary span {
+  display: block;
+  margin: 4px 0;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.post-status-card p {
+  margin: 0;
+  color: #334155;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.post-json-editor {
+  width: 100%;
+  min-height: 280px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 12px;
+  font: 0.82rem/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.post-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.post-field-card {
+  min-width: 0;
+}
+
+.post-field-card h2 {
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.post-json-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.post-error {
+  margin: 8px 0 0;
+  color: #b00020;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.post-checklist-header {
+  border: 0;
+  padding: 0 0 12px;
+}
+
 .configuration-message {
   margin: 48px;
 }
@@ -569,7 +690,10 @@ h1 {
 
   .ws4-header,
   .ws4-layout,
-  .era-layout {
+  .era-layout,
+  .post-runner-grid,
+  .post-scenario-summary,
+  .post-json-grid {
     display: block;
   }
 
@@ -588,6 +712,11 @@ h1 {
   }
 
   .era-field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .post-status-grid,
+  .post-field-grid {
     grid-template-columns: 1fr;
   }
 }

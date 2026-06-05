@@ -17,6 +17,7 @@ export function AppShell({ children }: PropsWithChildren) {
           <NavLink to="/health">Health</NavLink>
           <NavLink to="/dashboard">Dashboard</NavLink>
           <NavLink to="/event-readiness-demo">Event Readiness</NavLink>
+          <NavLink to="/event-readiness-post-phase1-demo">Post Phase 1</NavLink>
           <NavLink to="/ws4-demo">WS4 Demo</NavLink>
           <NavLink to="/admin">Admin</NavLink>
         </nav>

@@ -8,12 +8,33 @@ import { HealthPage } from "./pages/HealthPage";
 import { Ws4DemoPage } from "./pages/Ws4DemoPage";
 import { EventReadinessDemoPage } from "./pages/EventReadinessDemoPage";
 import { PostPhase1DemoPage } from "./pages/PostPhase1DemoPage";
+import { EventReadinessAssistantPage } from "./pages/EventReadinessAssistantPage";
 
 export function App() {
   return (
-    <AppShell>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <ProtectedRoute allowedPermissions={["user_normal", "user_admin"]}>
+            <EventReadinessAssistantPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/event-readiness-mvp"
+        element={
+          <ProtectedRoute allowedPermissions={["user_normal", "user_admin"]}>
+            <EventReadinessAssistantPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/*"
+        element={
+          <AppShell>
+            <Routes>
+              <Route path="/home" element={<HomePage />} />
         <Route path="/health" element={<HealthPage />} />
         <Route
           path="/dashboard"
@@ -56,7 +77,10 @@ export function App() {
           }
         />
         <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </AppShell>
+            </Routes>
+          </AppShell>
+        }
+      />
+    </Routes>
   );
 }

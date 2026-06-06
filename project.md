@@ -214,6 +214,10 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd --workspace @lbs-genai/client run typecheck`: passed on 2026-06-06 after the Event Readiness MVP frontend rebuild; initial `npm` PowerShell invocation was blocked by local execution policy, so the check was rerun with `npm.cmd`.
+- `npm.cmd --workspace @lbs-genai/client run lint`: passed on 2026-06-06 after the Event Readiness MVP frontend rebuild.
+- `npm.cmd --workspace @lbs-genai/client run test`: passed on 2026-06-06 with the existing no-op client test script.
+- `npm.cmd --workspace @lbs-genai/client run build`: passed on 2026-06-06 after rerunning outside the sandbox because Vite config loading hit a sandbox access error.
 - `npm.cmd --workspace @lbs-genai/server run test`: passed on 2026-06-05 after adding post-Phase-1 fixtures, deterministic Key Event assessment, real-contact stakeholder routing, stakeholder email drafts, EIS draft, timeline/checklist, mock Monday payload, optional OpenAI risk fallback, and route auth checks; backend had 44 passing tests and 1 skipped gated live OpenAI test.
 - `npm.cmd run typecheck`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
 - `npm.cmd run lint`: passed on 2026-06-04 after adding Event Readiness session-memory extraction, broader chat prompting, source-guidance prompt context, food/drink grouping, and incomplete-draft DOCX download support.
@@ -242,7 +246,7 @@ No app lint/typecheck/test suite was run for the latest data-conversion update b
 
 ## Current Next Steps
 
-1. Validate Phase 1 E-01 through E-06 from `/event-readiness-demo` using the chat/EventRequest tab and Epic QA checklist tab.
-2. Expand deterministic EventRequest population beyond the first source-backed heuristic pass, keeping the official CribSheet field map as source of truth.
-3. Validate generated Space Request DOCX output against representative completed EventRequests.
-4. Revisit downstream/future outputs only after Phase 1 is stable: EIS draft, stakeholder routing, emails, timeline/checklist, complexity/risk flags, and Monday mock payload.
+1. Validate the new protected `/` and `/event-readiness-mvp` Event Readiness Assistant frontend on `http://localhost:3000/` with both scripted Monday demo scenarios.
+2. Validate free-form chat against `/api/event-readiness/chat` and confirm the Auth0 audience configuration allows protected-route testing.
+3. Validate Space Request DOCX downloads, the failsafe Force DOCX generation button, EIS markdown download, stakeholder drawer copy/mailto actions, and restart/reset behavior.
+4. Work through `backlog.md`, especially the P0 EIS DOCX endpoint and full backend-driven conversation replacement.

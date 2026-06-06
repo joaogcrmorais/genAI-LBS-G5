@@ -191,6 +191,40 @@ describe("eventReadinessService", () => {
     expect(nextQuestionKeys).not.toContain("additional_information");
   });
 
+  it("mines a dense custom infodump without flattening it into a generic response", () => {
+    const prompt =
+      "I, Denethor, am the organiser, and the Gondor Club is making the request. I do not have a mobile, I use giant eagles to communicate. Call 07000 000000 which will phone my deputy, Faramir if you need to call someone. Event is named Palantir Users yearly reunion 2026. Confirmed October 10th. It will run from 8am to 8pm. Audience is 200 external Palantir users from Middle Earth. Preferred venue is Nuffield Hall. The event will be a conference with a mixer. There will be external speakers, some of which are politically sensitive people, such as the White Wizard Saruman. Other external speakers include the Dark Lord Sauron and Pipin / Peregrin Tuk. There will be noise, as there will be alcohol from 5pm onwards, and food will be served 13:00-14:00. We will need a registration desk, yes. It should open at 7am, together with the cloakroom. There will be outside filming, yes. There is no finance code for this event and it may not exist in the LBS finance events database.";
+
+    const eventRequest = applySessionMemoryToEventRequest(undefined, [], prompt);
+    const result = evaluateEventRequestState(eventRequest, prompt, detectEntryType(prompt));
+
+    expect(result.event_request.fields.organiser_name).toBe("Denethor");
+    expect(result.event_request.fields.club_or_programme_affiliation).toBe("Gondor Club");
+    expect(String(result.event_request.fields.contact_mobile_phone)).toContain("Faramir");
+    expect(result.event_request.fields.event_title).toBe("Palantir Users yearly reunion 2026");
+    expect(result.event_request.fields.date).toBe("October 10th");
+    expect(result.event_request.fields.start_finish_time).toBe("8am to 8pm");
+    expect(result.event_request.fields.number_of_attendees).toBe(200);
+    expect(String(result.event_request.fields.audience)).toContain("200 external Palantir users");
+    expect(result.event_request.fields.preferred_venue).toBe("Nuffield Hall");
+    expect(result.event_request.fields.space_and_setup).toBe("Nuffield Hall");
+    expect(String(result.event_request.fields.external_guest_speaker_details)).toContain("Saruman");
+    expect(String(result.event_request.fields.external_guest_speaker_details)).toContain("Sauron");
+    expect(String(result.event_request.fields.external_guest_speaker_details)).toContain("Pipin");
+    expect(String(result.event_request.fields.politically_sensitive_or_controversial)).toContain("politically sensitive");
+    expect(String(result.event_request.fields.catering)).toContain("13:00-14:00");
+    expect(String(result.event_request.fields.alcohol)).toContain("5pm");
+    expect(String(result.event_request.fields.registration_desk)).toContain("7am");
+    expect(String(result.event_request.fields.cloakroom)).toContain("7am");
+    expect(String(result.event_request.fields.filming)).toContain("Outside filming");
+    expect(result.event_request.financeCode).toBeUndefined();
+    expect(result.event_request.field_status.finance_code).toBe("needs_confirmation");
+    expect(result.key_event_assessment.key_event_candidate).toBe(true);
+    expect(result.key_event_assessment.counted_criteria).toContain("external_audience");
+    expect(result.post_space_guidance.campus_groups.cost_center_code.value).toBe("Needs finance code");
+    expect(result.post_space_guidance.eventscase.appears).toBe(true);
+  });
+
   it("groups missing catering and alcohol into one food-and-drink question", () => {
     const result = evaluateEventRequestState(
       { fields: { event_details: "Panel for students." }, field_status: { event_details: "final" } },

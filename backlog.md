@@ -15,9 +15,10 @@
 - [x] Build the Dossier readiness-panel variant; stacked cards remain default and the Dossier view can be selected from the tweaks panel.
 - [x] Replace placeholder contact inboxes with confirmed LBS team routing addresses or contact notes.
 - [x] Add reducer unit tests for scripted flow progression and unlock sequencing.
-- [ ] Add an admin-only event dashboard after current chatbot/session bugs are solved. It should show one row per created event with EventName, Club, Organiser, Contact, captured fields count (x/27), event date, creation date, KeyEvent yes/no, and an admin-only button/action to create or view the Monday.com mock payload.
+- [x] Add an admin-only event dashboard after current chatbot/session bugs are solved. It shows one row per created event with EventName, Club, Organiser, Contact, captured fields count (x/27 from the active processed field map), event date, creation date, KeyEvent yes/no, and an admin-only button/action to create or view the Monday.com mock payload.
 
 ## Open questions for the team
 - Should the Monday demo run with real backend chat enabled, or force local scripted flow for timing reliability?
 - What file type should EIS use in production: DOCX, PDF, or both?
 - Which exact LBS stakeholder addresses are approved for generated email drafts?
+- WS3: decide whether to reintroduce a mail-app handoff from stakeholder draft previews; it is intentionally removed from the MVP surface.

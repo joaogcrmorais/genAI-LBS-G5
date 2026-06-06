@@ -35,6 +35,7 @@ import {
   loadEventReadinessDraft,
   saveEventReadinessDraft
 } from "../services/eventReadinessDraftStore.js";
+import { buildAdminMondayPayload, listEventReadinessEvents } from "../services/eventReadinessEventStore.js";
 import { buildSpaceRequestDocx } from "../services/spaceRequestDocxService.js";
 import { classifyEventTier, TieringServiceError } from "../services/tieringService.js";
 
@@ -129,6 +130,19 @@ apiRouter.post("/event-readiness/session-draft", requireNormalUser, async (req: 
   }
 
   res.json(await saveEventReadinessDraft(ownerSubject, parsed.data));
+});
+
+apiRouter.get("/event-readiness/admin/events", requireAdminUser, async (_req: Request, res: Response) => {
+  res.json(await listEventReadinessEvents());
+});
+
+apiRouter.post("/event-readiness/admin/events/:eventId/monday", requireAdminUser, async (req: Request, res: Response) => {
+  const result = await buildAdminMondayPayload(req.params.eventId);
+  if (!result) {
+    res.status(404).json({ error: "Event Readiness event not found or has no EventRequest yet." });
+    return;
+  }
+  res.json(result);
 });
 
 apiRouter.post("/event-readiness/space-request-docx", requireNormalUser, async (req: Request, res: Response) => {

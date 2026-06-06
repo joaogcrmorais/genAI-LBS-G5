@@ -31,6 +31,7 @@ import type {
 } from "../types/eventReadinessMvp";
 
 type Turn = { role: "assistant" | "user"; blocks?: Block[]; text?: string };
+type PreviewDocument = "space" | "eis";
 type ComposerState =
   | { mode: "scenario" }
   | NonNullable<DemoScenario["script"][number]["replies"]>
@@ -206,9 +207,9 @@ function Composer({
           {composer.options.map((option, index) => (
             <button
               type="button"
-              className={selected.includes(index) ? "selected" : ""}
+              className={`locked ${selected.includes(index) ? "selected" : ""}`}
               key={option.text}
-              onClick={() => setSelected((current) => (current.includes(index) ? current.filter((item) => item !== index) : [...current, index]))}
+              aria-pressed={selected.includes(index)}
               disabled={busy}
             >
               {selected.includes(index) ? "✓ " : ""}{option.text}
@@ -338,6 +339,7 @@ function stakeholdersFromBackend(scenario: DemoScenario, backend: BackendPostPha
       id: item.id,
       name: item.name,
       role: item.priority,
+      priority: item.priority,
       why: item.reason,
       email: draft?.to?.[0] ?? item.email ?? "",
       subject: draft?.subject ?? `${String((backend.event_request?.fields ?? scenario.eventRequest.fields).event_title ?? "Event")}: ${item.name} planning review`,
@@ -348,20 +350,33 @@ function stakeholdersFromBackend(scenario: DemoScenario, backend: BackendPostPha
 
 function previewFieldsFromEventRequest(eventRequest: EventRequestDraft) {
   const labels: Array<[string, string]> = [
+    ["Submission timing", "submission_timing"],
     ["Organiser", "organiser_name"],
-    ["Club / programme", "club_or_programme_affiliation"],
+    ["Deputy / contact", "contact_mobile_phone"],
     ["Event title", "event_title"],
-    ["Attendance", "number_of_attendees"],
+    ["Event format", "event_type"],
+    ["Expected attendance", "number_of_attendees"],
+    ["Purpose", "event_details"],
     ["Date", "date"],
-    ["Time", "start_finish_time"],
-    ["Format", "event_type"],
-    ["Details", "event_details"],
-    ["External guests / speakers", "external_guest_speaker_details"],
-    ["Space and setup", "space_and_setup"],
+    ["Timing", "start_finish_time"],
+    ["Audience", "audience"],
+    ["External speaker", "external_guest_speaker_details"],
+    ["Political sensitivity", "politically_sensitive_or_controversial"],
+    ["Children under 18", "children_attending"],
+    ["Preferred venue", "preferred_venue"],
+    ["Room configuration", "space_and_setup"],
+    ["Additional spaces", "additional_spaces"],
     ["Registration", "registration_desk"],
     ["Catering", "catering"],
     ["Alcohol", "alcohol"],
+    ["Audio-visual", "audio_visual"],
+    ["Music", "recorded_music"],
+    ["Decorations", "decorations"],
+    ["Cloakroom", "cloakroom"],
+    ["Outside equipment", "outside_equipment"],
     ["Filming", "filming"],
+    ["Streaming media", "streaming_media"],
+    ["Finance code", "finance_code"],
     ["Additional information", "additional_information"]
   ];
   return labels.map(([label, key]) => {
@@ -372,6 +387,114 @@ function previewFieldsFromEventRequest(eventRequest: EventRequestDraft) {
       status: eventRequest.field_status[key]
     };
   });
+}
+
+function statusText(status?: FieldStatus) {
+  if (status === "needs_confirmation" || status === "organiser_follow_up") return "needs confirmation";
+  if (status === "not_sure_yet") return "not sure yet";
+  if (status === "missing") return "missing";
+  return "";
+}
+
+function fieldValue(eventRequest: EventRequestDraft, key: string) {
+  const value = eventRequest.fields[key];
+  return value === null || value === undefined || value === "" ? "Not provided" : String(value);
+}
+
+function splitRows(rows: ReturnType<typeof previewFieldsFromEventRequest>) {
+  return {
+    organiser: rows.slice(0, 2),
+    fundamentals: rows.slice(2, 6),
+    timing: rows.slice(6, 8),
+    audience: rows.slice(8, 12),
+    setup: rows.slice(12, 18),
+    services: rows.slice(18)
+  };
+}
+
+function DocumentRows({ rows }: { rows: ReturnType<typeof previewFieldsFromEventRequest> }) {
+  return (
+    <div className="mvp-doc-table">
+      {rows.map((row) => (
+        <div key={row.label}>
+          <span>{row.label}</span>
+          <strong>{row.value}{statusText(row.status) ? <small>{statusText(row.status)}</small> : null}</strong>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function DocumentPreviewModal({
+  kind,
+  eventRequest,
+  backend,
+  onClose,
+  onDownloadSpace,
+  onDownloadEis,
+  busyDownload
+}: {
+  kind: PreviewDocument;
+  eventRequest: EventRequestDraft;
+  backend: BackendPostPhase1Result | null;
+  onClose: () => void;
+  onDownloadSpace: () => void;
+  onDownloadEis: () => void;
+  busyDownload: string | null;
+}) {
+  const rows = splitRows(previewFieldsFromEventRequest(eventRequest));
+  const keyEvent = backend?.key_event;
+  const title = kind === "space" ? "Space Request Form" : "Event Information Sheet";
+  return (
+    <div className="mvp-modal-backdrop" role="dialog" aria-modal="true" aria-label={title}>
+      <div className="mvp-doc-modal">
+        <div className="mvp-doc-modal-head">
+          <span className="mvp-card-icon"><Icon name={kind === "space" ? "file" : "shield"} /></span>
+          <strong>{title}</strong>
+          <button type="button" onClick={onClose} aria-label="Close document preview">×</button>
+        </div>
+        <div className="mvp-doc-modal-body">
+          <article className="mvp-paper">
+            <p className="mvp-paper-kicker">London Business School · {kind === "space" ? "Student Clubs" : "Key Events"}</p>
+            <h2>{title}</h2>
+            <p className="mvp-paper-intro">
+              {kind === "space"
+                ? "Provisional draft generated by the Event Readiness Assistant. Items marked needs confirmation may be finalised before submission."
+                : "Draft prepared because this event could be considered a Key Event. Details not yet captured are marked needs confirmation."}
+            </p>
+            {kind === "eis" ? (
+              <>
+                <h3>Key Event assessment</h3>
+                <DocumentRows rows={[
+                  { label: "Outcome", value: keyEvent?.key_event_candidate ? "Could be considered a Key Event" : "Not a Key Event", status: "final" },
+                  { label: "Basis", value: keyEvent?.trigger_reasons?.join(" · ") || keyEvent?.rationale_user_facing || "Deterministic check", status: "final" },
+                  { label: "High-profile external speaker", value: fieldValue(eventRequest, "external_guest_speaker_details"), status: eventRequest.field_status.external_guest_speaker_details },
+                  { label: "External audience", value: fieldValue(eventRequest, "audience") || fieldValue(eventRequest, "event_details"), status: eventRequest.field_status.audience }
+                ]} />
+              </>
+            ) : null}
+            <h3>{kind === "space" ? "Submission & organiser" : "Event summary"}</h3>
+            <DocumentRows rows={kind === "space" ? rows.organiser : rows.fundamentals} />
+            {kind === "space" ? <><h3>Event fundamentals</h3><DocumentRows rows={rows.fundamentals} /></> : null}
+            <h3>Date & timing</h3>
+            <DocumentRows rows={rows.timing} />
+            <h3>Audience & speaker</h3>
+            <DocumentRows rows={rows.audience} />
+            <h3>Space & setup</h3>
+            <DocumentRows rows={rows.setup} />
+            <h3>Operational profile</h3>
+            <DocumentRows rows={rows.services} />
+          </article>
+        </div>
+        <div className="mvp-doc-modal-foot">
+          <span>In the live app this downloads as an editable .docx.</span>
+          <button type="button" onClick={kind === "space" ? onDownloadSpace : onDownloadEis}>
+            {busyDownload ? "Generating..." : "Download .docx"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function emptyEventRequest(): EventRequestDraft {
@@ -392,6 +515,7 @@ function ReadinessRail({
   busyDownload,
   onDownloadEis,
   onGenerateSpace,
+  onOpenDocument,
   onOpenDrawer
 }: {
   scenario: DemoScenario;
@@ -402,10 +526,15 @@ function ReadinessRail({
   busyDownload: string | null;
   onDownloadEis: () => void;
   onGenerateSpace: () => void;
+  onOpenDocument: (document: PreviewDocument) => void;
   onOpenDrawer: () => void;
 }) {
   const keyEvent = keyInfoFromBackend(scenario, backend);
   const stakeholders = stakeholdersFromBackend(scenario, backend);
+  const groupedStakeholders = {
+    required: stakeholders.filter((stakeholder) => stakeholder.priority === "required" || stakeholder.role === "required"),
+    recommended: stakeholders.filter((stakeholder) => stakeholder.priority !== "required" && stakeholder.role !== "required")
+  };
   const timeline = backend?.timeline?.items?.map((item) => [item.timing, item.task, item.stakeholder] as [string, string, string]) ?? scenario.timeline;
   const guidance = backend?.post_space_guidance;
   const anyUnlocked = Object.values(unlocked).some(Boolean);
@@ -438,6 +567,7 @@ function ReadinessRail({
 
         <DCard icon="file" title="Space Request Form" kicker="Word document · current information" footer={
           <div className="mvp-card-actions">
+            {unlocked.space ? <button type="button" className="primary" onClick={() => onOpenDocument("space")}>Preview document</button> : null}
             <button type="button" onClick={onGenerateSpace} disabled={busyDownload !== null}>
               {busyDownload === "space" ? "Generating..." : "Generate Space Request Form with current information gathered"}
             </button>
@@ -446,16 +576,6 @@ function ReadinessRail({
           <p>{unlocked.space ? "Your Space Request Form draft is ready to review and email to Space Management." : "Generate a DOCX at any point; missing or uncertain details remain visible in the draft."}</p>
           {guidance?.space_management ? <p className="mvp-nextstep"><strong>Space Management</strong><span>{guidance.space_management.email}</span></p> : null}
         </DCard>
-
-        {unlocked.space ? (
-          <Expandable title="Preview Space Request Form" kicker="Current captured information" defaultOpen>
-            <div className="mvp-field-grid">
-              {previewFieldsFromEventRequest(eventRequest).map((field) => (
-                <div key={field.label}><span>{field.label}</span><strong>{field.value}</strong><Smark mark={markFromStatus(field.status)} /></div>
-              ))}
-            </div>
-          </Expandable>
-        ) : null}
 
         {!anyUnlocked ? (
           <div className="mvp-empty-card">
@@ -480,26 +600,43 @@ function ReadinessRail({
 
         {unlocked.eis && keyEvent.candidate ? (
           <DCard icon="shield" title="Event Information Sheet" kicker="Word document · EIS draft" footer={
-            <button type="button" onClick={onDownloadEis}>{busyDownload === "eis" ? "Downloading..." : "Download EIS draft"}</button>
+            <div className="mvp-card-actions">
+              <button type="button" className="primary" onClick={() => onOpenDocument("eis")}>Preview document</button>
+              <button type="button" onClick={onDownloadEis}>{busyDownload === "eis" ? "Downloading..." : "Download EIS draft"}</button>
+            </div>
           }>
             <p>Draft EIS content is ready for the Key Event candidate route. This MVP downloads the draft directly.</p>
           </DCard>
         ) : null}
 
-        {unlocked.eis && keyEvent.candidate && backend?.eis?.markdown ? (
-          <Expandable title="Preview Event Information Sheet" kicker="Generated draft text" defaultOpen>
-            <pre className="mvp-doc-preview">{backend.eis.markdown}</pre>
-          </Expandable>
-        ) : null}
-
         {unlocked.stakeholders ? (
-          <DCard icon="users" title="Stakeholders to contact" kicker={`${stakeholders.length} teams · email drafts ready`} footer={<button type="button" onClick={onOpenDrawer}>Open email drafts</button>}>
-            <div className="mvp-stake-mini">
-              {stakeholders.map((stakeholder) => <div key={stakeholder.id}><span>{stakeholder.name.slice(0, 1)}</span><p><strong>{stakeholder.name}</strong>{stakeholder.why}</p></div>)}
+          <details className="mvp-dcard mvp-expand mvp-stakeholder-card">
+            <summary>
+              <span><h3>Stakeholders to contact</h3><p>{stakeholders.length} teams · email drafts ready</p></span>
+              <Icon name="chevron" />
+            </summary>
+            <div className="mvp-card-body">
+              {(["required", "recommended"] as const).map((group) => {
+                const items = groupedStakeholders[group];
+                if (!items.length) return null;
+                return (
+                  <div className="mvp-stake-group" key={group}>
+                    <strong>{group === "required" ? "Required" : "Recommended"}</strong>
+                    <div className="mvp-stake-mini">
+                      {items.map((stakeholder) => (
+                        <div className={group} key={stakeholder.id}>
+                          <span>{stakeholder.name.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase()}</span>
+                          <p><strong>{stakeholder.name}</strong>{stakeholder.why}<small>{group}</small></p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          </DCard>
+            <div className="mvp-card-footer"><button type="button" onClick={onOpenDrawer}>Open email drafts</button></div>
+          </details>
         ) : null}
-
         {unlocked.stakeholders && guidance?.campus_groups?.appears ? (
           <Expandable title="Campus Groups event page" kicker={guidance.campus_groups.prompt} defaultOpen>
             <div className="mvp-setup-pack">
@@ -538,7 +675,7 @@ function ReadinessRail({
               <div className="mvp-timeline">{timeline.map(([when, what, note]) => <div key={`${when}-${what}`}><span>{when}</span><strong>{what}</strong><p>{note}</p></div>)}</div>
             </Expandable>
             <Expandable title="Captured event details" kicker="Space Request fields plus context">
-              <div className="mvp-field-grid">{scenario.displayFields.filter(([k]) => !k.toLowerCase().includes("finance")).map(([k, v, mark]) => <div key={k}><span>{k}</span><strong>{v}</strong><Smark mark={mark} /></div>)}</div>
+              <DocumentRows rows={previewFieldsFromEventRequest(eventRequest)} />
             </Expandable>
           </>
         ) : null}
@@ -566,7 +703,12 @@ function StakeholderDrawer({
   onEmailEdit: (id: string, edit: StakeholderEmailEdit) => void;
   onCopyToast: () => void;
 }) {
-  const stakeholders = stakeholdersFromBackend(scenario, backend);
+  const stakeholders = stakeholdersFromBackend(scenario, backend).sort((a, b) => {
+    const aRequired = a.priority === "required" || a.role === "required";
+    const bRequired = b.priority === "required" || b.role === "required";
+    if (aRequired !== bRequired) return aRequired ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
   const active = stakeholders.find((item) => item.id === drawer.activeId) ?? null;
   const current = active ? { ...active, ...(emailEdits[active.id] ?? {}) } : null;
 
@@ -589,23 +731,22 @@ function StakeholderDrawer({
     onEmailEdit(current.id, { ...(emailEdits[current.id] ?? {}), [key]: value });
   }
 
-  function mailto(stakeholder: Stakeholder) {
-    return `mailto:${encodeURIComponent(stakeholder.email)}?subject=${encodeURIComponent(stakeholder.subject)}&body=${encodeURIComponent(stakeholder.body)}`;
-  }
-
   return (
     <div className="mvp-drawer">
       {!current ? (
         <>
           <div className="mvp-drawer-head"><h2>Stakeholder drafts</h2><button type="button" onClick={onClose}>Close</button></div>
           <div className="mvp-drawer-list">
-            {stakeholders.map((stakeholder) => (
-              <button type="button" key={stakeholder.id} onClick={() => onDetail(stakeholder.id)}>
-                <span>{stakeholder.name.slice(0, 1)}</span>
-                <strong>{stakeholder.name}<small>{stakeholder.role}</small></strong>
-                <Icon name="chevron" />
-              </button>
-            ))}
+            {stakeholders.map((stakeholder) => {
+              const priority = stakeholder.priority === "required" || stakeholder.role === "required" ? "required" : "recommended";
+              return (
+                <button type="button" className={priority} key={stakeholder.id} onClick={() => onDetail(stakeholder.id)}>
+                  <span>{stakeholder.name.slice(0, 1)}</span>
+                  <strong>{stakeholder.name}<small>{priority}</small></strong>
+                  <Icon name="chevron" />
+                </button>
+              );
+            })}
           </div>
         </>
       ) : (
@@ -617,7 +758,6 @@ function StakeholderDrawer({
             <label>Body<textarea value={current.body} onChange={(event) => setCurrent("body", event.target.value)} /></label>
             <div className="mvp-card-actions">
               <button type="button" onClick={() => void navigator.clipboard.writeText(`To: ${current.email}\nSubject: ${current.subject}\n\n${current.body}`).then(onCopyToast)}>Copy email</button>
-              <a href={mailto(current)}>Open in mail app</a>
             </div>
           </div>
         </>
@@ -676,6 +816,7 @@ export function EventReadinessAssistantPage() {
   const [toast, setToast] = useState(false);
   const [tweaks, setTweaks] = useState(false);
   const [busyDownload, setBusyDownload] = useState<string | null>(null);
+  const [previewDocument, setPreviewDocument] = useState<PreviewDocument | null>(null);
   const [backend, setBackend] = useState<BackendPostPhase1Result | null>(null);
   const [eventRequest, setEventRequest] = useState<EventRequestDraft>(() => emptyEventRequest());
   const [emailEdits, setEmailEdits] = useState<Record<string, StakeholderEmailEdit>>({});
@@ -792,17 +933,19 @@ export function EventReadinessAssistantPage() {
     const runId = runRef.current;
     setEventRequest(draft);
     void persistDraft(draft, emailEdits);
+    let keyEventCandidate = activeScenario.keyEvent.candidate;
     try {
       const token = await getAccessTokenSilently();
       const scenarioId = useScenarioFixture ? activeScenario.id === "keyEvent" ? "monday-fintech-ceo-demo" : "monday-wine-society-demo" : undefined;
       const result = await runPostPhase1(token, scenarioId, draft);
       if (runRef.current !== runId) return;
+      keyEventCandidate = result.key_event?.key_event_candidate ?? keyEventCandidate;
       setBackend(result);
     } catch {
       if (runRef.current !== runId) return;
       setBackend(null);
     }
-    const sequence = readinessUnlockSequence(activeScenario.keyEvent.candidate);
+    const sequence = readinessUnlockSequence(keyEventCandidate);
     sequence.forEach((key, index) => window.setTimeout(() => dispatchFlow({ type: "unlock", key }), 520 * (index + 1)));
   }
 
@@ -886,6 +1029,7 @@ export function EventReadinessAssistantPage() {
           busyDownload={busyDownload}
           onGenerateSpace={() => void downloadSpace(false)}
           onDownloadEis={() => void downloadEis()}
+          onOpenDocument={setPreviewDocument}
           onOpenDrawer={() => dispatchFlow({ type: "openDrawer" })}
         />
       </div>
@@ -911,6 +1055,17 @@ export function EventReadinessAssistantPage() {
         onReadinessLayout={(layout) => dispatchFlow({ type: "setReadinessLayout", layout })}
         onAccent={setAccent}
       />
+      {previewDocument ? (
+        <DocumentPreviewModal
+          kind={previewDocument}
+          eventRequest={eventRequest}
+          backend={backend}
+          onClose={() => setPreviewDocument(null)}
+          onDownloadSpace={() => void downloadSpace(false)}
+          onDownloadEis={() => void downloadEis()}
+          busyDownload={busyDownload}
+        />
+      ) : null}
       {toast ? <div className="mvp-toast">Copied</div> : null}
     </div>
   );

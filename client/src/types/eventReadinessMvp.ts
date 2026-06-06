@@ -39,6 +39,7 @@ export type Stakeholder = {
   id: string;
   name: string;
   role: string;
+  priority?: "required" | "recommended" | string;
   why: string;
   email: string;
   subject: string;

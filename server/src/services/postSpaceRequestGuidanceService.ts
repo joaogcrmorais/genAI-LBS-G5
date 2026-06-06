@@ -61,8 +61,10 @@ function hasExternalAudience(eventRequest: EventReadinessEventRequest) {
   if (/\b(no|not|none)\b.{0,35}\b(external|alumni|industry|non-lbs|non lbs|guest speakers?)\b/.test(text)) {
     return false;
   }
-  return /\b(alumni|external guests?|external attendees?|external audience|industry partners?|non-lbs|non lbs|invited external|guest speakers?|company speakers?|public audience)\b/.test(
-    text
+  return (
+    /\b(alumni|external guests?|external attendees?|external audience|external users?|industry partners?|non-lbs|non lbs|invited external|guest speakers?|company speakers?|public audience)\b/.test(
+      text
+    ) || /\bexternal\b.{0,40}\b(users?|attendees?|guests?|audience)\b/.test(text)
   );
 }
 
@@ -79,7 +81,7 @@ function buildDescription(eventRequest: EventReadinessEventRequest) {
   const speaker = fieldText(eventRequest, "external_guest_speaker_details");
   const date = fieldText(eventRequest, "date");
   const time = fieldText(eventRequest, "start_finish_time");
-  const location = fieldText(eventRequest, "space_and_setup");
+  const location = fieldText(eventRequest, "preferred_venue") || fieldText(eventRequest, "space_and_setup");
 
   return sentence([
     `${name} is ${format ? `a ${format}` : "an event"}${club ? ` hosted by ${club}` : ""}.`,
@@ -170,11 +172,11 @@ export function buildPostSpaceRequestGuidance(eventRequest: EventReadinessEventR
       suggested_event_type: suggestEventType(eventRequest),
       suggested_tags: suggestTags(eventRequest),
       cost_center_code: {
-        value: costCenter ?? "0000",
+        value: costCenter ?? "Needs finance code",
         found: Boolean(costCenter),
         guidance: costCenter
           ? "Confirm this likely cost center code with the club treasurer before submitting the Campus Groups event."
-          : "Contact the club treasurer for the correct code. Use 0000 temporarily so Campus Groups setup is not blocked.",
+          : "No finance code has been captured for this event. Contact the club treasurer or Student Association finance contact before submitting the Campus Groups event.",
         financeCode: financeCode ?? undefined
       },
       asset_reminders: [

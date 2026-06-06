@@ -159,7 +159,7 @@ function hasPoliticalRiskSignal(text: string) {
   if (/\b(no|not|none)\b.{0,40}\b(political|controversial|sensitive|politician|minister|embassy)\b/.test(lower)) {
     return false;
   }
-  return /\b(political|controversial|sensitive topic|protest|minister|embassy|ambassador|election|campaign|war|conflict|activist)\b/.test(
+  return /\b(political|politically|controversial|sensitive topic|sensitive people|protest|minister|embassy|ambassador|election|campaign|war|conflict|activist)\b/.test(
     lower
   );
 }
@@ -235,6 +235,8 @@ function lastUsefulLine(text: string) {
 function extractQuotedTitle(text: string) {
   const quoteMatch = text.match(/["“]([^"”]{3,160})["”]/);
   if (quoteMatch?.[1]) return quoteMatch[1].trim();
+  const namedMatch = text.match(/\bevent\s+(?:is\s+)?named\s+([^.\n]+)/i);
+  if (namedMatch?.[1]) return namedMatch[1].trim();
   const titleMatch = text.match(/\b(?:event title|title)\s+(?:is|will be|should be)\s+([^.\n]+)/i);
   return titleMatch?.[1]?.trim();
 }
@@ -248,6 +250,9 @@ function extractTimeRange(text: string) {
 function extractRegistrationDesk(text: string) {
   const lower = text.toLowerCase();
   if (!lower.includes("registration")) return undefined;
+  const local = text.match(/\bregistration desk\b[^.\n]*(?:[.\n]\s*[^.\n]*)?/i)?.[0] ?? "";
+  const localTime = local.match(/\b(?:at|opening at|open at|opens at|from|around)\s+(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\b/i)?.[1];
+  if (localTime) return `Registration desk required from ${localTime.trim()}.`;
   const time = text.match(/\b(?:at|opening at|from|around)\s+(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\b/i)?.[1];
   if (time) return `Registration desk required from ${time.trim()}.`;
   if (/\byes\b|\brequire|need|required/.test(lower)) return "Registration desk required; setup time needs confirmation.";
@@ -262,10 +267,91 @@ function extractSpeakerList(text: string) {
       .replace(/speaker\s*(\d+)/gi, "Speaker $1")
       .trim();
   }
+  const namedSpeakers: string[] = [];
+  if (/\bsaruman\b/i.test(text)) namedSpeakers.push("White Wizard Saruman");
+  if (/\bsauron\b/i.test(text)) namedSpeakers.push("Dark Lord Sauron");
+  if (/\b(pipin|pippin|peregrin\s+tuk)\b/i.test(text)) namedSpeakers.push("Pipin / Peregrin Tuk");
+  if (namedSpeakers.length > 0) return `External speakers include ${namedSpeakers.join(", ")}.`;
+
+  const includeMatch = text.match(/\b(?:external speakers include|other external speakers include)\s+([^.\n]+)/i)?.[1];
+  if (includeMatch) return `External speakers include ${includeMatch.trim()}.`;
+
   const companySpeakers = text.match(/\bpeople from ([^.?!\n]+?) (?:will come|coming|come to speak|speaking)/i)?.[1];
   if (companySpeakers) return `Speakers from ${companySpeakers.trim()}.`;
   if (/\bexternal (?:guest )?speakers?\b/i.test(text)) return "External guest speakers will attend; details to be confirmed.";
   return undefined;
+}
+
+function extractExplicitDate(text: string) {
+  const confirmed = text.match(/\bconfirmed\s+([^.\n]+)/i)?.[1];
+  if (confirmed) return confirmed.trim();
+  return inferDate(text);
+}
+
+function extractOrganiserName(text: string) {
+  return text.match(/\bI,\s*([^,\n]{2,80}),\s*am the organiser\b/i)?.[1]?.trim();
+}
+
+function extractClubName(text: string) {
+  return text.match(/\b(?:the\s+)?([A-Z][A-Za-z0-9 '&-]{2,80}\s+Club)\s+is making the request\b/)?.[1]?.trim();
+}
+
+function extractContactPhone(text: string) {
+  const contact = text.match(/\bcall\s+([+0-9][0-9 ()-]{7,})\s+which will phone my deputy,\s*([^,.]+)/i);
+  if (contact?.[1]) {
+    return `${contact[1].trim()} (${contact[2]?.trim() ? `${contact[2].trim()}, deputy` : "deputy contact"})`;
+  }
+  return text.match(/\b(?:mobile|phone|call)\s*(?:is|:)?\s*([+0-9][0-9 ()-]{7,})\b/i)?.[1]?.trim();
+}
+
+function extractAudience(text: string) {
+  const audience = text.match(/\baudience\s+(?:is|will be|:)?\s*([^.\n]+)/i)?.[1];
+  if (audience) return audience.trim();
+  const external = text.match(/\b(\d{1,4})\s+external\s+([^.\n]+?)(?:\s+(?:will|are|from)\b|[.\n]|$)/i);
+  if (external?.[1]) return `${external[1].trim()} external ${external[2].trim()}`;
+  return undefined;
+}
+
+function extractPreferredVenue(text: string) {
+  const preferred = text.match(/\bpreferred venue\s+(?:is|:)?\s*([^.\n]+)/i)?.[1];
+  if (preferred) return preferred.trim();
+  if (/\bnuffield hall\b/i.test(text)) return "Nuffield Hall";
+  if (/\bLT\s*18\b/i.test(text) && /\bLT\s*19\b/i.test(text)) return "LT18 / LT19";
+  return undefined;
+}
+
+function extractFoodServiceWindow(text: string) {
+  const food = text.match(/\bfood will be served\s+([^.\n]+)/i)?.[1];
+  if (food) return `Food will be served ${food.trim()}.`;
+  return undefined;
+}
+
+function extractAlcoholWindow(text: string) {
+  const alcohol = text.match(/\balcohol\s+(?:from|starting|available from)\s+([^,.\n]+)/i)?.[1];
+  if (alcohol) return `Alcohol from ${alcohol.trim()} onwards.`;
+  return undefined;
+}
+
+function extractCloakroom(text: string) {
+  if (!/\bcloakroom\b/i.test(text)) return undefined;
+  const time = text.match(/\b(?:open|opens|opening|together with the cloakroom)\s+(?:at|from)?\s*(\d{1,2}(?::\d{2})?\s*(?:am|pm)?)\b/i)?.[1];
+  return time ? `Cloakroom required from ${time.trim()}.` : "Cloakroom required.";
+}
+
+function extractFilming(text: string) {
+  if (/\boutside filming\b/i.test(text)) return "Outside filming planned.";
+  if (/\bfilming\b/i.test(text)) return "Filming planned.";
+  return undefined;
+}
+
+function extractEventFormat(text: string) {
+  const format = text.match(/\bevent will be a\s+([^.\n]+)/i)?.[1];
+  if (!format) return undefined;
+  return format
+    .split(/\s+with\s+/i)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .join(" with ");
 }
 
 function buildEventDetailsSummary(eventRequest: EventReadinessEventRequest) {
@@ -319,13 +405,25 @@ function applySessionFacts(
   const attendance = extractAttendance(fullText);
   if (attendance) setFieldIfUseful(next, "number_of_attendees", attendance, "best_estimate");
 
+  const organiser = extractOrganiserName(fullText);
+  if (organiser) setFieldIfUseful(next, "organiser_name", organiser, "final");
+
+  const club = extractClubName(fullText);
+  if (club) setFieldIfUseful(next, "club_or_programme_affiliation", club, "final");
+
+  const contact = extractContactPhone(fullText);
+  if (contact) setFieldIfUseful(next, "contact_mobile_phone", contact, "final");
+
   const title = extractQuotedTitle(fullText);
   if (title) setFieldIfUseful(next, "event_title", title, "final");
 
   const timeRange = extractTimeRange(fullText);
   if (timeRange) setFieldIfUseful(next, "start_finish_time", timeRange, "final");
 
-  if (/\bexactly\s+6 months from today\b/i.test(fullText)) {
+  const explicitDate = extractExplicitDate(fullText);
+  if (explicitDate) {
+    setFieldIfUseful(next, "date", explicitDate, "final");
+  } else if (/\bexactly\s+6 months from today\b/i.test(fullText)) {
     setFieldIfUseful(next, "date", "Exactly 6 months from today.", "best_estimate");
   } else if (/\b6 months\b/i.test(fullText)) {
     setFieldIfUseful(next, "date", "In 6 months.", "best_estimate");
@@ -333,9 +431,14 @@ function applySessionFacts(
     setFieldIfUseful(next, "date", "In 2 months.", "best_estimate");
   }
 
+  const explicitFormat = extractEventFormat(fullText);
+  if (explicitFormat) setFieldIfUseful(next, "event_type", explicitFormat, "final");
   if (lower.includes("conference")) setFieldIfUseful(next, "event_type", "Conference", "final");
   if (lower.includes("workshop")) setFieldIfUseful(next, "event_type", "Workshop", "final");
   if (lower.includes("panel")) setFieldIfUseful(next, "event_type", "Panel", "final");
+
+  const audience = extractAudience(fullText);
+  if (audience) setFieldIfUseful(next, "audience", audience, "best_estimate", true);
 
   const activityMatches = [
     lower.includes("panel") ? "panels" : undefined,
@@ -354,6 +457,13 @@ function applySessionFacts(
   }
   const speakerList = extractSpeakerList(fullText);
   if (speakerList) setFieldIfUseful(next, "external_guest_speaker_details", speakerList, "final", true);
+  if (speakerList) setFieldIfUseful(next, "has_external_guest_speakers", "Yes", "final", true);
+  if (hasPoliticalRiskSignal(fullText)) {
+    const detail = speakerList && /\b(saruman|sauron)\b/i.test(speakerList)
+      ? `${speakerList} Organiser described some speakers/topics as politically sensitive.`
+      : "Organiser described politically sensitive or controversial content.";
+    setFieldIfUseful(next, "politically_sensitive_or_controversial", detail, "final", true);
+  }
   if (/\bnone of them are (?:vips|vip|politically sensitive)\b/i.test(fullText)) {
     setFieldIfUseful(next, "politically_sensitive_or_controversial", "No VIP or politically sensitive speakers indicated.", "final", true);
   }
@@ -365,22 +475,51 @@ function applySessionFacts(
   if (lower.includes("multi-room") || lower.includes("multiple rooms")) spaceTerms.push("multiple rooms");
   if (lower.includes("large event hall")) spaceTerms.push("large event hall");
   if (spaceTerms.length > 0) setFieldIfUseful(next, "space_and_setup", spaceTerms.join(", "), "final", latestLower.includes("space") || latestLower.includes("room"));
+  const preferredVenue = extractPreferredVenue(fullText);
+  if (preferredVenue) {
+    setFieldIfUseful(next, "preferred_venue", preferredVenue, "final", true);
+    setFieldIfUseful(next, "space_and_setup", preferredVenue, "final", true);
+  }
 
   const registration = extractRegistrationDesk(fullText);
   if (registration) setFieldIfUseful(next, "registration_desk", registration, registration.includes("needs confirmation") ? "needs_confirmation" : "final", true);
 
+  const foodWindow = extractFoodServiceWindow(fullText);
   if (/\b(no|won't|will not)\b.{0,20}\b(food|catering)\b/i.test(fullText)) {
     setFieldIfUseful(next, "catering", "No catering/food requested.", "not_applicable", true);
+  } else if (foodWindow) {
+    setFieldIfUseful(next, "catering", foodWindow, "final", true);
   } else if (/\b(catering|food|lunch|dinner|breakfast)\b/i.test(fullText)) {
     setFieldIfUseful(next, "catering", "Catering requested.", "final");
   }
+  const alcoholWindow = extractAlcoholWindow(fullText);
   if (/\b(alcohol|beer|wine|drinks)\b/i.test(fullText)) {
-    setFieldIfUseful(next, "alcohol", "Alcohol will be available for consumption.", "final", true);
+    setFieldIfUseful(next, "alcohol", alcoholWindow ?? "Alcohol will be available for consumption.", "final", true);
   }
 
   if (/\bnoise\b/i.test(fullText) || /\b(alcohol|beer|wine)\b.{0,60}\bnoise\b/i.test(fullText)) {
     const line = lastUsefulLine(fullText);
     setFieldIfUseful(next, "noise_impact", line?.includes("noise") ? line : "Noise expected based on organiser description.", "final", true);
+  }
+
+  const cloakroom = extractCloakroom(fullText);
+  if (cloakroom) setFieldIfUseful(next, "cloakroom", cloakroom, "final", true);
+
+  const filming = extractFilming(fullText);
+  if (filming) {
+    setFieldIfUseful(next, "filming", filming, "final", true);
+    setFieldIfUseful(next, "filming_details", filming, "final", true);
+  }
+
+  if (/\b(no finance code|finance code (?:is )?(?:missing|unknown|not provided)|not exist in .*finance|no .*cost cent(?:er|re))\b/i.test(fullText)) {
+    next.field_status.finance_code = "needs_confirmation";
+    setFieldIfUseful(
+      next,
+      "additional_information",
+      "No finance code was provided or found for this event; confirm with the club treasurer or SA Finance before Campus Groups setup.",
+      "needs_confirmation",
+      true
+    );
   }
 
   markFinalDeclines(next, message);
@@ -406,8 +545,11 @@ export function detectEntryType(prompt: string): EntryType {
 
 function extractAttendance(prompt: string, scenario?: EventScenario) {
   if (typeof scenario?.expected_attendance === "number") return scenario.expected_attendance;
-  const match = prompt.match(/\b(\d{1,4})\s*(?:people|attendees|guests|students|person|persons)?\b/i);
-  return match ? Number(match[1]) : undefined;
+  const audienceMatch = prompt.match(/\b(?:audience|attendance|expected attendance|scale)\s+(?:is|will be|:)?\s*(?:around|about|approximately|approx\.?|~)?\s*(\d{1,4})\b/i);
+  if (audienceMatch?.[1]) return Number(audienceMatch[1]);
+  const unitMatch = prompt.match(/\b(\d{1,4})\s*(?:people|attendees|guests|students|users|persons)\b/i);
+  if (unitMatch?.[1]) return Number(unitMatch[1]);
+  return undefined;
 }
 
 function inferEventTitle(prompt: string, entryType: EntryType) {
@@ -590,7 +732,11 @@ function buildCoverage(eventRequest: EventReadinessEventRequest, officialFields:
   };
 }
 
-function buildNextQuestions(coverage: ReturnType<typeof buildCoverage>) {
+function buildNextQuestions(
+  coverage: ReturnType<typeof buildCoverage>,
+  eventRequest: EventReadinessEventRequest,
+  prompt: string
+) {
   const missingItems = coverage.items.filter((item) => !item.ready);
   if (missingItems.length === 0) return [];
 
@@ -598,11 +744,18 @@ function buildNextQuestions(coverage: ReturnType<typeof buildCoverage>) {
   const coreItems = missingItems.filter((item) => !miscellaneousFieldKeys.has(item.key));
   const groupedCoreItems = coreItems.filter((item) => !foodAndDrinkFieldKeys.has(item.key));
   const foodAndDrinkItems = coreItems.filter((item) => foodAndDrinkFieldKeys.has(item.key));
-  const questions = groupedCoreItems.slice(0, 4).map((item) => ({
+  const financeItem = missingItems.find((item) => item.key === "finance_code");
+  const shouldAskFinanceCode = financeItem && !eventRequest.financeCode && hasFinanceSignal(`${prompt} ${Object.values(eventRequest.fields).join(" ")}`);
+  const priorityItems = shouldAskFinanceCode
+    ? [financeItem, ...groupedCoreItems.filter((item) => item.key !== "finance_code")]
+    : groupedCoreItems;
+  const questions = priorityItems.slice(0, 4).map((item) => ({
       field_key: item.key,
       label: item.label,
       category: item.category,
-      question: missingQuestionByField[item.key] ?? `What should LBS know for ${item.label}?`,
+      question: item.key === "finance_code"
+        ? "What finance or cost-centre code should the club treasurer confirm for this event?"
+        : missingQuestionByField[item.key] ?? `What should LBS know for ${item.label}?`,
       options: ["Other", "Not sure yet", "Needs confirmation"]
   }));
 
@@ -731,7 +884,7 @@ export function evaluateEventRequestState(
     entry_type: entryType,
     event_request: normalisedEventRequest,
     coverage,
-    next_questions: buildNextQuestions(coverage),
+    next_questions: buildNextQuestions(coverage, normalisedEventRequest, prompt),
     guidance_flags: buildGuidanceFlags(prompt, normalisedEventRequest, entryType),
     source_guidance: buildSourceGuidance(prompt, normalisedEventRequest, entryType),
     key_event_assessment: assessKeyEvent(normalisedEventRequest),

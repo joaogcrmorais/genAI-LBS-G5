@@ -41,7 +41,26 @@ export function extractExplicitFinanceCode(text: string) {
   const match = text.match(
     /\b(?:finance|cost\s+cent(?:er|re)|budget)\s+(?:code|number|no\.?)\s*(?:is|:|#|-)?\s*([a-z0-9][a-z0-9_-]{2,})\b/i
   );
-  return match?.[1]?.trim();
+  const candidate = match?.[1]?.trim();
+  if (
+    !candidate ||
+    ["was", "not", "none", "missing", "provided", "unknown", "for", "this", "event", "has"].includes(
+      candidate.toLowerCase()
+    )
+  ) {
+    return undefined;
+  }
+  return candidate;
+}
+
+function looksLikeFinanceCode(value: string) {
+  const text = value.trim();
+  const words = text.toLowerCase().split(/[^a-z0-9]+|_/).filter(Boolean);
+  if (!text) return false;
+  if (words.some((word) => ["no", "not", "none", "missing", "unknown", "need", "needs", "provided", "confirmation", "treasurer", "contact"].includes(word))) {
+    return false;
+  }
+  return /^[a-z0-9][a-z0-9_-]{2,}$/i.test(text);
 }
 
 function tokenise(value: string) {
@@ -73,23 +92,27 @@ function eventFinanceText(eventRequest: EventReadinessEventRequest, prompt = "")
 export function lookupFinanceCodes(eventRequest: EventReadinessEventRequest, prompt = ""): FinanceCodeMatch[] {
   const text = eventFinanceText(eventRequest, prompt);
   const tokens = new Set(tokenise(text));
+  const clubTokens = new Set(tokenise(String(eventRequest.fields.club_or_programme_affiliation ?? "")));
   if (tokens.size === 0) return [];
+  if (clubTokens.size === 0) return [];
 
   return readFinanceRecords()
     .map((record) => {
+      const recordClubTokens = tokenise(record.club_name);
+      const hasClubMatch = recordClubTokens.some((token) => clubTokens.has(token));
       const recordTokens = tokenise(`${record.club_name} ${record.event_name} ${record.key}`);
       const score = recordTokens.filter((token) => tokens.has(token)).length;
-      return { ...record, score };
+      return { ...record, hasClubMatch, score };
     })
-    .filter((record) => record.score >= 2 && record.finance_code !== "EVENT")
+    .filter((record) => record.hasClubMatch && record.score >= 2 && record.finance_code !== "EVENT")
     .sort((a, b) => b.score - a.score)
     .slice(0, 3)
-    .map(({ score: _score, key: _key, ...record }) => record);
+    .map(({ score: _score, key: _key, hasClubMatch: _hasClubMatch, ...record }) => record);
 }
 
 export function deriveFinanceCode(eventRequest: EventReadinessEventRequest, prompt = "") {
   const existing = String(eventRequest.financeCode ?? eventRequest.fields.finance_code ?? "").trim();
-  if (existing) return existing;
+  if (existing && looksLikeFinanceCode(existing)) return existing;
   const financeText = eventFinanceText(eventRequest, prompt);
   const explicitFinanceCode = extractExplicitFinanceCode(financeText);
   if (explicitFinanceCode) return explicitFinanceCode;

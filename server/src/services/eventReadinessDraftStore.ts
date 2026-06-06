@@ -1,5 +1,6 @@
 import { prisma } from "../db/prisma.js";
 import type { EventReadinessDraftSaveRequest } from "../schemas/eventReadiness.js";
+import { upsertEventReadinessEvent } from "./eventReadinessEventStore.js";
 
 const DEFAULT_DRAFT_KEY = "current";
 const DRAFT_KEY_PATTERN = /^[a-zA-Z0-9._:-]+$/;
@@ -82,5 +83,6 @@ export async function saveEventReadinessDraft(ownerSubject: string, input: Event
       "emailEdits" = EXCLUDED."emailEdits",
       "updatedAt" = now()
   `;
+  await upsertEventReadinessEvent(ownerSubject, key, input.event_request ?? null, input.email_edits ?? {});
   return loadEventReadinessDraft(ownerSubject, key);
 }

@@ -152,6 +152,8 @@ Current Event Readiness chat behaviour notes:
 - Demo scenarios must remain multi-step scripted click-through flows for live presentation. Backend chat can support free-text organiser conversations, but the demo scenario buttons must not collapse the scripted flow into a one-turn backend completion.
 - Each new event session must start from an empty `EventRequest` and a fresh backend draft key. Server-side draft persistence is per event session, not a reusable context source for new organiser chats.
 - Monday.com mock payloads are admin/staff tooling outputs and should not be visible in the normal organiser readiness panel.
+- The no-shortcuts workflow rule is now an explicit project baseline: tests and agent verification must exercise the same journey a human will use, not bypass or collapse it for convenience.
+- Admin users can access `/admin` to list saved Event Readiness event sessions. Each row shows EventName, Club, Organiser, Contact, captured field count against the active processed field map, event date, creation date, KeyEvent yes/no, and an admin-only action to create/view the Monday.com mock payload.
 
 OpenAI SDK configuration exists only in the backend. The frontend must never read `OPENAI_API_KEY`.
 
@@ -239,6 +241,19 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-06 after hardening Event Readiness free-text extraction for dense custom infodumps, including Nuffield Hall, external audience/users, named external speakers, politically sensitive topics, registration/cloakroom setup time, outside filming, and missing finance-code handling.
+- `npm.cmd run lint`: passed on 2026-06-06 after the same update.
+- `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 53 passing tests and 1 skipped gated live OpenAI test, client had 6 passing reducer tests.
+- `npm.cmd --workspace @lbs-genai/client run build`: passed on 2026-06-06 after rerunning outside the sandbox because Vite config loading hit the known sandbox parent-directory read denial.
+- Live Denethor/Gondor backend chat probe on 2026-06-06 was run twice with the full custom prompt including Nuffield Hall and 200 external Palantir users. Both attempts reached Phase 1 ready, marked the event as a Key Event, counted complex logistics/significant operational elements/external audience, showed Eventscase guidance, captured Saruman/Sauron/Pipin, political sensitivity, 7am registration and cloakroom, outside filming, Nuffield Hall, and kept `EventRequest.financeCode` empty with Campus Groups cost center `Needs finance code`.
+- Frontend update on 2026-06-06 made scripted-demo multi-select chips read-only, removed the stakeholder drawer mail-app shortcut for MVP, aligned stakeholder draft ordering/coloring with required/recommended stakeholder routing, and changed the timeline to a left timing column with a vertical divider.
+- `npm.cmd run typecheck`: passed on 2026-06-06 after adding admin event persistence/dashboard, modal Space Request/EIS previews, collapsed grouped stakeholder routing, backend finance-code lookup tightening, and backend-driven free-text EIS unlocks.
+- `npm.cmd run lint`: passed on 2026-06-06 after the same update.
+- `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 51 passing tests and 1 skipped gated live OpenAI test, client had 6 passing reducer tests.
+- `npm.cmd --workspace @lbs-genai/client run build`: passed on 2026-06-06 after the same update.
+- Live custom-event probe on 2026-06-06 using the Denethor/Gondor prompt confirmed the backend marks the event as a Key Event, requires EIS, shows Eventscase guidance, and flags Campus Groups cost center as `Needs finance code` instead of inventing a lookup code.
+- Live finance lookup probe on 2026-06-06 using `Tech Media Club Fintech Happy Hour` confirmed the backend still derives known LBS finance code `3456` when the club/event matches processed finance data.
+- Authenticated browser verification on 2026-06-06 confirmed the normal readiness panel keeps Monday.com hidden, Space Request and EIS open document-style preview modals, Stakeholders to contact is collapsed by default with required/recommended grouping, and `/admin` lists saved events and creates/displays a Monday.com mock payload through the admin-only action.
 - `npm.cmd run typecheck`: passed on 2026-06-06 after restoring the original multi-step demo flow, switching reset to Create New Event semantics, isolating server-side persisted drafts by per-event draft key, and hiding Monday.com payload JSON from the normal readiness panel.
 - `npm.cmd run lint`: passed on 2026-06-06 after the same update.
 - `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 50 passing tests and 1 skipped gated live OpenAI test, client had 6 passing reducer tests.

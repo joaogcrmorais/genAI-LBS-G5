@@ -132,8 +132,18 @@ function evaluateCriterion(eventRequest: EventReadinessEventRequest, criterion: 
     }
     case "external_audience":
       return (
-        hasUsableStatus(eventRequest, ["event_details", "external_guest_speaker_details"]) &&
-        includesAny(text, ["external audience", "public audience", "public guests", "external guests", "non-lbs", "non lbs", "corporate partners"])
+        hasUsableStatus(eventRequest, ["audience", "event_details", "external_guest_speaker_details"]) &&
+        (includesAny(text, [
+          "external audience",
+          "external users",
+          "public audience",
+          "public guests",
+          "external guests",
+          "non-lbs",
+          "non lbs",
+          "corporate partners"
+        ]) ||
+          /\bexternal\b.{0,40}\b(users?|attendees?|guests?|audience)\b/.test(text))
       );
     case "external_media_attendance":
       return hasUsableStatus(eventRequest, ["event_details", "additional_information"]) && includesAny(text, ["media", "press", "journalist"]);

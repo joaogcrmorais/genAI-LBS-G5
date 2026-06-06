@@ -119,3 +119,18 @@ model EventReadinessDraft {
   @@unique([ownerSubject, draftKey])
   @@index([ownerSubject])
 }
+
+model EventReadinessEvent {
+  id           String   @id @default(cuid())
+  ownerSubject String
+  draftKey     String
+  eventRequest Json?
+  emailEdits   Json     @default("{}")
+  mondayMock   Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([ownerSubject, draftKey])
+  @@index([ownerSubject])
+  @@index([createdAt])
+}

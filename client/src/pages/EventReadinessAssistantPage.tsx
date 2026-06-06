@@ -3,17 +3,21 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import lbsLogo from "../assets/lbs-logo.jpg";
 import { demoScenarios } from "../data/eventReadinessMvpScenarios";
 import {
+  downloadEisDocx,
   downloadSpaceRequestDocx,
+  loadStoredEventReadinessDraft,
   runPostPhase1,
+  saveStoredEventReadinessDraft,
   sendEventReadinessTurn,
   triggerBlobDownload,
-  triggerTextDownload
 } from "../services/eventReadinessMvpApi";
+import type { ChatTurnResult, StakeholderEmailEdit } from "../services/eventReadinessMvpApi";
 import type {
   BackendPostPhase1Result,
   Block,
   DemoScenario,
   EventRequestDraft,
+  FieldStatus,
   KeyEventInfo,
   Mark,
   Stakeholder
@@ -88,6 +92,40 @@ function Message({ turn }: { turn: Turn }) {
       <div className="mvp-bubble">{turn.blocks?.map((block, index) => <BlockView key={index} block={block} />)}</div>
     </div>
   );
+}
+
+function markFromStatus(status?: FieldStatus): Mark {
+  if (status === "needs_confirmation" || status === "organiser_follow_up") return "confirm";
+  if (status === "not_sure_yet" || status === "missing") return "unsure";
+  return "ok";
+}
+
+function freeFlowBlocks(result: ChatTurnResult): Block[] {
+  const rows: Array<{ k: string; v: string; mark: Mark }> = [];
+  const preferred = [
+    ["Event", "event_title"],
+    ["Scale", "number_of_attendees"],
+    ["Format", "event_type"],
+    ["Audience", "event_details"],
+    ["Space", "space_and_setup"],
+    ["Food & drink", "catering"],
+    ["Risk signal", "politically_sensitive_or_controversial"]
+  ] as const;
+  for (const [label, key] of preferred) {
+    const value = result.event_request.fields[key];
+    if (value === null || value === undefined || value === "") continue;
+    rows.push({
+      k: label,
+      v: typeof value === "string" ? value : String(value),
+      mark: markFromStatus(result.event_request.field_status[key])
+    });
+    if (rows.length >= 4) break;
+  }
+
+  return [
+    { t: "p", text: result.assistant_message },
+    ...(rows.length ? [{ t: "reflect" as const, rows }] : [])
+  ];
 }
 
 function Typing() {
@@ -280,7 +318,8 @@ function keyInfoFromBackend(scenario: DemoScenario, backend: BackendPostPhase1Re
 }
 
 function stakeholdersFromBackend(scenario: DemoScenario, backend: BackendPostPhase1Result | null): Stakeholder[] {
-  if (!backend?.routing?.stakeholders?.length) return scenario.stakeholders;
+  if (!backend) return scenario.stakeholders;
+  if (!backend.routing?.stakeholders?.length) return [];
   return backend.routing.stakeholders.map((item) => {
     const draft = backend.email_drafts?.find((email) => email.stakeholder_id === item.id || email.stakeholder_name === item.name);
     return {
@@ -289,8 +328,36 @@ function stakeholdersFromBackend(scenario: DemoScenario, backend: BackendPostPha
       role: item.priority,
       why: item.reason,
       email: draft?.to?.[0] ?? item.email ?? "",
-      subject: draft?.subject ?? `Event follow-up - ${String(scenario.eventRequest.fields.event_title ?? "Event")}`,
-      body: draft?.body ?? item.reason
+      subject: draft?.subject ?? `${String((backend.event_request?.fields ?? scenario.eventRequest.fields).event_title ?? "Event")}: ${item.name} planning review`,
+      body: draft?.body ?? "Backend routing returned this stakeholder before an email draft was generated."
+    };
+  });
+}
+
+function previewFieldsFromEventRequest(eventRequest: EventRequestDraft) {
+  const labels: Array<[string, string]> = [
+    ["Organiser", "organiser_name"],
+    ["Club / programme", "club_or_programme_affiliation"],
+    ["Event title", "event_title"],
+    ["Attendance", "number_of_attendees"],
+    ["Date", "date"],
+    ["Time", "start_finish_time"],
+    ["Format", "event_type"],
+    ["Details", "event_details"],
+    ["External guests / speakers", "external_guest_speaker_details"],
+    ["Space and setup", "space_and_setup"],
+    ["Registration", "registration_desk"],
+    ["Catering", "catering"],
+    ["Alcohol", "alcohol"],
+    ["Filming", "filming"],
+    ["Additional information", "additional_information"]
+  ];
+  return labels.map(([label, key]) => {
+    const value = eventRequest.fields[key];
+    return {
+      label,
+      value: value === null || value === undefined || value === "" ? "Not provided" : String(value),
+      status: eventRequest.field_status[key]
     };
   });
 }
@@ -299,25 +366,26 @@ function ReadinessRail({
   scenario,
   unlocked,
   backend,
+  eventRequest,
   busyDownload,
-  onDownloadSpace,
   onDownloadEis,
-  onForceSpace,
+  onGenerateSpace,
   onOpenDrawer
 }: {
   scenario: DemoScenario;
   unlocked: Unlocks;
   backend: BackendPostPhase1Result | null;
+  eventRequest: EventRequestDraft;
   busyDownload: string | null;
-  onDownloadSpace: () => void;
   onDownloadEis: () => void;
-  onForceSpace: () => void;
+  onGenerateSpace: () => void;
   onOpenDrawer: () => void;
 }) {
   const keyEvent = keyInfoFromBackend(scenario, backend);
   const stakeholders = stakeholdersFromBackend(scenario, backend);
   const timeline = backend?.timeline?.items?.map((item) => [item.timing, item.task, item.stakeholder] as [string, string, string]) ?? scenario.timeline;
   const monday = backend?.monday_mock ?? scenario.mondayPayload;
+  const guidance = backend?.post_space_guidance;
 
   return (
     <aside className="mvp-rail">
@@ -326,6 +394,27 @@ function ReadinessRail({
         <p>{Object.values(unlocked).some(Boolean) ? "Everything you need to take this event forward." : "Documents and next steps appear here as your event comes together."}</p>
       </div>
       <div className="mvp-rail-stack">
+        <DCard icon="file" title="Space Request Form" kicker="Word document · current information" footer={
+          <div className="mvp-card-actions">
+            <button type="button" onClick={onGenerateSpace} disabled={busyDownload !== null}>
+              {busyDownload === "space" ? "Generating..." : "Generate Space Request Form with current information gathered"}
+            </button>
+          </div>
+        }>
+          <p>{unlocked.space ? "Your Space Request Form draft is ready to review and email to Space Management." : "Generate a DOCX at any point; missing or uncertain details remain visible in the draft."}</p>
+          {guidance?.space_management ? <p className="mvp-nextstep"><strong>Space Management</strong><span>{guidance.space_management.email}</span></p> : null}
+        </DCard>
+
+        {unlocked.space ? (
+          <Expandable title="Preview Space Request Form" kicker="Current captured information">
+            <div className="mvp-field-grid">
+              {previewFieldsFromEventRequest(eventRequest).map((field) => (
+                <div key={field.label}><span>{field.label}</span><strong>{field.value}</strong><Smark mark={markFromStatus(field.status)} /></div>
+              ))}
+            </div>
+          </Expandable>
+        ) : null}
+
         {!Object.values(unlocked).some(Boolean) ? (
           <div className="mvp-empty-card">
             <ol>
@@ -333,19 +422,9 @@ function ReadinessRail({
               <li>Key Event check</li>
               <li>EIS, if required</li>
               <li>Stakeholder emails</li>
+              <li>CampusGroups / Eventscase next steps</li>
             </ol>
           </div>
-        ) : null}
-
-        {unlocked.space ? (
-          <DCard icon="file" title="Space Request Form" kicker="Word document · all fields" footer={
-            <div className="mvp-card-actions">
-              <button type="button" onClick={onDownloadSpace} disabled={busyDownload !== null}>{busyDownload === "space" ? "Downloading..." : "Download document"}</button>
-              <button type="button" className="secondary" onClick={onForceSpace} disabled={busyDownload !== null}>{busyDownload === "force" ? "Forcing..." : "Force DOCX generation"}</button>
-            </div>
-          }>
-            <p>Your completed request for LBS Space Planning. Download it, review it, and edit anything before sending.</p>
-          </DCard>
         ) : null}
 
         {unlocked.keyEvent ? (
@@ -365,6 +444,12 @@ function ReadinessRail({
           </DCard>
         ) : null}
 
+        {unlocked.eis && keyEvent.candidate && backend?.eis?.markdown ? (
+          <Expandable title="Preview Event Information Sheet" kicker="Generated draft text">
+            <pre className="mvp-doc-preview">{backend.eis.markdown}</pre>
+          </Expandable>
+        ) : null}
+
         {unlocked.stakeholders ? (
           <DCard icon="users" title="Stakeholders to contact" kicker={`${stakeholders.length} teams · email drafts ready`} footer={<button type="button" onClick={onOpenDrawer}>Open email drafts</button>}>
             <div className="mvp-stake-mini">
@@ -373,13 +458,45 @@ function ReadinessRail({
           </DCard>
         ) : null}
 
+        {unlocked.stakeholders && guidance?.campus_groups?.appears ? (
+          <Expandable title="Campus Groups event page" kicker={guidance.campus_groups.prompt}>
+            <div className="mvp-setup-pack">
+              <strong>Required setup checklist</strong>
+              <ul>{guidance.campus_groups.checklist.map((item) => <li key={item}>{item}</li>)}</ul>
+              <strong>Suggested event description</strong>
+              <p>{guidance.campus_groups.draft_description}</p>
+              <strong>Suggested event type</strong>
+              <p>{guidance.campus_groups.suggested_event_type}</p>
+              <strong>Suggested event tags</strong>
+              <p>{guidance.campus_groups.suggested_tags.length ? guidance.campus_groups.suggested_tags.join(", ") : "Confirm tags in Campus Groups."}</p>
+              <strong>Cost center code</strong>
+              <p><span className="mvp-code">{guidance.campus_groups.cost_center_code.value}</span> {guidance.campus_groups.cost_center_code.guidance}</p>
+              {guidance.campus_groups.cost_center_code.financeCode ? <p className="mvp-finance-note">Finance code: {guidance.campus_groups.cost_center_code.financeCode}</p> : null}
+              <strong>Assets</strong>
+              {guidance.campus_groups.asset_reminders.map((item) => <p key={item}>{item}</p>)}
+            </div>
+          </Expandable>
+        ) : null}
+
+        {unlocked.stakeholders && guidance?.eventscase?.appears ? (
+          <DCard icon="gear" title="Eventscase setup" kicker={`SA Tech & Ops · ${guidance.eventscase.email}`}>
+            <p>{guidance.eventscase.timing_guidance}</p>
+            {guidance.eventscase.draft ? (
+              <div className="mvp-email-preview">
+                <strong>{guidance.eventscase.draft.subject}</strong>
+                <pre>{guidance.eventscase.draft.body}</pre>
+              </div>
+            ) : null}
+          </DCard>
+        ) : null}
+
         {unlocked.extras ? (
           <>
             <Expandable title="Timeline & checklist" kicker={`${timeline.length} planning items`}>
               <div className="mvp-timeline">{timeline.map(([when, what, note]) => <div key={`${when}-${what}`}><span>{when}</span><strong>{what}</strong><p>{note}</p></div>)}</div>
             </Expandable>
-            <Expandable title="Captured event details" kicker="27-field grid plus context">
-              <div className="mvp-field-grid">{scenario.displayFields.map(([k, v, mark]) => <div key={k}><span>{k}</span><strong>{v}</strong><Smark mark={mark} /></div>)}</div>
+            <Expandable title="Captured event details" kicker="Space Request fields plus context">
+              <div className="mvp-field-grid">{scenario.displayFields.filter(([k]) => !k.toLowerCase().includes("finance")).map(([k, v, mark]) => <div key={k}><span>{k}</span><strong>{v}</strong><Smark mark={mark} /></div>)}</div>
             </Expandable>
             <Expandable title="Monday.com summary" kicker="JSON payload">
               <pre className="mvp-json">{JSON.stringify(monday, null, 2)}</pre>
@@ -395,21 +512,24 @@ function StakeholderDrawer({
   drawer,
   scenario,
   backend,
+  emailEdits,
   onClose,
   onDetail,
+  onEmailEdit,
   onCopyToast
 }: {
   drawer: DrawerState;
   scenario: DemoScenario;
   backend: BackendPostPhase1Result | null;
+  emailEdits: Record<string, StakeholderEmailEdit>;
   onClose: () => void;
   onDetail: (id: string | null) => void;
+  onEmailEdit: (id: string, edit: StakeholderEmailEdit) => void;
   onCopyToast: () => void;
 }) {
   const stakeholders = stakeholdersFromBackend(scenario, backend);
   const active = stakeholders.find((item) => item.id === drawer.activeId) ?? null;
-  const [edits, setEdits] = useState<Record<string, Stakeholder>>({});
-  const current = active ? edits[active.id] ?? active : null;
+  const current = active ? { ...active, ...(emailEdits[active.id] ?? {}) } : null;
 
   useEffect(() => {
     if (!drawer.open) return;
@@ -425,9 +545,9 @@ function StakeholderDrawer({
 
   if (!drawer.open) return null;
 
-  function setCurrent(key: keyof Stakeholder, value: string) {
+  function setCurrent(key: "email" | "subject" | "body", value: string) {
     if (!current) return;
-    setEdits((state) => ({ ...state, [current.id]: { ...current, [key]: value } }));
+    onEmailEdit(current.id, { ...(emailEdits[current.id] ?? {}), [key]: value });
   }
 
   function mailto(stakeholder: Stakeholder) {
@@ -444,7 +564,6 @@ function StakeholderDrawer({
               <button type="button" key={stakeholder.id} onClick={() => onDetail(stakeholder.id)}>
                 <span>{stakeholder.name.slice(0, 1)}</span>
                 <strong>{stakeholder.name}<small>{stakeholder.role}</small></strong>
-                <em>{stakeholder.why}</em>
                 <Icon name="chevron" />
               </button>
             ))}
@@ -512,10 +631,46 @@ export function EventReadinessAssistantPage() {
   const [busyDownload, setBusyDownload] = useState<string | null>(null);
   const [backend, setBackend] = useState<BackendPostPhase1Result | null>(null);
   const [eventRequest, setEventRequest] = useState<EventRequestDraft>(scenario.eventRequest);
+  const [emailEdits, setEmailEdits] = useState<Record<string, StakeholderEmailEdit>>({});
+  const [mobileRailOpen, setMobileRailOpen] = useState(false);
   const [freeTranscript, setFreeTranscript] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const draftLoadedRef = useRef(false);
 
   const phase = useMemo(() => (Object.values(unlocked).some(Boolean) ? "Phase 2 · Readiness" : "Phase 1 · Intake"), [unlocked]);
+
+  async function persistDraft(nextEventRequest = eventRequest, nextEmailEdits = emailEdits) {
+    if (!draftLoadedRef.current) return;
+    try {
+      const token = await getAccessTokenSilently();
+      await saveStoredEventReadinessDraft(token, nextEventRequest, nextEmailEdits);
+    } catch {
+      // Draft persistence is best-effort and should not interrupt the organiser flow.
+    }
+  }
+
+  useEffect(() => {
+    let cancelled = false;
+    async function loadDraft() {
+      try {
+        const token = await getAccessTokenSilently();
+        const stored = await loadStoredEventReadinessDraft(token);
+        if (cancelled) return;
+        if (stored.event_request) {
+          setEventRequest(stored.event_request);
+        }
+        setEmailEdits(stored.email_edits ?? {});
+      } catch {
+        // A missing or unavailable saved draft should not block the demo.
+      } finally {
+        if (!cancelled) draftLoadedRef.current = true;
+      }
+    }
+    void loadDraft();
+    return () => {
+      cancelled = true;
+    };
+  }, [getAccessTokenSilently]);
 
   function gotoRound(nextStep: number, activeScenario = scenario) {
     const round = activeScenario.script[nextStep];
@@ -544,18 +699,65 @@ export function EventReadinessAssistantPage() {
     setDrawer({ open: false, activeId: null });
     setBackend(null);
     setEventRequest(nextScenario.eventRequest);
+    setEmailEdits({});
+    setMobileRailOpen(false);
     setFreeTranscript([]);
     window.localStorage.removeItem(`era-mvp-${nextScenario.id}`);
   }
 
   function startScenario(nextScenario: DemoScenario) {
     reset(nextScenario);
-    window.setTimeout(() => gotoRound(0, nextScenario), 150);
+    window.setTimeout(() => void startBackendScenario(nextScenario), 150);
+  }
+
+  async function startBackendScenario(nextScenario: DemoScenario) {
+    const message = nextScenario.firstMessage;
+    setTurns([{ role: "user", text: message }]);
+    setFreeTranscript([{ role: "user", content: message }]);
+    setTyping(true);
+    setComposer(null);
+    try {
+      const token = await getAccessTokenSilently();
+      const result = await sendEventReadinessTurn(token, message, [], nextScenario.eventRequest);
+      setTyping(false);
+      setEventRequest(result.event_request);
+      void persistDraft(result.event_request, emailEdits);
+      setTurns((current) => [...current, { role: "assistant", blocks: freeFlowBlocks(result) }]);
+      setFreeTranscript((current) => [...current, { role: "assistant", content: result.assistant_message }]);
+      setComposer({ mode: "single", options: [{ text: "Generate the readiness pack", primary: true }] });
+      if (result.coverage?.phase_1_ready) void unlockReadiness(nextScenario, result.event_request);
+    } catch (error) {
+      setTyping(false);
+      setTurns((current) => [
+        ...current,
+        {
+          role: "assistant",
+          blocks: [
+            { t: "p", text: "I could not reach the backend chat for this scenario." },
+            { t: "p", text: error instanceof Error ? error.message : String(error) }
+          ]
+        }
+      ]);
+      setComposer({ mode: "scenario" });
+    }
   }
 
   function reply(text: string, echo?: string) {
     setTurns((current) => [...current, { role: "user", text: echo ?? text }]);
+    if (text === "Generate the readiness pack" && freeTranscript.length > 0) {
+      setComposer(null);
+      void unlockReadiness(scenario, eventRequest);
+      return;
+    }
     gotoRound(step + 1);
+  }
+
+  function updateEmailEdit(id: string, edit: StakeholderEmailEdit) {
+    setEmailEdits((current) => {
+      const next = { ...current, [id]: edit };
+      void persistDraft(eventRequest, next);
+      return next;
+    });
   }
 
   async function freeText() {
@@ -571,7 +773,8 @@ export function EventReadinessAssistantPage() {
       const result = await sendEventReadinessTurn(token, message, freeTranscript, eventRequest);
       setTyping(false);
       setEventRequest(result.event_request);
-      setTurns((current) => [...current, { role: "assistant", blocks: [{ t: "lead", text: result.assistant_message }] }]);
+      void persistDraft(result.event_request, emailEdits);
+      setTurns((current) => [...current, { role: "assistant", blocks: freeFlowBlocks(result) }]);
       setFreeTranscript((current) => [...current, { role: "assistant", content: result.assistant_message }]);
       setComposer({ mode: "single", options: [{ text: "Generate the readiness pack", primary: true }] });
       if (result.coverage?.phase_1_ready) void unlockReadiness(scenario, result.event_request);
@@ -584,9 +787,10 @@ export function EventReadinessAssistantPage() {
 
   async function unlockReadiness(activeScenario = scenario, draft = activeScenario.eventRequest) {
     setEventRequest(draft);
+    void persistDraft(draft, emailEdits);
     try {
       const token = await getAccessTokenSilently();
-      const result = await runPostPhase1(token, activeScenario.id === "keyEvent" ? "vip-public-leader-event" : "alumni-networking-reception", draft);
+      const result = await runPostPhase1(token, activeScenario.id === "keyEvent" ? "monday-fintech-ceo-demo" : "monday-wine-society-demo", draft);
       setBackend(result);
     } catch {
       setBackend(null);
@@ -608,27 +812,15 @@ export function EventReadinessAssistantPage() {
     }
   }
 
-  function downloadEis() {
+  async function downloadEis() {
     setBusyDownload("eis");
-    const keyEvent = keyInfoFromBackend(scenario, backend);
-    const text = backend?.eis?.markdown ?? [
-      "# Event Information Sheet draft",
-      "",
-      `Event: ${String(eventRequest.fields.event_title ?? "")}`,
-      `Organiser: ${String(eventRequest.fields.organiser_name ?? "")}`,
-      `Assessment: ${keyEvent.headline}`,
-      "",
-      "## Reasons",
-      ...(keyEvent.reasons ?? []).map((reason) => `- ${reason}`),
-      "",
-      "## Stakeholders",
-      ...stakeholdersFromBackend(scenario, backend).map((stakeholder) => `- ${stakeholder.name}: ${stakeholder.why}`),
-      "",
-      "## Outstanding items",
-      "- Confirm any fields marked needs confirmation before submission."
-    ].join("\n");
-    triggerTextDownload(text, "lbs-event-information-sheet-draft.md", "text/markdown;charset=utf-8");
-    window.setTimeout(() => setBusyDownload(null), 200);
+    try {
+      const token = await getAccessTokenSilently();
+      const blob = await downloadEisDocx(token, eventRequest);
+      triggerBlobDownload(blob, "lbs-event-information-sheet-draft.docx");
+    } finally {
+      setBusyDownload(null);
+    }
   }
 
   function setAccent(color: string) {
@@ -648,7 +840,7 @@ export function EventReadinessAssistantPage() {
   }, [toast]);
 
   return (
-    <div className="mvp-app">
+    <div className={`mvp-app ${mobileRailOpen ? "rail-open" : ""}`}>
       <Topbar scenario={scenario} phase={phase} onRestart={() => reset()} />
       <div className="mvp-body">
         <main className="mvp-chat-col">
@@ -684,19 +876,24 @@ export function EventReadinessAssistantPage() {
           scenario={scenario}
           unlocked={unlocked}
           backend={backend}
+          eventRequest={eventRequest}
           busyDownload={busyDownload}
-          onDownloadSpace={() => void downloadSpace(false)}
-          onForceSpace={() => void downloadSpace(true)}
-          onDownloadEis={downloadEis}
+          onGenerateSpace={() => void downloadSpace(false)}
+          onDownloadEis={() => void downloadEis()}
           onOpenDrawer={() => setDrawer({ open: true, activeId: null })}
         />
       </div>
+      <button type="button" className="mvp-mobile-rail-toggle" onClick={() => setMobileRailOpen((value) => !value)}>
+        {mobileRailOpen ? "Close readiness" : "Readiness panel"}
+      </button>
       <StakeholderDrawer
         drawer={drawer}
         scenario={scenario}
         backend={backend}
+        emailEdits={emailEdits}
         onClose={() => setDrawer({ open: false, activeId: null })}
         onDetail={(activeId) => setDrawer((current) => ({ ...current, activeId }))}
+        onEmailEdit={updateEmailEdit}
         onCopyToast={() => setToast(true)}
       />
       <TweaksPanel open={tweaks} scenario={scenario} onToggle={() => setTweaks((value) => !value)} onScenario={reset} onAccent={setAccent} />

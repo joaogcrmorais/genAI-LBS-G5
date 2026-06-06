@@ -9,6 +9,7 @@ import {
 } from "../schemas/ws4.js";
 import {
   eventReadinessChatRequestSchema,
+  eventReadinessDraftSaveRequestSchema,
   eventReadinessEventRequestSchema,
   eventReadinessEvaluateRequestSchema
 } from "../schemas/eventReadiness.js";
@@ -29,6 +30,11 @@ import {
 } from "../services/postPhase1OrchestrationService.js";
 import { getPostPhase1Fixtures } from "../services/postPhase1DataService.js";
 import { buildStakeholderPackets } from "../services/routingService.js";
+import { buildEisDocx } from "../services/eisDocxService.js";
+import {
+  loadEventReadinessDraft,
+  saveEventReadinessDraft
+} from "../services/eventReadinessDraftStore.js";
 import { buildSpaceRequestDocx } from "../services/spaceRequestDocxService.js";
 import { classifyEventTier, TieringServiceError } from "../services/tieringService.js";
 
@@ -99,6 +105,32 @@ apiRouter.post("/event-readiness/chat", requireNormalUser, async (req: Request, 
   }
 });
 
+apiRouter.get("/event-readiness/session-draft", requireNormalUser, async (req: Request, res: Response) => {
+  const ownerSubject = req.auth?.subject;
+  if (!ownerSubject) {
+    res.status(401).json({ error: "Authentication required" });
+    return;
+  }
+
+  res.json(await loadEventReadinessDraft(ownerSubject));
+});
+
+apiRouter.post("/event-readiness/session-draft", requireNormalUser, async (req: Request, res: Response) => {
+  const ownerSubject = req.auth?.subject;
+  if (!ownerSubject) {
+    res.status(401).json({ error: "Authentication required" });
+    return;
+  }
+
+  const parsed = eventReadinessDraftSaveRequestSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid Event Readiness draft save request", details: parsed.error.flatten() });
+    return;
+  }
+
+  res.json(await saveEventReadinessDraft(ownerSubject, parsed.data));
+});
+
 apiRouter.post("/event-readiness/space-request-docx", requireNormalUser, async (req: Request, res: Response) => {
   const parsed = eventReadinessEventRequestSchema.safeParse(req.body?.event_request);
   if (!parsed.success) {
@@ -109,6 +141,19 @@ apiRouter.post("/event-readiness/space-request-docx", requireNormalUser, async (
   const docx = await buildSpaceRequestDocx(parsed.data);
   res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
   res.setHeader("Content-Disposition", 'attachment; filename="lbs-space-request-draft.docx"');
+  res.send(docx);
+});
+
+apiRouter.post("/event-readiness/eis-docx", requireNormalUser, async (req: Request, res: Response) => {
+  const parsed = eventReadinessEventRequestSchema.safeParse(req.body?.event_request);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid EventRequest for EIS DOCX", details: parsed.error.flatten() });
+    return;
+  }
+
+  const docx = await buildEisDocx(parsed.data);
+  res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+  res.setHeader("Content-Disposition", 'attachment; filename="lbs-event-information-sheet-draft.docx"');
   res.send(docx);
 });
 

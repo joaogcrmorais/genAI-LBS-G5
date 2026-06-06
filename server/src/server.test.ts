@@ -45,8 +45,28 @@ describe("event readiness route auth", () => {
     expect(response.status).toBe(401);
   });
 
+  it("requires auth for loading persisted Event Readiness drafts", async () => {
+    const response = await request(createServer()).get("/api/event-readiness/session-draft");
+    expect(response.status).toBe(401);
+  });
+
+  it("requires auth for saving persisted Event Readiness drafts", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/session-draft").send({
+      event_request: { fields: {}, field_status: {} },
+      email_edits: {}
+    });
+    expect(response.status).toBe(401);
+  });
+
   it("requires auth for Space Request DOCX generation", async () => {
     const response = await request(createServer()).post("/api/event-readiness/space-request-docx").send({
+      event_request: { fields: {}, field_status: {} }
+    });
+    expect(response.status).toBe(401);
+  });
+
+  it("requires auth for EIS DOCX generation", async () => {
+    const response = await request(createServer()).post("/api/event-readiness/eis-docx").send({
       event_request: { fields: {}, field_status: {} }
     });
     expect(response.status).toBe(401);

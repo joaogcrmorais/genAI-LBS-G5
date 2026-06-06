@@ -56,7 +56,7 @@ function eventRequest(values: Record<string, unknown>, statuses: Record<string, 
     field_status[target] = field_status[target] ?? field_status[source];
   }
 
-  return { fields, field_status };
+  return { fields, field_status, financeCode: typeof values.finance_code === "string" ? values.finance_code : undefined };
 }
 
 function displayFields(draft: EventRequestDraft, statuses: Record<string, Mark> = {}): [string, string, Mark][] {
@@ -161,7 +161,7 @@ const keyStakeholders = [
     "Catering / Lexington",
     "Food and beverage",
     "Catering and alcohol",
-    "catering@london.edu",
+    "cateringevents@london.edu",
     "Reception catering - Meridian Bank fireside",
     "Hello Catering team,\n\nThe FinTech Club is planning a wine and beer reception after a fireside chat on Thu 27 Nov 2026. Expected attendance is about 60, with students, alumni, and external guests.\n\nPlease advise on reception catering options and alcohol service requirements.\n\nBest,\nPriya"
   ),
@@ -170,7 +170,7 @@ const keyStakeholders = [
     "AV / Technology",
     "Microphones and recording",
     "Mic, screen, recording",
-    "av@london.edu",
+    "avhelp@london.edu",
     "AV support - Meridian Bank fireside",
     "Hello AV team,\n\nCould you advise on microphones, screen support, and recording for a fireside chat with Marcus Halvorsen on Thu 27 Nov 2026, 18:30 to 20:30?\n\nRecording details are currently [needs confirmation].\n\nBest,\nPriya"
   ),
@@ -188,18 +188,18 @@ const keyStakeholders = [
     "Welcome Desk / Registration",
     "Guest arrival",
     "Registration desk",
-    "welcome@london.edu",
+    "welcomedesk@london.edu",
     "Registration support - Meridian Bank fireside",
     "Hello Welcome Desk team,\n\nWe expect around 60 attendees, including alumni and external guests, for a FinTech Club fireside chat on Thu 27 Nov 2026. A registration desk is requested from 17:45.\n\nPlease advise on guest-list handling.\n\nBest,\nPriya"
   ),
   stakeholder(
     "dean",
-    "Dean's Office / External Relations",
+    "Dean's Office / Editorial Planning",
     "Senior external speaker",
     "High-profile speaker",
-    "externalrelations@london.edu",
+    "editorialplanning@london.edu",
     "Awareness: Group CEO Meridian Bank event",
-    "Hello Dean's Office / External Relations,\n\nFlagging a proposed FinTech Club fireside chat with Marcus Halvorsen, Group CEO of Meridian Bank, on Thu 27 Nov 2026. The audience includes students, alumni, and external guests.\n\nPlease advise whether any senior-stakeholder awareness or protocol steps are needed.\n\nBest,\nPriya"
+    "Hello Editorial Planning team,\n\nFlagging a proposed FinTech Club fireside chat with Marcus Halvorsen, Group CEO of Meridian Bank, on Thu 27 Nov 2026. The audience includes students, alumni, and external guests.\n\nPlease advise whether any senior-stakeholder awareness or protocol steps are needed; toolkit guidance says student Dean invitation requests should route via Editorial Planning rather than direct Dean's Office contact.\n\nBest,\nPriya"
   )
 ];
 
@@ -218,7 +218,7 @@ const standardStakeholders = [
     "Catering / Lexington",
     "Food and beverage",
     "Wine and snacks",
-    "catering@london.edu",
+    "cateringevents@london.edu",
     "Catering request - Wine Society Autumn Social",
     "Hello Catering team,\n\nCould you advise on wine service and light snacks for a 40-person Wine Society student social on Thu 29 Oct 2026, 18:30 to 21:00?\n\nBest,\nSofia"
   ),
@@ -227,7 +227,7 @@ const standardStakeholders = [
     "AV / Technology",
     "Welcome mic",
     "Mic and playlist",
-    "av@london.edu",
+    "avhelp@london.edu",
     "AV support - Wine Society Autumn Social",
     "Hello AV team,\n\nThe Wine Society would like a basic microphone for welcome remarks and support for a background playlist on Thu 29 Oct 2026.\n\nBest,\nSofia"
   )

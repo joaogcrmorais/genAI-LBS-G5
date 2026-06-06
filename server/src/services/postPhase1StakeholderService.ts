@@ -97,9 +97,9 @@ const stakeholderDefinitions: StakeholderDefinition[] = [
   {
     id: "sa_sponsorship",
     name: "SA Sponsorship",
-    email: "sa@london.edu",
-    contactNote: "Route sponsorship framework questions through SA unless a more specific sponsorship contact is provided.",
-    source: "lbs-files/processed/lifecycle/stakeholders_by_phase.csv",
+    email: "sasponsorship@london.edu",
+    contactNote: "Use the confirmed SA sponsorship inbox for sponsorship framework questions and sponsor approval routing.",
+    source: "lbs-files/raw/lbs_event_toolkit_student_clubs_parsed.md: Sponsorship Process contact",
     aliases: ["sa sponsorship", "sponsorship"]
   },
   {
@@ -144,7 +144,7 @@ const stakeholderDefinitions: StakeholderDefinition[] = [
     id: "events_oversight_group",
     name: "Events Oversight Group",
     email: "editorialplanning@london.edu",
-    contactNote: "No direct converted email was found; route via Editorial Planning for the prototype.",
+    contactNote: "Converted LBS sources do not provide a direct Events Oversight inbox; route the note through Editorial Planning.",
     source: "lbs-files/processed/lifecycle/stakeholders_by_phase.csv",
     aliases: ["events oversight", "events oversight group"]
   }

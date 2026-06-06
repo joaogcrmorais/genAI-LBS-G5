@@ -106,3 +106,16 @@ model OutputTemplate {
 
   @@index([format])
 }
+
+model EventReadinessDraft {
+  id           String   @id @default(cuid())
+  ownerSubject String
+  draftKey     String   @default("current")
+  eventRequest Json?
+  emailEdits   Json     @default("{}")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([ownerSubject, draftKey])
+  @@index([ownerSubject])
+}

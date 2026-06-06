@@ -16,6 +16,7 @@ Current source-of-truth planning lives in:
 - `docs/project-context/06_user_view_prd_phase1_event_readiness_assistant.md`
 - `docs/project-context/event_readiness_assistant_phase_1_conversation_rules_spec.md`
 - `docs/project-context/key_event_identification_spec.md`
+- `lbs-files/raw/ws1/Post-Space Request Completion Output Spec.docx`
 
 Historical/supplanted planning files have been moved to `docs/project-context/historical-supplanted/` and are no longer source of truth.
 
@@ -29,6 +30,7 @@ Current Phase 1 ends at:
 - source-data guidance for toolkit shaping, finance, space, catering, policy, security, and timeline implications;
 - Space Request DOCX generation;
 - deterministic Key Event assessment when existing EventRequest facts are sufficient.
+- post-Space Request next-step guidance for Space Management, Campus Groups, and conditional Eventscase / SA Tech & Ops setup.
 
 The first post-Phase-1 backend QA implementation now exists as a proof-of-concept testing surface. It treats the completed flat Phase 1 `EventRequest` as the source of truth and generates deterministic Key Event assessment, EIS draft, real LBS stakeholder routing, editable stakeholder email drafts, timeline/checklist guidance, optional OpenAI complexity/risk classification, and a mock-only Monday payload.
 
@@ -36,10 +38,15 @@ Important rules:
 
 - `docs/project-context/key_event_identification_spec.md` is the sole deterministic source for Key Event categorisation.
 - Finance-code lookup must be surfaced whenever budget is involved, and finance codes may be shown to users.
+- The active `EventRequest` now carries top-level `financeCode` as well as legacy `fields.finance_code` compatibility; it is excluded from crib-sheet/captured-field display and shown in readiness next steps where Campus Groups / Eventscase setup needs it.
+- Event Readiness MVP organiser state now persists server-side per Auth0 subject, including the latest draft `EventRequest` and organiser-edited stakeholder email fields. It stores only the draft payload and edited email text, not access tokens or OpenAI secrets.
 - Space lookup should use `lbs-files/raw/space/Space Matrix (1) - Copy.xlsx` first, with fallbacks only when needed.
 - Pasted text/manual draft material is handled by the normal conversational loop, not as a standalone epic.
 - In-chat form preview is post-MVP; users can review the generated DOCX.
 - For demo/testing, Space Request DOCX download should remain available for incomplete drafts; missing or uncertain fields must be visibly marked in the generated DOCX rather than blocking download.
+- Space Request DOCX generation is always available from the start of the assistant as "Generate Space Request Form with current information gathered".
+- After Space Request generation/readiness, the compact completion guidance should show Space Management at `space@london.edu`, Campus Groups setup support, and Eventscase guidance only when alumni/external/industry/non-LBS guests are present. Eventscase uses `saoperations@london.edu` and tells users to save the draft until Space Management confirms the room.
+- Stakeholder drafts should use backend-routed LBS teams and confirmed inboxes/contact notes. The SA Sponsorship route uses `sasponsorship@london.edu`; Dean, photography, and Events Oversight style cases route through Editorial Planning when converted sources do not expose a direct student-facing inbox.
 - No automatic form submission, email sending, real Monday API call, web speaker lookup, or write-back to LBS systems is in scope.
 
 ## Current Architecture
@@ -85,6 +92,7 @@ Current routes:
 - `/dashboard`: protected by Auth0 login plus `user_normal` or `user_admin`.
 - `/admin`: protected by Auth0 login plus `user_admin`.
 - `/event-readiness-demo`: protected current-scope Phase 1 validation surface for E-01 through E-06.
+- `/event-readiness-mvp`: protected integrated assistant experience with backend-driven chat, readiness rail, DOCX generation, stakeholder draft drawer, document previews, and mobile readiness-panel toggle.
 - `/event-readiness-post-phase1-demo`: protected internal QA surface for post-Phase-1 backend outputs using complete EventRequest fixtures.
 - `/ws4-demo`: historical protected demo harness from the previous WS4 prototype slice.
 
@@ -110,12 +118,19 @@ Current notable routes:
 - `GET /api/event-readiness/bootstrap`
 - `POST /api/event-readiness/event-request/evaluate`
 - `POST /api/event-readiness/chat`
+- `GET /api/event-readiness/session-draft`
+- `POST /api/event-readiness/session-draft`
 - `POST /api/event-readiness/space-request-docx`
+- `POST /api/event-readiness/eis-docx`
 - `GET /api/event-readiness/post-phase1/bootstrap`
 - `POST /api/event-readiness/post-phase1/run`
 - historical WS4 routes for tiering, stakeholder packets, and Monday mock payloads
 
 The new Event Readiness endpoints are the active Phase 1 contract. The `/api/event-readiness/chat` endpoint is the current chatbot testing contract: OpenAI interprets organiser messages and proposes field updates, then deterministic coverage/readiness logic evaluates the resulting `EventRequest`. The current contract also exposes source guidance, deterministic Key Event assessment, and Space Request DOCX generation. The historical WS4 routes remain present for now, but are not source-of-truth product endpoints.
+
+The chat/evaluate and post-Phase-1 responses now include `post_space_guidance`, which contains the Space Management handoff, Campus Groups setup pack, cost center / `financeCode` guidance, and conditional Eventscase email draft.
+
+The session-draft endpoints persist the organiser's current EventRequest draft and edited stakeholder email drafts per authenticated Auth0 subject. They are a convenience recovery layer for the MVP, not a source of truth for submitted LBS systems.
 
 The post-Phase-1 endpoints are a new POC/testing contract, not the historical WS4 contract. They use complete flat Phase 1 EventRequests from `lbs-files/processed/examples/post_phase1_event_requests.json`, route stakeholders from converted LBS lifecycle/routing/contact sources, draft emails without sending, and allow OpenAI risk classification to be skipped so deterministic outputs remain reliable for demo use.
 
@@ -130,6 +145,8 @@ Current Event Readiness chat behaviour notes:
 - Concrete organiser-provided facts should be marked final or best-estimate, not `needs_confirmation`; use `needs_confirmation` only when the organiser explicitly says they need to check or do not know.
 - Low-probability miscellaneous fields such as children, decorations, recorded/live music, cloakroom, hired equipment, and filming should be bundled and/or auto-closed as not present when the organiser gives no indication they apply.
 - When deterministic `next_questions` is empty and Phase 1 is ready, the assistant should stop asking follow-ups and tell the organiser the Space Request DOCX draft is the next step.
+- Free-flow OpenAI responses in the frontend use the normal assistant body typography plus a compact captured-facts visualisation, not the title/lead font reserved for scripted demo emphasis.
+- The Event Readiness MVP readiness rail shows lightweight previews for the generated Space Request field set and EIS draft after the relevant outputs are unlocked, and narrow screens expose the rail through a fixed mobile toggle instead of hiding it.
 
 OpenAI SDK configuration exists only in the backend. The frontend must never read `OPENAI_API_KEY`.
 
@@ -143,10 +160,13 @@ Initial models:
 
 - `UserProfile`: keyed by Auth0 subject, with optional display name and email.
 - `AppEventLog`: safe event log for non-sensitive events.
+- `EventReadinessDraft`: keyed by Auth0 subject plus draft key, storing the current EventRequest JSON and edited stakeholder-email JSON for recovery between organiser sessions.
 
 The initial migration `20260525142609_init` has been applied locally.
 
 The processed runtime-data migration `20260603214402_add_processed_runtime_data` has also been applied locally.
+
+The Event Readiness draft migration `20260606202000_add_event_readiness_drafts` adds the `EventReadinessDraft` table. The draft service also lazily creates the same table shape so existing local databases can recover during MVP testing before migrations are applied.
 
 Processed runtime data has been loaded into PostgreSQL with `npm.cmd run data:load`.
 
@@ -214,6 +234,11 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-06 after adding top-level `financeCode`, post-Space Request guidance, EIS DOCX generation, backend-driven scenario starts, free-flow visualisation styling, readiness-panel Campus Groups/Eventscase outputs, organiser draft persistence, document previews, backend-only stakeholder drafts, the mobile readiness toggle, and confirmed/contact-note stakeholder routing.
+- `npm.cmd run lint`: passed on 2026-06-06 after the same update.
+- `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 47 passing tests and 1 skipped gated live OpenAI test, client still has the no-op test script.
+- `npm.cmd --workspace @lbs-genai/client run build`: passed on 2026-06-06 when rerun outside the sandbox after sandboxed Vite/esbuild config loading was blocked by filesystem access.
+- Authenticated browser verification on 2026-06-06 confirmed the protected `/event-readiness-mvp` route loads, the initial Space Request DOCX action is visible, the seeded FinTech demo produces Key Event + EIS + Campus Groups + Eventscase readiness outputs, Space Request and EIS previews expand with content, the stakeholder drawer no longer shows reasoning pills in its list, backend-generated drafts use confirmed inboxes such as `avhelp@london.edu`, edited stakeholder subjects persist to `EventReadinessDraft`, and DOCX buttons are clickable without visible or console errors. A final fresh mobile-tab navigation was blocked by Browser Use URL policy after restart, so the mobile readiness toggle was verified by source/breakpoint scan and successful production build rather than a second browser interaction.
 - `npm.cmd --workspace @lbs-genai/client run typecheck`: passed on 2026-06-06 after the Event Readiness MVP frontend rebuild; initial `npm` PowerShell invocation was blocked by local execution policy, so the check was rerun with `npm.cmd`.
 - `npm.cmd --workspace @lbs-genai/client run lint`: passed on 2026-06-06 after the Event Readiness MVP frontend rebuild.
 - `npm.cmd --workspace @lbs-genai/client run test`: passed on 2026-06-06 with the existing no-op client test script.
@@ -249,4 +274,4 @@ No app lint/typecheck/test suite was run for the latest data-conversion update b
 1. Validate the new protected `/` and `/event-readiness-mvp` Event Readiness Assistant frontend on `http://localhost:3000/` with both scripted Monday demo scenarios.
 2. Validate free-form chat against `/api/event-readiness/chat` and confirm the Auth0 audience configuration allows protected-route testing.
 3. Validate Space Request DOCX downloads, the failsafe Force DOCX generation button, EIS markdown download, stakeholder drawer copy/mailto actions, and restart/reset behavior.
-4. Work through `backlog.md`, especially the P0 EIS DOCX endpoint and full backend-driven conversation replacement.
+4. Validate the new post-Space Request readiness outputs with an authenticated local session once Auth0 browser navigation is available.

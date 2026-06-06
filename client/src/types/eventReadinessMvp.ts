@@ -31,6 +31,7 @@ export type FieldStatus =
 export type EventRequestDraft = {
   fields: Record<string, unknown>;
   field_status: Record<string, FieldStatus>;
+  financeCode?: string;
   additional_context?: string[];
 };
 
@@ -90,6 +91,28 @@ export type BackendPostPhase1Result = {
     body: string;
   }>;
   timeline?: { items: Array<{ timing: string; task: string; stakeholder: string; priority: string }> };
+  post_space_guidance?: {
+    space_management: { email: string; instruction: string };
+    campus_groups: {
+      appears: boolean;
+      prompt: string;
+      checklist: string[];
+      draft_description: string;
+      suggested_event_type: string;
+      suggested_tags: string[];
+      cost_center_code: { value: string; found: boolean; guidance: string; financeCode?: string };
+      asset_reminders: string[];
+      source_notes: string[];
+    };
+    eventscase: {
+      appears: boolean;
+      reason: string;
+      email: string;
+      timing_guidance: string;
+      draft?: { subject: string; body: string };
+    };
+  };
   monday_mock?: Record<string, unknown>;
   coverage?: unknown;
+  event_request?: EventRequestDraft;
 };

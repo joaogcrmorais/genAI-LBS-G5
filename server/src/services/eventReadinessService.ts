@@ -11,6 +11,8 @@ import type {
 import { assessKeyEvent } from "./keyEventService.js";
 import { phase1Epics, phase1Features, phase1UserStories } from "./phase1Metadata.js";
 import { buildSourceGuidance } from "./sourceGuidanceService.js";
+import { hasFinanceSignal, normaliseEventRequestFinanceCode } from "./financeCodeService.js";
+import { buildPostSpaceRequestGuidance } from "./postSpaceRequestGuidanceService.js";
 
 type SpaceRequestField = {
   label: string;
@@ -440,7 +442,7 @@ function inferInitialFields(prompt: string, entryType: EntryType, scenario?: Eve
   const attendance = extractAttendance(prompt, scenario);
   const hasExternalSpeaker = text.includes("external") || text.includes("guest speaker");
   const hasCatering = text.includes("catering") || text.includes("lunch") || text.includes("food") || text.includes("drinks");
-  const hasBudget = text.includes("budget") || /£|\bgpb\b|\bgbp\b/i.test(prompt);
+  const hasBudget = hasFinanceSignal(prompt);
   const fields: Record<string, unknown> = {
     event_title: inferEventTitle(prompt, entryType),
     event_type: inferEventType(prompt, entryType),
@@ -556,14 +558,14 @@ function mergeEventRequest(
     fieldStatus[field.key] = inferStatus(field.key, fields[field.key]);
   }
 
-  return applyOperationalDefaults(
+  return normaliseEventRequestFinanceCode(applyOperationalDefaults(
     {
       ...(base ?? {}),
       fields,
       field_status: fieldStatus
     },
     Object.values(fields).join(" ")
-  );
+  ));
 }
 
 function buildCoverage(eventRequest: EventReadinessEventRequest, officialFields: SpaceRequestField[]) {
@@ -697,14 +699,14 @@ export function applyAiTurnToEventRequest(
     fieldStatus[update.key] = update.status;
   }
 
-  return applyOperationalDefaults(
+  return normaliseEventRequestFinanceCode(applyOperationalDefaults(
     {
       ...(eventRequest ?? {}),
       fields,
       field_status: fieldStatus
     },
     Object.values(fields).join(" ")
-  );
+  ));
 }
 
 export function applySessionMemoryToEventRequest(
@@ -712,7 +714,10 @@ export function applySessionMemoryToEventRequest(
   transcript: EventReadinessChatRequest["transcript"],
   message: string
 ) {
-  return applySessionFacts(eventRequest ?? { fields: {}, field_status: {} }, transcript, message);
+  return normaliseEventRequestFinanceCode(
+    applySessionFacts(eventRequest ?? { fields: {}, field_status: {} }, transcript, message),
+    message
+  );
 }
 
 export function evaluateEventRequestState(
@@ -720,15 +725,17 @@ export function evaluateEventRequestState(
   prompt: string,
   entryType: EntryType
 ) {
-  const coverage = buildCoverage(eventRequest, getSpaceRequestFields());
+  const normalisedEventRequest = normaliseEventRequestFinanceCode(eventRequest, prompt);
+  const coverage = buildCoverage(normalisedEventRequest, getSpaceRequestFields());
   return {
     entry_type: entryType,
-    event_request: eventRequest,
+    event_request: normalisedEventRequest,
     coverage,
     next_questions: buildNextQuestions(coverage),
-    guidance_flags: buildGuidanceFlags(prompt, eventRequest, entryType),
-    source_guidance: buildSourceGuidance(prompt, eventRequest, entryType),
-    key_event_assessment: assessKeyEvent(eventRequest),
+    guidance_flags: buildGuidanceFlags(prompt, normalisedEventRequest, entryType),
+    source_guidance: buildSourceGuidance(prompt, normalisedEventRequest, entryType),
+    key_event_assessment: assessKeyEvent(normalisedEventRequest),
+    post_space_guidance: buildPostSpaceRequestGuidance(normalisedEventRequest, prompt),
     source_notes: [
       "Coverage is evaluated against the active processed CribSheet field map.",
       "Allowed uncertainty markers count as proceed-ready; missing does not.",

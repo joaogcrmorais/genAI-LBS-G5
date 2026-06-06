@@ -1460,12 +1460,12 @@ h1 {
 
 .mvp-drawer-list button {
   display: grid;
-  grid-template-columns: 38px minmax(0, 1fr) auto auto;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
   width: 100%;
   align-items: center;
   gap: 10px;
   border: 1px solid var(--line-2);
-  border-radius: 999px;
+  border-radius: var(--radius);
   background: #fff;
   color: var(--ink);
   text-align: left;
@@ -1495,6 +1495,90 @@ h1 {
   font-family: var(--mono);
   font-size: 10px;
   font-style: normal;
+}
+
+.mvp-nextstep {
+  display: grid;
+  gap: 2px;
+  margin-top: 10px !important;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.mvp-nextstep span,
+.mvp-finance-note {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.mvp-setup-pack {
+  display: grid;
+  gap: 9px;
+}
+
+.mvp-setup-pack strong {
+  color: var(--ink);
+}
+
+.mvp-code {
+  display: inline-flex;
+  border-radius: 5px;
+  background: var(--blue-100);
+  color: var(--accent);
+  padding: 2px 6px;
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.mvp-email-preview {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mvp-email-preview pre {
+  max-height: 260px;
+  overflow: auto;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  background: #f5f6f8;
+  color: var(--ink);
+  padding: 10px;
+  white-space: pre-wrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.mvp-doc-preview {
+  max-height: 320px;
+  overflow: auto;
+  margin: 0;
+  border-radius: var(--radius-sm);
+  background: #f7f8fa;
+  color: var(--ink);
+  padding: 12px;
+  white-space: pre-wrap;
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.mvp-mobile-rail-toggle {
+  display: none;
+  position: fixed;
+  right: 14px;
+  bottom: 70px;
+  z-index: 17;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
 }
 
 .mvp-email-form {
@@ -1612,7 +1696,22 @@ h1 {
   }
 
   .mvp-rail {
-    display: none;
+    display: block;
+    position: fixed;
+    inset: var(--topbar-h) 0 0 auto;
+    z-index: 15;
+    width: min(420px, 100vw);
+    transform: translateX(100%);
+    transition: transform .22s ease;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mvp-app.rail-open .mvp-rail {
+    transform: translateX(0);
+  }
+
+  .mvp-mobile-rail-toggle {
+    display: inline-flex;
   }
 }
 

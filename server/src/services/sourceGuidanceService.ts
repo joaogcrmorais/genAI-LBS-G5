@@ -1,14 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { EntryType, EventReadinessEventRequest } from "../schemas/eventReadiness.js";
-
-type FinanceRecord = {
-  key: string;
-  finance_code: string;
-  club_name: string;
-  event_name: string;
-  academic_year: string;
-};
+import { hasFinanceSignal, lookupFinanceCodes } from "./financeCodeService.js";
 
 type SpaceRecord = {
   room_code: string;
@@ -61,12 +54,6 @@ function includesAny(text: string, words: string[]) {
   return words.some((word) => text.includes(word));
 }
 
-function hasBudgetSignal(text: string) {
-  return /\b(budget|cost|spend|paid|invoice|finance|treasury|gbp|pounds?|ticketing|tickets?|sponsorship|sponsor|catering|alcohol|beer|wine)\b|£/.test(
-    text
-  );
-}
-
 function hasCateringSignal(text: string) {
   return includesAny(text, ["catering", "food", "lunch", "dinner", "breakfast", "drinks", "reception", "alcohol", "wine", "beer"]);
 }
@@ -95,21 +82,6 @@ function tokenise(value: string) {
     .split(/[^a-z0-9]+/)
     .map((token) => token.trim())
     .filter((token) => token.length >= 3);
-}
-
-function matchFinanceCodes(text: string) {
-  const records = readProcessedJson<FinanceRecord[]>("finance/finance_lookup_index.json");
-  const tokens = new Set(tokenise(text));
-  return records
-    .map((record) => {
-      const recordTokens = tokenise(`${record.club_name} ${record.event_name} ${record.key}`);
-      const score = recordTokens.filter((token) => tokens.has(token)).length;
-      return { ...record, score };
-    })
-    .filter((record) => record.score >= 2)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map(({ score: _score, ...record }) => record);
 }
 
 function matchSpaces(text: string, attendance: number | undefined) {
@@ -171,8 +143,8 @@ export function buildSourceGuidance(
     });
   }
 
-  if (hasBudgetSignal(text)) {
-    const matches = matchFinanceCodes(text);
+  if (hasFinanceSignal(text)) {
+    const matches = lookupFinanceCodes(eventRequest, prompt);
     guidance.push({
       type: "finance_code",
       label: matches.length ? "Potential finance-code matches found" : "Finance-code setup needed",

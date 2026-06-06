@@ -21,6 +21,8 @@ import {
 } from "./postPhase1StakeholderService.js";
 import { buildStakeholderEmailDrafts } from "./stakeholderEmailDraftService.js";
 import { buildTimelineChecklist } from "./timelineChecklistService.js";
+import { normaliseEventRequestFinanceCode } from "./financeCodeService.js";
+import { buildPostSpaceRequestGuidance } from "./postSpaceRequestGuidanceService.js";
 
 function buildMondayMockPayload(
   eventRequest: EventReadinessEventRequest,
@@ -49,6 +51,7 @@ function buildMondayMockPayload(
       complexity_status: risk.status,
       suggested_complexity: risk.suggested_complexity ?? "unknown",
       risk_flags: risk.risk_flags,
+      finance_code: eventRequest.financeCode ?? fieldText(eventRequest, "finance_code"),
       mock_only: true
     },
     subitems: stakeholders.map((stakeholder) => ({
@@ -172,14 +175,16 @@ export async function runPostPhase1Flow(
   options: { run_ai_risk: boolean },
   scenarioExpected?: ReturnType<typeof getPostPhase1Fixtures>[number]["expected"]
 ) {
-  const coverage = buildPostPhase1Coverage(eventRequest);
-  const keyEvent = assessPostPhase1KeyEvent(eventRequest);
-  const eis = buildEisDraft(eventRequest, keyEvent);
-  const routing = routePostPhase1Stakeholders(eventRequest, keyEvent);
-  const emailDrafts = buildStakeholderEmailDrafts(eventRequest, routing.stakeholders, keyEvent);
-  const timeline = buildTimelineChecklist(eventRequest, keyEvent, routing.stakeholders);
-  const complexityRisk = await classifyComplexityRisk(eventRequest, keyEvent, routing.stakeholders, options.run_ai_risk);
-  const mondayMock = buildMondayMockPayload(eventRequest, keyEvent, routing.stakeholders, complexityRisk);
+  const normalisedEventRequest = normaliseEventRequestFinanceCode(eventRequest);
+  const coverage = buildPostPhase1Coverage(normalisedEventRequest);
+  const keyEvent = assessPostPhase1KeyEvent(normalisedEventRequest);
+  const eis = buildEisDraft(normalisedEventRequest, keyEvent);
+  const routing = routePostPhase1Stakeholders(normalisedEventRequest, keyEvent);
+  const emailDrafts = buildStakeholderEmailDrafts(normalisedEventRequest, routing.stakeholders, keyEvent);
+  const timeline = buildTimelineChecklist(normalisedEventRequest, keyEvent, routing.stakeholders);
+  const complexityRisk = await classifyComplexityRisk(normalisedEventRequest, keyEvent, routing.stakeholders, options.run_ai_risk);
+  const mondayMock = buildMondayMockPayload(normalisedEventRequest, keyEvent, routing.stakeholders, complexityRisk);
+  const postSpaceGuidance = buildPostSpaceRequestGuidance(normalisedEventRequest);
   const qa = buildQaResults({
     coverage,
     keyEvent,
@@ -198,9 +203,10 @@ export async function runPostPhase1Flow(
     routing,
     email_drafts: emailDrafts,
     timeline,
+    post_space_guidance: postSpaceGuidance,
     complexity_risk: complexityRisk,
     monday_mock: mondayMock,
     qa,
-    event_request: eventRequest
+    event_request: normalisedEventRequest
   };
 }

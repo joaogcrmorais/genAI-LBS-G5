@@ -69,6 +69,7 @@ function buildSystemPrompt() {
     "If a user is vague or budget-only, help shape a viable event instead of blocking them.",
     "Treat catering and alcohol as one conversational food-and-drink topic, while still updating their separate official field keys.",
     "Surface finance-code awareness whenever budget, spend, catering, alcohol, ticketing, sponsorship, or treasury is involved.",
+    "The deterministic service may place the resolved finance code in EventRequest.financeCode. Do not put finance-code guidance in the crib-sheet narrative.",
     "Use source_guidance from the prompt in your reply when relevant, including room matches, capacity hints, catering/alcohol policy, finance-code next steps, and timeline implications.",
     "Surface political/sensitive-topic security and timeline implications only when there is a real signal.",
     "If every field is ready, stop asking questions and tell the organiser Phase 1 has enough information for the Space Request draft.",
@@ -127,6 +128,7 @@ function buildUserPrompt(
       deterministic_next_questions: evaluated.next_questions,
       source_guidance: evaluated.source_guidance,
       guidance_flags: evaluated.guidance_flags,
+      post_space_guidance: evaluated.post_space_guidance,
       recent_transcript: input.transcript.slice(-12),
       latest_user_message: input.message,
       output_rules: [

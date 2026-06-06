@@ -21,6 +21,7 @@ export const eventReadinessEventRequestSchema = z
   .object({
     fields: z.record(z.unknown()).default({}),
     field_status: z.record(fieldStatusSchema).default({}),
+    financeCode: z.string().optional(),
     additional_context: z.array(z.string()).optional()
   })
   .passthrough();
@@ -42,6 +43,17 @@ export const eventReadinessChatRequestSchema = z.object({
   event_request: eventReadinessEventRequestSchema.optional()
 });
 
+export const stakeholderEmailEditSchema = z.object({
+  email: z.string().optional(),
+  subject: z.string().optional(),
+  body: z.string().optional()
+});
+
+export const eventReadinessDraftSaveRequestSchema = z.object({
+  event_request: eventReadinessEventRequestSchema.optional(),
+  email_edits: z.record(stakeholderEmailEditSchema).default({})
+});
+
 export const eventReadinessFieldUpdateSchema = z.object({
   key: z.string().min(1),
   value: z.unknown(),
@@ -61,4 +73,5 @@ export type EntryType = z.infer<typeof entryTypeSchema>;
 export type EventReadinessEventRequest = z.infer<typeof eventReadinessEventRequestSchema>;
 export type EventReadinessEvaluateRequest = z.infer<typeof eventReadinessEvaluateRequestSchema>;
 export type EventReadinessChatRequest = z.infer<typeof eventReadinessChatRequestSchema>;
+export type EventReadinessDraftSaveRequest = z.infer<typeof eventReadinessDraftSaveRequestSchema>;
 export type EventReadinessAiTurn = z.infer<typeof eventReadinessAiTurnSchema>;

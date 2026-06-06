@@ -84,7 +84,32 @@ export function readLifecycleStakeholders() {
 }
 
 export function getPostPhase1Fixtures() {
-  return readProcessedJson<PostPhase1Fixture[]>("examples/post_phase1_event_requests.json");
+  const fixtures = readProcessedJson<PostPhase1Fixture[]>("examples/post_phase1_event_requests.json");
+  const externalReference = fixtures.find((fixture) => fixture.id === "alumni-networking-reception");
+  const internalReference = fixtures.find((fixture) => fixture.id === "small-internal-skills-workshop");
+  return [
+    ...fixtures,
+    ...(externalReference
+      ? [
+          {
+            ...externalReference,
+            id: "monday-fintech-ceo-demo",
+            name: "Monday Demo - FinTech CEO",
+            description: "Alias fixture for the scripted FinTech CEO demo; the submitted EventRequest remains the source of truth."
+          }
+        ]
+      : []),
+    ...(internalReference
+      ? [
+          {
+            ...internalReference,
+            id: "monday-wine-society-demo",
+            name: "Monday Demo - Wine Society",
+            description: "Alias fixture for the scripted Wine Society demo; the submitted EventRequest remains the source of truth."
+          }
+        ]
+      : [])
+  ];
 }
 
 export function getRoutingRules() {

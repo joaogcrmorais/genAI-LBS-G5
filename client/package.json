@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 3000 --strictPort",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "test": "node -e \"console.log('No client tests yet')\"",
+    "test": "node --import tsx --test src/pages/eventReadinessMvpFlow.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

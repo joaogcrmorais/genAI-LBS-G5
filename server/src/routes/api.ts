@@ -112,7 +112,7 @@ apiRouter.get("/event-readiness/session-draft", requireNormalUser, async (req: R
     return;
   }
 
-  res.json(await loadEventReadinessDraft(ownerSubject));
+  res.json(await loadEventReadinessDraft(ownerSubject, typeof req.query.draft_key === "string" ? req.query.draft_key : undefined));
 });
 
 apiRouter.post("/event-readiness/session-draft", requireNormalUser, async (req: Request, res: Response) => {

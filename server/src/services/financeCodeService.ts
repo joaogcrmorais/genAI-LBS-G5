@@ -37,6 +37,13 @@ export function hasFinanceSignal(text: string) {
   );
 }
 
+export function extractExplicitFinanceCode(text: string) {
+  const match = text.match(
+    /\b(?:finance|cost\s+cent(?:er|re)|budget)\s+(?:code|number|no\.?)\s*(?:is|:|#|-)?\s*([a-z0-9][a-z0-9_-]{2,})\b/i
+  );
+  return match?.[1]?.trim();
+}
+
 function tokenise(value: string) {
   return value
     .toLowerCase()
@@ -83,7 +90,10 @@ export function lookupFinanceCodes(eventRequest: EventReadinessEventRequest, pro
 export function deriveFinanceCode(eventRequest: EventReadinessEventRequest, prompt = "") {
   const existing = String(eventRequest.financeCode ?? eventRequest.fields.finance_code ?? "").trim();
   if (existing) return existing;
-  if (!hasFinanceSignal(eventFinanceText(eventRequest, prompt))) return undefined;
+  const financeText = eventFinanceText(eventRequest, prompt);
+  const explicitFinanceCode = extractExplicitFinanceCode(financeText);
+  if (explicitFinanceCode) return explicitFinanceCode;
+  if (!hasFinanceSignal(financeText)) return undefined;
   return lookupFinanceCodes(eventRequest, prompt)[0]?.finance_code;
 }
 

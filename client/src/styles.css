@@ -1188,6 +1188,83 @@ h1 {
   padding: 16px;
 }
 
+.mvp-rail.dossier {
+  background: #f1efe8;
+}
+
+.mvp-dossier-stack {
+  gap: 10px;
+  padding: 12px;
+}
+
+.mvp-dossier-index {
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 14px;
+}
+
+.mvp-dossier-index h3 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.mvp-dossier-index p {
+  margin: 4px 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mvp-dossier-index div {
+  display: grid;
+  gap: 7px;
+}
+
+.mvp-dossier-index span {
+  display: grid;
+  grid-template-columns: minmax(112px, .72fr) minmax(0, 1fr);
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.mvp-dossier-index span:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.mvp-dossier-index strong {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.mvp-rail.dossier .mvp-dcard,
+.mvp-rail.dossier .mvp-empty-card {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.mvp-rail.dossier .mvp-card-head h3,
+.mvp-rail.dossier .mvp-expand h3 {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.mvp-rail.dossier .mvp-card-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+
 .mvp-empty-card {
   border: 1px dashed var(--blue-300);
   border-radius: var(--radius);
@@ -1352,7 +1429,7 @@ h1 {
   padding: 0;
 }
 
-.mvp-expand > button {
+.mvp-expand > summary {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
@@ -1363,9 +1440,14 @@ h1 {
   padding: 14px;
   text-align: left;
   cursor: pointer;
+  list-style: none;
 }
 
-.mvp-expand.open svg {
+.mvp-expand > summary::-webkit-details-marker {
+  display: none;
+}
+
+.mvp-expand[open] svg {
   transform: rotate(90deg);
 }
 

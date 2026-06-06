@@ -37,6 +37,23 @@ describe("post-Phase-1 fixtures", () => {
       }
     }
   });
+
+  it("does not count negated external-speaker text as external audience for members-only events", () => {
+    const fixture = getPostPhase1Fixtures().find((item) => item.id === "small-internal-skills-workshop");
+    expect(fixture).toBeDefined();
+    const eventRequest = {
+      ...fixture!.event_request,
+      fields: {
+        ...fixture!.event_request.fields,
+        event_details: "Members-only autumn social for LBS student members with light snacks.",
+        external_guest_speaker_details: "No external speaker"
+      }
+    };
+
+    const keyEvent = assessPostPhase1KeyEvent(eventRequest);
+
+    expect(keyEvent.counted_criteria).not.toContain("external_audience");
+  });
 });
 
 describe("post-Phase-1 stakeholder routing and drafts", () => {

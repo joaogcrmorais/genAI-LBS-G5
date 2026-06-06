@@ -80,7 +80,19 @@ function significantOperationalElements(eventRequest: EventReadinessEventRequest
 
 function externalAudience(eventRequest: EventReadinessEventRequest) {
   const text = allEventText(eventRequest);
-  if (includesAny(text, ["student-only", "students only"])) return false;
+  if (
+    includesAny(text, [
+      "student-only",
+      "students only",
+      "student members only",
+      "members-only",
+      "members only",
+      "lbs students",
+      "current students"
+    ])
+  ) {
+    return false;
+  }
   return includesAny(text, [
     "external attendees",
     "external audience",

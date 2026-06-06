@@ -50,6 +50,7 @@ export const stakeholderEmailEditSchema = z.object({
 });
 
 export const eventReadinessDraftSaveRequestSchema = z.object({
+  draft_key: z.string().min(1).max(120).optional(),
   event_request: eventReadinessEventRequestSchema.optional(),
   email_edits: z.record(stakeholderEmailEditSchema).default({})
 });

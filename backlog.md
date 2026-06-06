@@ -12,9 +12,10 @@
 - [x] Add a mobile readiness panel toggle below 1060px; current narrow layout hides the rail to protect the chat flow.
 
 ## P2 - polish / nice-to-have
-- [ ] Build the Dossier readiness-panel variant; stacked cards are implemented and default.
+- [x] Build the Dossier readiness-panel variant; stacked cards remain default and the Dossier view can be selected from the tweaks panel.
 - [x] Replace placeholder contact inboxes with confirmed LBS team routing addresses or contact notes.
-- [ ] Add reducer unit tests for scripted flow progression and unlock sequencing.
+- [x] Add reducer unit tests for scripted flow progression and unlock sequencing.
+- [ ] Add an admin-only event dashboard after current chatbot/session bugs are solved. It should show one row per created event with EventName, Club, Organiser, Contact, captured fields count (x/27), event date, creation date, KeyEvent yes/no, and an admin-only button/action to create or view the Monday.com mock payload.
 
 ## Open questions for the team
 - Should the Monday demo run with real backend chat enabled, or force local scripted flow for timing reliability?

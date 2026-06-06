@@ -16,8 +16,10 @@ export type StakeholderEmailEdit = {
 };
 
 export type StoredDraftResult = {
+  draft_key?: string;
   event_request: EventRequestDraft | null;
   email_edits: Record<string, StakeholderEmailEdit>;
+  created_at?: string | null;
   updated_at: string | null;
 };
 
@@ -62,18 +64,21 @@ export async function downloadEisDocx(token: string, eventRequest: EventRequestD
   return apiPostBlob("/api/event-readiness/eis-docx", { event_request: eventRequest }, token);
 }
 
-export async function loadStoredEventReadinessDraft(token: string) {
-  return apiGet<StoredDraftResult>("/api/event-readiness/session-draft", token);
+export async function loadStoredEventReadinessDraft(token: string, draftKey?: string) {
+  const path = draftKey ? `/api/event-readiness/session-draft?draft_key=${encodeURIComponent(draftKey)}` : "/api/event-readiness/session-draft";
+  return apiGet<StoredDraftResult>(path, token);
 }
 
 export async function saveStoredEventReadinessDraft(
   token: string,
+  draftKey: string,
   eventRequest: EventRequestDraft,
   emailEdits: Record<string, StakeholderEmailEdit>
 ) {
   return apiPost<StoredDraftResult>(
     "/api/event-readiness/session-draft",
     {
+      draft_key: draftKey,
       event_request: eventRequest,
       email_edits: emailEdits
     },

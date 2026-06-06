@@ -1,11 +1,18 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useReducer, useRef, useState } from "react";
 import lbsLogo from "../assets/lbs-logo.jpg";
 import { demoScenarios } from "../data/eventReadinessMvpScenarios";
 import {
+  createEventReadinessFlowState,
+  eventReadinessFlowReducer,
+  readinessUnlockSequence,
+  type DrawerState,
+  type ReadinessLayout,
+  type Unlocks
+} from "./eventReadinessMvpFlow";
+import {
   downloadEisDocx,
   downloadSpaceRequestDocx,
-  loadStoredEventReadinessDraft,
   runPostPhase1,
   saveStoredEventReadinessDraft,
   sendEventReadinessTurn,
@@ -24,14 +31,10 @@ import type {
 } from "../types/eventReadinessMvp";
 
 type Turn = { role: "assistant" | "user"; blocks?: Block[]; text?: string };
-type Unlocks = { space: boolean; keyEvent: boolean; eis: boolean; stakeholders: boolean; extras: boolean };
-type DrawerState = { open: boolean; activeId: string | null };
 type ComposerState =
   | { mode: "scenario" }
   | NonNullable<DemoScenario["script"][number]["replies"]>
   | null;
-
-const emptyUnlocks: Unlocks = { space: false, keyEvent: false, eis: false, stakeholders: false, extras: false };
 
 function Icon({ name }: { name: string }) {
   const common = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 2 };
@@ -258,7 +261,7 @@ function Topbar({
       <div className="mvp-top-actions">
         <span className="mvp-pill">Demo: {scenario.label}</span>
         <span className="mvp-phase">{phase}</span>
-        <button type="button" onClick={onRestart}><Icon name="restart" />Restart</button>
+        <button type="button" onClick={onRestart}><Icon name="restart" />Create new event</button>
       </div>
     </header>
   );
@@ -291,16 +294,25 @@ function DCard({
   );
 }
 
-function Expandable({ title, kicker, children }: { title: string; kicker: string; children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
+function Expandable({
+  title,
+  kicker,
+  children,
+  defaultOpen = false
+}: {
+  title: string;
+  kicker: string;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
   return (
-    <section className={`mvp-dcard mvp-expand ${open ? "open" : ""}`}>
-      <button type="button" onClick={() => setOpen((value) => !value)}>
+    <details className="mvp-dcard mvp-expand" open={defaultOpen}>
+      <summary>
         <span><h3>{title}</h3><p>{kicker}</p></span>
         <Icon name="chevron" />
-      </button>
-      {open ? <div className="mvp-card-body">{children}</div> : null}
-    </section>
+      </summary>
+      <div className="mvp-card-body">{children}</div>
+    </details>
   );
 }
 
@@ -362,11 +374,21 @@ function previewFieldsFromEventRequest(eventRequest: EventRequestDraft) {
   });
 }
 
+function emptyEventRequest(): EventRequestDraft {
+  return { fields: {}, field_status: {} };
+}
+
+function newEventSessionKey() {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) return `event:${crypto.randomUUID()}`;
+  return `event:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 10)}`;
+}
+
 function ReadinessRail({
   scenario,
   unlocked,
   backend,
   eventRequest,
+  layout,
   busyDownload,
   onDownloadEis,
   onGenerateSpace,
@@ -376,6 +398,7 @@ function ReadinessRail({
   unlocked: Unlocks;
   backend: BackendPostPhase1Result | null;
   eventRequest: EventRequestDraft;
+  layout: ReadinessLayout;
   busyDownload: string | null;
   onDownloadEis: () => void;
   onGenerateSpace: () => void;
@@ -384,16 +407,35 @@ function ReadinessRail({
   const keyEvent = keyInfoFromBackend(scenario, backend);
   const stakeholders = stakeholdersFromBackend(scenario, backend);
   const timeline = backend?.timeline?.items?.map((item) => [item.timing, item.task, item.stakeholder] as [string, string, string]) ?? scenario.timeline;
-  const monday = backend?.monday_mock ?? scenario.mondayPayload;
   const guidance = backend?.post_space_guidance;
+  const anyUnlocked = Object.values(unlocked).some(Boolean);
+  const dossierStatus = [
+    ["Space Request", unlocked.space ? "Ready" : "Available now"],
+    ["Key Event check", unlocked.keyEvent ? keyEvent.headline : "Pending event facts"],
+    ["EIS", !anyUnlocked ? "If required" : unlocked.eis && keyEvent.candidate ? "Draft ready" : keyEvent.candidate ? "Pending" : "Not required yet"],
+    ["Stakeholder drafts", unlocked.stakeholders ? `${stakeholders.length} routed teams` : "Pending readiness pack"],
+    ["Campus setup", unlocked.stakeholders && guidance?.campus_groups?.appears ? "Campus Groups guidance ready" : "Pending"]
+  ];
 
   return (
-    <aside className="mvp-rail">
+    <aside className={`mvp-rail ${layout === "dossier" ? "dossier" : ""}`}>
       <div className="mvp-rail-head">
-        <strong>✦ Readiness panel</strong>
-        <p>{Object.values(unlocked).some(Boolean) ? "Everything you need to take this event forward." : "Documents and next steps appear here as your event comes together."}</p>
+        <strong>{layout === "dossier" ? "Readiness dossier" : "Readiness panel"}</strong>
+        <p>{anyUnlocked ? "Everything you need to take this event forward." : "Documents and next steps appear here as your event comes together."}</p>
       </div>
-      <div className="mvp-rail-stack">
+      <div className={`mvp-rail-stack ${layout === "dossier" ? "mvp-dossier-stack" : ""}`}>
+        {layout === "dossier" ? (
+          <section className="mvp-dossier-index">
+            <h3>{anyUnlocked ? String(eventRequest.fields.event_title ?? scenario.clubName) : "Readiness packet"}</h3>
+            <p>{anyUnlocked ? String(eventRequest.fields.club_or_programme_affiliation ?? scenario.clubName) : "Choose a scenario or describe an event to start."}</p>
+            <div>
+              {dossierStatus.map(([label, value]) => (
+                <span key={label}><strong>{label}</strong>{value}</span>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <DCard icon="file" title="Space Request Form" kicker="Word document · current information" footer={
           <div className="mvp-card-actions">
             <button type="button" onClick={onGenerateSpace} disabled={busyDownload !== null}>
@@ -406,7 +448,7 @@ function ReadinessRail({
         </DCard>
 
         {unlocked.space ? (
-          <Expandable title="Preview Space Request Form" kicker="Current captured information">
+          <Expandable title="Preview Space Request Form" kicker="Current captured information" defaultOpen>
             <div className="mvp-field-grid">
               {previewFieldsFromEventRequest(eventRequest).map((field) => (
                 <div key={field.label}><span>{field.label}</span><strong>{field.value}</strong><Smark mark={markFromStatus(field.status)} /></div>
@@ -415,7 +457,7 @@ function ReadinessRail({
           </Expandable>
         ) : null}
 
-        {!Object.values(unlocked).some(Boolean) ? (
+        {!anyUnlocked ? (
           <div className="mvp-empty-card">
             <ol>
               <li>Space Request Form</li>
@@ -445,7 +487,7 @@ function ReadinessRail({
         ) : null}
 
         {unlocked.eis && keyEvent.candidate && backend?.eis?.markdown ? (
-          <Expandable title="Preview Event Information Sheet" kicker="Generated draft text">
+          <Expandable title="Preview Event Information Sheet" kicker="Generated draft text" defaultOpen>
             <pre className="mvp-doc-preview">{backend.eis.markdown}</pre>
           </Expandable>
         ) : null}
@@ -459,7 +501,7 @@ function ReadinessRail({
         ) : null}
 
         {unlocked.stakeholders && guidance?.campus_groups?.appears ? (
-          <Expandable title="Campus Groups event page" kicker={guidance.campus_groups.prompt}>
+          <Expandable title="Campus Groups event page" kicker={guidance.campus_groups.prompt} defaultOpen>
             <div className="mvp-setup-pack">
               <strong>Required setup checklist</strong>
               <ul>{guidance.campus_groups.checklist.map((item) => <li key={item}>{item}</li>)}</ul>
@@ -497,9 +539,6 @@ function ReadinessRail({
             </Expandable>
             <Expandable title="Captured event details" kicker="Space Request fields plus context">
               <div className="mvp-field-grid">{scenario.displayFields.filter(([k]) => !k.toLowerCase().includes("finance")).map(([k, v, mark]) => <div key={k}><span>{k}</span><strong>{v}</strong><Smark mark={mark} /></div>)}</div>
-            </Expandable>
-            <Expandable title="Monday.com summary" kicker="JSON payload">
-              <pre className="mvp-json">{JSON.stringify(monday, null, 2)}</pre>
             </Expandable>
           </>
         ) : null}
@@ -590,14 +629,18 @@ function StakeholderDrawer({
 function TweaksPanel({
   open,
   scenario,
+  readinessLayout,
   onToggle,
   onScenario,
+  onReadinessLayout,
   onAccent
 }: {
   open: boolean;
   scenario: DemoScenario;
+  readinessLayout: ReadinessLayout;
   onToggle: () => void;
   onScenario: (scenario: DemoScenario) => void;
+  onReadinessLayout: (layout: ReadinessLayout) => void;
   onAccent: (value: string) => void;
 }) {
   const swatches = ["#0a2342", "#11457e", "#103a4a", "#28406b", "#6e1f30"];
@@ -609,7 +652,11 @@ function TweaksPanel({
           <strong>Tweaks</strong>
           <fieldset><legend>Scenario</legend>{demoScenarios.map((item) => <label key={item.id}><input type="radio" checked={scenario.id === item.id} onChange={() => onScenario(item)} />{item.label}</label>)}</fieldset>
           <fieldset><legend>Accent colour</legend><div className="mvp-swatches">{swatches.map((color) => <button type="button" key={color} style={{ background: color }} onClick={() => onAccent(color)} aria-label={`Use ${color}`} />)}</div></fieldset>
-          <fieldset><legend>Readiness panel layout</legend><label><input type="radio" checked readOnly />Stacked</label><label><input type="radio" disabled />Dossier</label></fieldset>
+          <fieldset>
+            <legend>Readiness panel layout</legend>
+            <label><input type="radio" checked={readinessLayout === "stacked"} onChange={() => onReadinessLayout("stacked")} />Stacked</label>
+            <label><input type="radio" checked={readinessLayout === "dossier"} onChange={() => onReadinessLayout("dossier")} />Dossier</label>
+          </fieldset>
         </div>
       ) : null}
     </>
@@ -619,60 +666,37 @@ function TweaksPanel({
 export function EventReadinessAssistantPage() {
   const { getAccessTokenSilently } = useAuth0();
   const [scenario, setScenario] = useState<DemoScenario>(demoScenarios[0]);
+  const [eventSessionKey, setEventSessionKey] = useState(() => newEventSessionKey());
   const [turns, setTurns] = useState<Turn[]>([]);
   const [step, setStep] = useState(0);
   const [typing, setTyping] = useState(false);
   const [composer, setComposer] = useState<ComposerState>({ mode: "scenario" });
   const [input, setInput] = useState("");
-  const [unlocked, setUnlocked] = useState<Unlocks>(emptyUnlocks);
-  const [drawer, setDrawer] = useState<DrawerState>({ open: false, activeId: null });
+  const [flow, dispatchFlow] = useReducer(eventReadinessFlowReducer, undefined, createEventReadinessFlowState);
   const [toast, setToast] = useState(false);
   const [tweaks, setTweaks] = useState(false);
   const [busyDownload, setBusyDownload] = useState<string | null>(null);
   const [backend, setBackend] = useState<BackendPostPhase1Result | null>(null);
-  const [eventRequest, setEventRequest] = useState<EventRequestDraft>(scenario.eventRequest);
+  const [eventRequest, setEventRequest] = useState<EventRequestDraft>(() => emptyEventRequest());
   const [emailEdits, setEmailEdits] = useState<Record<string, StakeholderEmailEdit>>({});
-  const [mobileRailOpen, setMobileRailOpen] = useState(false);
   const [freeTranscript, setFreeTranscript] = useState<Array<{ role: "user" | "assistant"; content: string }>>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const draftLoadedRef = useRef(false);
+  const runRef = useRef(0);
+  const { unlocked, drawer, mobileRailOpen, readinessLayout } = flow;
 
   const phase = useMemo(() => (Object.values(unlocked).some(Boolean) ? "Phase 2 · Readiness" : "Phase 1 · Intake"), [unlocked]);
 
-  async function persistDraft(nextEventRequest = eventRequest, nextEmailEdits = emailEdits) {
-    if (!draftLoadedRef.current) return;
+  async function persistDraft(nextEventRequest = eventRequest, nextEmailEdits = emailEdits, draftKey = eventSessionKey) {
     try {
       const token = await getAccessTokenSilently();
-      await saveStoredEventReadinessDraft(token, nextEventRequest, nextEmailEdits);
+      await saveStoredEventReadinessDraft(token, draftKey, nextEventRequest, nextEmailEdits);
     } catch {
       // Draft persistence is best-effort and should not interrupt the organiser flow.
     }
   }
 
-  useEffect(() => {
-    let cancelled = false;
-    async function loadDraft() {
-      try {
-        const token = await getAccessTokenSilently();
-        const stored = await loadStoredEventReadinessDraft(token);
-        if (cancelled) return;
-        if (stored.event_request) {
-          setEventRequest(stored.event_request);
-        }
-        setEmailEdits(stored.email_edits ?? {});
-      } catch {
-        // A missing or unavailable saved draft should not block the demo.
-      } finally {
-        if (!cancelled) draftLoadedRef.current = true;
-      }
-    }
-    void loadDraft();
-    return () => {
-      cancelled = true;
-    };
-  }, [getAccessTokenSilently]);
-
   function gotoRound(nextStep: number, activeScenario = scenario) {
+    const runId = runRef.current;
     const round = activeScenario.script[nextStep];
     if (!round) return;
     setStep(nextStep);
@@ -680,73 +704,49 @@ export function EventReadinessAssistantPage() {
     setTyping(true);
     const textLength = round.blocks.map((block) => ("text" in block ? block.text.length : 100)).join("").length;
     window.setTimeout(() => {
+      if (runRef.current !== runId) return;
       setTyping(false);
       setTurns((current) => [...current, { role: "assistant", blocks: round.blocks }]);
       setComposer(round.replies ?? null);
       if (round.finish) void unlockReadiness(activeScenario);
-      if (round.auto) window.setTimeout(() => gotoRound(nextStep + 1, activeScenario), round.autoDelay ?? 2600);
+      if (round.auto) {
+        window.setTimeout(() => {
+          if (runRef.current === runId) gotoRound(nextStep + 1, activeScenario);
+        }, round.autoDelay ?? 2600);
+      }
     }, Math.min(1500, 600 + textLength * 1.1));
   }
 
   function reset(nextScenario = scenario) {
+    runRef.current += 1;
+    const nextSessionKey = newEventSessionKey();
+    const nextEventRequest = emptyEventRequest();
     setScenario(nextScenario);
+    setEventSessionKey(nextSessionKey);
     setTurns([]);
     setStep(0);
     setTyping(false);
     setComposer({ mode: "scenario" });
     setInput("");
-    setUnlocked(emptyUnlocks);
-    setDrawer({ open: false, activeId: null });
+    dispatchFlow({ type: "reset", preserveLayout: true });
     setBackend(null);
-    setEventRequest(nextScenario.eventRequest);
+    setEventRequest(nextEventRequest);
     setEmailEdits({});
-    setMobileRailOpen(false);
     setFreeTranscript([]);
     window.localStorage.removeItem(`era-mvp-${nextScenario.id}`);
+    void persistDraft(nextEventRequest, {}, nextSessionKey);
   }
 
   function startScenario(nextScenario: DemoScenario) {
     reset(nextScenario);
-    window.setTimeout(() => void startBackendScenario(nextScenario), 150);
-  }
-
-  async function startBackendScenario(nextScenario: DemoScenario) {
-    const message = nextScenario.firstMessage;
-    setTurns([{ role: "user", text: message }]);
-    setFreeTranscript([{ role: "user", content: message }]);
-    setTyping(true);
-    setComposer(null);
-    try {
-      const token = await getAccessTokenSilently();
-      const result = await sendEventReadinessTurn(token, message, [], nextScenario.eventRequest);
-      setTyping(false);
-      setEventRequest(result.event_request);
-      void persistDraft(result.event_request, emailEdits);
-      setTurns((current) => [...current, { role: "assistant", blocks: freeFlowBlocks(result) }]);
-      setFreeTranscript((current) => [...current, { role: "assistant", content: result.assistant_message }]);
-      setComposer({ mode: "single", options: [{ text: "Generate the readiness pack", primary: true }] });
-      if (result.coverage?.phase_1_ready) void unlockReadiness(nextScenario, result.event_request);
-    } catch (error) {
-      setTyping(false);
-      setTurns((current) => [
-        ...current,
-        {
-          role: "assistant",
-          blocks: [
-            { t: "p", text: "I could not reach the backend chat for this scenario." },
-            { t: "p", text: error instanceof Error ? error.message : String(error) }
-          ]
-        }
-      ]);
-      setComposer({ mode: "scenario" });
-    }
+    window.setTimeout(() => gotoRound(0, nextScenario), 150);
   }
 
   function reply(text: string, echo?: string) {
     setTurns((current) => [...current, { role: "user", text: echo ?? text }]);
     if (text === "Generate the readiness pack" && freeTranscript.length > 0) {
       setComposer(null);
-      void unlockReadiness(scenario, eventRequest);
+      void unlockReadiness(scenario, eventRequest, false);
       return;
     }
     gotoRound(step + 1);
@@ -768,37 +768,42 @@ export function EventReadinessAssistantPage() {
     setTurns((current) => [...current, { role: "user", text: message }]);
     setFreeTranscript((current) => [...current, { role: "user", content: message }]);
     setTyping(true);
+    const runId = runRef.current;
     try {
       const token = await getAccessTokenSilently();
       const result = await sendEventReadinessTurn(token, message, freeTranscript, eventRequest);
+      if (runRef.current !== runId) return;
       setTyping(false);
       setEventRequest(result.event_request);
       void persistDraft(result.event_request, emailEdits);
       setTurns((current) => [...current, { role: "assistant", blocks: freeFlowBlocks(result) }]);
       setFreeTranscript((current) => [...current, { role: "assistant", content: result.assistant_message }]);
-      setComposer({ mode: "single", options: [{ text: "Generate the readiness pack", primary: true }] });
-      if (result.coverage?.phase_1_ready) void unlockReadiness(scenario, result.event_request);
+      setComposer(result.coverage?.phase_1_ready ? { mode: "single", options: [{ text: "Generate the readiness pack", primary: true }] } : null);
+      if (result.coverage?.phase_1_ready) void unlockReadiness(scenario, result.event_request, false);
     } catch (error) {
+      if (runRef.current !== runId) return;
       setTyping(false);
       setTurns((current) => [...current, { role: "assistant", blocks: [{ t: "lead", text: "I could not reach the backend chat, so I will keep the local demo flow available." }, { t: "p", text: error instanceof Error ? error.message : String(error) }] }]);
       setComposer(scenario.script[step]?.replies ?? { mode: "scenario" });
     }
   }
 
-  async function unlockReadiness(activeScenario = scenario, draft = activeScenario.eventRequest) {
+  async function unlockReadiness(activeScenario = scenario, draft = activeScenario.eventRequest, useScenarioFixture = true) {
+    const runId = runRef.current;
     setEventRequest(draft);
     void persistDraft(draft, emailEdits);
     try {
       const token = await getAccessTokenSilently();
-      const result = await runPostPhase1(token, activeScenario.id === "keyEvent" ? "monday-fintech-ceo-demo" : "monday-wine-society-demo", draft);
+      const scenarioId = useScenarioFixture ? activeScenario.id === "keyEvent" ? "monday-fintech-ceo-demo" : "monday-wine-society-demo" : undefined;
+      const result = await runPostPhase1(token, scenarioId, draft);
+      if (runRef.current !== runId) return;
       setBackend(result);
     } catch {
+      if (runRef.current !== runId) return;
       setBackend(null);
     }
-    const sequence: Array<keyof Unlocks> = activeScenario.keyEvent.candidate
-      ? ["space", "keyEvent", "eis", "stakeholders", "extras"]
-      : ["space", "keyEvent", "stakeholders", "extras"];
-    sequence.forEach((key, index) => window.setTimeout(() => setUnlocked((current) => ({ ...current, [key]: true })), 520 * (index + 1)));
+    const sequence = readinessUnlockSequence(activeScenario.keyEvent.candidate);
+    sequence.forEach((key, index) => window.setTimeout(() => dispatchFlow({ type: "unlock", key }), 520 * (index + 1)));
   }
 
   async function downloadSpace(force = false) {
@@ -877,13 +882,14 @@ export function EventReadinessAssistantPage() {
           unlocked={unlocked}
           backend={backend}
           eventRequest={eventRequest}
+          layout={readinessLayout}
           busyDownload={busyDownload}
           onGenerateSpace={() => void downloadSpace(false)}
           onDownloadEis={() => void downloadEis()}
-          onOpenDrawer={() => setDrawer({ open: true, activeId: null })}
+          onOpenDrawer={() => dispatchFlow({ type: "openDrawer" })}
         />
       </div>
-      <button type="button" className="mvp-mobile-rail-toggle" onClick={() => setMobileRailOpen((value) => !value)}>
+      <button type="button" className="mvp-mobile-rail-toggle" onClick={() => dispatchFlow({ type: "toggleMobileRail" })}>
         {mobileRailOpen ? "Close readiness" : "Readiness panel"}
       </button>
       <StakeholderDrawer
@@ -891,12 +897,20 @@ export function EventReadinessAssistantPage() {
         scenario={scenario}
         backend={backend}
         emailEdits={emailEdits}
-        onClose={() => setDrawer({ open: false, activeId: null })}
-        onDetail={(activeId) => setDrawer((current) => ({ ...current, activeId }))}
+        onClose={() => dispatchFlow({ type: "closeDrawer" })}
+        onDetail={(activeId) => dispatchFlow({ type: "setDrawerDetail", activeId })}
         onEmailEdit={updateEmailEdit}
         onCopyToast={() => setToast(true)}
       />
-      <TweaksPanel open={tweaks} scenario={scenario} onToggle={() => setTweaks((value) => !value)} onScenario={reset} onAccent={setAccent} />
+      <TweaksPanel
+        open={tweaks}
+        scenario={scenario}
+        readinessLayout={readinessLayout}
+        onToggle={() => setTweaks((value) => !value)}
+        onScenario={reset}
+        onReadinessLayout={(layout) => dispatchFlow({ type: "setReadinessLayout", layout })}
+        onAccent={setAccent}
+      />
       {toast ? <div className="mvp-toast">Copied</div> : null}
     </div>
   );

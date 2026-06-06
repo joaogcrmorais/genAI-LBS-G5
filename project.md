@@ -147,6 +147,11 @@ Current Event Readiness chat behaviour notes:
 - When deterministic `next_questions` is empty and Phase 1 is ready, the assistant should stop asking follow-ups and tell the organiser the Space Request DOCX draft is the next step.
 - Free-flow OpenAI responses in the frontend use the normal assistant body typography plus a compact captured-facts visualisation, not the title/lead font reserved for scripted demo emphasis.
 - The Event Readiness MVP readiness rail shows lightweight previews for the generated Space Request field set and EIS draft after the relevant outputs are unlocked, and narrow screens expose the rail through a fixed mobile toggle instead of hiding it.
+- The readiness rail supports stacked and Dossier layouts. Dossier mode keeps the readiness packet visible as a compact document-style index while preserving the same backend Space Request, Key Event, EIS, stakeholder, Campus Groups, Eventscase, and finance-code outputs.
+- Explicit organiser-provided finance codes such as "finance code FINDATA-ALUMNI-2026" take priority over lookup-derived LBS finance codes. The resolved code must remain on top-level `EventRequest.financeCode`, mirrored to legacy `fields.finance_code`, and surfaced in Campus Groups/Eventscase setup guidance rather than the crib-sheet display.
+- Demo scenarios must remain multi-step scripted click-through flows for live presentation. Backend chat can support free-text organiser conversations, but the demo scenario buttons must not collapse the scripted flow into a one-turn backend completion.
+- Each new event session must start from an empty `EventRequest` and a fresh backend draft key. Server-side draft persistence is per event session, not a reusable context source for new organiser chats.
+- Monday.com mock payloads are admin/staff tooling outputs and should not be visible in the normal organiser readiness panel.
 
 OpenAI SDK configuration exists only in the backend. The frontend must never read `OPENAI_API_KEY`.
 
@@ -234,6 +239,17 @@ This work may be reused for post-Phase-1 outputs, but it is not the current prod
 
 Latest recorded checks:
 
+- `npm.cmd run typecheck`: passed on 2026-06-06 after restoring the original multi-step demo flow, switching reset to Create New Event semantics, isolating server-side persisted drafts by per-event draft key, and hiding Monday.com payload JSON from the normal readiness panel.
+- `npm.cmd run lint`: passed on 2026-06-06 after the same update.
+- `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 50 passing tests and 1 skipped gated live OpenAI test, client had 6 passing reducer tests.
+- `npm.cmd --workspace @lbs-genai/client run build`: passed on 2026-06-06 after the same update.
+- Authenticated browser verification on 2026-06-06 confirmed the Key Event and Standard demo buttons now enter the original multi-step scripted flows, not a single backend response; Create New Event clears prior transcript/readiness/event facts; both scripted readiness packs still unlock the expected outputs; and Monday.com JSON is hidden from the normal user panel.
+- Live backend free-text probes on 2026-06-06 covered two existing regression-suite style events, "Careers in AI Product" and "World Quidditch Conference", with multiple organiser turns and at least 10 seconds allowed per response. Both reached Phase 1 ready with no remaining next questions, preserved explicit finance codes, and returned Campus Groups/Eventscase guidance. Browser text-entry testing could not be completed because the Browser Use virtual clipboard is not installed in this session.
+- `npm.cmd run test`: passed on 2026-06-06 after completing the remaining P2 work, adding reducer tests, adding finance-code regression tests, and fixing the standard-flow external-audience false positive; backend had 50 passing tests and 1 skipped gated live OpenAI test, client had 6 passing reducer tests.
+- `npm.cmd run typecheck`: passed on 2026-06-06 after the same update.
+- `npm.cmd run lint`: passed on 2026-06-06 after the same update.
+- Live backend free-flow probe on 2026-06-06 confirmed that a budget message with explicit `finance code FINDATA-ALUMNI-2026` returns that exact code in `EventRequest.financeCode`, `fields.finance_code`, and Campus Groups cost-center guidance, with Eventscase guidance present for external attendees.
+- Authenticated browser verification on 2026-06-06 confirmed the always-visible Space Request action is present before conversation start; the Dossier layout no longer leaks seeded demo details before start and persists through scenario start; the standard Wine Society flow stays `NOT A KEY EVENT`, omits EIS/Eventscase, keeps Campus Groups and `FINCLUB-WS-2026`, and no longer counts `external_audience`; the Key Event flow keeps the correct seeded registration desk time and shows Space Request, EIS, Campus Groups, Eventscase, finance, and stakeholder outputs; the stakeholder drawer no longer shows reasoning pills and opens usable backend-generated drafts.
 - `npm.cmd run typecheck`: passed on 2026-06-06 after adding top-level `financeCode`, post-Space Request guidance, EIS DOCX generation, backend-driven scenario starts, free-flow visualisation styling, readiness-panel Campus Groups/Eventscase outputs, organiser draft persistence, document previews, backend-only stakeholder drafts, the mobile readiness toggle, and confirmed/contact-note stakeholder routing.
 - `npm.cmd run lint`: passed on 2026-06-06 after the same update.
 - `npm.cmd run test`: passed on 2026-06-06 after the same update; backend had 47 passing tests and 1 skipped gated live OpenAI test, client still has the no-op test script.
